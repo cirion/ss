@@ -216,6 +216,258 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Crypt_LightCandle"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "593d7220356564141a003703"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Light Transition"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593d719a356564141a0036ff"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Crypt_ColorTransitionLit"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "energylight"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Tag to Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "Crypt_CandleLit"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593d719a356564141a0036ff"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5922268335656460040065c5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "593d7243356564141a003706"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Crypt_SnuffCandle"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "593d7225356564141a003704"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Light Transition"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593d719a356564141a0036ff"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Crypt_ColorTransitionDark"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "energylight"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Tag to Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "Crypt_CandleLit"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593d719a356564141a0036ff"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5922268335656460040065c5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "593d76b1356564141a003709"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Avenue"
   position {
@@ -529,6 +781,31 @@ characters {
     pc_spawn_number: 0
   }
 }
+variables {
+  string_value: "3:000000"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Crypt_ColorTransitionDark"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "3:ff9329ff"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Crypt_ColorTransitionLit"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "LOOP; Bounce:3:FFFF00; Cubic:1:FF8C00;"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Crypt_LightScriptFlicker"
+    typeName: "string"
+  }
+}
+senseTags: "Crypt_CandleLit"
 worldMapLocation {
   filename: ""
   location {
