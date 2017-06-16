@@ -129,54 +129,64 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
-  name: "MapSetupAct2"
+  name: "Sacto_TripwireCrowsNorth"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59432939356564181c00614b"
+          }
+        }
+      }
     }
   }
   conditions {
+  }
+  actions {
     ops {
-      functionName: "Comparison (int)"
+      functionName: "Play FX at Point"
       args {
-        call_value {
-          functionName: "Get Story Variable (int)"
-          args {
-            string_value: "58a09a016666641898001ad5"
-          }
-          args {
-            string_value: "NumMissionsPlayed"
-          }
-        }
+        string_value: "EnvironmentCrowFlyAway"
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Current Location of Prop"
           args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 4
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5941d695356564181c006083"
+              }
+            }
           }
         }
       }
+    }
+    ops {
+      functionName: "Delete Prop"
       args {
-        int_value: 0
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5941d695356564181c006083"
+          }
+        }
       }
     }
   }
-  actions {
-  }
-  isActive: true
+  isActive: false
   idRef {
-    id: "59429742356564181c00614a"
+    id: "5943295f356564181c00614c"
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 regions {
   name: "water_vfx"
@@ -366,6 +376,64 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "594295f9356564181c006149"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Sacto_TripwireCrowsBridgeNorth"
+  position {
+    x: -32
+    y: 6
+    width: 8
+    height: 6
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59432939356564181c00614b"
   }
   highlight_color {
     r: 0
