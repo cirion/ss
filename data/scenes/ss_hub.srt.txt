@@ -3174,6 +3174,9 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "No Effect"
+    }
   }
   isActive: true
   idRef {
@@ -3194,66 +3197,15 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Teleport Actor"
+      functionName: "Change Actor Team"
       args {
         call_value {
-          functionName: "All Actors Except Some"
+          functionName: "All Actors With Tag"
           args {
             call_value {
-              functionName: "All Actors on Team"
+              functionName: "Get Map Item (SenseTagList)"
               args {
-                call_value {
-                  functionName: "Get Preset Value (string)"
-                  args {
-                    string_value: "FactionList"
-                  }
-                  args {
-                    int_value: 0
-                  }
-                }
-              }
-              args {
-                call_value {
-                  functionName: "Get Preset Value (int)"
-                  args {
-                    string_value: "AllOrAny"
-                  }
-                  args {
-                    int_value: 0
-                  }
-                }
-              }
-              args {
-                call_value {
-                  functionName: "Get Map Item (SceneDimension)"
-                  args {
-                    string_value: "Default"
-                  }
-                }
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "All Actors With Tag"
-              args {
-                call_value {
-                  functionName: "Get Map Item (SenseTagList)"
-                  args {
-                    string_value: "isCamera"
-                  }
-                }
-              }
-              args {
-                call_value {
-                  functionName: "Get Preset Value (int)"
-                  args {
-                    string_value: "AllOrAny"
-                  }
-                  args {
-                    int_value: 0
-                  }
-                }
+                string_value: "isCamera"
               }
             }
           }
@@ -3267,6 +3219,43 @@ triggers {
                 int_value: 0
               }
             }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
           }
         }
       }
@@ -5313,6 +5302,106 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Roof_MakeCamerasShadowrunners"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59602c5b3565645846002b4a"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCamera"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59616016356564cc3a005981"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Club"
   position {
@@ -6186,9 +6275,9 @@ regions {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: -5
+    x: -38
     y: 0
-    z: -106
+    z: -19
   }
   orientation: ORIENTATION_S
   displayName: "PC0"
@@ -6209,9 +6298,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -41
+    x: -19
     y: 0
-    z: -74
+    z: -69
   }
   orientation: ORIENTATION_S
   GeneralTags: "isCamera"
@@ -6604,7 +6693,7 @@ characters {
     z: -117
   }
   orientation: ORIENTATION_E
-  GeneralTags: "isCamera"
+  GeneralTags: "isSomething"
   displayName: "InvisCam2"
   idRef {
     id: "595bea8c356564fc0b002147"
@@ -6631,7 +6720,7 @@ characters {
         perception: 0
         authority: 0
         protect_tether_range: 0
-        move_speed: -6
+        move_speed: 0
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
@@ -6648,15 +6737,15 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "Shadowrunners"
-    char_name: "InvisiCam1"
-    GeneralTags: "isCamera"
+    team_id: "Civilians"
+    char_name: "InvisiCam2"
+    GeneralTags: "isSomething"
     pc_spawn_number: -1
     ai_ignores: true
     uninjurable: true
     unkillable: true
     karma: 72
-    is_prop_character: true
+    is_prop_character: false
     hide_floaties: true
     has_fist: false
   }
@@ -6672,7 +6761,6 @@ variables {
 mapEvents: "Event_CycleLights"
 mapEvents: "Event_PlatformDescended"
 senseTags: "placeholder"
-senseTags: "isCamera"
 worldMapLocation {
   filename: ""
   location {
