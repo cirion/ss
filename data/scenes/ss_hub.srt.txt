@@ -7175,7 +7175,7 @@ triggers {
             float_value: 5
           }
           args {
-            float_value: 10
+            float_value: 15
           }
         }
       }
@@ -7223,12 +7223,36 @@ triggers {
               functionName: "Arithmetic (float)"
               args {
                 call_value {
-                  functionName: "Convert (int) to (float)"
+                  functionName: "Arithmetic (float)"
                   args {
                     call_value {
-                      functionName: "Get Variable (int)"
+                      functionName: "Convert (int) to (float)"
                       args {
-                        string_value: "Club_PistolSoundDistance"
+                        call_value {
+                          functionName: "Get Variable (int)"
+                          args {
+                            string_value: "Club_PistolSoundDistance"
+                          }
+                        }
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "Arithmetic Ops"
+                      }
+                      args {
+                        int_value: 2
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Variable (float)"
+                      args {
+                        string_value: "Club_PistolSoundMaxVolume"
                       }
                     }
                   }
@@ -7358,12 +7382,23 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Send Event"
+      functionName: "Send Event After Delay"
       args {
         call_value {
           functionName: "Get Map Item (Event)"
           args {
             string_value: "Event_TargetShot"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 5
+          }
+          args {
+            float_value: 15
           }
         }
       }
@@ -8308,9 +8343,9 @@ regions {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: 68
+    x: 40
     y: 0
-    z: 23
+    z: 39
   }
   orientation: ORIENTATION_S
   displayName: "PC0"
@@ -10833,6 +10868,14 @@ variables {
     scope: TsVariableScope_Scene
     name: "Club_PistolSoundDistance"
     typeName: "int"
+  }
+}
+variables {
+  float_value: 0.75
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Club_PistolSoundMaxVolume"
+    typeName: "float"
   }
 }
 mapEvents: "Event_CycleLights"
