@@ -69,6 +69,55 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Actor Run Speed"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 3
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "RunSpeedMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Actor In Passive Mode"
       args {
         call_value {
@@ -110,6 +159,43 @@ triggers {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59625f41356564cc3a0059d9"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5962c3d1356564943d000de3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
           }
           args {
             int_value: 1
@@ -7029,6 +7115,48 @@ triggers {
         int_value: 8
       }
     }
+    ops {
+      functionName: "Set Actor Wander Range"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5962603e356564cc3a0059dd"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 20
+      }
+    }
+    ops {
+      functionName: "Set Actor Wander Range"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59625c65356564cc3a0059d1"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 15
+      }
+    }
   }
   isActive: true
   idRef {
@@ -7407,6 +7535,498 @@ triggers {
   isActive: true
   idRef {
     id: "5962bc54356564943d000de1"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Route_Hall_Painting"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5962c3d1356564943d000de3"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isRouteWalker"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_sacrifice"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Hall_Route_DoneLookingAtPainting"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (float)"
+          args {
+            string_value: "RouteTime"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5962c3ae356564943d000de2"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Route_Hall_PaintingDone"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Hall_Route_DoneLookingAtPainting"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors Which Overlap"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isRouteWalker"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "All Actors Within Area"
+              args {
+                call_value {
+                  functionName: "Area: Radius Arount Point"
+                  args {
+                    int_value: 5
+                  }
+                  args {
+                    call_value {
+                      functionName: "Center of Region"
+                      args {
+                        call_value {
+                          functionName: "Get Map Item (Region)"
+                          args {
+                            string_value: "5962c3d1356564943d000de3"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5962c635356564943d000de5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "End Current Team Round"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5962c564356564943d000de4"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Route_ServerRoom_Typing"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5962c635356564943d000de5"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isRouteWalker"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_repairing"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_ServerRoom_Route_DoneTyping"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (float)"
+          args {
+            string_value: "RouteTime"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5962c662356564943d000de6"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Route_ServerRoom_TypingDone"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_ServerRoom_Route_DoneTyping"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors Which Overlap"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isRouteWalker"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "All Actors Within Area"
+              args {
+                call_value {
+                  functionName: "Area: Radius Arount Point"
+                  args {
+                    int_value: 5
+                  }
+                  args {
+                    call_value {
+                      functionName: "Center of Region"
+                      args {
+                        call_value {
+                          functionName: "Get Map Item (Region)"
+                          args {
+                            string_value: "5962c635356564943d000de5"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5962c3d1356564943d000de3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "End Current Team Round"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5962c662356564943d000de7"
   }
   elseActions {
   }
@@ -8340,12 +8960,128 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Hall_Route_ExaminePainting"
+  position {
+    x: -37
+    y: -13
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5962c3d1356564943d000de3"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "ServerRoom_Route_Terminal"
+  position {
+    x: -35
+    y: -22
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5962c635356564943d000de5"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: 40
+    x: -37
     y: 0
-    z: 39
+    z: -8
   }
   orientation: ORIENTATION_S
   displayName: "PC0"
@@ -9125,9 +9861,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 43
+    x: 56
     y: 0
-    z: 41
+    z: 56
   }
   orientation: ORIENTATION_W
   displayName: "JessicaWatts"
@@ -9544,11 +10280,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 43
+    x: 5
     y: 0
-    z: 38
+    z: 9
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_S
   displayName: "HumanMaleSweaterSpikey"
   idRef {
     id: "59625c65356564cc3a0059d1"
@@ -9593,7 +10329,7 @@ characters {
       }
     }
     team_id: "Civilians"
-    char_name: "New Actor"
+    char_name: "Wanderer 5 Human Library"
     pc_spawn_number: -1
     karma: 72
   }
@@ -9710,7 +10446,7 @@ characters {
       }
     }
     team_id: "Civilians"
-    char_name: "Wanderer Waiter"
+    char_name: "Wanderer 3 Waiter"
     pc_spawn_number: -1
     karma: 72
   }
@@ -9961,7 +10697,7 @@ characters {
   gridPoint {
     x: 43
     y: 0
-    z: 40
+    z: 42
   }
   orientation: ORIENTATION_S
   displayName: "Altug"
@@ -10016,11 +10752,12 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 44
+    x: -36
     y: 0
-    z: 39
+    z: -9
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isRouteWalker"
   displayName: "ElfFemaleGanger"
   idRef {
     id: "59625f41356564cc3a0059d9"
@@ -10065,7 +10802,8 @@ characters {
       }
     }
     team_id: "Civilians"
-    char_name: "New Actor"
+    char_name: "Route 1 Elf Female"
+    GeneralTags: "isRouteWalker"
     pc_spawn_number: -1
     karma: 72
   }
@@ -10253,11 +10991,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 42
+    x: -5
     y: 0
-    z: 39
+    z: -92
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_S
   displayName: "DwarfMaleHomelessJacket"
   idRef {
     id: "5962603e356564cc3a0059dd"
@@ -10302,7 +11040,7 @@ characters {
       }
     }
     team_id: "Civilians"
-    char_name: "New Actor"
+    char_name: "Wanderer 4 Dwarf Roof"
     pc_spawn_number: -1
     karma: 72
   }
@@ -10498,11 +11236,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 42
+    x: 37
     y: 0
-    z: 40
+    z: 45
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_S
   displayName: "TrollMaleCivilian"
   idRef {
     id: "5962611b356564cc3a0059e1"
@@ -10878,10 +11616,26 @@ variables {
     typeName: "float"
   }
 }
+variables {
+  float_value: 8
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "RouteTime"
+    typeName: "float"
+  }
+}
 mapEvents: "Event_CycleLights"
 mapEvents: "Event_PlatformDescended"
 mapEvents: "Event_TargetShot"
 mapEvents: "Event_TargetShotSound"
+mapEvents: "Event_Hall_Route_DoneLookingAtPainting"
+mapEvents: "Event_ServerRoom_Route_DoneTyping"
+mapEvents: "Event_Roof_Route_DoneSmoking"
+mapEvents: "Event_Foyer_Route_DoneReadingNotices"
+mapEvents: "Event_Library_Route_DoneWithBooks"
+mapEvents: "Event_Restaurant_Route_DoneEating"
+mapEvents: "Event_Club_Route_DoneDancing"
+mapEvents: "Event_Club_Route_DoneSleeping"
 senseTags: "placeholder"
 worldMapLocation {
   filename: ""
