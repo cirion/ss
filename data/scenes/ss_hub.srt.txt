@@ -203,6 +203,58 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Select Item on Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "AR 1 AK98"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5962603e356564cc3a0059dd"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Select Item on Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "AR 1 AK98"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5962611b356564cc3a0059e1"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -7157,6 +7209,27 @@ triggers {
         int_value: 15
       }
     }
+    ops {
+      functionName: "Set Actor Wander Range"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5962611b356564cc3a0059e1"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 15
+      }
+    }
   }
   isActive: true
   idRef {
@@ -8180,41 +8253,18 @@ triggers {
       }
     }
     ops {
-      functionName: "Order Actor to Move To (Region)"
+      functionName: "Send Event After Delay"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Map Item (Event)"
           args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-          args {
+            string_value: "Event_Route_TeleportedToRoof"
           }
         }
       }
       args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "5962c9c3356564943d000deb"
-          }
-        }
+        float_value: 4
       }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "End Current Team Round"
     }
   }
   isActive: true
@@ -8639,16 +8689,117 @@ triggers {
       }
     }
     ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Route_TeleportedToHall"
+          }
+        }
+      }
+      args {
+        float_value: 4
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5962cab2356564943d000def"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Route_TeleportedServerRoomToRoof"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Route_TeleportedToRoof"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
       functionName: "Order Actor to Move To (Region)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "All Actors Which Overlap"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isRouteWalker"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
             }
           }
           args {
+            call_value {
+              functionName: "All Actors Within Area"
+              args {
+                call_value {
+                  functionName: "Area: Radius Arount Point"
+                  args {
+                    int_value: 5
+                  }
+                  args {
+                    call_value {
+                      functionName: "Center of Region"
+                      args {
+                        call_value {
+                          functionName: "Get Map Item (Region)"
+                          args {
+                            string_value: "596140523565645846002ba0"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
           }
         }
       }
@@ -8656,7 +8807,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "5962c3d1356564943d000de3"
+            string_value: "5962c9c3356564943d000deb"
           }
         }
       }
@@ -8678,7 +8829,131 @@ triggers {
   }
   isActive: true
   idRef {
-    id: "5962cab2356564943d000def"
+    id: "5962cda9356564943d000df3"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Route_TeleportedRoofToHall"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Route_TeleportedToHall"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors Which Overlap"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isRouteWalker"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "All Actors Within Area"
+              args {
+                call_value {
+                  functionName: "Area: Radius Arount Point"
+                  args {
+                    int_value: 5
+                  }
+                  args {
+                    call_value {
+                      functionName: "Center of Region"
+                      args {
+                        call_value {
+                          functionName: "Get Map Item (Region)"
+                          args {
+                            string_value: "596253ec356564cc3a0059c1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5962c3d1356564943d000de3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "End Current Team Round"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5962d16a356564943d000df4"
   }
   elseActions {
   }
@@ -11833,7 +12108,7 @@ characters {
     character_mod {
       stats {
         body: 0
-        quickness: 0
+        quickness: 2
         strength: 0
         charisma: 0
         intelligence: 0
@@ -11854,21 +12129,29 @@ characters {
         vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 5
         close_combat: 0
         dodge: 0
         chi_casting: 0
       }
       specializations {
+        pistol: 5
         unarmed: 0
       }
       archetypeName: "Non-Combatant"
       vulnerabilities {
       }
     }
+    equipment {
+      prefab_name: "SR 1 Ruger 100-S"
+    }
+    equipment {
+      prefab_name: "AR 1 AK98"
+    }
     team_id: "Civilians"
     char_name: "Wanderer 4 Dwarf Roof"
     pc_spawn_number: -1
-    karma: 72
+    karma: 111
   }
 }
 characters {
@@ -12062,9 +12345,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 37
+    x: -4
     y: 0
-    z: 45
+    z: -92
   }
   orientation: ORIENTATION_S
   displayName: "TrollMaleCivilian"
@@ -12078,7 +12361,7 @@ characters {
     character_mod {
       stats {
         body: 0
-        quickness: 0
+        quickness: 2
         strength: 0
         charisma: 0
         intelligence: 0
@@ -12099,21 +12382,29 @@ characters {
         vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 5
         close_combat: 0
         dodge: 0
         chi_casting: 0
       }
       specializations {
+        rifle: 5
         unarmed: 0
       }
       archetypeName: "Non-Combatant"
       vulnerabilities {
       }
     }
+    equipment {
+      prefab_name: "SR 1 Ruger 100-S"
+    }
+    equipment {
+      prefab_name: "AR 1 AK98"
+    }
     team_id: "Civilians"
-    char_name: "New Actor"
+    char_name: "Wanderer 6 Troll"
     pc_spawn_number: -1
-    karma: 72
+    karma: 111
   }
 }
 characters {
@@ -12462,6 +12753,9 @@ mapEvents: "Event_Library_Route_DoneWithBooks"
 mapEvents: "Event_Restaurant_Route_DoneEating"
 mapEvents: "Event_Club_Route_DoneDancing"
 mapEvents: "Event_Club_Route_DoneSleeping"
+mapEvents: "Event_Route_EndTurn"
+mapEvents: "Event_Route_TeleportedToRoof"
+mapEvents: "Event_Route_TeleportedToHall"
 senseTags: "placeholder"
 worldMapLocation {
   filename: ""
