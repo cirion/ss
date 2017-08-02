@@ -73,6 +73,125 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "DebugCurtains"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isMainIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor by Item Type"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "ItemType"
+          }
+          args {
+            int_value: 14
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598155143565648007005ed1"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "RainOutsideStart"
   events {
     ops {
@@ -1445,112 +1564,12 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 104
-    y: 0
-    z: -24
-  }
-  orientation: ORIENTATION_N
-  displayName: "Matrix_BlockerIC"
-  idRef {
-    id: "598006c5356564f41b00108b"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    interactionIcon: InteractionIcon_BlockerIC
-    interaction_info_text: ""
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_Blocker"
-    character_sheet_id: "IC_Lv1_White_Blocker"
-    equipment_sheet_id: "IC White Blocker Lv1 Gear"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-        cyberware_affinity: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_G_BlockerIC"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Blocker IC"
-    pc_spawn_number: -1
-    spawn_type: SpawnType_BlockerIC
-    hiring_type: HiringType_None
-    portrait {
-      filename: ""
-    }
-    dimension_name: "Matrix"
-    karma: 29
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-    blocker_ic_panel_difficulty: 2
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
     x: 99
     y: 0
     z: -32
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isOfficeIC"
+  GeneralTags: "isMainIC"
   displayName: "MatrixIC_White_1"
   idRef {
     id: "598006c5356564f41b001099"
@@ -1624,7 +1643,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Ranged IC"
-    GeneralTags: "isOfficeIC"
+    GeneralTags: "isMainIC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -1643,7 +1662,7 @@ characters {
     z: -16
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isOfficeIC"
+  GeneralTags: "isMainIC"
   displayName: "MatrixIC_White_2"
   idRef {
     id: "59813e47356564a809004df8"
@@ -1717,7 +1736,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Ranged IC"
-    GeneralTags: "isOfficeIC"
+    GeneralTags: "isMainIC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -2012,6 +2031,106 @@ characters {
     cyberware_head: "(Head) Datajack"
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 104
+    y: 0
+    z: -24
+  }
+  orientation: ORIENTATION_N
+  displayName: "Matrix_BlockerIC"
+  idRef {
+    id: "5981510f356564a809004e9c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_BlockerIC
+    interaction_info_text: ""
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Blocker"
+    character_sheet_id: "IC_Lv1_White_Blocker"
+    equipment_sheet_id: "IC White Blocker Lv1 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_G_BlockerIC"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Blocker IC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_BlockerIC
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+    blocker_ic_panel_difficulty: 0
+  }
+}
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 senseTags: "isKora"
@@ -2084,6 +2203,8 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 90
   heat_response_rating: 2
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
