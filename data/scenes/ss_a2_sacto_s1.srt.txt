@@ -27,6 +27,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Detach Region"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59800815356564e01e0042f3"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -2149,12 +2160,12 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Outside_SelfJackInToMatrix"
+  name: "Ground_SelfJackInToMatrix"
   events {
     ops {
       functionName: "Get Map Item (Event)"
       args {
-        string_value: "Event_JackIn"
+        string_value: "Event_McClellanJackIn"
       }
     }
   }
@@ -2187,12 +2198,12 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Outside_KoraJackInToMatrix"
+  name: "Ground_KoraJackInToMatrix"
   events {
     ops {
       functionName: "Get Map Item (Event)"
       args {
-        string_value: "Event_JackInKora"
+        string_value: "Event_McClellanJackInKora"
       }
     }
   }
@@ -2238,7 +2249,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Matrix_TeleportInResponseIC"
+  name: "Matrix_McClellan_TeleportInResponseIC"
   events {
     ops {
       functionName: "On Dimension Heat Threshold"
@@ -2246,7 +2257,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (SceneDimension)"
           args {
-            string_value: "Matrix"
+            string_value: "McClellan Matrix"
           }
         }
       }
@@ -2264,7 +2275,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isMcClellanResponseIC"
               }
             }
           }
@@ -2324,7 +2335,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isMcClellanResponseIC"
               }
             }
           }
@@ -2361,7 +2372,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isMcClellanResponseIC"
               }
             }
           }
@@ -2393,7 +2404,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (SceneDimension)"
           args {
-            string_value: "Matrix"
+            string_value: "McClellan Matrix"
           }
         }
       }
@@ -2410,7 +2421,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isMcClellanResponseIC"
               }
             }
           }
@@ -2429,29 +2440,12 @@ triggers {
       }
     }
     ops {
-      functionName: "Play Sound"
+      functionName: "Send Event"
       args {
         call_value {
-          functionName: "Get Map Item (Sound)"
+          functionName: "Get Map Item (Event)"
           args {
-            string_value: "HongKong:decker"
-          }
-          args {
-            string_value: "Matrix_TeleportDoor"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
+            string_value: "Event_MatrixMcClellanPlayTeleportSound"
           }
         }
       }
@@ -2549,7 +2543,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Matrix_TeleportFollowResponseIC_OFF"
+  name: "Matrix_McClellan_TeleportFollowResponseIC_OFF"
   events {
     ops {
       functionName: "On Actor Teleport"
@@ -2612,7 +2606,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isMcClellanResponseIC"
               }
             }
           }
@@ -2672,7 +2666,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isFuchiResponseIC"
               }
             }
           }
@@ -2712,7 +2706,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (SenseTagList)"
               args {
-                string_value: "isResponseIC"
+                string_value: "isFuchiResponseIC"
               }
             }
           }
@@ -2726,6 +2720,17 @@ triggers {
                 int_value: 0
               }
             }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MatrixMcClellanPlayTeleportSound"
           }
         }
       }
@@ -3111,6 +3116,903 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Matrix_FuchiDeliveries_MoveTo"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59800816356564e01e004456"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Actor is a Persona"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59800815356564e01e004308"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5980081a356564e01e004d0b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 8
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59800816356564e01e004667"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59800815356564e01e00413d"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982ae72356564e8140021bf"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Matrix_Fuchi_TeleportInResponseIC"
+  events {
+    ops {
+      functionName: "On Dimension Heat Threshold"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Fuchi Matrix"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+      args {
+        int_value: 6
+      }
+      args {
+        call_value {
+          functionName: "Last Created Persona"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Last Created Persona"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Fuchi Matrix"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play FX on Actor"
+      args {
+        string_value: "MatrixESPSpawn"
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5982aeb3356564e8140021c1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Ambient Light Color"
+      args {
+        float_value: 220
+      }
+      args {
+        float_value: 20
+      }
+      args {
+        float_value: 60
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "59800819356564e01e004b27"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: -0.5
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        float_value: -0.75
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "59800819356564e01e004b27"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MatrixFuchiPlayTeleportSound"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982aeb3356564e8140021c0"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Matrix_Fuchi_TeleportFollowResponseIC_OFF"
+  events {
+    ops {
+      functionName: "On Actor Teleport"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Actor is a Persona"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Actor is Player Controlled"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+      args {
+        int_value: 6
+      }
+      args {
+        call_value {
+          functionName: "Last Created Persona"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Last Created Persona"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play FX on Actor"
+      args {
+        string_value: "MatrixESPSpawn"
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFuchiResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MatrixFuchiPlayTeleportSound"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5982aeb3356564e8140021c1"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_Fuchi_PlayTeleportSound"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_MatrixFuchiPlayTeleportSound"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isFuchiResponseIC"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "teleportIC"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982b165356564e814002207"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_McClellan_PlayTeleportSound"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_MatrixMcClellanPlayTeleportSound"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isMcClellanResponseIC"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "teleportIC"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982b1c5356564e814002208"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "FuchiGround_SelfJackInToMatrix"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_FuchiJackIn"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5982a5dc3565648007005fc2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Active Actor"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982b458356564e81400222b"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "FuchiGround_KoraJackInToMatrix"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_FuchiJackInKora"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5982a5dc3565648007005fc2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Active Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982b458356564e81400222c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "water_vfx"
@@ -3809,7 +4711,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MoveTarget_Matrix_TrainingTerminal_Ranged_2"
+  name: "MoveTarget_Matrix_FuchiDeliveries_Ranged_2"
   position {
     x: 3
     y: 98
@@ -3999,7 +4901,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixTeleportRegion_CIC_TrainingNodeToEntrance"
+  name: "MatrixTeleportRegion_Fuchi_DeliveriesToEntrance"
   position {
     x: -5
     y: 109
@@ -4065,7 +4967,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "Matrix_2_3"
+  name: "Matrix_Fuchi_Deliveries"
   position {
     x: -18
     y: 76
@@ -4727,7 +5629,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MoveTarget_Matrix_TrainingTerminal_Ranged_1_Black"
+  name: "MoveTarget_Matrix_FuchiDeliveries_Ranged_1_Black"
   position {
     x: -13
     y: 97
@@ -5151,9 +6053,9 @@ regions {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: 55
+    x: -104
     y: 0
-    z: 17
+    z: 8
   }
   orientation: ORIENTATION_N
   displayName: "PC0"
@@ -5278,7 +6180,7 @@ characters {
     z: 82
   }
   orientation: ORIENTATION_E
-  displayName: "TrainingRoomBlockerIC"
+  displayName: "FuchiDeliveriesBlockerIC"
   idRef {
     id: "59800815356564e01e00421a"
   }
@@ -5362,7 +6264,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "Fuchi Matrix"
     karma: 29
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -5431,7 +6333,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isTrainingIC"
-  displayName: "TrainingTerminal_Ranged_1_Black"
+  displayName: "FuchiDeliveries_Ranged_1_Black"
   idRef {
     id: "59800815356564e01e004308"
   }
@@ -5470,7 +6372,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "Fuchi Matrix"
     karma: 33
     scale_character_sheet: true
   }
@@ -5666,7 +6568,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 29
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -5914,7 +6816,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 29
     scale_character_sheet: true
   }
@@ -6027,7 +6929,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isTrainingIC"
-  displayName: "TrainingTerminal_Ranged_2"
+  displayName: "FuchiDeliveries_Ranged_2"
   idRef {
     id: "59800816356564e01e004667"
   }
@@ -6063,7 +6965,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "Fuchi Matrix"
     karma: 29
     scale_character_sheet: true
   }
@@ -6096,7 +6998,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     scale_character_sheet: true
   }
 }
@@ -6143,7 +7045,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 29
     scale_character_sheet: true
   }
@@ -6156,7 +7058,7 @@ characters {
     z: 112
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isResponseIC"
+  GeneralTags: "isMcClellanResponseIC"
   idRef {
     id: "59800817356564e01e00477d"
   }
@@ -6186,14 +7088,14 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Sentry IC"
-    GeneralTags: "isResponseIC"
+    GeneralTags: "isMcClellanResponseIC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     hiring_type: HiringType_None
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 29
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -6207,7 +7109,7 @@ characters {
     z: 110
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isResponseIC"
+  GeneralTags: "isMcClellanResponseIC"
   idRef {
     id: "59800817356564e01e004827"
   }
@@ -6240,13 +7142,13 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Black Ranged IC"
-    GeneralTags: "isResponseIC"
+    GeneralTags: "isMcClellanResponseIC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 33
     scale_character_sheet: true
   }
@@ -6311,7 +7213,7 @@ characters {
     z: 111
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isResponseIC"
+  GeneralTags: "isMcClellanResponseIC"
   idRef {
     id: "59800818356564e01e0049ec"
   }
@@ -6383,11 +7285,11 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Destroyer IC"
-    GeneralTags: "isResponseIC"
+    GeneralTags: "isMcClellanResponseIC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     hiring_type: HiringType_None
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 33
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -6401,7 +7303,7 @@ characters {
     z: 87
   }
   orientation: ORIENTATION_E
-  displayName: "TrainingTerminal__Charge IC"
+  displayName: "FuchiDeliveries__Charge IC"
   idRef {
     id: "59800818356564e01e004a04"
   }
@@ -6438,7 +7340,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "Fuchi Matrix"
     karma: 29
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -6536,7 +7438,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 29
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -6635,7 +7537,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 29
     hiring_cost_override: 1000
     scale_character_sheet: true
@@ -6754,7 +7656,7 @@ characters {
     z: 110
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isResponseIC"
+  GeneralTags: "isMcClellanResponseIC"
   idRef {
     id: "59828c773565648007005f5b"
   }
@@ -6787,19 +7689,248 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Black Ranged IC"
-    GeneralTags: "isResponseIC"
+    GeneralTags: "isMcClellanResponseIC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "McClellan Matrix"
     karma: 33
     scale_character_sheet: true
   }
 }
-mapEvents: "Event_JackIn"
-mapEvents: "Event_JackInKora"
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -93
+    y: 0
+    z: 110
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isFuchiResponseIC"
+  idRef {
+    id: "5982a7b93565648007005fd9"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_blackRanged"
+    character_sheet_id: "IC_Lv1_Black_Ranged"
+    equipment_sheet_id: "IC Black Ranged Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 24
+        discipline: 24
+        awareness: 24
+        perception: 0
+        authority: 0
+        protect_tether_range: 5
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Black Ranged IC"
+    GeneralTags: "isFuchiResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Fuchi Matrix"
+    karma: 33
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -93
+    y: 0
+    z: 111
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isFuchiResponseIC"
+  idRef {
+    id: "5982a7e93565648007005fda"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_blackRanged"
+    character_sheet_id: "IC_Lv1_Black_Ranged"
+    equipment_sheet_id: "IC Black Ranged Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 24
+        discipline: 24
+        awareness: 24
+        protect_tether_range: 5
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+    }
+    team_id: "LoneStar"
+    char_name: "Black Ranged IC"
+    GeneralTags: "isFuchiResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Fuchi Matrix"
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -92
+    y: 0
+    z: 110
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isFuchiResponseIC"
+  idRef {
+    id: "5982a80b3565648007005fdb"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_blackMelee"
+    character_sheet_id: "IC_Lv1_Black_Ranged"
+    equipment_sheet_id: "IC Black Melee Lv1 Gear"
+    character_mod {
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+    }
+    team_id: "LoneStar"
+    char_name: "Black Melee IC"
+    GeneralTags: "isFuchiResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Fuchi Matrix"
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -93
+    y: 0
+    z: 112
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isFuchiResponseIC"
+  displayName: "Decker"
+  idRef {
+    id: "5982a8963565648007005fdd"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Berlin:KnightErrants/ElfMaleKnightErrantRigger"
+    character_sheet_id: "Errant_Lv1_Decker"
+    equipment_sheet_id: "Errant_Lv1_Decker_Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Decker"
+    GeneralTags: "isFuchiResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Normal
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Fuchi Matrix"
+    karma: 60
+    scale_character_sheet: true
+  }
+}
+mapEvents: "Event_McClellanJackIn"
+mapEvents: "Event_McClellanJackInKora"
+mapEvents: "Event_MatrixMcClellanPlayTeleportSound"
+mapEvents: "Event_MatrixFuchiPlayTeleportSound"
+mapEvents: "Event_FuchiJackIn"
+mapEvents: "Event_FuchiJackInKora"
 senseTags: "isCamera"
 senseTags: "isKora"
 worldMapLocation {
@@ -6865,12 +7996,20 @@ scene_dimensions {
   dimension_name: "Default"
 }
 scene_dimensions {
-  dimension_name: "Matrix"
+  dimension_name: "McClellan Matrix"
   initial_alarm_state: 0
   turns_per_round: 3
   is_matrix: true
-  max_alarm_value: 4
+  max_alarm_value: 50
   heat_response_rating: 6
+}
+scene_dimensions {
+  dimension_name: "Fuchi Matrix"
+  initial_alarm_state: 0
+  turns_per_round: 3
+  is_matrix: true
+  max_alarm_value: 50
+  heat_response_rating: 5
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
