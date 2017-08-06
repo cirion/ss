@@ -616,6 +616,835 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Inside_SelfJackInToMatrix"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_JackIn"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "598690f83565644003002047"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Active Actor"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59814933356564a809004e65"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Mid_KoraJackInToMatrix"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_JackInKora"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "598690f83565644003002047"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Active Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59814b48356564a809004e7e"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_TeleportInResponseIC"
+  events {
+    ops {
+      functionName: "On Dimension Heat Threshold"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+      args {
+        int_value: 6
+      }
+      args {
+        call_value {
+          functionName: "Last Created Persona"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Last Created Persona"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play FX on Actor"
+      args {
+        string_value: "MatrixESPSpawn"
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598156d13565648007005ed3"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Ambient Light Color"
+      args {
+        float_value: 220
+      }
+      args {
+        float_value: 20
+      }
+      args {
+        float_value: 60
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "59811a86356564d420007044"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: -0.5
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        float_value: -0.75
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "59811a86356564d420007044"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MatrixPlayTeleportSound"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598289553565648007005f5a"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Matrix_TeleportFollowResponseIC_OFF"
+  events {
+    ops {
+      functionName: "On Actor Teleport"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Actor is a Persona"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Actor is Player Controlled"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+      args {
+        int_value: 6
+      }
+      args {
+        call_value {
+          functionName: "Last Created Persona"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Last Created Persona"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play FX on Actor"
+      args {
+        string_value: "MatrixESPSpawn"
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isResponseIC"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MatrixPlayTeleportSound"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598156d13565648007005ed3"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_CameraTeleport"
+  events {
+    ops {
+      functionName: "On Actor Teleport"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Actor is a Persona"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598157bb3565648007005ed4"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_WeatherOn"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "59811a86356564d420007044"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 100
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598158593565648007005ed5"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_WeatherOff"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "594dbc183565641c29003419"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Host Jacked Out"
+    }
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "594bc66c3565641c29003143"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598158833565648007005ed6"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_PlayTeleportSound"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_MatrixPlayTeleportSound"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isResponseIC"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "teleportIC"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5982b165356564e814002207"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Outside"
   position {
@@ -791,7 +1620,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "CameraRegion_Matrix"
+  name: "Camera_Matrix"
   position {
     x: 16
     y: -27
@@ -849,7 +1678,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MoveTarget_Office_Matrix_Office_DataStore_IC_1"
+  name: "MoveTarget_Matrix_Control_IC_1"
   position {
     x: 56
     y: -14
@@ -907,7 +1736,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixTeleport_Office_StartToDataStore"
+  name: "MatrixTeleport_StartToControl"
   position {
     x: 50
     y: 7
@@ -930,13 +1759,13 @@ regions {
   visible_at_start: false
   is_closet: false
   is_teleporter_region: true
-  linked_teleporter_region: "558851a33030316418005516"
+  linked_teleporter_region: "59811a87356564d42000743f"
   teleport_facing: 4
   teleport_sound_fx: "Matrix_TeleportDoor"
   teleport_sound_volume: 1
   teleport_source_fx: ""
   teleport_destination_fx: "HongKong:matrixTeleport"
-  teleport_pc_only: true
+  teleport_pc_only: false
   teleport_fade_time: 0
   directional_light_dir {
     x: -0.5
@@ -973,7 +1802,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MoveTarget_Office_Matrix_Office_DataStore_IC_2"
+  name: "MoveTarget_Matrix_Control_IC_2"
   position {
     x: 44
     y: -15
@@ -1031,7 +1860,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixNode_OfficeStart"
+  name: "MatrixNode_Start"
   position {
     x: 16
     y: 4
@@ -1089,65 +1918,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "TriggerRegion_CoreSystemObjectiveAdd_Office"
-  position {
-    x: 49
-    y: 10
-    width: 2
-    height: 5
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "59811a87356564d420007436"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "MatrixTeleport_Office_StartToSecurityNode"
+  name: "MatrixTeleport_StartToRecords"
   position {
     x: 50
     y: 18
@@ -1170,7 +1941,7 @@ regions {
   visible_at_start: false
   is_closet: false
   is_teleporter_region: true
-  linked_teleporter_region: "5588724c303031601d0039b6"
+  linked_teleporter_region: "59811a87356564d420007474"
   teleport_facing: -1
   teleport_sound_fx: "Matrix_TeleportDoor"
   teleport_sound_volume: 1
@@ -1213,7 +1984,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixTeleport_Office_DataStoreToStart"
+  name: "MatrixTeleport_ControlToStart"
   position {
     x: 50
     y: -4
@@ -1236,7 +2007,7 @@ regions {
   visible_at_start: false
   is_closet: false
   is_teleporter_region: true
-  linked_teleporter_region: "558777f53030318c22004ebf"
+  linked_teleporter_region: "59811a87356564d4200072aa"
   teleport_facing: 0
   teleport_sound_fx: "Matrix_TeleportDoor"
   teleport_sound_volume: 1
@@ -1279,7 +2050,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixNode_Office_DataStore"
+  name: "MatrixNode_Control"
   position {
     x: 43
     y: -27
@@ -1337,7 +2108,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixTeleport_Office_SecurityNodeToStart"
+  name: "MatrixTeleport_RecordsToStart"
   position {
     x: 50
     y: 29
@@ -1360,7 +2131,7 @@ regions {
   visible_at_start: false
   is_closet: false
   is_teleporter_region: true
-  linked_teleporter_region: "558779963030318c22004ec0"
+  linked_teleporter_region: "59811a87356564d420007437"
   teleport_facing: 4
   teleport_sound_fx: "Matrix_TeleportDoor"
   teleport_sound_volume: 1
@@ -1403,7 +2174,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixNode_OfficeSecurity"
+  name: "MatrixNode_Records"
   position {
     x: 42
     y: 28
@@ -1460,423 +2231,10 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
-patrolRoutes {
-  name: "Rail_SubBasement_OfficeEntryNode1_2"
-  pathType: 0
-  nodes {
-    position {
-      x: 29
-      z: 13
-    }
-    index: 0
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 29
-      z: 7
-    }
-    index: 1
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 40
-      z: 7
-    }
-    index: 2
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 40
-      z: 18
-    }
-    index: 3
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 29
-      z: 18
-    }
-    index: 4
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 29
-      z: 13
-    }
-    index: 5
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: false
-  }
-  can_move_beyond_node: false
-  is_rail: true
-  rail_speed: 4.5
-  rail_rotation_time: 0.05
-  idRef {
-    id: "55876fca3030318c22004ea0"
-  }
-  rail_draw_segments: true
-  rail_draw_nodes: true
-}
-patrolRoutes {
-  name: "Rail_SubBasement_OfficeEntryNode1_2_Reverse"
-  pathType: 0
-  nodes {
-    position {
-      x: 29
-      z: 7
-    }
-    index: 0
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 29
-      z: 18
-    }
-    index: 1
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 40
-      z: 7
-    }
-    index: 2
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 40
-      z: 18
-    }
-    index: 3
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 29
-      z: 18
-    }
-    index: 4
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  can_move_beyond_node: false
-  is_rail: true
-  rail_speed: 4.5
-  rail_rotation_time: 0.05
-  idRef {
-    id: "5587710c3030318c22004ea2"
-  }
-  rail_draw_segments: true
-  rail_draw_nodes: true
-}
-patrolRoutes {
-  name: "MatrixNode_Office_DataStore_Rail_1"
-  pathType: 0
-  nodes {
-    position {
-      x: 58
-      z: -12
-    }
-    index: 0
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 54
-      z: -12
-    }
-    index: 1
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 43
-      z: -12
-    }
-    index: 2
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: false
-    rail_draw_node: false
-  }
-  nodes {
-    position {
-      x: 54
-      z: -18
-    }
-    index: 3
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 58
-      z: -18
-    }
-    index: 4
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 43
-      z: -12
-    }
-    index: 5
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  can_move_beyond_node: false
-  is_rail: true
-  rail_speed: 3.5
-  rail_rotation_time: 0.5
-  idRef {
-    id: "55cfc2856436618c16003ef7"
-  }
-  rail_draw_segments: true
-  rail_draw_nodes: true
-}
-patrolRoutes {
-  name: "MatrixNode_OfficeStart_Rail"
-  pathType: 0
-  nodes {
-    position {
-      x: 44
-      z: 45
-    }
-    index: 0
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 53
-      z: 38
-    }
-    index: 1
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 53
-      z: 45
-    }
-    index: 2
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 53
-      z: 38
-    }
-    index: 3
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 44
-      z: 38
-    }
-    index: 4
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  can_move_beyond_node: false
-  is_rail: true
-  rail_speed: 3.5
-  rail_rotation_time: 0.5
-  idRef {
-    id: "55cfc68a6436618c16003ef9"
-  }
-  rail_draw_segments: true
-  rail_draw_nodes: true
-}
-patrolRoutes {
-  name: "Rail_SubBasement_OfficeEntryNode1_1"
-  pathType: 0
-  nodes {
-    position {
-      x: 39
-      z: 17
-    }
-    index: 0
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 30
-      z: 13
-    }
-    index: 1
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: false
-  }
-  nodes {
-    position {
-      x: 39
-      z: 8
-    }
-    index: 2
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 30
-      z: 8
-    }
-    index: 3
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 33
-      z: 17
-    }
-    index: 4
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 30
-      z: 17
-    }
-    index: 5
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: true
-  }
-  nodes {
-    position {
-      x: 33
-      z: 17
-    }
-    index: 6
-    rail_node_pause_time: 0
-    rail_node_flip_180_rotation: false
-    rail_node_facing: -1
-    rail_draw_segment: true
-    rail_draw_node: false
-  }
-  can_move_beyond_node: false
-  is_rail: true
-  rail_speed: 3
-  rail_rotation_time: 0
-  idRef {
-    id: "55876e483030318c22004e9f"
-  }
-  rail_draw_segments: true
-  rail_draw_nodes: true
-}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: -113
+    x: -103
     y: 0
     z: 31
   }
@@ -1931,7 +2289,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
+    team_id: "LoneStar"
     char_name: "White Sparky IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
@@ -1941,95 +2299,6 @@ characters {
     }
     dimension_name: "Matrix"
     karma: 29
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 43
-    y: 0
-    z: -12
-  }
-  orientation: ORIENTATION_S
-  displayName: "WatcherIC_MatrixNode_Office_DataStore"
-  idRef {
-    id: "59811a86356564d420007136"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
-    character_sheet_id: "IC_Lv1_Watcher"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_G_WatcherIC"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "MatrixHostile"
-    char_name: "Watcher IC"
-    patrolRoute: "MatrixNode_Office_DataStore_Rail_1"
-    pc_spawn_number: -1
-    spawn_type: SpawnType_WatcherIC
-    hiring_type: HiringType_None
-    dimension_name: "Matrix"
-    karma: 31
     hiring_cost_override: 1000
     scale_character_sheet: true
   }
@@ -2069,7 +2338,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
+    team_id: "LoneStar"
     char_name: "White Sparky IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
@@ -2091,7 +2360,7 @@ characters {
     z: 52
   }
   orientation: ORIENTATION_W
-  displayName: "Blocker_OfficeSecurityNode"
+  displayName: "Blocker_Records"
   idRef {
     id: "59811a87356564d420007202"
   }
@@ -2167,7 +2436,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
+    team_id: "LoneStar"
     char_name: "Blocker IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_BlockerIC
@@ -2185,100 +2454,12 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 40
-    y: 0
-    z: 7
-  }
-  orientation: ORIENTATION_N
-  idRef {
-    id: "59811a87356564d420007216"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
-    character_sheet_id: "IC_Lv1_Watcher"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_G_WatcherIC"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "MatrixHostile"
-    char_name: "Watcher IC"
-    patrolRoute: "Rail_SubBasement_OfficeEntryNode1_2_Reverse"
-    pc_spawn_number: -1
-    spawn_type: SpawnType_WatcherIC
-    hiring_type: HiringType_None
-    dimension_name: "Matrix"
-    karma: 31
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
     x: 45
     y: 0
     z: -19
   }
   orientation: ORIENTATION_E
-  displayName: "Office_DataStore_IC_2"
+  displayName: "Office_Control_IC_2"
   idRef {
     id: "59811a87356564d4200072c6"
   }
@@ -2306,7 +2487,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
+    team_id: "LoneStar"
     char_name: "White Ranged IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
@@ -2328,7 +2509,7 @@ characters {
     z: -23
   }
   orientation: ORIENTATION_E
-  displayName: "Blocker_OfficeDataStore"
+  displayName: "Blocker_Control"
   idRef {
     id: "59811a87356564d4200072db"
   }
@@ -2404,7 +2585,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
+    team_id: "LoneStar"
     char_name: "Blocker IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_BlockerIC
@@ -2422,188 +2603,12 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 44
-    y: 0
-    z: 38
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "59811a87356564d420007327"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
-    character_sheet_id: "IC_Lv1_Watcher"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_G_WatcherIC"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "MatrixHostile"
-    char_name: "Watcher IC"
-    patrolRoute: "MatrixNode_OfficeStart_Rail"
-    pc_spawn_number: -1
-    spawn_type: SpawnType_WatcherIC
-    hiring_type: HiringType_None
-    dimension_name: "Matrix"
-    karma: 31
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 29
-    y: 0
-    z: 18
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "59811a87356564d4200073e8"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
-    character_sheet_id: "IC_Lv1_Watcher"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_G_WatcherIC"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "MatrixHostile"
-    char_name: "Watcher IC"
-    patrolRoute: "Rail_SubBasement_OfficeEntryNode1_2"
-    pc_spawn_number: -1
-    spawn_type: SpawnType_WatcherIC
-    hiring_type: HiringType_None
-    dimension_name: "Matrix"
-    karma: 31
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
     x: 56
     y: 0
     z: -18
   }
   orientation: ORIENTATION_E
-  displayName: "Office_DataStore_IC_1"
+  displayName: "Office_Control_IC_1"
   idRef {
     id: "59811a87356564d420007404"
   }
@@ -2631,7 +2636,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
+    team_id: "LoneStar"
     char_name: "White Ranged IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
@@ -2648,18 +2653,134 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 30
+    x: 18
     y: 0
-    z: 17
+    z: -23
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isResponseIC"
   idRef {
-    id: "59811a87356564d420007419"
+    id: "598691443565644003002056"
   }
   lod: 0
   character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
-    character_sheet_id: "IC_Lv1_Watcher"
+    prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
+    character_sheet_id: "IC_Lv1_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "White Ranged IC"
+    GeneralTags: "isResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 18
+    y: 0
+    z: -24
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isResponseIC"
+  idRef {
+    id: "59869144356564400300205a"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Melee"
+    character_sheet_id: "IC_Lv1_White_Melee"
+    equipment_sheet_id: "IC White Melee Lv1 Gear"
+    character_mod {
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+    }
+    team_id: "LoneStar"
+    char_name: "White Melee IC"
+    GeneralTags: "isResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 18
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isResponseIC"
+  idRef {
+    id: "59869144356564400300205f"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Melee"
+    character_sheet_id: "IC_Lv1_White_Melee"
+    equipment_sheet_id: "IC White Melee Lv1 Gear"
+    character_mod {
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+    }
+    team_id: "LoneStar"
+    char_name: "White Melee IC"
+    GeneralTags: "isResponseIC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -103
+    y: 0
+    z: 32
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "598694cf3565644003002098"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/DwarfFemale"
+    character_sheet_id: "crew_kora_lv1"
+    equipment_sheet_id: "crew_kora_lv1"
     character_mod {
       stats {
         body: 0
@@ -2704,6 +2825,7 @@ characters {
         etiquette_shadowrunner: 0
         etiquette_street: 0
         etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
         pistol: 0
@@ -2716,24 +2838,37 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "gumbo_G_WatcherIC"
+      archetypeName: "Player"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
-    team_id: "MatrixHostile"
-    char_name: "Watcher IC"
-    patrolRoute: "Rail_SubBasement_OfficeEntryNode1_1"
+    team_id: "Shadowrunners"
+    char_name: "Kora"
+    GeneralTags: "isKora"
+    GeneralTags: "isCrew"
     pc_spawn_number: -1
-    spawn_type: SpawnType_WatcherIC
-    hiring_type: HiringType_None
-    dimension_name: "Matrix"
-    karma: 31
-    hiring_cost_override: 1000
-    scale_character_sheet: true
+    hiring_type: HiringType_Hireable
+    cyberware_left_leg: "(Leg) Basic Cyberleg"
+    cyberware_right_leg: "(Leg) Basic Cyberleg"
+    portrait {
+      filename: "pc_dwarffemale_05c_sexy"
+    }
+    description_bio: "The heart and CPU of the People\'s University."
+    portrait_code_override: "s4h11c3b0c0t0"
+    karma: 75
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Decker"
+    id: "crew_lv1_kora"
+    cyberware_head: "(Head) Datajack"
   }
 }
+mapEvents: "Event_JackIn"
+mapEvents: "Event_JackInKora"
+mapEvents: "Event_MatrixPlayTeleportSound"
 senseTags: "isCamera"
+senseTags: "isKora"
+senseTags: "isResponseIC"
 worldMapLocation {
   filename: ""
   location {
@@ -2796,6 +2931,14 @@ team_affiliations {
 scene_dimensions {
   dimension_name: "Default"
 }
+scene_dimensions {
+  dimension_name: "Matrix"
+  initial_alarm_state: 0
+  turns_per_round: 3
+  is_matrix: true
+  max_alarm_value: 50
+  heat_response_rating: 0
+}
 character_roster {
 }
 show_hiring_screen_on_scene_load: false
@@ -2806,7 +2949,7 @@ scene_hiring_prerequisites {
 }
 hiring_slot_count: 0
 hiring_minimum_karma: 0
-hiring_maximum_karma: 25
+hiring_maximum_karma: 0
 roster_overrides {
 }
 use_hiring_cost_warning: false
