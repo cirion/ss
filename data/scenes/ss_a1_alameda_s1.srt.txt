@@ -1330,6 +1330,255 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Matrix_DirectionalLightCycles"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_CycleLights"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Matrix"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598006c5356564f41b000ff2"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0.1
+          }
+          args {
+            float_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0.1
+          }
+          args {
+            float_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0.1
+          }
+          args {
+            float_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0.1
+          }
+          args {
+            float_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0
+          }
+          args {
+            float_value: -1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0
+          }
+          args {
+            float_value: -1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 0
+          }
+          args {
+            float_value: -1
+          }
+        }
+      }
+      args {
+        float_value: 1.5
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "598006c5356564f41b000ff2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_CycleLights"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 5
+          }
+          args {
+            float_value: 10
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "592b10b9356564b442007d2d"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_StartLightCycle"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598006c5356564f41b000ff2"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Actor is a Persona"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_CycleLights"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "592b1255356564b442007d2f"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Outside"
   position {
@@ -2558,6 +2807,7 @@ characters {
 }
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
+mapEvents: "Event_CycleLights"
 senseTags: "isKora"
 worldMapLocation {
   filename: ""
