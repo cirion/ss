@@ -1,0 +1,151 @@
+idRef {
+  id: "598924ae356564845b0058ac"
+}
+ui_name: "ss_a1_alameda_s1-Outside_ValiriMeeting1"
+nodes {
+  idRef {
+    id: "5989256a356564845b0058b8"
+  }
+  index: 0
+  text: "Listening closely, you hear some muffled movement, followed by a voice\342\200\231s brief outburst. "
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "598924ae356564845b0058ac:59892576356564845b0058ba"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "598924ae356564845b0058ac:59892576356564845b0058bc"
+  }
+  index: 1
+  text: "Probably not one of Saito\342\200\231s goons. They tend to make more of a mess."
+  branches {
+    responseText: "Hey, is anyone in there?"
+    nextNodeIndex: 2
+    idRef {
+      id: "598924ae356564845b0058ac:59892578356564845b0058c0"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Hello! I\342\200\231m with the PU!"
+    nextNodeIndex: 2
+    idRef {
+      id: "598924ae356564845b0058ac:5989259e356564845b0058d6"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Did somebody order pizza?"
+    nextNodeIndex: 2
+    idRef {
+      id: "598924ae356564845b0058ac:5989259f356564845b0058d8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "598924ae356564845b0058ac:59892578356564845b0058c2"
+  }
+  index: 2
+  text: "{{GM}}There\342\200\231s a brief pause, then a clearer reply from whoever is inside.{{/GM}}\n\nHEY! Name is Valiri! Um, I\342\200\231m having trouble with this door - meet you out back!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "598924ae356564845b0058ac:598925ea356564845b0058ec"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59892606356564845b00592e"
+}
+nodes {
+  idRef {
+    id: "59892696356564845b00594d"
+  }
+  index: 3
+  text: "I was starting to get worried that she might not show."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "598924ae356564845b0058ac:598926a9356564845b00594f"
+    }
+    comment: "Desorn has joined"
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "598926ab356564845b005952"
+  }
+  index: 4
+  text: "So everyone made it here safely! That is a relief."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "598924ae356564845b0058ac:598924ae356564845b0058b0"
+  }
+}

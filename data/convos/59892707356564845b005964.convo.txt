@@ -1,0 +1,705 @@
+idRef {
+  id: "59892707356564845b005964"
+}
+ui_name: "ss_a1_alameda_s1-Outside_ValiriMeetingAfterFight"
+nodes {
+  idRef {
+    id: "5989270e356564845b00596c"
+  }
+  index: 0
+  text: "Hell, you folks look a wreck! Let me patch you up real quick."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59892707356564845b005964:59892719356564845b00596e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892719356564845b005970"
+  }
+  index: 1
+  text: "She mutters an incantation. You feel a soft warmth spread through your body, easing aches you hadn\342\200\231t realized were present."
+  branches {
+    responseText: "That helped."
+    nextNodeIndex: 2
+    idRef {
+      id: "59892707356564845b005964:59892772356564845b005974"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Thanks."
+    nextNodeIndex: 2
+    idRef {
+      id: "59892707356564845b005964:59892772356564845b005976"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Hey! Ask for permission next time!"
+    nextNodeIndex: 2
+    idRef {
+      id: "59892707356564845b005964:59892772356564845b005978"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Heal Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 100
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59892781356564845b00597b"
+  }
+  index: 2
+  text: "Oh, I didn\342\200\231t realize you were also a healer! Thanks, Valiri - that\342\200\231s going to come in really handy.\n\n$(l.name), meet Valiri, a brave elf from the CalFree National Guard in Sacramento."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59892707356564845b005964:59892789356564845b005982"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:5989278a356564845b005984"
+  }
+  index: 3
+  text: "{{GM}}She shakes her head, conveying irritation and impatience.{{/GM}}\n\nThere is no National Guard any more. Probably not a CalFree, either."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59892707356564845b005964:5989278a356564845b005986"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892791356564845b00598a"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "What did you mean about there not being a CalFree any more?"
+    nextNodeIndex: 5
+    onlyOnce: true
+    idRef {
+      id: "59892707356564845b005964:59892791356564845b00598c"
+    }
+  }
+  branches {
+    responseText: "Have you heard from any of the PU members in Sacramento?"
+    nextNodeIndex: 9
+    idRef {
+      id: "59892707356564845b005964:59892809356564845b0059a8"
+    }
+  }
+  branches {
+    responseText: "We should get going."
+    nextNodeIndex: 17
+    idRef {
+      id: "59892707356564845b005964:59892a16356564845b005b20"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Interior interrogation node"
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:5989279e356564845b005994"
+  }
+  index: 5
+  text: "The war is over.\n\nThe governor has surrendered, and General Saito has taken control of Sacramento."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "59892707356564845b005964:5989279e356564845b005996"
+    }
+    comment: "Desorn has joined"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59892707356564845b005964:59892836356564845b0059c3"
+    }
+    auxiliaryLink: true
+    comment: "Desorn has not joined"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:598927ff356564845b00599a"
+  }
+  index: 6
+  text: "A bitter outcome, but perhaps a wise one. Their cause was hopeless, and the surrender will prevent further pointless death."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59892707356564845b005964:598927ff356564845b00599c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892802356564845b0059a0"
+  }
+  index: 7
+  text: "{{GM}}She staggers, as if physically struck.{{/GM}}\n\nOh, no!\n\nI thought we would have more time to prepare, to collect help\342\200\246 \n\nIf you survived, then surely others have as well? Did you manage to bring other former Guard soldiers with you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59892707356564845b005964:59892802356564845b0059a2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_hitreaction_smallfront"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892803356564845b0059a4"
+  }
+  index: 8
+  text: "No. Saito has taken over the remains of the Guard. Metahuman fighters are being discharged and sent to processing centers for eventual expulsion. He\342\200\231s integrating the remaining human soldiers with his Imperial Marines to form a new, unified Protectorate Army."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59892707356564845b005964:59892803356564845b0059a6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892809356564845b0059aa"
+  }
+  index: 9
+  text: "They\342\200\231re dead."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59892707356564845b005964:59892809356564845b0059ac"
+    }
+    comment: "Desorn has joined"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59892707356564845b005964:598928fd356564845b005a11"
+    }
+    auxiliaryLink: true
+    comment: "Desorn has not joined"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892809356564845b0059ae"
+  }
+  index: 10
+  text: "What? All of them?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59892707356564845b005964:59892809356564845b0059b0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892809356564845b0059b2"
+  }
+  index: 11
+  text: "I don\342\200\231t believe it. What about the partisans who came up from the Bay Area? Orion the ork, the October 25 Alliance wing?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59892707356564845b005964:59892809356564845b0059b4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892809356564845b0059b6"
+  }
+  index: 12
+  text: "Everyone died.\n\nI remember Orion. His team fought the hardest, defending West Sacramento alone after all of the regular troops had fallen back across the river. Even after the mortar shells and bombs started falling, they held their ground."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59892707356564845b005964:59892809356564845b0059b8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:598928d1356564845b0059f9"
+  }
+  index: 13
+  text: "Saito exterminated them. Hammered them over and over until the ground was burning, then swept in with the Marines for a personal touch.\n\nThey seized the few survivors, and then live-broadcast their summary battlefield executions across the Matrix."
+  branches {
+    responseText: "That\342\200\231s unconventional."
+    nextNodeIndex: 14
+    idRef {
+      id: "59892707356564845b005964:598928d1356564845b0059fb"
+    }
+  }
+  branches {
+    responseText: "Yikes!"
+    nextNodeIndex: 14
+    idRef {
+      id: "59892707356564845b005964:5989297a356564845b005a5c"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Most nodes charge extra for that."
+    nextNodeIndex: 14
+    idRef {
+      id: "59892707356564845b005964:5989297a356564845b005a5e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:598928d1356564845b0059fd"
+  }
+  index: 14
+  text: "It was already a total military triumph, but Saito wanted a propaganda victory as well. His commanders said that it was a warning to \"all the other metahuman scum who would terrorize the decent human citizens of California\".\n\n{{GM}}She nods to Kora.{{/GM}}\n\nTo be clear, he was warning *us*."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "59892707356564845b005964:598928d1356564845b0059ff"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:598928d1356564845b005a01"
+  }
+  index: 15
+  text: "That is horrific! I knew that Saito was violent, but that level of malice chills me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "59892707356564845b005964:598928d1356564845b005a03"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:598928d1356564845b005a05"
+  }
+  index: 16
+  text: "I still can\342\200\231t believe\342\200\246 Orion dead\342\200\246 all of our defenders\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59892707356564845b005964:598928d1356564845b005a07"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892a21356564845b005b23"
+  }
+  index: 17
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 18
+    idRef {
+      id: "59892707356564845b005964:59892a24356564845b005b25"
+    }
+    comment: "Desorn has joined"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "59892707356564845b005964:59892a25356564845b005b27"
+    }
+    comment: "Desorn has not joined"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892a93356564845b005bf7"
+  }
+  index: 18
+  text: "Where to, Kora?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59892707356564845b005964:59892a9d356564845b005bf9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "59892a9f356564845b005bfc"
+  }
+  index: 19
+  text: "We\342\200\231re now complete. Let\342\200\231s rejoin Tassender. This summit just became even more urgent."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59892ac5356564845b005c75"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59892b18356564845b005c78"
+  }
+  index: 20
+  text: "We still need to look for Desorn."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59892707356564845b005964:59892b1f356564845b005c7a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892b21356564845b005c7c"
+  }
+  index: 21
+  text: "We don\342\200\231t have time! Every minute we wait, Saito\342\200\231s grip will grow tighter."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59892707356564845b005964:59892b21356564845b005c7e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59892707356564845b005964:59892b25356564845b005c82"
+  }
+  index: 22
+  text: "There\342\200\231s no choice. With Sacramento fallen, our only hope lies in aid from Shasta."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59892707356564845b005964:59892707356564845b005968"
+  }
+}

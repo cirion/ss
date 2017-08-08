@@ -45,36 +45,6 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Start Conversation"
-      args {
-        call_value {
-          functionName: "Get Map Item (Conversation)"
-          args {
-            string_value: "5987d813356564a023003e33"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "5987df49356564484d0011f8"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Set Actor In Passive Mode"
       args {
         call_value {
@@ -134,6 +104,90 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isInitialCivilian"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isInitialCivilian"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -153,6 +207,28 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59893957356564744f005894"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -1835,6 +1911,1682 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Outside_ObjectiveEnterPinball_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Enter the Pinball Museum"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5938d0b9356564c05a003c0c"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "59892ac5356564845b005c75"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Goal_YouDied"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "You died."
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59892f85356564845b005d48"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_HearValiri"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59893448356564744f005887"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5989341f356564744f005885"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Do you hear that, $(l.name)? I think there\342\200\231s someone in that building."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5989341f356564744f005885"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59893439356564744f005886"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_ValiriDoor"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5989341f356564744f005885"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "598924ae356564845b0058ac"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5989084f356564845b005879"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5989084f356564845b005879"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59893155356564744f005879"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598931c9356564744f00587c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59893325356564744f00587f"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59893187356564744f00587a"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5989330b356564744f00587d"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598931a9356564744f00587b"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5989332e356564744f005880"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 8
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598931c9356564744f00587c"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_aiming_shotgun"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59893187356564744f00587a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_aiming_pistol"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59893462356564744f005888"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_AmbushedValiriAttackers"
+  events {
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isOutsideValiriEnemy"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isValiri"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Hell yeah! Let\'s get them!"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 1
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5989363c356564744f00588a"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598935cb356564744f005889"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_ValiriPreFightChat"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59893a50356564744f005898"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598935cb356564744f005889"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "598930b3356564845b005dcb"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598931c9356564744f00587c"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598936c2356564744f005890"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5989363c356564744f00588a"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_ValiriFightAfterTalk_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598931c9356564744f00587c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59893384356564744f005883"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598931a9356564744f00587b"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59893359356564744f005881"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59893187356564744f00587a"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59893372356564744f005882"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598936c2356564744f005890"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_ValiriFightDone"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isOutsideValiriEnemy"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "No Effect"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598937ad356564744f005891"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_ValiriJoins"
+  events {
+    ops {
+      functionName: "On Actor Awareness of Another Actor"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isOutsideValiriEnemy"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isValiri"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isValiri"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598938fc356564744f005893"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Start_InitialConvo"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59893957356564744f005894"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "5987d813356564a023003e33"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5987df49356564484d0011f8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59893957356564744f005894"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_ValiriFightDonePostChat_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Valiri"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598939b9356564744f005895"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_DesornFightDonePostChat_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Desorn"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598939f5356564744f005897"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_RecruitedBothFollowers"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isValiri"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDesorn"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Enter the Pinball Museum"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598939e9356564744f005896"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Outside"
   position {
@@ -2487,6 +4239,702 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "5987dfa4356564484d001202"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TeleportDestDesorn"
+  position {
+    x: 7
+    y: 32
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598921fb356564845b00587c"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Closet_Shadowrunner"
+  position {
+    x: -20
+    y: -36
+    width: 3
+    height: 3
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59892271356564845b005890"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Closet_Enemies"
+  position {
+    x: -22
+    y: -27
+    width: 6
+    height: 6
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598922d8356564845b005891"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TeleportDestValiri"
+  position {
+    x: 23
+    y: -6
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893155356564744f005879"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TeleportDestGangerPistol"
+  position {
+    x: 28
+    y: -7
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5989330b356564744f00587d"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TeleportDestGangerShotgun"
+  position {
+    x: 29
+    y: -5
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893325356564744f00587f"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TeleportDestGangerMage"
+  position {
+    x: 28
+    y: -2
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5989332e356564744f005880"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_MoveDestGangerMage"
+  position {
+    x: 27
+    y: -2
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893359356564744f005881"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_MoveDestGangerPistol"
+  position {
+    x: 32
+    y: -4
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893372356564744f005882"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_MoveDestGangerShotgun"
+  position {
+    x: 31
+    y: -2
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893384356564744f005883"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TripwireHearValiri"
+  position {
+    x: 26
+    y: 20
+    width: 1
+    height: 12
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893448356564744f005887"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_TripwireValiriFightNoAmbush"
+  position {
+    x: 33
+    y: -6
+    width: 1
+    height: 10
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59893a50356564744f005898"
   }
   highlight_color {
     r: 0
@@ -3249,6 +5697,485 @@ characters {
     scale_character_sheet: true
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -20
+    y: 0
+    z: -36
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isValiri"
+  GeneralTags: "isCrew"
+  GeneralTags: "isInitialCivilian"
+  idRef {
+    id: "5989084f356564845b005879"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/ElfFemale"
+    character_sheet_id: "crew_valiri_lv1"
+    equipment_sheet_id: "crew_valiri_lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Shadowrunners"
+    char_name: "Valiri"
+    GeneralTags: "isValiri"
+    GeneralTags: "isCrew"
+    GeneralTags: "isInitialCivilian"
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "pc_elffemale_01hk_shaman"
+    }
+    description_bio: "A battle-tested shaman."
+    portrait_code_override: "s4h3c11b0c0t0"
+    karma: 75
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Combat Shaman"
+    scale_character_sheet: true
+    id: "crew_lv1_valiri"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -20
+    y: 0
+    z: -35
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isCrew"
+  GeneralTags: "isDesorn"
+  GeneralTags: "isInitialCivilian"
+  idRef {
+    id: "59891f76356564845b00587a"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/ElfMale"
+    character_sheet_id: "crew_desorn_lv1"
+    equipment_sheet_id: "crew_desorn_lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Shadowrunners"
+    char_name: "Desorn"
+    GeneralTags: "isCrew"
+    GeneralTags: "isDesorn"
+    GeneralTags: "isInitialCivilian"
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "backer_elfmale_haldorzaake-hertling"
+    }
+    description_bio: "A peaceful acolyte of Hestaby."
+    portrait_code_override: "s6h11c11b0c0t0"
+    karma: 76
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Monk"
+    has_fist: false
+    id: "crew_lv1_desorn"
+    cyberware_weapon: "Weapon 1 Desorn Fist"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -36
+    y: 0
+    z: -11
+  }
+  orientation: ORIENTATION_S
+  displayName: "Dorbi"
+  idRef {
+    id: "59891fc0356564845b00587b"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/HumanMale"
+    character_sheet_id: "Adept_Lv1_HtH"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        close_combat: 0
+        dodge: 0
+        chi_casting: 0
+      }
+      specializations {
+        unarmed: 0
+      }
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "NPC_HK_Tech_RiggerTrench"
+    }
+    team_id: "Civilians"
+    char_name: "Dorbi"
+    pc_spawn_number: -1
+    portrait {
+      filename: "pc_dwarffemale_06"
+    }
+    portrait_code_override: "s4h17c4b0c0t0"
+    karma: 72
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -22
+    y: 0
+    z: -27
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_Desorn_Pistol_1"
+  idRef {
+    id: "598923a0356564845b0058a1"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Core/HumanMale"
+    character_sheet_id: "Errant_Lv1_Human_Pistol"
+    equipment_sheet_id: "Errant_Lv1_Pistol"
+    character_mod {
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Humanis Paramilitary"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    hiring_set_randomizer: "errant_pistol"
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -21
+    y: 0
+    z: -27
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_Desorn_Pistol_2"
+  idRef {
+    id: "598923ed356564845b0058a2"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Core/HumanMale"
+    character_sheet_id: "Errant_Lv1_Human_Pistol"
+    equipment_sheet_id: "Errant_Lv1_Pistol"
+    character_mod {
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Humanis Paramilitary"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    hiring_set_randomizer: "errant_pistol"
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -22
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isOutsideValiriEnemy"
+  displayName: "Outside_Valiri_Pistol"
+  idRef {
+    id: "59893187356564744f00587a"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Berlin:Gangers/OrkMaleBerlinGanger"
+    character_sheet_id: "Errant_Lv1_Human_Pistol"
+    equipment_sheet_id: "Errant_Lv1_Pistol"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Ganger Footsoldier"
+    GeneralTags: "isOutsideValiriEnemy"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 41
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -21
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isOutsideValiriEnemy"
+  displayName: "Outside_Valiri_Mage"
+  idRef {
+    id: "598931a9356564744f00587b"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Berlin:Gangers/OrkFemaleBerlinGanger_Magnifiker"
+    character_sheet_id: "Errant_Lv1_Human_Mage"
+    equipment_sheet_id: "Errant_Lv1_Spellcasting"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Mage"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Ganger Mage"
+    GeneralTags: "isOutsideValiriEnemy"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 43
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -20
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isOutsideValiriEnemy"
+  displayName: "Outside_Ganger_Shotgun"
+  idRef {
+    id: "598931c9356564744f00587c"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Berlin:Gangers/DwarfMaleBerlinGanger_Magnifiker"
+    character_sheet_id: "Errant_Lv1_Ork_Shotgun"
+    equipment_sheet_id: "Errant_Lv1_Shotgun"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Ganger Enforcer"
+    GeneralTags: "isOutsideValiriEnemy"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 41
+    scale_character_sheet: true
+  }
+}
 variables {
   bool_value: false
   variableref_value {
@@ -3269,6 +6196,41 @@ mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 mapEvents: "Event_CycleLights"
 senseTags: "isKora"
+goals {
+  name: "Find Valiri"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Find Desorn"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Enter the Pinball Museum"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "You died."
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Kora Must Survive"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Valiri Must Survive"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Desorn Must Survive"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
 worldMapLocation {
   filename: ""
   location {
