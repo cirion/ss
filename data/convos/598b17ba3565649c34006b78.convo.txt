@@ -108,6 +108,65 @@ nodes {
     comment: "PC0 isn\'t an elf or dwarf"
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59891fc0356564845b00587b"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isKora"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -207,6 +266,33 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -325,7 +411,7 @@ nodes {
     id: "598b17ba3565649c34006b78:598b19b63565649c34006c17"
   }
   index: 13
-  text: ""
+  text: "The most enticing offer we have is probably priority access to the People\342\200\231s University Matrix node. It\342\200\231s the most secure and performant site free of any megacorp influence. It would get your deckers off of the SFBA LTG, and keep you from being\342\200\246"
   branches {
     responseText: ""
     nextNodeIndex: 14
@@ -334,13 +420,16 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5987df49356564484d0011f9"
+  }
 }
 nodes {
   idRef {
     id: "598b17ba3565649c34006b78:598b19ba3565649c34006c1d"
   }
   index: 14
-  text: ""
+  text: "Agreed.\n\nIn return, you\342\200\231d probably enjoy access to the Halferville tunnels. They\342\200\231re fantastic for making quick get-aways or popping up where Saito least expects you. I\342\200\231ll grant you unlimited use, provided you consent to an escort. I can\342\200\231t have heavily-armed squads roaming through my territory willy-nilly."
   branches {
     responseText: ""
     nextNodeIndex: 15
@@ -355,7 +444,7 @@ nodes {
     id: "598b17ba3565649c34006b78:598b19bd3565649c34006c21"
   }
   index: 15
-  text: ""
+  text: "You are most gracious, mayor. Access to the tunnels will be a big help that could save us from being pinned down and wiped out some day.\n\nBut, I\342\200\231m afraid that tunnels and deckers alone won\342\200\231t be sufficient to topple Saito. He can only be deposed through force. Sooner or later, we\342\200\231ll need to combine our resources, and actually strike a blow against him."
   branches {
     responseText: ""
     nextNodeIndex: 16
@@ -364,13 +453,16 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5987df49356564484d0011f9"
+  }
 }
 nodes {
   idRef {
     id: "598b17ba3565649c34006b78:598b19bf3565649c34006c25"
   }
   index: 16
-  text: ""
+  text: "And then he\342\200\231ll strike back, and annihilate us. How will that help our situation?\n\nYou might be a little slow, so let me explain this clearly:\n\nWe. Cannot. Beat. Saito. \n\nEven if all of my shorties with shotguns line up alongside your orks with ordnance, he\342\200\231ll wipe us all out, then excavate Halferville and blow Berkeley into the Bay."
   branches {
     responseText: ""
     nextNodeIndex: 17
@@ -385,8 +477,303 @@ nodes {
     id: "598b17ba3565649c34006b78:598b19c13565649c34006c29"
   }
   index: 17
-  text: ""
+  text: "Who does Saito have on his side? An entire fucking army of JIS-trained soldiers. Renraku. Shiawase. Fuchi. Mitsuhama. And every human in this state who ever attended a Humanis policlub meeting.\n\nWhat do we have to oppose that? Some spaced-out feel-good earth-hugging Berkeley hippies and a few Tolkien rejects hiding in holes?"
+  branches {
+    responseText: "{{GM}}Remain silent.{{/GM}}"
+    nextNodeIndex: 18
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb8c73565646034006b69"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Desorn peace, Valiri caution. Probably add to camera as well."
+  }
+  branches {
+    responseText: "We\342\200\231ll oppose him with whatever and whoever we can get."
+    nextNodeIndex: 18
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb8c73565646034006b6b"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Desorn violence, Valiri speed"
+  }
+  branches {
+    responseText: "Maybe we can scrounge up an Ent or two\342\200\246"
+    nextNodeIndex: 18
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb8c73565646034006b6d"
+    }
+    comment: "TODO: Valiri caution"
+  }
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598bb8f33565646034006b70"
+  }
+  index: 18
+  text: "How about a dragon?\n\n{{GM}}He smiles serenely.{{/GM}}\n\nSurely that would help turn the scales."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb90d3565646034006bae"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb90e3565646034006bb0"
+  }
+  index: 19
+  text: "Hm. Yes, it would at that.\n\nWhy? Do you have a dragon waiting in the wings to pounce on Saito? And, if so, why the hell are you wasting your time with me?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb90e3565646034006bb2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59891fc0356564845b00587b"
+  }
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb9123565646034006bb6"
+  }
+  index: 20
+  text: "Actually, that\342\200\231s where we thought you could come in. Desorn here has spent time in Shasta, and is able to call on Hestaby, but\342\200\246 well\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb9123565646034006bb8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5987df49356564484d0011f9"
+  }
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb9153565646034006bba"
+  }
+  index: 21
+  text: "She has been distant lately. Distracted. She does not reply to cries for aid, now that she is needed more than ever before."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb9153565646034006bbc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb9183565646034006bbe"
+  }
+  index: 22
+  text: "We were hoping that you might be able to get through to her, Dorbi. You\342\200\231ve known her longer than just about anyone else alive.\n\nIf the rumors are true, she still owes you a favor, and we could all use a favor right about now."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb9183565646034006bc0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb9183565646034006bc2"
+  }
+  index: 23
+  text: "Well, that\342\200\231s all true. She basically owes me her life. Yeah. You could say I\342\200\231m a pretty big deal."
+  branches {
+    responseText: ""
+    nextNodeIndex: 24
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb9183565646034006bc4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb9183565646034006bc6"
+  }
+  index: 24
+  text: "I brought an optic-interface Matrix endpoint. You can use this to\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb9183565646034006bc8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+}
+nodes {
+  idRef {
+    id: "598b17ba3565649c34006b78:598bb9183565646034006bca"
+  }
+  index: 25
+  text: "Yes, yes, communicate with her without sticking wires into my precious essence. I\342\200\231m not a child, you know.\n\n{{GM}}She beckons you.{{/GM}}\n\nWould you be a dear and go fetch some tungsten relays for me? These things give me an awful headache if the signal isn\342\200\231t sufficiently dampened first."
+  branches {
+    responseText: "I\342\200\231ll take care of it."
+    nextNodeIndex: 26
+    idRef {
+      id: "598b17ba3565649c34006b78:598bb9183565646034006bcc"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Happy to help."
+    nextNodeIndex: 26
+    idRef {
+      id: "598b17ba3565649c34006b78:598bbc5d3565646034006ca8"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Aw, do I hafta?"
+    nextNodeIndex: 26
+    idRef {
+      id: "598b17ba3565649c34006b78:598bbc5d3565646034006caa"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59891fc0356564845b00587b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "598bbc8f3565646034006cf5"
+  }
+  index: 26
+  text: "Thanks for helping us out, $(l.name). We\342\200\231ll keep hashing out the details while you\342\200\231re working on that."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5987df49356564484d0011f9"
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5987df49356564484d0011f9"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5987df49356564484d0011f9"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Acquire Tungsten Relays"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0
