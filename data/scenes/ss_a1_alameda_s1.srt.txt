@@ -9331,6 +9331,28 @@ triggers {
         float_value: 5
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Inside_DamagedGame"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -9748,6 +9770,172 @@ triggers {
   isActive: false
   idRef {
     id: "598d2d2e3565646034007997"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Inside_PlayVRGameSound"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_InsidePlayVRGameSound"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:rigger"
+          }
+          args {
+            string_value: "DroneRotors"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ui"
+          }
+          args {
+            string_value: "puzzlesuccess"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598d357e3565646034007c6b"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Inside_IssueMaintenanceRequest_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_GameMaintenanceCall"
+          }
+        }
+      }
+      args {
+        float_value: 4
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Inside_DamagedGame"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598d36e33565646034007c6c"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Inside_AfterConvoBreakGame_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_GameBroke"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598d38163565646034007cf3"
   }
   elseActions {
   }
@@ -14522,6 +14710,7 @@ mapEvents: "Event_GameBroke"
 mapEvents: "Event_GameMaintenanceCall"
 mapEvents: "Event_GameGuardLoses"
 mapEvents: "Event_GameSpiritCasts"
+mapEvents: "Event_InsidePlayVRGameSound"
 senseTags: "isKora"
 goals {
   name: "Find Valiri"
