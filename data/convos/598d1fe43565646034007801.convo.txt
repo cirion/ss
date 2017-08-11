@@ -1,0 +1,206 @@
+idRef {
+  id: "598d1fe43565646034007801"
+}
+ui_name: "ss_a1_alameda_s1-Inside_HalfervilleGuard"
+nodes {
+  idRef {
+    id: "598d205b356564603400780d"
+  }
+  index: 0
+  text: "Yeah?"
+  branches {
+    responseText: "Hey, do you want to play one of those games?"
+    nextNodeIndex: 1
+    idRef {
+      id: "598d1fe43565646034007801:598d2068356564603400780f"
+    }
+  }
+  branches {
+    responseText: "Never mind."
+    nextNodeIndex: -1
+    idRef {
+      id: "598d1fe43565646034007801:598d20683565646034007811"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598d20733565646034007814"
+  }
+  index: 1
+  text: "Hmph. In case you hadn\342\200\231t noticed, I\342\200\231m working here."
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} Your friends have already established a perimeter. You\342\200\231re just backup. You can back them up every bit as easily from a few meters to the east."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "598d1fe43565646034007801:598d20823565646034007816"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_Hard){{/CC}} Hey, it\'s just us grunts here. Relax! You can trust me to watch your back."
+    nextNodeIndex: -1
+    idRef {
+      id: "598d1fe43565646034007801:598d20823565646034007818"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Metatype: Dwarf{{/CC}} We shorties fly below the radar. C\342\200\231mon, Dorbi won\342\200\231t mind, and the tall folk won\342\200\231t even notice."
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "598d1fe43565646034007801:598d2083356564603400781a"
+    }
+  }
+  branches {
+    responseText: "Please?"
+    nextNodeIndex: 3
+    idRef {
+      id: "598d1fe43565646034007801:598d2084356564603400781c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598d21453565646034007843"
+  }
+  index: 2
+  text: "Well... all right. But just one round!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598d215b3565646034007851"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "598d21a43565646034007854"
+  }
+  index: 3
+  text: "Scram, kid."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "598d1fe43565646034007801:598d1fe43565646034007805"
+  }
+}

@@ -7,8 +7,94 @@ nodes {
     id: "598cfc8635656460340074e1"
   }
   index: 0
-  text: ""
+  text: "WHAT DO YOU WISH OF ME, MORTAL?"
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "598cfb3435656460340074d5:598d260a356564603400791f"
+    }
+  }
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598cfb3435656460340074d5:598d260a3565646034007921"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Can you open that locked door for me?"
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "598cfb3435656460340074d5:598d261c3565646034007925"
+    }
+  }
+  branches {
+    responseText: "Can you wreck one of those games?"
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "598cfb3435656460340074d5:598d2622356564603400792c"
+    }
+  }
+  branches {
+    responseText: "Nothing."
+    nextNodeIndex: -1
+    idRef {
+      id: "598cfb3435656460340074d5:598d26253565646034007935"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Inner loop."
+}
+nodes {
+  idRef {
+    id: "598d261e3565646034007928"
+  }
+  index: 2
+  text: "THAT IS NOT WITHIN MY POWER."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "598cfb3435656460340074d5:598d2620356564603400792a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598cfb3435656460340074d5:598d2622356564603400792e"
+  }
+  index: 3
+  text: "YES."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598d26633565646034007947"
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0
