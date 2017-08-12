@@ -7009,6 +7009,79 @@ triggers {
       }
     }
     ops {
+      functionName: "Set Actor In Passive Mode"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCrew"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Select Item on Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Fist"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCrew"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Change Actor Control"
       args {
         call_value {
@@ -7437,6 +7510,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59891fc0356564845b00587b"
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -7459,7 +7554,7 @@ triggers {
     ops {
       functionName: "Display Text In Popup"
       args {
-        string_value: "You managed to influence some of your followers during the last conversation. Throughout your adventure, companions will pay attention to your words and actions, and over time your influence will change their behavior.\n\nEach character has their own unique concerns that you can influence. For example, Valiri is debating whether to react quickly to problems or to be more cautious. Meanwhile, Kora is trying to balance her existing responsibilities as a decker with her new leadership role within the People\'s University.\n\nYou will see red or green text over a character\'s head when an action has increased your influence. Neither type of influence is better or worse than the other, but they may affect the final fate of the companion."
+        string_value: "You managed to influence some of your followers during the last conversation. Throughout your adventure, companions will pay attention to your words and actions, and over time your influence will change their behavior.\n\nEach character has their own unique concerns that you can influence. For example, Valiri is debating whether to react quickly to threats or to be more cautious. Meanwhile, Kora is trying to balance her existing responsibilities as a decker with her new leadership role within the People\'s University.\n\nYou will see red or blue text over a character\'s head when an action has increased your influence. Neither type of influence is better or worse than the other, but they may affect the final fate of the companion."
       }
       args {
         call_value {
@@ -8066,7 +8161,10 @@ triggers {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59891fc0356564845b00587b"
+          }
         }
       }
       args {
@@ -8288,7 +8386,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598be0ff3565646034007201"
+            string_value: "598be06f35656460340071fd"
           }
         }
       }
@@ -8384,7 +8482,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598be0ff3565646034007201"
+            string_value: "598be0f13565646034007200"
           }
         }
       }
@@ -8480,7 +8578,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598be0ff3565646034007201"
+            string_value: "598be1253565646034007202"
           }
         }
       }
@@ -8576,7 +8674,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598be0ff3565646034007201"
+            string_value: "598be1483565646034007203"
           }
         }
       }
@@ -8672,7 +8770,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598be0ff3565646034007201"
+            string_value: "598be1573565646034007204"
           }
         }
       }
@@ -8811,14 +8909,6 @@ triggers {
 triggers {
   name: "Inside_DismissWaterSpirit"
   events {
-    ops {
-      functionName: "On Item Interaction"
-      args {
-        call_value {
-          functionName: "Triggering Prop (Interactable)"
-        }
-      }
-    }
     ops {
       functionName: "On Region Exit"
       args {
@@ -9792,7 +9882,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "598d26633565646034007947"
   }
@@ -11534,7 +11624,7 @@ regions {
   position {
     x: -58
     y: -30
-    width: 31
+    width: 34
     height: 50
   }
   enabledAtStart: true
@@ -14197,6 +14287,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Camera_Inside"
+  position {
+    x: -58
+    y: -30
+    width: 34
+    height: 50
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598e56ad356564f806001bfd"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.6
+    y: -1.1
+    z: -0.8
+  }
+  directional_light_color {
+    r: 0.094117649
+    g: 0.10196079
+    b: 0.11764706
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.14509805
+    g: 0.17647059
+    b: 0.19607843
+    a: 1
+  }
+  ambience_template: "roomtone"
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
@@ -15352,7 +15500,7 @@ characters {
     portrait {
       filename: "pc_dwarffemale_06"
     }
-    portrait_code_override: "s4h17c4b0c0t0"
+    portrait_code_override: "s4h17c5b0c0t0"
     karma: 72
   }
 }
