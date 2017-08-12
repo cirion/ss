@@ -1,0 +1,158 @@
+idRef {
+  id: "598f3eb53565649836004127"
+}
+ui_name: "ss_a1_alameda_s1-Inside_FightDoneFollowedDorbi"
+nodes {
+  idRef {
+    id: "598f3ebe356564983600412f"
+  }
+  index: 0
+  text: "Your commlink rings with an incoming call."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "598f3eb53565649836004127:598f3ebf3565649836004131"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "PDA-Ring1"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "598f3eb53565649836004127:598f3ebf3565649836004133"
+  }
+  index: 1
+  text: "Thanks for covering my escape, $(l.name). It\'s good to know that not EVERYONE in the PU is a massive fuckup."
+  branches {
+    responseText: "We still have business to discuss."
+    nextNodeIndex: 2
+    idRef {
+      id: "598f3eb53565649836004127:598f3ec23565649836004137"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I had to make sure you were okay."
+    nextNodeIndex: 2
+    idRef {
+      id: "598f3eb53565649836004127:598f3f1a356564983600413b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That\'s the nicest thing anybody has ever said about me."
+    nextNodeIndex: 2
+    idRef {
+      id: "598f3eb53565649836004127:598f3f1a356564983600413d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598f3f4b3565649836004140"
+  }
+  index: 2
+  text: "This doesn\'t change anything. Run on back to your precious base and tell everybody that I\'m done with negotiating. From now on, I\'m just looking out for number one.\n\nHave a nice life, $(l.name)."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "598e56ad356564f806001bfd"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "598f3eb53565649836004127:598f3f893565649836004147"
+    }
+    comment: "Kora is still alive"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "598f3f8b356564983600414a"
+  }
+  index: 3
+  text: "That\'s disappointing. I shouldn\'t be surprised, though. Dorbi usually isn\'t much of a team player. At least we followed Tassender\'s guidance. Hopefully that will count for something in the future.\n\nLet\'s head back to Berkeley. We can decide our next steps there."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "598f3eb53565649836004127:598f3eb5356564983600412b"
+  }
+}

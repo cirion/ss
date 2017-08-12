@@ -22477,7 +22477,7 @@ props {
 props {
   name: "office_appliance_drinkMachine"
   gridPoint {
-    x: -37
+    x: -37.1
     y: 0
     z: -21
   }
@@ -22519,6 +22519,41 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Inside_CanExitToCourtyard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     doorPoint {
       doorState: false
       aiOnlyDoor: false
@@ -24161,6 +24196,43 @@ props {
             functionName: "Get Map Item (SceneDimension)"
             args {
               string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a1_alameda_s1-TungstenRelays"
             }
           }
         }
@@ -33902,72 +33974,6 @@ props {
         }
       }
       ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "Inside_ExaminedDoor"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "Inside_UsedComputer"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
         functionName: "Comparison (int)"
         args {
           call_value {
@@ -34165,39 +34171,6 @@ props {
     isEnabled: true
     interactionRadius: 1
     prerequisites {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "Inside_UsedComputer"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
       ops {
         functionName: "Comparison (bool)"
         args {
@@ -34481,6 +34454,180 @@ props {
     dummyInteraciton {
     }
     interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -58
+    y: 0.8
+    z: 11.9
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_MaintenanceExit"
+  idRef {
+    id: "598f32033565649836004030"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Cover Dorbi\'s Exit to the East"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    transitionPoint {
+      scene_name: "ss_hub"
+      confirmation_text: "The summit has ended without its members, let alone an accord. Nothing else can be done here. Are you ready to travel to the home of the People\'s University?"
+    }
+    interaction_info_text: "Alameda Streets"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -45
+    y: 0.7
+    z: -30
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_CourtyardExit"
+  idRef {
+    id: "598f32063565649836004031"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Try to Rescue Tassender to the West"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    transitionPoint {
+      scene_name: "ss_hub"
+      confirmation_text: "The summit has ended without its members, let alone an accord. Nothing else can be done here. Are you ready to travel to the home of the People\'s University?"
+    }
+    interaction_info_text: "Alameda Streets"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -26.6
+    y: 0
+    z: -11.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_EntrywayExit"
+  idRef {
+    id: "598f320c3565649836004032"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Flee Combat to the South"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    transitionPoint {
+      scene_name: "ss_hub"
+      confirmation_text: "The summit has ended without its members, let alone an accord. Nothing else can be done here. Are you ready to travel to the home of the People\'s University?"
+    }
+    interaction_info_text: "Alameda"
   }
   lod: 0
 }
