@@ -354,10 +354,10 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Debug_InsideSetup"
+  name: "Debug_InsideStart"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -516,19 +516,123 @@ triggers {
       }
     }
     ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCrew"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCrew"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Teleport Actor"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "All Actors on Team"
           args {
             call_value {
-              functionName: "Get Map Item (Player)"
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
               args {
                 int_value: 0
               }
             }
           }
           args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -7939,10 +8043,7 @@ triggers {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "59891fc0356564845b00587b"
-              }
+              functionName: "Triggering Actor"
             }
           }
           args {
@@ -7965,10 +8066,7 @@ triggers {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "59891fc0356564845b00587b"
-          }
+          functionName: "Triggering Actor"
         }
       }
       args {
@@ -8064,10 +8162,7 @@ triggers {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "5987df49356564484d0011f9"
-          }
+          functionName: "Triggering Actor"
         }
       }
       args {
@@ -8126,7 +8221,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "5987df49356564484d0011f9"
+            string_value: "5987df49356564484d0011f8"
           }
         }
       }
@@ -8222,7 +8317,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "5987df49356564484d0011f9"
+            string_value: "5989084f356564845b005879"
           }
         }
       }
@@ -8318,7 +8413,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "5987df49356564484d0011f9"
+            string_value: "59891f76356564845b00587a"
           }
         }
       }
@@ -8414,7 +8509,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "5987df49356564484d0011f9"
+            string_value: "598bc88c3565646034006d94"
           }
         }
       }
@@ -8510,7 +8605,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "5987df49356564484d0011f9"
+            string_value: "598bc8b73565646034006d95"
           }
         }
       }
@@ -8606,7 +8701,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "5987df49356564484d0011f9"
+            string_value: "598bc8d43565646034006d96"
           }
         }
       }
@@ -8774,7 +8869,7 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 0
+            int_value: 5
           }
         }
       }
@@ -9387,10 +9482,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "5987df49356564484d0011f6"
-          }
+          functionName: "Active Actor"
         }
       }
       args {
@@ -9669,7 +9761,7 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 0
+            int_value: 5
           }
         }
       }
@@ -15822,7 +15914,7 @@ characters {
       }
     }
     conversationPoint {
-      conversationID: ""
+      conversationID: "598d1fe43565646034007801"
       turnToFace: true
     }
     interactionIcon: InteractionIcon_Conversation
