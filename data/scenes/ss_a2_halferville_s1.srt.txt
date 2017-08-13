@@ -158,6 +158,153 @@ triggers {
       }
     }
   }
+  isActive: false
+  idRef {
+    id: "59908969356564ec6f007872"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DebugEscape"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "5982758c3565648007005f24"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fd21b3565643046006ec9"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_CanUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
   isActive: true
   idRef {
     id: "593a140c356564c05a003da9"
@@ -1053,7 +1200,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Entryway_RemoveDoorTag"
+  name: "Halferville_RemoveDoorTag"
   events {
     ops {
       functionName: "On Region Enter"
@@ -1073,6 +1220,17 @@ triggers {
           functionName: "Get Map Item (Region)"
           args {
             string_value: "598f7eb135656498360045eb"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598fc5a23565643046006ea9"
           }
         }
       }
@@ -5314,6 +5472,28 @@ triggers {
         float_value: 2
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_CanUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -5608,6 +5788,2494 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Escape_ToggleBridgeStatus"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Escape_ToggleBridgeBegin"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "turbineon"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Escape_ToggleBridgeDone"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_IsNorthBridgeExtended"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Invert Bool"
+          args {
+            call_value {
+              functionName: "Get Variable (bool)"
+              args {
+                string_value: "Escape_IsNorthBridgeExtended"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59259540356564c42a002565"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_IsNorthBridgeExtended"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "598fc69c3565643046006ead"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Invert Bool"
+          args {
+            call_value {
+              functionName: "Get Variable (bool)"
+              args {
+                string_value: "Escape_IsNorthBridgeExtended"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fc7043565643046006eae"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Escape_PositionOverrun"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Escape_RoundsUntilOverrun"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fcb303565643046006ebc"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_UpdateGoalCollapseTunnel"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Escape_RoundsUntilOverrun"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Escape_ScreenLabelOverrun"
+          }
+        }
+      }
+      args {
+        string_value: "Time Until Position Is Overrun"
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Escape_RoundsUntilOverrun"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Escape_RoundsUntilOverrunMax"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fcb713565643046006ebd"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Escape_WallStrength"
+  events {
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598fc9d73565643046006eb3"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Escape_ScreenLabelWallHealth"
+          }
+        }
+      }
+      args {
+        string_value: "Tunnel Integrity"
+      }
+      args {
+        call_value {
+          functionName: "Get Actor Attribute"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fc9d73565643046006eb3"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "BaseOrCurrent"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "ActorAttributes"
+              }
+              args {
+                int_value: 8
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Actor Attribute"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fc9d73565643046006eb3"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "BaseOrCurrent"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "ActorAttributes"
+              }
+              args {
+                int_value: 14
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Apply Camera Shake"
+      args {
+        float_value: 0.25
+      }
+      args {
+        float_value: 1
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "DoorStone"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Log Debug Message"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Log Levels"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Append (string)"
+          args {
+            string_value: " wall HP remaining."
+          }
+          args {
+            call_value {
+              functionName: "Convert (int) to (string)"
+              args {
+                call_value {
+                  functionName: "Get Actor Attribute"
+                  args {
+                    call_value {
+                      functionName: "Get Map Item (Actor)"
+                      args {
+                        string_value: "598fc9d73565643046006eb3"
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "BaseOrCurrent"
+                      }
+                      args {
+                        int_value: 1
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "ActorAttributes"
+                      }
+                      args {
+                        int_value: 8
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fd6963565643046006f30"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Escape_CollapsedWall"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598fc9d73565643046006eb3"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "598fd10f3565643046006ec1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Apply Camera Shake"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 5
+      }
+    }
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 2
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "wallbreak"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Escape_WallCollapseWait"
+          }
+        }
+      }
+      args {
+        float_value: 2
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors Including Some"
+          args {
+            call_value {
+              functionName: "All Actors on Team"
+              args {
+                call_value {
+                  functionName: "Get Preset Value (string)"
+                  args {
+                    string_value: "FactionList"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (SceneDimension)"
+                  args {
+                    string_value: "Default"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "All Actors Within Area"
+              args {
+                call_value {
+                  functionName: "Area: Region"
+                  args {
+                    call_value {
+                      functionName: "Get Map Item (Region)"
+                      args {
+                        string_value: "598fcac13565643046006ebb"
+                      }
+                    }
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Random Point Within Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fcf903565643046006ebf"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors Within Area"
+          args {
+            call_value {
+              functionName: "Area: Region"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Region)"
+                  args {
+                    string_value: "598fcac13565643046006ebb"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isFallenRubble"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 2
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Escape_ScreenLabelOverrun"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Escape_ScreenLabelWallHealth"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fcc1e3565643046006ebe"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_TripwireEnemiesArrive"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598fd7613565643046006f31"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fd3bc3565643046006f07"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fcac13565643046006ebb"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fd3c13565643046006f08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fcac13565643046006ebb"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fd3bc3565643046006f07"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598fd35b3565643046006ecc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fd3c13565643046006f08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598fd3763565643046006ecd"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fd4813565643046006f0c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Random Point Within Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fd21b3565643046006ec9"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "598fd3c93565643046006f09"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Random Point Within Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fd21b3565643046006ec9"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5924f81e356564c42a0023e0"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_CanUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fd7883565643046006f32"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_EnemiesHitMark"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598fd35b3565643046006ecc"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598fd3bc3565643046006f07"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: 2
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598fdb0d3565643046007049"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "598fd9143565643046006f9c"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598fd3bc3565643046006f07"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fdae63565643046007048"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_TalkedToEnemies_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "598fd10f3565643046006ec1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Team Alliance"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeamAlliance"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598fcb713565643046006ebd"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "598fd6963565643046006f30"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors Within Area"
+          args {
+            call_value {
+              functionName: "Area: Region"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Region)"
+                  args {
+                    string_value: "598fd21b3565643046006ec9"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59909462356564ec6f0078fa"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "598fdb0d3565643046007049"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_ToggleBridge"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "598fdb5f356564304600704a"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Escape_ToggleBridgeBegin"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fdbb2356564304600704c"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_ReinforceHellhounds"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Escape_RoundsUntilOverrun"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 6
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isWave2Hellhound"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Random Point Within Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fd28d3565643046006ecb"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isWave2Hellhound"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59909132356564ec6f0078ef"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fdc2f356564304600704d"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_ReinforceProtectorate"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Escape_RoundsUntilOverrun"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEscapeWave2"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Random Point Within Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598fd21b3565643046006ec9"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEscapeWave2"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59909462356564ec6f0078fa"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fdcb1356564304600704e"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_ToggleBridgeBlockMovement"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Escape_ToggleBridgeBegin"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_IsNorthBridgeExtended"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cd356564ec6f0078f5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5990928a356564ec6f0078f0"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cf356564ec6f0078f6"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599092b1356564ec6f0078f1"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d0356564ec6f0078f7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599092b2356564ec6f0078f2"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d1356564ec6f0078f8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599092b3356564ec6f0078f3"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59909328356564ec6f0078f9"
+  }
+  elseActions {
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cd356564ec6f0078f5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cf356564ec6f0078f6"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d0356564ec6f0078f7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d1356564ec6f0078f8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
 }
 regions {
   name: "ThroneRoom_TriggerSouthLights"
@@ -6396,64 +9064,6 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "New Region"
-  position {
-    x: -46
-    y: -5
-    width: 4
-    height: 1
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "598f7e7635656498360045e8"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
   name: "Entryway_RemoveDoorTag"
   position {
     x: -32
@@ -6931,6 +9541,818 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "598f93e13565649836004a2a"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_RemoveDoorTag"
+  position {
+    x: -59
+    y: 52
+    width: 5
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fc5a23565643046006ea9"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_CollapseZone"
+  position {
+    x: -60
+    y: 52
+    width: 6
+    height: 8
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fcac13565643046006ebb"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_Safety"
+  position {
+    x: -56
+    y: 62
+    width: 4
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fcf903565643046006ebf"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_EnemyWarpDestWest"
+  position {
+    x: -60
+    y: 48
+    width: 3
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fd21b3565643046006ec9"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_EnemyWarpDestNorth"
+  position {
+    x: -67
+    y: 72
+    width: 2
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fd28d3565643046006ecb"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_MoveDestCaptain"
+  position {
+    x: -52
+    y: 62
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fd35b3565643046006ecc"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_MoveDestShotgun"
+  position {
+    x: -52
+    y: 66
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fd3763565643046006ecd"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_TripwireBridgeWest"
+  position {
+    x: -54
+    y: 81
+    width: 4
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "598fd7613565643046006f31"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_MoveDestHellhounds"
+  position {
+    x: -65
+    y: 70
+    width: 1
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59909132356564ec6f0078ef"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_PropBridgeW1"
+  position {
+    x: -54
+    y: 88
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5990928a356564ec6f0078f0"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_PropBridgeW2"
+  position {
+    x: -53
+    y: 88
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "599092b1356564ec6f0078f1"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_PropBridgeW3"
+  position {
+    x: -52
+    y: 88
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "599092b2356564ec6f0078f2"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_PropBridgeW4"
+  position {
+    x: -51
+    y: 88
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "599092b3356564ec6f0078f3"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Escape_MoveDestReinforceWest"
+  position {
+    x: -56
+    y: 61
+    width: 2
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59909462356564ec6f0078fa"
   }
   highlight_color {
     r: 0
@@ -7769,7 +11191,7 @@ characters {
       }
     }
     team_id: "Halferville"
-    char_name: "Halferville Soldier"
+    char_name: "Halferville Guard"
     GeneralTags: "isThroneFighter"
     pc_spawn_number: -1
     portrait {
@@ -7945,7 +11367,7 @@ characters {
       }
     }
     team_id: "Halferville"
-    char_name: "Knight Errant Captain"
+    char_name: "Halferville Captain"
     GeneralTags: "isThroneReinforcer"
     GeneralTags: "canUseDoor"
     pc_spawn_number: -1
@@ -7996,7 +11418,7 @@ characters {
       }
     }
     team_id: "Halferville"
-    char_name: "Knight Errant Mage"
+    char_name: "Halferville Mage"
     GeneralTags: "isThroneReinforcer"
     GeneralTags: "canUseDoor"
     pc_spawn_number: -1
@@ -8047,7 +11469,7 @@ characters {
       }
     }
     team_id: "Halferville"
-    char_name: "Knight Errant Guard"
+    char_name: "Halferville Guard"
     GeneralTags: "isThroneReinforcer"
     GeneralTags: "canUseDoor"
     pc_spawn_number: -1
@@ -8055,6 +11477,678 @@ characters {
       filename: ""
     }
     karma: 41
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -51
+    y: 0
+    z: 63
+  }
+  orientation: ORIENTATION_S
+  displayName: "Wall"
+  idRef {
+    id: "598fc9d73565643046006eb3"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/InvisibleActor"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 9
+        hp: 90
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeCautious
+      vulnerabilities {
+      }
+    }
+    team_id: "Wall"
+    char_name: "Weak Wall"
+    pc_spawn_number: -1
+    ai_ignores: true
+    hiring_type: HiringType_None
+    karma: 60
+    hiring_cost_override: 3000
+    has_fist: false
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave1"
+  displayName: "Escape_Wave1_Captain"
+  idRef {
+    id: "598fd3bc3565643046006f07"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecurityCaptain"
+    character_sheet_id: "Errant_Lv1_Captain"
+    equipment_sheet_id: "Errant_Lv1_Captain"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Captain"
+    GeneralTags: "isEscapeWave1"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 52
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave1"
+  displayName: "Escape_Wave1_Shotgun"
+  idRef {
+    id: "598fd3c13565643046006f08"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityRigger"
+    character_sheet_id: "Errant_Lv1_Ork_Shotgun"
+    equipment_sheet_id: "Errant_Lv1_Shotgun"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Soldier"
+    GeneralTags: "isEscapeWave1"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 41
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave1"
+  GeneralTags: "canUseDoor"
+  displayName: "Escape_Wave1_Grenadier"
+  idRef {
+    id: "598fd3c93565643046006f09"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/OrkFemaleTsangSecurityRigger"
+    character_sheet_id: "Errant_Lv1_Heavy_Explosive"
+    equipment_sheet_id: "Errant_Lv1_Explosive"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Grenadier"
+    GeneralTags: "isEscapeWave1"
+    GeneralTags: "canUseDoor"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 47
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave1"
+  GeneralTags: "canUseDoor"
+  displayName: "Escape_Wave1_Adept"
+  idRef {
+    id: "598fd4813565643046006f0c"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecuritySamurai"
+    character_sheet_id: "Adept_Lv1_Melee"
+    equipment_sheet_id: "Adept_Lv1_Melee_Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Assassin"
+    GeneralTags: "isEscapeWave1"
+    GeneralTags: "canUseDoor"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 67
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 4
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave2"
+  GeneralTags: "canUseDoor"
+  displayName: "Escape_Wave2_Shotgun"
+  idRef {
+    id: "598fd5333565643046006f0d"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/ElfFemaleTsangSecuritySniper"
+    character_sheet_id: "Errant_Lv1_Ork_Shotgun"
+    equipment_sheet_id: "Errant_Lv1_Shotgun"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Soldier"
+    GeneralTags: "isEscapeWave2"
+    GeneralTags: "canUseDoor"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 41
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 4
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave2"
+  GeneralTags: "canUseDoor"
+  displayName: "Escape_Wave2_Pistol"
+  idRef {
+    id: "598fd5953565643046006f0e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecurityCaptain"
+    character_sheet_id: "Errant_Lv1_Human_Pistol"
+    equipment_sheet_id: "Errant_Lv1_Pistol"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Soldier"
+    GeneralTags: "isEscapeWave2"
+    GeneralTags: "canUseDoor"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 41
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 4
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isEscapeWave2"
+  GeneralTags: "canUseDoor"
+  displayName: "Escape_Wave2_Sniper"
+  idRef {
+    id: "598fd60b3565643046006f10"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityMage"
+    character_sheet_id: "Errant_Lv1_Human_Sniper"
+    equipment_sheet_id: "Errant_Lv1_Sniper"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_Sniper"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Protectorate Sniper"
+    GeneralTags: "isEscapeWave2"
+    GeneralTags: "canUseDoor"
+    pc_spawn_number: -1
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    karma: 42
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -77
+    y: 0
+    z: -7
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isWave2Hellhound"
+  displayName: "Escape_Hellhound1"
+  idRef {
+    id: "598fd6473565643046006f2e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Creature/CreatureHellhound"
+    character_sheet_id: "Creature_Lv1_Hellhound"
+    equipment_sheet_id: "Hellhound_Lv1_Powers"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: -1
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "Monsters"
+    char_name: "Hellhound"
+    GeneralTags: "isWave2Hellhound"
+    pc_spawn_number: -1
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    karma: 52
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -76
+    y: 0
+    z: -7
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isWave2Hellhound"
+  displayName: "Escape_Hellhound2"
+  idRef {
+    id: "598fd6793565643046006f2f"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Creature/CreatureHellhound"
+    character_sheet_id: "Creature_Lv1_Hellhound"
+    equipment_sheet_id: "Hellhound_Lv1_Powers"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: -1
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "Monsters"
+    char_name: "Hellhound"
+    GeneralTags: "isWave2Hellhound"
+    pc_spawn_number: -1
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    karma: 52
+    hiring_cost_override: 1000
     scale_character_sheet: true
   }
 }
@@ -8082,6 +12176,54 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Escape_CanUseDoor"
+    typeName: "bool"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Escape_IsNorthBridgeExtended"
+    typeName: "bool"
+  }
+}
+variables {
+  int_value: 8
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Escape_RoundsUntilOverrun"
+    typeName: "int"
+  }
+}
+variables {
+  int_value: 8
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Escape_RoundsUntilOverrunMax"
+    typeName: "int"
+  }
+}
+variables {
+  string_value: "overrun"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Escape_ScreenLabelOverrun"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "wall_health"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Escape_ScreenLabelWallHealth"
+    typeName: "string"
+  }
+}
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 mapEvents: "Event_MatrixPlayTeleportSound"
@@ -8101,6 +12243,9 @@ mapEvents: "Event_Influence_Isas_Forgiveness"
 mapEvents: "Event_Influence_Arelia_Selfish"
 mapEvents: "Event_Influence_Arelia_Universal"
 mapEvents: "Event_Throne_DorbiLeaves"
+mapEvents: "Event_Escape_ToggleBridgeBegin"
+mapEvents: "Event_Escape_ToggleBridgeDone"
+mapEvents: "Event_Escape_WallCollapseWait"
 senseTags: "canUseDoor"
 senseTags: "isKora"
 senseTags: "isDesorn"
@@ -8108,6 +12253,11 @@ senseTags: "isValiri"
 senseTags: "isIsas"
 senseTags: "isMasato"
 senseTags: "isArelia"
+goals {
+  name: "Collapse The Tunnel Before Reinforcements Arrive"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
 worldMapLocation {
   filename: ""
   location {
@@ -8117,9 +12267,9 @@ worldMapLocation {
 }
 mapName: "ss_a2_halferville_s1"
 parentStory: ""
-scene_title: "New Scene"
+scene_title: "QUEEN UNDER THE MOUNTAIN"
 scene_subtitle: ""
-scene_synopsis: ""
+scene_synopsis: "The jewel of the Bay Area, Halferville was founded decades ago by dwarves and other metahumans who wanted their own home. They dug deep and vast tunnels far beneath the Diablo Range, driven by the twin values of economic prosperity and aesthetic beauty. Over the years, they have maintained a proud independence from the megacorps who rule the surface, forging their own destiny deep underground.\n\nAs California plunges into civil war, Halferville has grown increasingly grateful for its mayor, a fiery demogogue and mage named Dorbi. Her blunt decrees and personal strength have frightened off many of the same forces that are decimating metahuman communities on the surface. Time will tell if her unorthodox strategies can continue to hold Saito at bay.\n\nKora shows your team the entrance to a neglected access tunnel leading from Berkeley to the border of Halferville. The journey is quiet and foreboding, as your party grows increasingly aware of the tons of rocks suspended above their heads.\n"
 scene_image: ""
 scene_continue_button_skip: false
 scene_restore_runner_health: false
@@ -8145,12 +12295,16 @@ team_affiliations {
   affiliation: 0
   affiliation: 1
   affiliation: 0
+  affiliation: 0
+  affiliation: 1
 }
 team_affiliations {
   team_name: "Halferville"
   affiliation: 0
   affiliation: 0
   affiliation: 1
+  affiliation: 0
+  affiliation: 0
   affiliation: 0
 }
 team_affiliations {
@@ -8159,10 +12313,32 @@ team_affiliations {
   affiliation: 1
   affiliation: 0
   affiliation: 0
+  affiliation: 0
+  affiliation: 1
 }
 team_affiliations {
   team_name: "Civilians"
   affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "Wall"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "Monsters"
+  affiliation: 1
+  affiliation: 0
+  affiliation: 1
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -8177,8 +12353,6 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 50
   heat_response_rating: 0
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
@@ -8197,6 +12371,6 @@ override_hiring_average_cost: true
 show_equip_screen_on_scene_load: false
 is_persistant: false
 is_persistant_has_value: false
-can_move_outside_camera_regions: true
-can_start_before_triggers: true
+can_move_outside_camera_regions: false
+can_start_before_triggers: false
 can_use_team_advancement: false
