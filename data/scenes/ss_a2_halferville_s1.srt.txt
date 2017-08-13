@@ -5812,177 +5812,6 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Escape_ToggleBridgeStatus"
-  events {
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "Event_Escape_ToggleBridgeBegin"
-      }
-    }
-  }
-  conditions {
-  }
-  actions {
-    ops {
-      functionName: "Play Sound"
-      args {
-        call_value {
-          functionName: "Get Map Item (Sound)"
-          args {
-            string_value: "HongKong:props"
-          }
-          args {
-            string_value: "turbineon"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Fade Camera Out"
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 0
-      }
-    }
-    ops {
-      functionName: "Send Event After Delay"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "Event_Escape_ToggleBridgeDone"
-          }
-        }
-      }
-      args {
-        float_value: 3
-      }
-    }
-    ops {
-      functionName: "Set Variable (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "Escape_IsNorthBridgeExtended"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Invert Bool"
-          args {
-            call_value {
-              functionName: "Get Variable (bool)"
-              args {
-                string_value: "Escape_IsNorthBridgeExtended"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Prop Visible"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "59259540356564c42a002565"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "Escape_IsNorthBridgeExtended"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DoesOrDoesNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Prop Visible"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "598fc69c3565643046006ead"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Invert Bool"
-          args {
-            call_value {
-              functionName: "Get Variable (bool)"
-              args {
-                string_value: "Escape_IsNorthBridgeExtended"
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DoesOrDoesNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Fade Camera In"
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 1
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "598fc7043565643046006eae"
-  }
-  elseActions {
-  }
-  is_oneshot: false
-}
-triggers {
   name: "Escape_PositionOverrun"
   events {
     ops {
@@ -6482,6 +6311,39 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Clear Waypoint from Prop"
       args {
         call_value {
@@ -6553,10 +6415,21 @@ triggers {
       }
     }
     ops {
+      functionName: "Trigger: Wait for Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Escape_WallCollapseWait"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Teleport Actor"
       args {
         call_value {
-          functionName: "All Actors Including Some"
+          functionName: "All Actors Which Overlap"
           args {
             call_value {
               functionName: "All Actors on Team"
@@ -6736,6 +6609,71 @@ triggers {
       }
     }
     ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors Within Area"
+          args {
+            call_value {
+              functionName: "Area: Region"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Region)"
+                  args {
+                    string_value: "598fd21b3565643046006ec9"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Prop Visible by Tag"
       args {
         call_value {
@@ -6783,39 +6721,6 @@ triggers {
       }
       args {
         float_value: 0
-      }
-    }
-    ops {
-      functionName: "Set Goal Status"
-      args {
-        call_value {
-          functionName: "Get Map Item (Goal)"
-          args {
-            string_value: "Collapse The Tunnel Before Reinforcements Arrive"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "GoalStatus"
-          }
-          args {
-            int_value: 2
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
       }
     }
     ops {
@@ -7629,6 +7534,188 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "Escape_ToggleBridgeStatus"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Escape_ToggleBridgeBegin"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "turbineon"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Escape_ToggleBridgeDone"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait for Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Escape_ToggleBridgeDone"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_IsNorthBridgeExtended"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Invert Bool"
+          args {
+            call_value {
+              functionName: "Get Variable (bool)"
+              args {
+                string_value: "Escape_IsNorthBridgeExtended"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59259540356564c42a002565"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_IsNorthBridgeExtended"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "598fc69c3565643046006ead"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Invert Bool"
+          args {
+            call_value {
+              functionName: "Get Variable (bool)"
+              args {
+                string_value: "Escape_IsNorthBridgeExtended"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 2
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fc7043565643046006eae"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "Escape_ToggleBridge"
   events {
     ops {
@@ -7663,6 +7750,253 @@ triggers {
     id: "598fdbb2356564304600704c"
   }
   elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Escape_ToggleBridgeBlockMovement"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Escape_ToggleBridgeBegin"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Escape_IsNorthBridgeExtended"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cd356564ec6f0078f5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5990928a356564ec6f0078f0"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cf356564ec6f0078f6"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599092b1356564ec6f0078f1"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d0356564ec6f0078f7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599092b2356564ec6f0078f2"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d1356564ec6f0078f8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599092b3356564ec6f0078f3"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59909328356564ec6f0078f9"
+  }
+  elseActions {
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cd356564ec6f0078f5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092cf356564ec6f0078f6"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d0356564ec6f0078f7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599092d1356564ec6f0078f8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "598f92733565649836004a24"
+              }
+            }
+          }
+        }
+      }
+    }
   }
   is_oneshot: false
 }
@@ -8051,253 +8385,6 @@ triggers {
   elseActions {
   }
   is_oneshot: true
-}
-triggers {
-  name: "Escape_ToggleBridgeBlockMovement"
-  events {
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "Event_Escape_ToggleBridgeBegin"
-      }
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "Escape_IsNorthBridgeExtended"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092cd356564ec6f0078f5"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "5990928a356564ec6f0078f0"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092cf356564ec6f0078f6"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "599092b1356564ec6f0078f1"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092d0356564ec6f0078f7"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "599092b2356564ec6f0078f2"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092d1356564ec6f0078f8"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "599092b3356564ec6f0078f3"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "59909328356564ec6f0078f9"
-  }
-  elseActions {
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092cd356564ec6f0078f5"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "598f92733565649836004a24"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092cf356564ec6f0078f6"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "598f92733565649836004a24"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092d0356564ec6f0078f7"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "598f92733565649836004a24"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Move Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "599092d1356564ec6f0078f8"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "598f92733565649836004a24"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  is_oneshot: false
 }
 triggers {
   name: "Escape_DebugShowWallStrength"
@@ -11701,8 +11788,8 @@ characters {
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
-        body: 9
-        hp: 90
+        body: 4
+        hp: 40
         morale: 0
         discipline: 0
         awareness: 0
@@ -11725,7 +11812,7 @@ characters {
     pc_spawn_number: -1
     ai_ignores: true
     hiring_type: HiringType_None
-    karma: 60
+    karma: 20
     hiring_cost_override: 3000
     has_fist: false
   }
@@ -12480,7 +12567,7 @@ mapName: "ss_a2_halferville_s1"
 parentStory: ""
 scene_title: "QUEEN UNDER THE MOUNTAIN"
 scene_subtitle: ""
-scene_synopsis: "The jewel of the Bay Area, Halferville was founded decades ago by dwarves and other metahumans who wanted their own home. They dug deep and vast tunnels far beneath the Diablo Range, driven by the twin values of economic prosperity and aesthetic beauty. Over the years, they have maintained a proud independence from the megacorps who rule the surface, forging their own destiny deep underground.\n\nAs California plunges into civil war, Halferville has grown increasingly grateful for its mayor, a fiery demogogue and mage named Dorbi. Her blunt decrees and personal strength have frightened off many of the same forces that are decimating metahuman communities on the surface. Time will tell if her unorthodox strategies can continue to hold Saito at bay.\n\nKora shows your team the entrance to a neglected access tunnel leading from Berkeley to the border of Halferville. The journey is quiet and foreboding, as your party grows increasingly aware of the tons of rocks suspended above their heads.\n"
+scene_synopsis: "The jewel of the Bay Area, Halferville was founded decades ago by dwarves and other metahumans who wanted their own home. They dug deep and vast tunnels far beneath the Diablo Range, driven by the twin values of economic prosperity and aesthetic beauty. Over the years, they have maintained a proud independence from the megacorps who rule the surface, forging their own destiny deep underground.\n\nAs California plunges into civil war, Halferville has grown increasingly grateful for its mayor, a fiery demogogue and mage named Dorbi. Her blunt decrees and personal strength have frightened off many of the same forces that are decimating metahuman communities on the surface. Time will tell if her unorthodox strategies can continue to hold Saito at bay.\n\nKora leads your team to a neglected access tunnel, providing a covert route from Berkeley to the border of Halferville. The journey is quiet and foreboding, as your party grows increasingly aware of the tons of rocks suspended above their heads.\n"
 scene_image: ""
 scene_continue_button_skip: false
 scene_restore_runner_health: false
