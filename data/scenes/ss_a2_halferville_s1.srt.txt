@@ -5556,6 +5556,63 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Throne_MageEndTurnOnRegionEnter"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598f93dd3565649836004a27"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "598f7fb135656498360045f0"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "End Current Actor Turn"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598fa35c3565643046006d33"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "ThroneRoom_TriggerSouthLights"
   position {
@@ -7861,6 +7918,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isThroneReinforcer"
+  GeneralTags: "canUseDoor"
   displayName: "Throne_ReinforcerCaptain"
   idRef {
     id: "598f85993565649836004603"
@@ -7890,9 +7948,10 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Halferville"
     char_name: "Knight Errant Captain"
     GeneralTags: "isThroneReinforcer"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -7910,6 +7969,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isThroneReinforcer"
+  GeneralTags: "canUseDoor"
   displayName: "Throne_ReinforcerMage"
   idRef {
     id: "598f859d3565649836004604"
@@ -7939,9 +7999,10 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Halferville"
     char_name: "Knight Errant Mage"
     GeneralTags: "isThroneReinforcer"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -7959,6 +8020,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isThroneReinforcer"
+  GeneralTags: "canUseDoor"
   displayName: "Throne_ReinforcerPistol"
   idRef {
     id: "598f85a53565649836004605"
@@ -7988,9 +8050,10 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Halferville"
     char_name: "Knight Errant Guard"
     GeneralTags: "isThroneReinforcer"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
