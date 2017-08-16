@@ -384,6 +384,31 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-QuestUpgradeClubFloorStarted"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -12043,7 +12068,30 @@ triggers {
       }
     }
     ops {
-      functionName: "No Effect"
+      functionName: "Set Animation Stance"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "StanceType"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -12053,6 +12101,44 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Hall_EnlothReanimatesAfterConvo"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5992faac356564c466000f72"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/decking_idle"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5993b9113565640077002fa9"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "ThroneRoom_TriggerSouthLights"
@@ -17807,7 +17893,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Berlin:Gangers/ElfFemaleBerlinGanger"
+    prefab_name: "Berlin:Creatures/CreatureDogFriendly"
     character_sheet_id: "Adept_Lv1_HtH"
     character_mod {
       stats {
@@ -17852,6 +17938,9 @@ characters {
     ai_ignores: true
     uninjurable: true
     unkillable: true
+    portrait {
+      filename: "npc_dog_dante"
+    }
     karma: 72
     hide_floaties: true
     has_fist: false
@@ -19240,6 +19329,9 @@ characters {
     pc_spawn_number: -1
     unkillable: false
     hiring_type: HiringType_None
+    portrait {
+      filename: "pc_dwarfmale_04_fantasybeard"
+    }
     portrait_code_override: "s5h9c5b12c5t0"
     karma: 6
     hiring_cost_override: 3000

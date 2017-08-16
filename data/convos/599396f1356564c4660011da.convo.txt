@@ -15,6 +15,24 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_cast_buff"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -23,7 +41,7 @@ nodes {
   index: 1
   text: ""
   branches {
-    responseText: "I\342\200\231m $(l.name)."
+    responseText: "I\342\200\231m $(s.name)."
     nextNodeIndex: 2
     idRef {
       id: "599396f1356564c4660011da:59939709356564c4660011ee"
@@ -32,6 +50,7 @@ nodes {
   branches {
     responseText: "What do you do here?"
     nextNodeIndex: 4
+    onlyOnce: true
     idRef {
       id: "599396f1356564c4660011da:59939744356564c4660011fa"
     }
@@ -156,6 +175,7 @@ nodes {
       }
     }
     nextNodeIndex: 13
+    hideIfUnavailable: true
     idRef {
       id: "599396f1356564c4660011da:59939c4a356564c466001426"
     }
@@ -300,7 +320,7 @@ nodes {
   index: 7
   text: ""
   branches {
-    responseText: "{CC}}Etiquette: Academic{{/CC}} Surely a great leader such as Dorbi will seek to emulate the wise rulers of the past? Like the great King Neden, who certainly never turned his back on the struggles of the surface!"
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} Surely a great leader such as Dorbi will seek to emulate the wise rulers of the past? Like the great King Neden, who certainly never turned his back on the struggles of the surface!"
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -406,13 +426,13 @@ nodes {
     }
   }
   branches {
-    responseText: "{{CC}}Metatype: Dwarf{{/CC}} All my life, I have wanted a role model to emulate like Dorbi! Please do not deprive me of this chance to be proud of my heritage!"
+    responseText: "{{CC}}Metatype: Dwarf{{/CC}} All my life, I have wanted a role model like Dorbi, someone to emulate and admire ! Please do not deprive me of this chance to be proud of my heritage!"
     conditions {
       ops {
         functionName: "Compare Actor Race"
         args {
           call_value {
-            functionName: "Triggering Target Actor"
+            functionName: "Triggering Actor"
           }
         }
         args {
@@ -447,52 +467,6 @@ nodes {
   }
   branches {
     responseText: "Come on, we need her help! And yours!"
-    conditions {
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 18
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 2
-            }
-          }
-        }
-        args {
-          int_value: 0
-        }
-      }
-    }
     nextNodeIndex: 12
     idRef {
       id: "599396f1356564c4660011da:59939892356564c46600127f"
@@ -594,6 +568,28 @@ nodes {
           functionName: "Get Map Item (Animation)"
           args {
             string_value: "HongKong:General/standing_jackin_rigging"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Throne_CanUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -700,7 +696,7 @@ nodes {
         functionName: "Compare Actor Race"
         args {
           call_value {
-            functionName: "Triggering Target Actor"
+            functionName: "Triggering Actor"
           }
         }
         args {
