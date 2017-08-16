@@ -1,0 +1,228 @@
+idRef {
+  id: "599390df356564c466000f97"
+}
+ui_name: "ss_a2_halferville_s1-Hall_Guard"
+nodes {
+  idRef {
+    id: "59939103356564c466000fa3"
+  }
+  index: 0
+  text: "Move along."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "599390df356564c466000f97:59939104356564c466000fa5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599390df356564c466000f97:59939104356564c466000fa7"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "We need to speak with Dorbi."
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "599390df356564c466000f97:5993910e356564c466000fab"
+    }
+  }
+  branches {
+    responseText: "We\342\200\231re coming in, like it or not! {{GM}}Attack.{{/GM}}"
+    nextNodeIndex: 3
+    idRef {
+      id: "599390df356564c466000f97:59939165356564c466000fb8"
+    }
+  }
+  branches {
+    responseText: "I\342\200\231ll be back."
+    nextNodeIndex: -1
+    idRef {
+      id: "599390df356564c466000f97:59939165356564c466000fba"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Inner loop"
+}
+nodes {
+  idRef {
+    id: "599390df356564c466000f97:5993910e356564c466000fad"
+  }
+  index: 2
+  text: "Our leader is very busy, and you aren\342\200\231t on the list of supplicants. If you have a petition, Dorbi should be available to hear your case in\342\200\246\n\n{{GM}}He consults a datapad.{{/GM}}\n\nEleven weeks."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599390df356564c466000f97:59939121356564c466000fb5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackin_rigging"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599391ac356564c466000fbd"
+  }
+  index: 3
+  text: "INTRUDERS!\n\n{{GM}}The guards draw their weapons as an alarm rings out. You hear the scuffling of feet behind you as civilians flee into the tunnels.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "alarmtwice"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isHallCivilianFx"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isHallCivilian"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59939436356564c466000ff7"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "599390df356564c466000f97:599390e0356564c466000f9b"
+  }
+}

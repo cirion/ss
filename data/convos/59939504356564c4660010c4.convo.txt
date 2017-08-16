@@ -1,0 +1,332 @@
+idRef {
+  id: "59939504356564c4660010c4"
+}
+ui_name: "ss_a2_halferville_s1-Hall_AlexanderFalk"
+nodes {
+  idRef {
+    id: "5993958e356564c4660010d5"
+  }
+  index: 0
+  text: "{{GM}}The dwarf examines you cautiously.{{/GM}}\n\nHello. Did you need something?"
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59939504356564c4660010c4:5993958f356564c4660010d7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59939504356564c4660010c4:5993958f356564c4660010d9"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Who are you?"
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "59939504356564c4660010c4:59939591356564c4660010dd"
+    }
+  }
+  branches {
+    responseText: "What are you doing here?"
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59939504356564c4660010c4:599395a5356564c4660010e3"
+    }
+  }
+  branches {
+    responseText: "Can you help us get in to see Dorbi?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Escape_CanUseDoor"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    idRef {
+      id: "59939504356564c4660010c4:599395a8356564c4660010ec"
+    }
+  }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59939504356564c4660010c4:599396da356564c4660011a1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Inner loop"
+}
+nodes {
+  idRef {
+    id: "59939504356564c4660010c4:59939591356564c4660010df"
+  }
+  index: 2
+  text: "Alexander Falk, support mage, at your service. I\342\200\231ve mostly retired from the shadowrunning life, if that\342\200\231s why you\342\200\231re here.\n\nBut if you want to hear hair-raising tales from the Seattle shadows, I\342\200\231d be happy to share some over a pint."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59939504356564c4660010c4:599395a3356564c4660010e1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59939504356564c4660010c4:599395a5356564c4660010e5"
+  }
+  index: 3
+  text: "Supplemental security. The Dorbi administration has generously provided me with severely discounted lodgings and meals, in exchange for being on call to respond to threats.\n\nGiven everything happening in the world, it sounds like I\342\200\231ll be earning my keep in the months and years to come."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59939504356564c4660010c4:599395a5356564c4660010e7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59939504356564c4660010c4:599395a8356564c4660010ee"
+  }
+  index: 4
+  text: "Sorry, but I don\342\200\231t know you. I can\342\200\231t risk my reputation by speaking for an unvetted and heavily armed gang."
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} I know all about what went down with the Emerald City Ripper and the Brotherhood. It takes an unvetted and heavily armed gang to solve the worst problems."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59939504356564c4660010c4:599395a8356564c4660010f0"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Conjuring: $(story.Global-Skillcheck_Easy){{/CC}} You obviously care about supporting your team, just like me. I\342\200\231m looking to help people, not hurt them."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 7
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59939504356564c4660010c4:5993969a356564c466001151"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Please?"
+    nextNodeIndex: 7
+    idRef {
+      id: "59939504356564c4660010c4:599396c3356564c466001171"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59939504356564c4660010c4:599395ec356564c466001109"
+  }
+  index: 5
+  text: "I suppose you\342\200\231re all right.\n\n{{GM}}He shrugs.{{/GM}}\n\nAnd, if you do end up making a mess, then I\342\200\231ll have another opportunity to bill for my services."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59939504356564c4660010c4:599395ec356564c46600110b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59939614356564c466001110"
+  }
+  index: 6
+  text: "{{GM}}He taps into his commlink.{{/GM}}\n\nI\342\200\231ve notified the door security personnel that you\342\200\231re to be trusted.\n\nDon\342\200\231t make me regret this."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackin_rigging"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59939033356564c466000f8b"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599396cb356564c466001174"
+  }
+  index: 7
+  text: "Sorry, no."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59939504356564c4660010c4:599396d0356564c466001176"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59939504356564c4660010c4:59939504356564c4660010c8"
+  }
+}
