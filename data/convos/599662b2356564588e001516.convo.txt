@@ -1,0 +1,256 @@
+idRef {
+  id: "599662b2356564588e001516"
+}
+ui_name: "ss_a2_halferville_s1-Entry_PostFight"
+nodes {
+  idRef {
+    id: "599662d7356564588e001522"
+  }
+  index: 0
+  text: "We appreciate the assistance\342\200\246 who are you, exactly?"
+  branches {
+    responseText: "Just an interested party."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Self"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "599662b2356564588e001516:599662dc356564588e001524"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "$(l.name), pleased to meet you."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Marines"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "599662b2356564588e001516:599662ed356564588e00152a"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "They call me the Humanis Harvester."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Self"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "599662b2356564588e001516:599662ed356564588e00152c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599662ef356564588e00152f"
+  }
+  index: 1
+  text: "Hm, an outsider. We usually aren\342\200\231t very keen on uninvited guests wandering these tunnels, but you seem to be all right.\n\nWhat are you doing here?"
+  branches {
+    responseText: "I\342\200\231d like an audience with the mayor."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Kora_Leadership"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "599662b2356564588e001516:599662f0356564588e001531"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m here to visit Dorbi."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Kora_Support"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "599662b2356564588e001516:59966358356564588e001550"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Take me to your leader!"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Kora_Leadership"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "599662b2356564588e001516:59966358356564588e001552"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599662b2356564588e001516:599662f0356564588e001533"
+  }
+  index: 2
+  text: "Really? You WANT to visit her?\n\nYou must be one brave $(l.race), taking a risk like that.\n\n{{GM}}$+(s.he) points down the corridor.{{/GM}}\n\nShe\342\200\231s overseeing operations from the main hall. I should warn you, though, that she\342\200\231s been cracking down lately on outsiders. I doubt you can just walk right in and meet her."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "599662b2356564588e001516:599662f9356564588e001537"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "No Effect"
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599662b2356564588e001516:599662f9356564588e001539"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} Are there any other threat factors we should account for?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "599662b2356564588e001516:599662fe356564588e00153b"
+    }
+  }
+  branches {
+    responseText: "Thanks."
+    nextNodeIndex: -1
+    idRef {
+      id: "599662b2356564588e001516:599663d5356564588e00158b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Inner loop."
+}
+nodes {
+  idRef {
+    id: "599662b2356564588e001516:599662fe356564588e00153d"
+  }
+  index: 4
+  text: "{{GM}}$+(s.he) looks evasive, avoiding eye contact.{{/GM}}\n\nNothing we\342\200\231re concerned about, but you might want to keep watch on your perimeter. We\342\200\231re not alone down here, and some forces won\342\200\231t be particularly welcoming to a group of unidentified and uncredentialed metahumans wandering these halls."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "599662b2356564588e001516:599663cd356564588e001580"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "599662b2356564588e001516:599662b2356564588e00151a"
+  }
+}
