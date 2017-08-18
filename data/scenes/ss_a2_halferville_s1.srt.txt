@@ -252,7 +252,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor Reference)"
           args {
-            string_value: "5982758c3565648007005f24"
+            string_value: "5996703c356564588e0016f7"
           }
         }
       }
@@ -1758,7 +1758,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598f851a3565649836004602"
+            string_value: "598f7eb135656498360045eb"
           }
         }
       }
@@ -1769,7 +1769,18 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "598f7eb135656498360045eb"
+            string_value: "5996672d356564588e0015fa"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "598f851a3565649836004602"
           }
         }
       }
@@ -14069,7 +14080,7 @@ triggers {
         float_value: 3
       }
       args {
-        float_value: 0
+        float_value: 3
       }
     }
     ops {
@@ -14115,7 +14126,7 @@ triggers {
         float_value: 3
       }
       args {
-        float_value: 3
+        float_value: 7
       }
     }
     ops {
@@ -14161,7 +14172,7 @@ triggers {
         float_value: 3
       }
       args {
-        float_value: 6
+        float_value: 11
       }
     }
     ops {
@@ -14179,7 +14190,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Order Actor to Hunt And Destroy (Team)"
+      functionName: "Order Actor to Move To (Region)"
       args {
         call_value {
           functionName: "All Actors With Tag"
@@ -14206,20 +14217,20 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "Get Map Item (Region)"
           args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 2
+            string_value: "599666f3356564588e0015f8"
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Map Item (SceneDimension)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Default"
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -14505,10 +14516,124 @@ triggers {
 triggers {
   name: "Entry_HumanisDefeated"
   events {
+    ops {
+      functionName: "On Actor Death"
+    }
   }
   conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isHumanis"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
   }
   actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5996641f356564588e0015a5"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "599662b2356564588e001516"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEntryHalferville"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -14528,6 +14653,44 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Set Actor Floaties"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEntryHalferville"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
     ops {
       functionName: "Set Actor In Passive Mode"
       args {
@@ -14613,9 +14776,6 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
-    }
-    ops {
       functionName: "Delete Prop"
       args {
         call_value {
@@ -14624,6 +14784,31 @@ triggers {
             string_value: "59965898356564588e001372"
           }
         }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
       }
     }
   }
@@ -14644,13 +14829,93 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "59965fca356564588e0014ec"
+            string_value: "59965fa3356564588e0014eb"
           }
         }
       }
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isHumanis"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isEntryHalferville"
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -14737,42 +15002,145 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Entry_RemoveDoorTag"
+  name: "Entry_AtLeastOneHalfervilleSurvives"
   events {
     ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "598f7eb135656498360045eb"
-          }
-        }
-      }
+      functionName: "On Actor Death"
     }
   }
   conditions {
-  }
-  actions {
     ops {
-      functionName: "Remove Tag from Actor"
+      functionName: "Comparison (int)"
       args {
         call_value {
-          functionName: "Get Map Item (SenseTagList)"
+          functionName: "Get Count of Alive Actors"
           args {
-            string_value: "canUseDoor"
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isHalferville"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isHumanis"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Unkillable"
       args {
         call_value {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isHalferville"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (Player)"
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
             }
           }
           args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -14780,11 +15148,11 @@ triggers {
   }
   isActive: true
   idRef {
-    id: "599664d7356564588e0015a7"
+    id: "59966840356564588e001613"
   }
   elseActions {
   }
-  is_oneshot: false
+  is_oneshot: true
 }
 regions {
   name: "ThroneRoom_TriggerSouthLights"
@@ -18879,10 +19247,10 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "Entry_MoveDestHalfervillePostFight"
+  name: "Entry_RemoveHalfervillePostFight"
   position {
-    x: -32
-    y: 1
+    x: -24
+    y: 8
     width: 2
     height: 2
   }
@@ -18937,19 +19305,77 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "Entry_KillHalferville"
+  name: "Entry_MoveDestHalferville1"
   position {
-    x: -34
+    x: -27
     y: 1
-    width: 4
-    height: 3
+    width: 3
+    height: 4
   }
   enabledAtStart: true
   is_camera_region: false
   is_matrix_node: false
   is_vfx_fill_region: false
   idRef {
-    id: "59965fca356564588e0014ec"
+    id: "599666f3356564588e0015f8"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Entry_RemoveDoorTagHalferville"
+  position {
+    x: -35
+    y: 6
+    width: 5
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5996672d356564588e0015fa"
   }
   highlight_color {
     r: 0
@@ -23553,9 +23979,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -38
+    x: -35
     y: 0
-    z: -14
+    z: -10
   }
   orientation: ORIENTATION_S
   GeneralTags: "isHumanis"
@@ -23604,9 +24030,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -38
+    x: -35
     y: 0
-    z: -13
+    z: -9
   }
   orientation: ORIENTATION_S
   GeneralTags: "isHumanis"
@@ -23655,9 +24081,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -38
+    x: -35
     y: 0
-    z: -15
+    z: -11
   }
   orientation: ORIENTATION_S
   GeneralTags: "isHumanis"
@@ -23703,9 +24129,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -40
+    x: -37
     y: 0
-    z: -14
+    z: -10
   }
   orientation: ORIENTATION_S
   GeneralTags: "isHumanis"
@@ -23757,6 +24183,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isEntryHalferville"
+  GeneralTags: "canUseDoor"
   displayName: "Entry_Halferville_Mage"
   idRef {
     id: "59965e9d356564588e0014e7"
@@ -23789,6 +24216,7 @@ characters {
     team_id: "Halferville"
     char_name: "Halferville Mage"
     GeneralTags: "isEntryHalferville"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -23806,6 +24234,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isEntryHalferville"
+  GeneralTags: "canUseDoor"
   displayName: "Entry_Halferville_Rigger"
   idRef {
     id: "59965eb5356564588e0014e8"
@@ -23877,8 +24306,9 @@ characters {
       }
     }
     team_id: "Halferville"
-    char_name: "Knight Errant Rigger"
+    char_name: "Halferville Rigger"
     GeneralTags: "isEntryHalferville"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -23899,6 +24329,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isEntryHalferville"
+  GeneralTags: "canUseDoor"
   displayName: "Entry_Halferville_Captain"
   idRef {
     id: "59965ed8356564588e0014e9"
@@ -23931,8 +24362,9 @@ characters {
     team_id: "Halferville"
     char_name: "Halferville Captain"
     GeneralTags: "isEntryHalferville"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
-    unkillable: true
+    unkillable: false
     portrait {
       filename: ""
     }
@@ -23943,9 +24375,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -40
+    x: -37
     y: 0
-    z: -15
+    z: -11
   }
   orientation: ORIENTATION_S
   GeneralTags: "isHumanis"
@@ -23989,6 +24421,103 @@ characters {
     }
     karma: 47
     scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -28
+    y: 0
+    z: -10
+  }
+  orientation: ORIENTATION_S
+  displayName: "Debug_Valiri"
+  idRef {
+    id: "5996703c356564588e0016f7"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/ElfFemale"
+    character_sheet_id: "crew_valiri_lv1"
+    equipment_sheet_id: "crew_valiri_lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Shadowrunners"
+    char_name: "Valiri"
+    GeneralTags: "isValiri"
+    GeneralTags: "isCrew"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "pc_elffemale_01hk_shaman"
+    }
+    description_bio: "A battle-tested shaman."
+    portrait_code_override: "s4h3c11b0c0t0"
+    karma: 75
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Combat Shaman"
+    id: "crew_lv1_valiri"
   }
 }
 variables {
