@@ -410,7 +410,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59908969356564ec6f007872"
   }
@@ -6049,6 +6049,39 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "599302af356564c466000f86"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5924f81e356564c42a0023e0"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -7713,6 +7746,94 @@ triggers {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599512a43565642487005dcc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599654e7356564588e00136b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
           }
           args {
             int_value: 0
@@ -10823,7 +10944,18 @@ triggers {
       functionName: "Evaluate If Actor is Inside Region"
       args {
         call_value {
-          functionName: "All Actors"
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 5
+              }
+            }
+          }
           args {
             call_value {
               functionName: "Get Preset Value (int)"
@@ -10832,6 +10964,14 @@ triggers {
               }
               args {
                 int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
               }
             }
           }
@@ -12908,6 +13048,128 @@ triggers {
   isActive: true
   idRef {
     id: "5995a4b53565642487006208"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_RemoveWaypoint"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5924f81e356564c42a0023e0"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59965438356564588e00136a"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Escape_RemoveHalferville"
+  events {
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "599654e7356564588e00136b"
   }
   elseActions {
   }
@@ -21087,46 +21349,6 @@ characters {
     }
     portrait_code_override: "s4h17c5b0c0t0"
     karma: 72
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -28
-    y: 0
-    z: -10
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "5994e76a3565641086001cd1"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Objects/SecurityCam"
-    character_sheet_id: "Camera"
-    character_mod {
-      stats {
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Shadowrunners"
-    char_name: "Camera"
-    pc_spawn_number: -1
-    ai_ignores: true
-    uninjurable: true
-    unkillable: true
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-    is_prop_character: true
-    hide_floaties: true
   }
 }
 characters {
