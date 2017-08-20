@@ -1,0 +1,58 @@
+id: "Fist 2 Cursed Knife"
+type: ItemType_Unarmed
+uirep {
+  icon: "icon_melee_spikedfist"
+  name: "Cursed Knife"
+  description: "Unarmed: Causes minor bleeding to target on impact, with DMG of your Strength + 1. May do AP DMG on critical hits. Target becomes unlucky, decreasing their chance to hit."
+}
+anim_type: AnimType_Unarmed
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Unarmed
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_CloseCombat >= 3"
+prereqStrings: "Player.RACE != RACE.DRONE"
+prereqStrings: "Player.RACE != RACE.FREEDRONE"
+prereqStrings: "TAG.isDesorn NOT_EXISTS"
+maxAmmo: 0
+baseHPDamage: 1
+baseAPDamage: 0
+rangeModTable: 10
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "DC Wound (Unarmed)"
+abilityModes: "DC Killing Hands (Unarmed)"
+abilityModes: "DC Killing Hands (Passive)"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Bleeding: HP -2 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -2
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Unlucky"
+  }
+  stackingCategory: "Nerve"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -6
+  }
+  fxScript: "AcidBurnStatus"
+  is_debuff: true
+}
+store_cost: 500
+sorting_group: "Unique"

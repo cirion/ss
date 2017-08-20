@@ -1,0 +1,666 @@
+idRef {
+  id: "5999c707356564f89f00139c"
+}
+ui_name: "ss_a2_piedmont_s1-Graveyard_Coffin"
+nodes {
+  idRef {
+    id: "5999c723356564f89f0013a8"
+  }
+  index: 0
+  text: "The coffin is shut tight."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "5999c707356564f89f00139c:5999c811356564f89f0013d1"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5999c813356564f89f0013d4"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}Strength: $(story.Global-Skillcheck_Hard){{/CC}} {{GM}}Pry open the lid.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "5999c707356564f89f00139c:5999c741356564f89f0013aa"
+    }
+  }
+  branches {
+    responseText: "Desorn, would you open this coffin?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c81133565640023005f74"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5999c707356564f89f00139c:5999c7f7356564f89f0013cf"
+    }
+  }
+  branches {
+    responseText: "Arelia, can you pop that open for me?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c81133565640023005f74"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5999c707356564f89f00139c:5999c7d6356564f89f0013ca"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "5999c707356564f89f00139c:5999d1b8356564347b002e78"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Inner loop"
+}
+nodes {
+  idRef {
+    id: "5999c788356564f89f0013b9"
+  }
+  index: 2
+  text: "The lid cracks open. Despite having been sealed, it looks like no body was ever placed in here, only some valuables."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5999c79e356564f89f0013c1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "SecretWall_Open"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5999c82f356564f89f0013e1"
+  }
+  index: 3
+  text: "{{GM}}He stares at you, aghast.{{/GM}}\n\nNo! This is sacred ground. I will not be a part of this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "5999c707356564f89f00139c:5999c856356564f89f0013e3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isDesorn"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isDesorn"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5999c7ed356564f89f0013cd"
+  }
+  index: 4
+  text: "{{GM}}She looks at you in horror.{{/GM}}\n\nAre you serious?! I don\342\200\231t want to desecrate the final resting place of some poor soul!"
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} The dead have no more use for any valuables. Better that they serve the living."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5999c707356564f89f00139c:5999c894356564f89f001414"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Spirit Control: $(story.Global-Skillcheck_Easy){{/CC}} Don\342\200\231t worry about it. I can hold any angry spirits at bay."
+    conditions {
+      ops {
+        functionName: "Compare Actor Specialization"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSpecializations"
+            }
+            args {
+              int_value: 7
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Easy"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "5999c707356564f89f00139c:5999c894356564f89f001416"
+    }
+  }
+  branches {
+    responseText: "That\342\200\231s too bad."
+    nextNodeIndex: 6
+    idRef {
+      id: "5999c707356564f89f00139c:5999c895356564f89f001418"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I don\342\200\231t want you to be uncomfortable."
+    nextNodeIndex: 6
+    idRef {
+      id: "5999c707356564f89f00139c:5999c895356564f89f00141a"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Aww, you\342\200\231re no fun!"
+    nextNodeIndex: 6
+    idRef {
+      id: "5999c707356564f89f00139c:5999c895356564f89f00141c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isArelia"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isArelia"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5999c8ff356564f89f00141f"
+  }
+  index: 5
+  text: "Well\342\200\246 all right, if it will help the team."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "5999c707356564f89f00139c:5999c901356564f89f001421"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "5999d2a4356564347b002f1e"
+  }
+  index: 6
+  text: "She shivers and crosses her arms."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "5999c707356564f89f00139c:5999d2a6356564347b002f20"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceWithTagInScene: "isArelia"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isArelia"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_cast_buff_chi"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "5999c707356564f89f00139c:5999c707356564f89f0013a0"
+  }
+}
