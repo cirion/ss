@@ -15395,8 +15395,11 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Alley_SetStage"
+  name: "Alley_SetStage_OFF"
   events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
   }
   conditions {
   }
@@ -15666,8 +15669,41 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Unseal the Gate"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "599a2adb3565646c650030e5"
   }
@@ -15829,6 +15865,39 @@ triggers {
         float_value: 0
       }
     }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Unseal the Gate"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -15955,6 +16024,52 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isInitialAlley"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "593c5a34356564841d001a66"
           }
         }
       }
@@ -16588,7 +16703,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor Reference)"
           args {
-            string_value: "5999aac4356564248b003209"
+            string_value: "5999aab5356564248b003208"
           }
         }
       }
@@ -16682,50 +16797,6 @@ triggers {
       args {
         call_value {
           functionName: "Get Map Item (Player)"
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Trigger: Run Alternate Trigger"
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "599a2adb3565646c650030e5"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WaitOrNot"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
           args {
             int_value: 0
           }
@@ -19565,8 +19636,8 @@ regions {
 regions {
   name: "Debug_PiedmontNorth"
   position {
-    x: -7
-    y: 1
+    x: -5
+    y: 2
     width: 2
     height: 2
   }
@@ -20490,6 +20561,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Camera_Closet"
+  position {
+    x: -82
+    y: 1
+    width: 13
+    height: 13
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "599a5f353565646c65003304"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: true
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
@@ -20617,9 +20746,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -83
+    x: -81
     y: 0
-    z: 1
+    z: 2
   }
   orientation: ORIENTATION_N
   GeneralTags: "isMummy"
@@ -20666,9 +20795,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -83
+    x: -81
     y: 0
-    z: 2
+    z: 3
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
@@ -20715,9 +20844,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -83
+    x: -81
     y: 0
-    z: 3
+    z: 4
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
@@ -20764,9 +20893,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -83
+    x: -81
     y: 0
-    z: 4
+    z: 5
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
@@ -20813,9 +20942,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -82
+    x: -80
     y: 0
-    z: 1
+    z: 2
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
@@ -20862,9 +20991,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -82
+    x: -80
     y: 0
-    z: 2
+    z: 3
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
@@ -21596,9 +21725,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -70
+    x: -79
     y: 0
-    z: 12
+    z: 9
   }
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
@@ -21648,9 +21777,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -71
+    x: -80
     y: 0
-    z: 15
+    z: 12
   }
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
@@ -21700,9 +21829,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -71
+    x: -80
     y: 0
-    z: 14
+    z: 11
   }
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
@@ -21752,9 +21881,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -71
+    x: -80
     y: 0
-    z: 13
+    z: 10
   }
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
@@ -21804,9 +21933,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -71
+    x: -80
     y: 0
-    z: 12
+    z: 9
   }
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
@@ -21856,9 +21985,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -80
+    x: -78
     y: 0
-    z: 1
+    z: 2
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -21907,9 +22036,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -80
+    x: -78
     y: 0
-    z: 2
+    z: 3
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -21958,9 +22087,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -80
+    x: -78
     y: 0
-    z: 3
+    z: 4
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22009,9 +22138,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -81
+    x: -79
     y: 0
-    z: 1
+    z: 2
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22060,9 +22189,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -81
+    x: -79
     y: 0
-    z: 2
+    z: 3
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22108,9 +22237,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -81
+    x: -79
     y: 0
-    z: 4
+    z: 5
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22161,9 +22290,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -81
+    x: -79
     y: 0
-    z: 3
+    z: 4
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22214,9 +22343,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -82
+    x: -80
     y: 0
-    z: 3
+    z: 4
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22267,9 +22396,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -82
+    x: -80
     y: 0
-    z: 4
+    z: 5
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
@@ -22421,6 +22550,11 @@ goals {
 }
 goals {
   name: "Enter the Crypt"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Unseal the Gate"
   type: GoalType_Primary
   status: GoalStatus_Hidden
 }
