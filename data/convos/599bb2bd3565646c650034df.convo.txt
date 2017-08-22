@@ -1,0 +1,618 @@
+idRef {
+  id: "599bb2bd3565646c650034df"
+}
+ui_name: "ss_a2_piedmont_s1-Avenue_SearchRubble"
+nodes {
+  idRef {
+    id: "599bb2ce3565646c650034eb"
+  }
+  index: 0
+  text: "Searching through the rubble, you find a paper parcel."
+  branches {
+    responseText: "{{GM}}Unwrap it.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb2cf3565646c650034ed"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Follow the Dog"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599bb2bd3565646c650034df:599bb2cf3565646c650034ef"
+  }
+  index: 1
+  text: "It\342\200\231s actually a piece of paper, wrapped around a bone and a credstick. Despite your initial apprehension, the bone is too small to be a human\342\200\231s.\n\nYou scan the note."
+  branches {
+    nextNodeIndex: 2
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb2d23565646c650034f3"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "599bb2bd3565646c650034df:599bb2d23565646c650034f5"
+  }
+  index: 2
+  text: "> We\342\200\231re being sent to a processing center and will likely be deported from California. They wouldn\342\200\231t let us take our dog with. Please look after her."
+  branches {
+    nextNodeIndex: 3
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb2d33565646c650034f7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599bb2bd3565646c650034df:599bb2d33565646c650034f9"
+  }
+  index: 3
+  text: "She looks up at you, expectant."
+  branches {
+    responseText: "{{GM}}Give her the bone.{{/GM}}"
+    nextNodeIndex: 4
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb3833565646c650035c4"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Throw the bone into the distance, far away from you.{{/GM}}"
+    nextNodeIndex: 6
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb3833565646c650035c6"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceWithTagInScene: "isDog"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5999bfc3356564fca9001a44"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599bb52a3565646c6500365a"
+  }
+  index: 4
+  text: "She happily begins gnawing at it."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb5763565646c65003696"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceWithTagInScene: "isDog"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5999bfc3356564fca9001a44"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:Creature/Dog/standing_attack"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599bb5fe3565646c65003717"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599bb58a3565646c65003699"
+  }
+  index: 5
+  text: "Aww, the poor thing is hungry."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "599bb3a73565646c650035d9"
+  }
+  index: 6
+  text: "She bounds after it, focused on her prize."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb4933565646c65003614"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Actor Run Speed"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5999bfc3356564fca9001a44"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "RunSpeedMethod"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5999bfc3356564fca9001a44"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "599bb3c83565646c650035e8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ambient_grendel"
+          }
+          args {
+            string_value: "dogbark"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "End Current Team Round"
+    }
+    ops {
+      functionName: "Add Actor Karma"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599bb4953565646c65003617"
+  }
+  index: 7
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isValiri"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    onlyOnce: true
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb49a3565646c65003619"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    onlyOnce: true
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb4ac3565646c65003629"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    onlyOnce: true
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb4ae3565646c65003635"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "599bb4a43565646c6500361c"
+  }
+  index: 8
+  text: "Aww\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb4a63565646c6500361e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+}
+nodes {
+  idRef {
+    id: "599bb2bd3565646c650034df:599bb4ac3565646c6500362b"
+  }
+  index: 9
+  text: "Dog may be man\342\200\231s best friend, but the inverse is not necessarily true."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb4ac3565646c6500362d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "599bb2bd3565646c650034df:599bb4ae3565646c65003637"
+  }
+  index: 10
+  text: "It\342\200\231s just as well. We walk a dangerous path, and she would likely come to harm."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "599bb2bd3565646c650034df:599bb4ae3565646c65003639"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "599bb2bd3565646c650034df:599bb2bd3565646c650034e3"
+  }
+}
+speaker_override_id: "599bb3253565646c65003558"
