@@ -19044,6 +19044,9 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "End Current Team Round"
+    }
   }
   isActive: false
   idRef {
@@ -19432,6 +19435,38 @@ triggers {
           functionName: "Get Map Item (Player)"
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Base Skill"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "ActorSkills"
+          }
+          args {
+            int_value: 15
           }
         }
       }
@@ -25805,6 +25840,51 @@ characters {
   idRef {
     id: "599cf0213565646c65003a54"
   }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Acquire Fake IDs"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "599d05d83565646c650040d1"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
+  }
   lod: 0
   character_instance {
     prefab_name: "Seattle:Core/OrkFemale"
@@ -25886,7 +25966,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "MPA Mage"
     pc_spawn_number: -1
     portrait {
@@ -25933,7 +26013,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "MPA Fighter"
     pc_spawn_number: -1
     portrait {
@@ -25948,7 +26028,7 @@ characters {
   gridPoint {
     x: -4
     y: 0
-    z: -5
+    z: -4
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMpa"
