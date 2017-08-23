@@ -1,0 +1,456 @@
+idRef {
+  id: "599d05d83565646c650040d1"
+}
+ui_name: "ss_a2_piedmont_s1-Church_Slagarm"
+nodes {
+  idRef {
+    id: "599d05f53565646c650040dd"
+  }
+  index: 0
+  text: "{{GM}}She scowls at you.{{/GM}}\n\nWhat do you want?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599d05d83565646c650040d1:599d05f63565646c650040df"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d05f83565646c650040e2"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "What was that about Shavarus?"
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "599d05d83565646c650040d1:599d05fe3565646c650040e4"
+    }
+  }
+  branches {
+    responseText: "Who\342\200\231s your blue friend there?"
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "599d05d83565646c650040d1:599d06253565646c650040fd"
+    }
+  }
+  branches {
+    responseText: "Do you know how to open the cemetery gate?"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Unseal the Gate"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "599d05d83565646c650040d1:599d06263565646c6500410f"
+    }
+  }
+  branches {
+    responseText: "Why are you fighting here instead of in Sacramento?"
+    nextNodeIndex: 7
+    onlyOnce: true
+    idRef {
+      id: "599d05d83565646c650040d1:599d08313565646c65004156"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d05fe3565646c650040e6"
+  }
+  index: 2
+  text: "{{GM}}An ecstatic look crosses over her face.{{/GM}}\n\nHe came back to us! In the hour of our greatest need, he returned to share his wisdom for the struggle ahead."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "599d05d83565646c650040d1:599d06133565646c650040ea"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d06133565646c650040ec"
+  }
+  index: 3
+  text: "He\342\200\231s not yet strong enough to join us in the streets, but we send him tribute, and his power grows every day.\n\nIf you wish to share in his wisdom, you can find him in the cemetery."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599d05d83565646c650040d1:599d06153565646c650040ee"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d06253565646c650040ff"
+  }
+  index: 4
+  text: "{{GM}}He bows formally.{{/GM}}\n\nI Isas am. I you am pleased to meet."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "599d05d83565646c650040d1:599d06253565646c65004101"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d06253565646c65004103"
+  }
+  index: 5
+  text: "He wandered in here a few days ago. His English is shit, but he\342\200\231s a damn fine soldier and a great man to have by your side."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599d05d83565646c650040d1:599d06253565646c65004105"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d06263565646c65004111"
+  }
+  index: 6
+  text: "{{GM}}Her eyes narrows.{{/GM}}\n\nThose Fuchi asswipes did something when they came in, sealed it up magically so we couldn\342\200\231t open it. Which means we can\'t petition Shavarus.\n\nIf you can track down one of their corpsec patrols, you might be able to find the seal and break it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599d05d83565646c650040d1:599d06263565646c65004113"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d08383565646c6500416c"
+  }
+  index: 7
+  text: "Ha! You think I should have come running when Governor Whitman whistled? That corrupt arrogant fool was just as bad as Saito!"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isValiri"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    idRef {
+      id: "599d05d83565646c650040d1:599d083e3565646c65004172"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599d05d83565646c650040d1:599d08543565646c65004192"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d08753565646c65004195"
+  }
+  index: 8
+  text: "{{GM}}She clenches her fists and takes a deep breath, anger pouring out with every syllable.{{/GM}}\n\nFUCK. YOU."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "599d05d83565646c650040d1:599d088e3565646c650041e1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isValiri"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_clamoring"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d08aa3565646c65004205"
+  }
+  index: 9
+  text: "While my brothers and sisters were out on the field, shedding blood for YOUR freedom, you were hiding in your warren back in Orkland! Happy to criticize everything but not willing to put in the work required to avert calamity!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "599d05d83565646c650040d1:599d08aa3565646c65004207"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d08ba3565646c6500420b"
+  }
+  index: 10
+  text: "{{GM}}She throws her arms up in disgust.{{/GM}}\n\nSo, you refused to support a flawed politician. Congratulations! Your soul is pure!\n\nMeanwhile, millions of people now live under General Saito\342\200\231s heel. I hope you\342\200\231re happy."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "599d05d83565646c650040d1:599d08ba3565646c6500420d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isValiri"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_cast_buff"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d08bc3565646c6500420f"
+  }
+  index: 11
+  text: "{{GM}}She stares icily at Valiri.{{/GM}}\n\nAre you done speaking, princess?\n\nYou didn\342\200\231t grow up in this sprawl. You don\342\200\231t know what life has been like here. The constant harassment by marines, foul water when you turn the taps, no legitimate work for our children, an infinite supply of guns, no green grass or fresh air."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "599d05d83565646c650040d1:599d08bc3565646c65004211"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "599d05d83565646c650040d1:599d08be3565646c65004213"
+  }
+  index: 12
+  text: "We\342\200\231ve been living in hell our entire lives, so excuse me if I don\342\200\231t have a whole lot of sympathy for those of you only now joining us.\n\nYou want to talk to me about Saito? Lady, I\342\200\231ve been under Saito\342\200\231s thumb since the day I was born! Scraping together a marginally safer hood here means infinitely more to me than which prick is squatting in the governor\342\200\231s mansion in Sacramento."
+  branches {
+    responseText: "Let\342\200\231s cool it down."
+    nextNodeIndex: 13
+    idRef {
+      id: "599d05d83565646c650040d1:599d08be3565646c65004215"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "You both make good points, but now is not the best time for arguing."
+    nextNodeIndex: 13
+    idRef {
+      id: "599d05d83565646c650040d1:599d09503565646c65004217"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Valiri is right. If you aren\342\200\231t an ally, then you\342\200\231re an enemy. {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "599cfe453565646c65003c11"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "599d05d83565646c650040d1:599d09503565646c65004219"
+    }
+  }
+  branches {
+    responseText: "Slagarm is right. Our concerns aren\342\200\231t the same as hers."
+    nextNodeIndex: 13
+    idRef {
+      id: "599d05d83565646c650040d1:599d09503565646c6500421b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+}
+nodes {
+  idRef {
+    id: "599d09713565646c6500421e"
+  }
+  index: 13
+  text: "They both glare at you, then at each other. Neither says a word."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599d05d83565646c650040d1:599d09733565646c65004220"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "599d05d83565646c650040d1:599d05d83565646c650040d5"
+  }
+}
