@@ -1,0 +1,466 @@
+idRef {
+  id: "599e596b356564b8c70065c9"
+}
+ui_name: "ss_a2_piedmont_s1-Plaza_Soldiers"
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c700663f"
+  }
+  index: 0
+  text: "Please, leave us alone!"
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c7006640"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e5452356564b8c70065a6"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c7006641"
+  }
+  index: 1
+  text: "You are invading a Human Cultural Zone. You will be sent to a processing center for eventual relocation to an appropriate Cultural Zone."
+  branches {
+    nextNodeIndex: 2
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c7006642"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e57bf356564b8c70065aa"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c7006643"
+  }
+  index: 2
+  text: "But this is our home!"
+  branches {
+    nextNodeIndex: 3
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c7006644"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e5452356564b8c70065a6"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c7006645"
+  }
+  index: 3
+  text: "We\342\200\231ve lived here for years!"
+  branches {
+    nextNodeIndex: 4
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c7006646"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e5458356564b8c70065a7"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c7006647"
+  }
+  index: 4
+  text: "Just because you took good human land years ago does not give you the right to remain.\n\n{{GM}}The soldier spots you.{{/GM}}\n\nYou! Identify yourselves!"
+  branches {
+    responseText: "We\342\200\231re just passing through."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Marines"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c7006648"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Leave those people alone!"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Self"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c7006649"
+    }
+  }
+  branches {
+    responseText: "I\342\200\231M YOUR WORST NIGHTMARE. {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "599e5b1e356564b8c7006689"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Self"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c700664a"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/GM}} We\342\200\231re with vice, conducting sweeps."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Marines"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c700664b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e57b1356564b8c70065a8"
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "599e57b1356564b8c70065a8"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599e5b7c356564b8c70066e3"
+  }
+  index: 5
+  text: "HALT!\n\nMetahumans, carrying weapons, after curfew: that\342\200\231s three strikes, all in one go.\n\nNo relocation for you: you\342\200\231re dead!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599e5b1e356564b8c7006689"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c700664c"
+  }
+  index: 6
+  text: "{{GM}}He frowns.{{/GM}}\n\nI wasn\342\200\231t told of any undercover squads operating here tonight. I\342\200\231m surprised they let you bring a metahuman team. It would be very easy for someone to make a bad ID and open fire."
+  branches {
+    nextNodeIndex: 7
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c700664d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e57bf356564b8c70065aa"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c700664e"
+  }
+  index: 7
+  text: "Go ahead and do what you need to do. We\342\200\231re rounding this lot up for transit to the Mojave, so this zone should be clear for the next hour.\n\nJust keep an eye out for the Fuchi corpsec, those guys are behaving even more erratically than usual."
+  branches {
+    nextNodeIndex: 8
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5abd356564b8c700664f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e57bf356564b8c70065aa"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c7006650"
+  }
+  index: 8
+  text: "Please, don\342\200\231t let them take us away! Once we lose our home, we\342\200\231ll never get it back!"
+  branches {
+    responseText: "Move along and do what the nice man says."
+    nextNodeIndex: 9
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5afd356564b8c7006668"
+    }
+  }
+  branches {
+    responseText: "I can\342\200\231t let this happen. {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "599e5b1e356564b8c7006689"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5afd356564b8c700666a"
+    }
+  }
+  branches {
+    responseText: "Sure, why not? I love killing! {{GM}}Attack{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "599e5b1e356564b8c7006689"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "599e596b356564b8c70065c9:599e5afd356564b8c700666c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e5458356564b8c70065a7"
+  }
+}
+nodes {
+  idRef {
+    id: "599e5b1a356564b8c7006688"
+  }
+  index: 9
+  text: "The whole world has gone mad!"
+  branches {
+    nextNodeIndex: 10
+    idRef {
+      id: "599e596b356564b8c70065c9:599e59d3356564b8c70065d7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e5452356564b8c70065a6"
+  }
+}
+nodes {
+  idRef {
+    id: "599e596b356564b8c70065c9:599e59d3356564b8c70065d9"
+  }
+  index: 10
+  text: "Shh, shh\342\200\246 we\342\200\231ll get through this, somehow\342\200\246"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "599e5458356564b8c70065a7"
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599e5b2e356564b8c700668a"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "599e596b356564b8c70065c9:599e5abd356564b8c700663e"
+  }
+}
