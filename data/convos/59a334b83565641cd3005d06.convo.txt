@@ -1,0 +1,637 @@
+idRef {
+  id: "59a334b83565641cd3005d06"
+}
+ui_name: "ss_a2_sacto_s1-Sacto_Plumber"
+nodes {
+  idRef {
+    id: "59a334d63565641cd3005d14"
+  }
+  index: 0
+  text: "Mmmmf. Hey, can you pass the mustard?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a334d83565641cd3005d16"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a334d93565641cd3005d19"
+  }
+  index: 1
+  text: "Hm?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a334ea3565641cd3005d27"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a334ec3565641cd3005d2a"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "How\342\200\231s the food here?"
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59a334b83565641cd3005d06:59a335033565641cd3005d3a"
+    }
+  }
+  branches {
+    responseText: "Are you on break?"
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3351b3565641cd3005d4a"
+    }
+  }
+  branches {
+    responseText: "What sort of work do you do?"
+    nextNodeIndex: 9
+    onlyOnce: true
+    idRef {
+      id: "59a334b83565641cd3005d06:59a335a53565641cd3005db3"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Quickness: $(story.Global-Skillcheck_Hard){{/CC}} {{GM}}Swipe her plumbing supplies.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-PlumbingGear"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    idRef {
+      id: "59a334b83565641cd3005d06:59a336813565641cd3005e2f"
+    }
+    comment: "TODO: How is flood started?"
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59a335093565641cd3005d3d"
+  }
+  index: 3
+  text: "Not bad! Then again, everything tastes great when you haven\342\200\231t eaten in twenty-four hours. It\342\200\231s impossible to find decent hot sauce around here lately, though."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3350b3565641cd3005d3f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3351d3565641cd3005d4d"
+  }
+  index: 4
+  text: "You know it! I\342\200\231ve been running around Sactown nonstop ever since the Free State fell and the Protectorate rose. Infrastructure has been a MESS since the invasion. Bullets and bombs punch holes in things, pipes are things, and so a fuck-ton of water started spraying buildings throughout the city."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5941e457356564181c0060d6"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3351f3565641cd3005d4f"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3351f3565641cd3005d51"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3353a3565641cd3005d54"
+  }
+  index: 5
+  text: "This area doesn\342\200\231t look too bad."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3353c3565641cd3005d56"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59a3354b3565641cd3005d59"
+  }
+  index: 6
+  text: "Saito\342\200\231s engineers have repaired the crucial infrastructure in the green zone, but they don\342\200\231t give two shits about people living in the rest of the city."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5941e457356564181c0060d6"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3355b3565641cd3005d5e"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3355b3565641cd3005d60"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3357e3565641cd3005d63"
+  }
+  index: 7
+  text: "That unfortunate is. A sovereign his citizens should care for."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59a334b83565641cd3005d06:59a335803565641cd3005d65"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59a3358d3565641cd3005d83"
+  }
+  index: 8
+  text: "It\342\200\231s a shame. The old government in Sactown also neglected the poor, and a lot of folks hoped that Saito would transform this place from a neglected dump into a place worth living."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a3359d3565641cd3005d88"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a335b23565641cd3005db6"
+  }
+  index: 9
+  text: "Plumbing, mostly. I\342\200\231m doing my best to help repair the damaged buildings, but honestly, so far I\342\200\231ve been busy just fixing the wealthy mansions. I feel kind of bad, but they\342\200\231re the only ones with the credits to pay."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5941e457356564181c0060d6"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59a334b83565641cd3005d06:59a335c43565641cd3005db8"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59a334b83565641cd3005d06:59a335ce3565641cd3005dbf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a335c63565641cd3005dbb"
+  }
+  index: 10
+  text: "At least you\342\200\231re helping, in whatever way."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59a334b83565641cd3005d06:59a335cc3565641cd3005dbd"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59a335e03565641cd3005dc2"
+  }
+  index: 11
+  text: "Outside of the core and the wealthy enclaves, though, the sprawl is royally screwed. Who knows if and when Saito will actually repair the destruction he caused, and not just reward his megacorp backers in San Francisco."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a336023565641cd3005dc7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a336e63565641cd3005e5c"
+  }
+  index: 12
+  text: "Hey, look over there!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59a334b83565641cd3005d06:59a336e93565641cd3005e5e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59420960356564181c0060d7"
+  }
+}
+nodes {
+  idRef {
+    id: "59a336eb3565641cd3005e61"
+  }
+  index: 13
+  text: "Where?!\n\n{{GM}}While her back is turned, you steal her kit and toss it to your waiting companions. With any luck, she won\342\200\231t notice the theft until you\342\200\231ve finished here.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59a334b83565641cd3005d06:59a337043565641cd3005e63"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-PlumbingGear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 8
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a337063565641cd3005e66"
+  }
+  index: 14
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a337083565641cd3005e68"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "59a334b83565641cd3005d06:59a334b83565641cd3005d0a"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 1
+  idRef {
+    id: "59a334b83565641cd3005d06:59a334d03565641cd3005d11"
+  }
+}

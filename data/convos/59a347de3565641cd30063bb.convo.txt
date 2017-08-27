@@ -1,0 +1,433 @@
+idRef {
+  id: "59a347de3565641cd30063bb"
+}
+ui_name: "ss_a2_sacto_s1-Ground_Guard_Sewage"
+nodes {
+  idRef {
+    id: "59a348663565641cd30063c7"
+  }
+  index: 0
+  text: "He glares at you but says nothing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a3486b3565641cd30063c9"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59a3486d3565641cd30063cc"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "About your ID card..."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-McClellanID"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Plug the Sewage Pipe"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59a347de3565641cd30063bb:59a349113565641cd30063f0"
+    }
+  }
+  branches {
+    responseText: "When did you join the Imperial State army?"
+    nextNodeIndex: 5
+    idRef {
+      id: "59a347de3565641cd30063bb:59a349c63565641cd300641a"
+    }
+  }
+  branches {
+    responseText: "I\342\200\231m sick and tired of your attitude! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59a340433565641cd30060a4"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34b9e3565641cd3006650"
+    }
+  }
+  branches {
+    responseText: "Have a good one."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34ba23565641cd3006653"
+    }
+  }
+  branches {
+    responseText: "$+(l.sir)."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34ba63565641cd3006656"
+    }
+  }
+  branches {
+    responseText: "Dismissed."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34ba93565641cd3006659"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59a349133565641cd30063f3"
+  }
+  index: 2
+  text: "He arches an eyebrow."
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} IA is auditing access records to track the missing contraband. We need your ID to complete our check."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59a347de3565641cd30063bb:59a348793565641cd30063d5"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Biotech: $(story.Global-Skillcheck_Medium){{/CC}} Keep this under your hat, but the infection is spreading quickly. I need your ID to access the ambient atmospheric purification system."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 11
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Medium"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59a347de3565641cd30063bb:59a349603565641cd30063fd"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59a3488a3565641cd30063d8"
+  }
+  index: 3
+  text: "{{GM}}He shrugs and hands it over.{{/GM}}\n\nWe all know it\342\200\231s those contractors. But fine, do what you need to."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a3488d3565641cd30063da"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-McClellanID"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a349603565641cd30063ff"
+  }
+  index: 4
+  text: "That sounds dangerous. Make sure you keep this clean!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a349603565641cd3006401"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-McClellanID"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a349c93565641cd300641d"
+  }
+  index: 5
+  text: "The same year as the Night of Rage. I realized that the world would never be safe as long as metahumans were free to run amok in it. Fortunately, we were one of the few regimes prepared to actually do something about it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a349cb3565641cd300641f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a347de3565641cd30063bb:59a347de3565641cd30063bf"
+  }
+}

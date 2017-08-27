@@ -1,0 +1,475 @@
+idRef {
+  id: "59a33d8e3565641cd3005fd5"
+}
+ui_name: "ss_a2_sacto_s1-Ground_EntryGuard"
+nodes {
+  idRef {
+    id: "59a33d983565641cd3005fdd"
+  }
+  index: 0
+  text: "Hey! What are you doing in here?!\n\nNon-human persons are strictly prohibited in this cultural zone, and definitely not in a military facility!"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isValiri"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59459bc5356564f03f000e68"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33da23565641cd3005fdf"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33da23565641cd3005fe1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a33dcb3565641cd3005ff2"
+  }
+  index: 1
+  text: "{{GM}}She mutters under her breath.{{/GM}}\n\nBut I see that asswipes are welcomed with open arms."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33dcd3565641cd3005ff4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+}
+nodes {
+  idRef {
+    id: "59a33dd53565641cd3005ff7"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "We\342\200\231re here to fix the flooding before it damages your equipment."
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33de13565641cd3006007"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Flooding a variable or a goal?"
+  }
+  branches {
+    responseText: "We got an emergency call to deal with your sewage backup."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Plug the Sewage Pipe"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33df73565641cd300600d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "They needed someone disposable to deal with your critter infestation."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Send Paracritters to McClellan AFB"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33df83565641cd300600f"
+    }
+  }
+  branches {
+    responseText: "I\342\200\231ll prohibit your existence! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59a340433565641cd30060a4"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33dfa3565641cd3006011"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a33fae3565641cd3006023"
+  }
+  index: 3
+  text: "All right, fine. You can finish the job, but as soon as you\342\200\231re done, all non-humans will need to report to the nearest Cultural Affairs official for processing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fc43565641cd300603c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a33fc63565641cd300603f"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59459bc5356564f03f000e68"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    onlyOnce: true
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fcd3565641cd3006041"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59459bc5356564f03f000e68"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fe73565641cd3006051"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59459bc5356564f03f000e68"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    onlyOnce: true
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fe93565641cd300605d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop."
+}
+nodes {
+  idRef {
+    id: "59a33fdf3565641cd3006044"
+  }
+  index: 5
+  text: "That sounds ominous\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fe13565641cd3006046"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59a33d8e3565641cd3005fd5:59a33fe73565641cd3006053"
+  }
+  index: 6
+  text: "We far away should stay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fe73565641cd3006055"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59a33d8e3565641cd3005fd5:59a33fe93565641cd300605f"
+  }
+  index: 7
+  text: "If it keeps them happy, we can certainly pretend to follow their instructions."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59a33d8e3565641cd3005fd5:59a33fe93565641cd3006061"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a33d8e3565641cd3005fd5:59a33d8e3565641cd3005fd9"
+  }
+}

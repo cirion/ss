@@ -55,8 +55,655 @@ nodes {
   }
   index: 3
   text: ""
+  branches {
+    responseText: "What are you doing here?"
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a324113565641cd30055d6"
+    }
+  }
+  branches {
+    responseText: "How often does Fuchi ship in paracritters?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Sacto_KnowAboutParacritters"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a324c13565641cd300563e"
+    }
+  }
+  branches {
+    responseText: "Why are you so busy?"
+    nextNodeIndex: 9
+    onlyOnce: true
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325043565641cd3005666"
+    }
+  }
+  branches {
+    responseText: "I can take care of that McClellan gig for you."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Send Paracritters to McClellan AFB"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325563565641cd30056dd"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Inner loop"
+}
+nodes {
+  idRef {
+    id: "59a3241b3565641cd30055d9"
+  }
+  index: 4
+  text: "Just finished a job at Fuchi. That dolt Carli Atherford keeps dragging in paracritters from the Mojave, no doubt to study and attempt to weaponize them. Invariably, they get loose and eat the interns."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDog"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5941e457356564181c0060d6"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a3241d3565641cd30055db"
+    }
+    comment: "Have dog"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a324283565641cd30055dd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a324413565641cd30055e0"
+  }
+  index: 5
+  text: "{{GM}}He nods at $(story.Global-DogName).{{/GM}}\n\nA pooch like your friend here is fine against mice and the like, but may be less effective against seven-foot-tall hellbeasts."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a324433565641cd30055e2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3245d3565641cd30055e8"
+  }
+  index: 6
+  text: "Bark!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a3245f3565641cd30055ea"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDog"
+}
+nodes {
+  idRef {
+    id: "59a324533565641cd30055e5"
+  }
+  index: 7
+  text: "Fuchi\342\200\231s internal corpsec has gotten enough practice with them by now that they can take the critters out in their sleep, but they always call me in to find and destroy the nests they leave behind. Otherwise, a few weeks later another wave will swarm through the ductwork and start the cycle all over again. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a3247a3565641cd3005608"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Sacto_KnowAboutParacritters"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a324d53565641cd3005641"
+  }
+  index: 8
+  text: "Constantly! I have no idea why. You\342\200\231d think the Mojave would be completely depopulated by now. I just cleared out the last nest, and I wouldn\342\200\231t be surprised if they have a fresh batch coming in as we speak."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a324d73565641cd3005643"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Send Paracritters to McClellan AFB"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a325143565641cd3005669"
+  }
+  index: 9
+  text: "Understaffed. I used to work with a partner, a dwarf lady named Bess. She was great! She could crawl into the tiniest vents, find eggs hidden in total darkness, and could hear the rustling of stingers from far away."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325153565641cd300566b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a30dcb3565641cd30055a1:59a325153565641cd300566d"
+  }
+  index: 10
+  text: "But, she got shipped down south along with all the other metahumans. A few lucky dwarves managed to escape to Halferville before the deportations started, but she\342\200\231s probably in a labor camp on the border now, assuming they haven\342\200\231t dumped her into Aztlan or worse."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325193565641cd3005671"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a30dcb3565641cd30055a1:59a325193565641cd3005673"
+  }
+  index: 11
+  text: "It\342\200\231s a shame, and not just because my job\342\200\231s gotten a lot harder now. I used to complain about how the metahumans were taking away human gigs, but I really miss having her around."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a3251b3565641cd3005675"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a30dcb3565641cd30055a1:59a3251b3565641cd3005677"
+  }
+  index: 12
+  text: "The food has gotten worse, too. Turns out that a lot of the really good lunch spots around here were owned and run by dwarves and orks. All those hole-in-the-wall places have closed up now.\n\nI know that doesn\342\200\231t mean much in the big picture, but it\342\200\231s still a shame."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325203565641cd300567d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3257e3565641cd30056e0"
+  }
+  index: 13
+  text: "{{GM}}He looks at you dubiously.{{/GM}}\n\nYou sure? Don\342\200\231t get me wrong, I\342\200\231d love to dump this on someone else, but I have a reputation to uphold. You can\342\200\231t always trust subcontractors."
+  branches {
+    responseText: "{{CC}}Etiquette: Corporate{{/CC}} I\342\200\231m fully licensed and bonded. I\342\200\231ll handle this gratis, and can process referrals in the future to service your clientele."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 14
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325803565641cd30056e2"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_Hard){{/CC}} You\342\200\231re wise to be skeptical. I\342\200\231ve been burned in the past. That\342\200\231s why I won\342\200\231t let you down."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325ba3565641cd3005715"
+    }
+  }
+  branches {
+    responseText: "{{CC}}\302\24525{{/CC}} I\342\200\231m just looking to get my foot in the door. I\342\200\231ll make it worth your while."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 25
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 25
+        }
+      }
+    }
+    nextNodeIndex: 16
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325bc3565641cd300571e"
+    }
+  }
+  branches {
+    responseText: "You can trust me!"
+    nextNodeIndex: 18
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325bc3565641cd3005724"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3259a3565641cd3005711"
+  }
+  index: 14
+  text: "Okay, we\342\200\231ll consider this a trial run. If everything goes well, I\342\200\231ll tap you in the future."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a3259d3565641cd3005713"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a30dcb3565641cd30055a1:59a325ba3565641cd3005717"
+  }
+  index: 15
+  text: "You know, you do have an honest face. All right, let\342\200\231s do this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325ba3565641cd3005719"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a30dcb3565641cd30055a1:59a325bc3565641cd3005720"
+  }
+  index: 16
+  text: "{{GM}}He pockets your bribe and smiles.{{/GM}}\n\nYou\342\200\231re a real go-getter, you know that? Smart, though! If you can break into this business, you\342\200\231ll make your money back."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325bc3565641cd3005722"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3263b3565641cd300577e"
+  }
+  index: 17
+  text: "Here\342\200\231s the work order. Those military folks are sticklers for paperwork, so don\342\200\231t try to go in without it.\n\nGood luck, those vermin pack a mean bite!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a3263d3565641cd3005780"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-WorkOrder"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a30dcb3565641cd30055a1:59a325bc3565641cd3005726"
+  }
+  index: 18
+  text: "I\342\200\231d like to, I really would, but it just isn\342\200\231t worth the risk to me. Sorry."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59a30dcb3565641cd30055a1:59a325bc3565641cd3005728"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   nextNodeIndex: 0

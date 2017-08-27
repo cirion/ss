@@ -1,0 +1,223 @@
+idRef {
+  id: "59a340903565641cd30060d6"
+}
+ui_name: "ss_a2_sacto_s1-Ground_ElevatorSecurity"
+nodes {
+  idRef {
+    id: "59a340ea3565641cd30060e2"
+  }
+  index: 0
+  text: "> Multifactor authentication required. Insert ID card to proceed."
+  branches {
+    responseText: "{{CC}}Item: McClellan ID Card{{/CC}} {{GM}}Insert card.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-McClellanID"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "59a340903565641cd30060d6:59a3414b3565641cd3006106"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a340903565641cd30060d6:59a341563565641cd3006108"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "55897a5a613464581a001ad5"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a344023565641cd30061a9"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a341d63565641cd3006119"
+  }
+  index: 1
+  text: "> Enter PIN."
+  branches {
+    responseText: "1066"
+    nextNodeIndex: 2
+    idRef {
+      id: "59a340903565641cd30060d6:59a341fa3565641cd300611b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "1492"
+    nextNodeIndex: 2
+    idRef {
+      id: "59a340903565641cd30060d6:59a341fe3565641cd300611d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "2039"
+    nextNodeIndex: 2
+    idRef {
+      id: "59a340903565641cd30060d6:59a341fe3565641cd300611f"
+    }
+  }
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 4
+}
+nodes {
+  idRef {
+    id: "59a3422e3565641cd3006122"
+  }
+  index: 2
+  text: "> Speak for voice verification."
+  branches {
+    responseText: "Voice verification."
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59a340903565641cd30060d6:59a342693565641cd3006129"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Hello, my name is $(l.name)."
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59a340903565641cd30060d6:59a3426a3565641cd300612b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Open sesame!"
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59a340903565641cd30060d6:59a3426a3565641cd300612d"
+    }
+  }
+  branches {
+    responseText: "It\342\200\231s-a me, Mario!"
+    nextNodeIndex: 3
+    idRef {
+      id: "59a340903565641cd30060d6:59a3429c3565641cd300612f"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Voice Recorder{{/CC}} {{GM}}Play back Gavan\342\200\231s voice.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59a343a63565641cd3006173"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "59a340903565641cd30060d6:59a3429c3565641cd3006131"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a340903565641cd30060d6:59a342f33565641cd3006154"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a342d23565641cd3006134"
+  }
+  index: 3
+  text: "> Voice does not match any found on file. Please clear your throat and try again."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a340903565641cd30060d6:59a342e13565641cd3006136"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a340903565641cd30060d6:59a340903565641cd30060da"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad5"

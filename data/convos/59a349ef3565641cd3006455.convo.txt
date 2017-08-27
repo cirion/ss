@@ -1,0 +1,433 @@
+idRef {
+  id: "59a349ef3565641cd3006455"
+}
+ui_name: "ss_a2_sacto_s1-Ground_Guard_Critters"
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006460"
+  }
+  index: 0
+  text: "He taps his foot impatiently."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006462"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006464"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "About your ID card..."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-McClellanID"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Send Paracritters to McClellan AFB"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006466"
+    }
+  }
+  branches {
+    responseText: "What does that tattoo mean?"
+    nextNodeIndex: 5
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd300647a"
+    }
+  }
+  branches {
+    responseText: "I\342\200\231m sick and tired of your attitude! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59a340433565641cd30060a4"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34b843565641cd3006615"
+    }
+  }
+  branches {
+    responseText: "Have a good one."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34b8a3565641cd3006618"
+    }
+  }
+  branches {
+    responseText: "$+(l.sir)."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34b8e3565641cd300661b"
+    }
+  }
+  branches {
+    responseText: "Dismissed."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a34aa33565641cd3006503:59a34b923565641cd300661e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006468"
+  }
+  index: 2
+  text: "He frowns at you."
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} IA is auditing access records to track the missing contraband. We need your ID to complete our check."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd300646a"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Spirit Control: $(story.Global-Skillcheck_Easy){{/CC}} Those critters will only respond to an appropriate mentor spirit, but I need your ID to access the proper focal point."
+    conditions {
+      ops {
+        functionName: "Compare Actor Specialization"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSpecializations"
+            }
+            args {
+              int_value: 7
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Easy"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006472"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a34a0c3565641cd300646c"
+  }
+  index: 3
+  text: "{{GM}}He shrugs and hands it over.{{/GM}}\n\nWe all know it\342\200\231s those contractors. But fine, do what you need to."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd300646e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-McClellanID"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006474"
+  }
+  index: 4
+  text: "I\342\200\231ve seen too much magic already. Keep that nonsense far away from me, you hear?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd3006476"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-McClellanID"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a347de3565641cd30063bb:59a34a0c3565641cd300647c"
+  }
+  index: 5
+  text: "This commemorates the Battle of Hastings. That was an inspiring time: a superior force entered a backwards land, subdued the wayward locals and established a better society. It\342\200\231s a very meaningful event to me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a347de3565641cd30063bb:59a34a0c3565641cd300647e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a349ef3565641cd3006455:59a349ef3565641cd3006459"
+  }
+}
