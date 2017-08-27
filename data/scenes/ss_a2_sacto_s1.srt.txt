@@ -38,6 +38,39 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59a2fb6f3565641cd3004fa5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -4902,7 +4935,7 @@ triggers {
             string_value: "bool"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
@@ -5005,6 +5038,39 @@ triggers {
         float_value: 0
       }
     }
+    ops {
+      functionName: "Set Prop Visible"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59a2fb6f3565641cd3004fa5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -5090,7 +5156,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Animation)"
           args {
-            string_value: "HongKong:General/standing_idle_scratch"
+            string_value: "HongKong:General/standing_idle_preen"
           }
         }
       }
@@ -5133,6 +5199,39 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Infiltrate McClellan AFB"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
     ops {
       functionName: "Set Team Alliance"
       args {
@@ -6559,6 +6658,28 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599fa3e735656464c1000d71"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Activate Actor Spawner"
       args {
         call_value {
@@ -6664,6 +6785,17 @@ triggers {
           args {
             string_value: "TeleportMethod"
           }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
           args {
             int_value: 0
           }
@@ -7251,6 +7383,202 @@ triggers {
   isActive: true
   idRef {
     id: "59a232ab35656464c8003b67"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Global_SwitchSoldierTeamOnTurnbased"
+  events {
+    ops {
+      functionName: "On Turn Mode Enter"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_LonestarHostile"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isProtectorateTalker"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a2fc593565641cd3004fa7"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Global_SwitchSoldierTeamOnFreemove"
+  events {
+    ops {
+      functionName: "On Freemove Mode Enter"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_LonestarHostile"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isProtectorateTalker"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a2fcb43565641cd3004fa8"
   }
   elseActions {
   }
@@ -9379,8 +9707,8 @@ regions {
 regions {
   name: "North_Reinforce"
   position {
-    x: -38
-    y: 44
+    x: -39
+    y: 29
     width: 2
     height: 5
   }
@@ -9399,6 +9727,122 @@ regions {
   }
   visible_at_start: false
   is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Camera_ClosetMatrixIC"
+  position {
+    x: -102
+    y: 109
+    width: 14
+    height: 6
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a2fdf23565641cd300505c"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: true
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Camera_Closet"
+  position {
+    x: -85
+    y: 26
+    width: 6
+    height: 6
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a2fe133565641cd300505d"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: true
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -11485,7 +11929,7 @@ characters {
   gridPoint {
     x: -122
     y: 0
-    z: -34
+    z: -33
   }
   orientation: ORIENTATION_N
   displayName: "Upstairs_Masato"
@@ -11554,12 +11998,12 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Player"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
-    team_id: "Shadowrunners"
+    team_id: "Civilians"
     char_name: "Masato"
     GeneralTags: "isCrew"
     GeneralTags: "isMasato"
@@ -11643,6 +12087,7 @@ characters {
   GeneralTags: "isProtectorate"
   GeneralTags: "isNorthInitial"
   GeneralTags: "isNorthSoldier"
+  GeneralTags: "isProtectorateTalker"
   displayName: "North_Initial_Pistol"
   idRef {
     id: "59a2e49d3565641cd3004cf1"
@@ -11723,7 +12168,7 @@ characters {
       turnToFace: true
     }
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: ""
+    interaction_info_text: "Soldier"
   }
   lod: 0
   character_instance {
@@ -11750,11 +12195,12 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Protectorate Soldier"
     GeneralTags: "isProtectorate"
     GeneralTags: "isNorthInitial"
     GeneralTags: "isNorthSoldier"
+    GeneralTags: "isProtectorateTalker"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -12404,7 +12850,7 @@ mapName: "ss_a2_sacto_s1"
 parentStory: ""
 scene_title: "THE CAPITAL"
 scene_subtitle: ""
-scene_synopsis: "Sacramento lies far from the People\342\200\231s University, and tensions run high as your team prepares for the job. Rick acquires a decommissioned stealth aircraft to fly you over the Diablo Range, and Valiri\342\200\231s passphrases are still valid, so you manage to cross the high-security perimeter around the Protectorate capital without incident.\n\nThe outer district of the city is a war-torn mess, rubble still smoking from Saito\342\200\231s brutal bombardment. The city center is mostly unscathed, thanks to Governor Whitman\342\200\231s timely surrender, but a palpable sense of dread still hangs over the streets, reinforced by regular patrols of Protectorate soldiers and plainclothes enforcement officials.\n\nYou\342\200\231ll need to keep a low profile: You are now near the center of Saito\342\200\231s power, and far from any backup or support. Before you can leave, you\342\200\231ll need to travel even deeper into danger: reaching the McClellan Airfield and the records that lie within. If you are very fortunate, you may learn where Tassender is being held by the end of the day."
+scene_synopsis: "Sacramento lies far from the People\342\200\231s University, and tensions run high as your team prepares for the job. Rick acquires an old stealth aircraft to fly you over the Diablo Range, and Valiri\342\200\231s passphrases are still valid, so you breach the high-security perimeter around the Protectorate capital without incident.\n\nThe outer district of the city is a war-torn mess, rubble still smoking from Saito\342\200\231s brutal bombardment. The city center is mostly unscathed, thanks to Governor Whitman\342\200\231s timely surrender, but a palpable sense of dread still hangs over the streets, reinforced by regular patrols of Protectorate soldiers and plainclothes enforcement officials.\n\nYou\342\200\231ll need to keep a low profile: You are now near the center of Saito\342\200\231s power, and far from any backup or support. Before you can leave, you\342\200\231ll need to travel even deeper into danger: reaching the McClellan Airfield and the records that lie within. If you are very fortunate, you may learn where Tassender is being held by the end of the day."
 scene_image: ""
 scene_continue_button_skip: false
 scene_restore_runner_health: false
@@ -12482,8 +12928,6 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 50
   heat_response_rating: 5
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
