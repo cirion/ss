@@ -10,17 +10,32 @@ nodes {
   text: "Gah!\n\n{{GM}}His eyes open wide with surprise, then he starts to laugh.{{/GM}}\n\nYou almost gave me a heart attack! I thought you were one of the soldiers!"
   branches {
     responseText: "An interesting reaction."
-    nextNodeIndex: -1
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Valiri_Caution"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
     idRef {
       id: "59a424193565640ce7002f53:59a424383565640ce7002f61"
     }
+    auxiliaryLink: true
   }
   branches {
     responseText: "Well, I\342\200\231m not."
-    nextNodeIndex: -1
+    nextNodeIndex: 1
     idRef {
       id: "59a424193565640ce7002f53:59a424393565640ce7002f63"
     }
+    auxiliaryLink: true
   }
   branches {
     responseText: "Die!"
@@ -28,7 +43,12 @@ nodes {
       ops {
         functionName: "Send Event"
         args {
-          string_value: "USER_EVENT"
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Valiri_Speed"
+            }
+          }
         }
       }
     }
@@ -44,6 +64,323 @@ nodes {
     id: "59a4244e3565640ce7002f68"
   }
   index: 1
+  text: "Wait, wait, wait\342\200\246 I THOUGHT you looked familiar! You were on Alameda during Operation Carli Fucks Everything Up."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a424193565640ce7002f53:59a4261f3565640ce7002f8e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a4264b3565640ce7002f96"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isValiri"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5945ad2e3565642c12007ef5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59a424193565640ce7002f53:59a4261e3565640ce7002f8c"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5945ad2e3565642c12007ef5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59a424193565640ce7002f53:59a4266d3565640ce7002fc0"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5945ad2e3565642c12007ef5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59a424193565640ce7002f53:59a4266f3565640ce7002fcc"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59a424193565640ce7002f53:59a426953565640ce7002fd4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "59a426373565640ce7002f91"
+  }
+  index: 3
+  text: "Not going to lie, I kind of love that name."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a424193565640ce7002f53:59a426393565640ce7002f93"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+}
+nodes {
+  idRef {
+    id: "59a424193565640ce7002f53:59a4266d3565640ce7002fc2"
+  }
+  index: 4
+  text: "Yes, and you were there as well, arresting a friend of ours."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a424193565640ce7002f53:59a4266d3565640ce7002fc4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "59a424193565640ce7002f53:59a4266f3565640ce7002fce"
+  }
+  index: 5
+  text: "The fact that you\342\200\231re talking to us now and not shooting seems like a good sign."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a424193565640ce7002f53:59a4266f3565640ce7002fd0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59a424193565640ce7002f53:59a426953565640ce7002fd6"
+  }
+  index: 6
+  text: "But, hold on: unlike your daisy-eating friend, you guys escaped. Why the hell would you come all the way to Sacramento? Are you chasing trouble?"
+  branches {
+    responseText: "We\342\200\231re going to get back our \342\200\234daisy-eating friend.\342\200\235"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Isas_Forgiveness"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59a424193565640ce7002f53:59a426953565640ce7002fd8"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I couldn\342\200\231t leave a companion in your clutches."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Isas_Revenge"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59a424193565640ce7002f53:59a426a73565640ce7002fdc"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Baby, you\342\200\231ve CAUGHT trouble. Now tell us where Tassender is!"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Isas_Revenge"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59a424193565640ce7002f53:59a426a83565640ce7002fde"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a426bb3565640ce7002fe1"
+  }
+  index: 7
   text: ""
   nodeType: ConversationNodeType_Simple
 }
