@@ -1,0 +1,493 @@
+idRef {
+  id: "59a4eeee35656464830037a5"
+}
+ui_name: "ss_a2_sacto_s1-Sewer_SumpPump"
+nodes {
+  idRef {
+    id: "59a4eeff35656464830037b1"
+  }
+  index: 0
+  text: "The pump is chugging along quietly."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef0935656464830037b3"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59a4ef0a35656464830037b6"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Examine the pump construction.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Reverse the Pump"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef1035656464830037b8"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Attempt to reverse the flow.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef7935656464830037e3"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4f071356564648300381f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59a4ef1635656464830037bb"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isValiri"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594366e9356564181c0061ef"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef1a35656464830037bd"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef3635656464830037c4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a4ef3235656464830037c0"
+  }
+  index: 3
+  text: "Interesting! Judging from where that pipe leads, there\342\200\231s a good chance that this pump drains McClellan. The soil near the river is highly saturated, and without constant pumping, buildings here tend to back up and flood."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef3335656464830037c2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59a2f9863565641cd3004fa3"
+  }
+}
+nodes {
+  idRef {
+    id: "59a4ef3835656464830037c7"
+  }
+  index: 4
+  text: "The pump has a one-way flow valve. It won\342\200\231t be easy to tamper with, but if you could reverse the flow, you could cause a distraction for whoever is on the other end of this pipe."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef6235656464830037cc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Reverse the Pump"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a4ef8335656464830037e6"
+  }
+  index: 5
+  text: "The design of the pump will make this difficult."
+  branches {
+    responseText: "{{CC}}Drone Control: $(story.Global-Skillcheck_Hard){{/CC}} {{GM}}Rewire the operating servo.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4ef9235656464830037e8"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item: Replacement Valve{{/CC}} {{GM}}Install the alternate valve.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-SumpPumpValve"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4f01c356564648300380a"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4f069356564648300381d"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59a4efb035656464830037eb"
+  }
+  index: 6
+  text: "The pump contains a complex network of control gates, and ordinary tampering will simply stop the flow of water. Fortunately, you are no ordinary tamperer. You quickly analyze the design, reverse-engineer the schematics inside your mind, and then make the necessary alterations to maintain the rate of flow while inverting its direction."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4efc235656464830037ed"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59a4efc335656464830037f0"
+  }
+  index: 7
+  text: "The pump shudders, stops, wheezes, and then resumes. The burbling carries a different tone from before: the machinery is now shoving liquid forcefully upward, rather than drawing it down into the earth."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4f026356564648300380c"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "turbineon"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a4f028356564648300380f"
+  }
+  index: 8
+  text: "You aren\342\200\231t yet certain exactly what the effect will be, but it will almost certainly be wet."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a4eff03565646483003808"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a4f0483565646483003812"
+  }
+  index: 9
+  text: "The machinery inside is very complex, but is organized as a single unit with one primary input and one output. Just removing the machinery would simply stop the flow of water, but by replacing the valve, you can invert its direction altogether."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59a4eeee35656464830037a5:59a4f0613565646483003814"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-SumpPumpValve"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a4eeee35656464830037a5:59a4eeee35656464830037a9"
+  }
+}
