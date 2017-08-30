@@ -1,0 +1,81 @@
+idRef {
+  id: "59a6334e35656430c800481a"
+}
+ui_name: "ss_a2_sacto_s1-Fuchi_Matrix_Shipment"
+nodes {
+  idRef {
+    id: "59a633b135656430c8004826"
+  }
+  index: 0
+  text: "> Fuchi Delivery Subsystem\n> Now accepting delivery override instructions."
+  branches {
+    responseText: "{{GM}}Redirect the paracritter shipment.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "59a6334e35656430c800481a:59a633d235656430c8004828"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a6334e35656430c800481a:59a633d235656430c800482a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a633e635656430c800482d"
+  }
+  index: 1
+  text: "> Please enter the street address of the new destination."
+  branches {
+    responseText: "406"
+    nextNodeIndex: 2
+    idRef {
+      id: "59a6334e35656430c800481a:59a6345835656430c80048da"
+    }
+  }
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 3
+}
+nodes {
+  idRef {
+    id: "59a6347035656430c80048ff"
+  }
+  index: 2
+  text: "> Input accepted. Expect shipment shortly."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a30a963565641cd30053f1"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a6334e35656430c800481a:59a6334e35656430c800481e"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad9"

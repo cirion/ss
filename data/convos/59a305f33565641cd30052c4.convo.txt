@@ -7,7 +7,7 @@ nodes {
     id: "59a306343565641cd30052d0"
   }
   index: 0
-  text: "Apologies, $(l.honorific), but, this whole building is under quarantine. Nobody can enter or leave until we get the all-clear from Ms. Atherford."
+  text: "Apologies, $(l.sir), but, this whole building is under quarantine. Nobody can enter or leave until we get the all-clear from Ms. Atherford."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -84,6 +84,41 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Fuchi_ConvincedReceptionistToRedirect"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
     idRef {
       id: "59a305f33565641cd30052c4:59a307773565641cd3005324"
@@ -91,7 +126,7 @@ nodes {
     comment: "Yes."
   }
   branches {
-    responseText: "I need to redirect the next shipment of paracritters."
+    responseText: ""
     conditions {
       ops {
         functionName: "Comparison (bool)"
@@ -157,7 +192,7 @@ nodes {
       id: "59a305f33565641cd30052c4:59a30a5a3565641cd300537b"
     }
   }
-  nodeType: ConversationNodeType_InputKeyboard
+  nodeType: ConversationNodeType_InputNumpad
   inputMaxLength: 3
 }
 nodes {
@@ -167,6 +202,30 @@ nodes {
   index: 4
   text: "Done and done! Whoever lives there is about to get a heavy dose of weirdness from the Mojave."
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a30a963565641cd30053f1"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
