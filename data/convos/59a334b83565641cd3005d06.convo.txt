@@ -193,6 +193,83 @@ nodes {
     }
   }
   branches {
+    responseText: "Can I borrow your plumbing supplies?"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Reverse the Pump"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-PlumbingGear"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    idRef {
+      id: "59a334b83565641cd3005d06:59a638d335656430c8004c01"
+    }
+  }
+  branches {
     responseText: "I have a, uh, friend who\342\200\231s trying to reverse a sump pump. Got any tips?"
     conditions {
       ops {
@@ -263,7 +340,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 17
+    nextNodeIndex: 22
     hideIfUnavailable: true
     idRef {
       id: "59a334b83565641cd3005d06:59a4e82f35656464830034e1"
@@ -707,32 +784,6 @@ nodes {
         }
       }
     }
-    ops {
-      functionName: "Order Actor to Face Direction"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Triggering Target Actor"
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 8
-          }
-        }
-      }
-    }
   }
 }
 nodes {
@@ -785,9 +836,221 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59a4e95c3565646483003517"
+    id: "59a638ed35656430c8004c04"
   }
   index: 17
+  text: "You can\342\200\231t be serious. I need these to work, and I need to work to live!"
+  branches {
+    responseText: "{{CC}}Etiquette: Gang{{/CC}} Between you and me, I\342\200\231m going to stick one to the Man. Strike a blow for the little people."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 15
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 18
+    idRef {
+      id: "59a334b83565641cd3005d06:59a638f935656430c8004c06"
+    }
+  }
+  branches {
+    responseText: "{{CC}}\302\24530{{/CC}} I\342\200\231ll make it worth your while."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 30
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 30
+        }
+      }
+    }
+    nextNodeIndex: 20
+    idRef {
+      id: "59a334b83565641cd3005d06:59a63c7c35656430c8004cff"
+    }
+  }
+  branches {
+    responseText: "Never mind."
+    nextNodeIndex: 21
+    idRef {
+      id: "59a334b83565641cd3005d06:59a63cb235656430c8004d0d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a638fb35656430c8004c09"
+  }
+  index: 18
+  text: "Heh heh heh. Yeah. That sounds fun! Hopefully I\342\200\231ll get to hear about your exploits later."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59a334b83565641cd3005d06:59a6391a35656430c8004c0b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a6392c35656430c8004c0e"
+  }
+  index: 19
+  text: "Just return the tools here whenever you\342\200\231ve finished whatever kinky activities you have planned."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a6393735656430c8004c10"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_sacto_s1-PlumbingGear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a63ca135656430c8004d02"
+  }
+  index: 20
+  text: "Hm, I COULD buy a lot of soy dogs with that\342\200\246 All right, fine."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59a334b83565641cd3005d06:59a63caa35656430c8004d04"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a63cb735656430c8004d10"
+  }
+  index: 21
+  text: "Okey dokey!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59a334b83565641cd3005d06:59a63cbd35656430c8004d12"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a4e95c3565646483003517"
+  }
+  index: 22
   text: "Better than that: I have a replacement valve that can flip that shit right around.\n\nIt isn\342\200\231t the sort of thing I want to leave in the hands of untrained professionals, though. You can cause a lot of damage if you aren\342\200\231t careful!"
   branches {
     responseText: "{{CC}}Drone Control: $(story.Global-Skillcheck_Easy){{/CC}} Don\342\200\231t worry, I have a lot of experience working with autonomous processes and control flows. I just need the right components to make the necessary repairs."
@@ -845,7 +1108,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 18
+    nextNodeIndex: 23
     idRef {
       id: "59a334b83565641cd3005d06:59a4e96e3565646483003519"
     }
@@ -907,7 +1170,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 18
+    nextNodeIndex: 23
     idRef {
       id: "59a334b83565641cd3005d06:59a4e9aa356564648300351e"
     }
@@ -961,7 +1224,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 18
+    nextNodeIndex: 23
     idRef {
       id: "59a334b83565641cd3005d06:59a4e9ac3565646483003521"
     }
@@ -995,14 +1258,14 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 20
+    nextNodeIndex: 25
     idRef {
       id: "59a334b83565641cd3005d06:59a4eae7356564648300366d"
     }
   }
   branches {
     responseText: "Please?"
-    nextNodeIndex: 21
+    nextNodeIndex: 26
     idRef {
       id: "59a334b83565641cd3005d06:59a4eae7356564648300366f"
     }
@@ -1013,11 +1276,11 @@ nodes {
   idRef {
     id: "59a4ea5035656464830035b6"
   }
-  index: 18
+  index: 23
   text: "It does sound like you know what you\342\200\231re talking about. So long as you don\342\200\231t run around getting yourself or others into trouble, you should be okay."
   branches {
     responseText: ""
-    nextNodeIndex: 19
+    nextNodeIndex: 24
     idRef {
       id: "59a334b83565641cd3005d06:59a4ea5f35656464830035b8"
     }
@@ -1028,7 +1291,7 @@ nodes {
   idRef {
     id: "59a4ea6135656464830035bb"
   }
-  index: 19
+  index: 24
   text: "All right, here you go. Installation should be pretty straightforward: just pop out the old unit and insert this one. Red to red, black to black. Good luck!"
   branches {
     responseText: ""
@@ -1091,11 +1354,11 @@ nodes {
   idRef {
     id: "59a4eb253565646483003672"
   }
-  index: 20
+  index: 25
   text: "Well, it\342\200\231s your money. If this is really how you want to spend it, fine, I won\342\200\231t argue."
   branches {
     responseText: ""
-    nextNodeIndex: 19
+    nextNodeIndex: 24
     idRef {
       id: "59a334b83565641cd3005d06:59a4eb2b3565646483003674"
     }
@@ -1107,7 +1370,7 @@ nodes {
   idRef {
     id: "59a4eb4335656464830036c1"
   }
-  index: 21
+  index: 26
   text: "\342\200\246. no, sorry. I only have so many of these valves on hand, and I want to make sure they\342\200\231re in good hands."
   branches {
     responseText: ""
