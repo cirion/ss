@@ -5205,6 +5205,44 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59a6c6bb356564780900401b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_repairing"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59a6c6ae356564780900401a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/decking_idle"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -12481,7 +12519,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59a4f12e356564648300387f"
   }
@@ -13409,6 +13447,463 @@ triggers {
   elseActions {
   }
   is_oneshot: false
+}
+triggers {
+  name: "Ground_Patrols"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Actor In Passive Mode"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPatrolWalker"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Patrol"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6ab3565647809004019"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (PatrolRoute)"
+          args {
+            string_value: "59a777cd356564e471002f2b"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a778cb356564e471002f2d"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Ground_Reinforce_Wave2"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isGroundInitialSoldier"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 4
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6d1356564780900401e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59a7793f356564e471002f30"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6ca356564780900401c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59a7792d356564e471002f2e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6cd356564780900401d"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59a7793d356564e471002f2f"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6d4356564780900401f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59a77940356564e471002f31"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6fc3565647809004026"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a779c7356564e471002f33"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DebugInside"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599fa3e735656464c1000d71"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59a2f9863565641cd3004fa3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-TeamState_Dog"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5945ab8f356564f03f000e98"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a77a86356564e471002f34"
+  }
+  elseActions {
+  }
+  is_oneshot: true
 }
 regions {
   name: "water_vfx"
@@ -16051,6 +16546,499 @@ regions {
   combat_intro_stinger: ""
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Ground_North_RemoveDoorTag"
+  position {
+    x: 58
+    y: 3
+    width: 1
+    height: 8
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a77558356564e471002f18"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Ground_MoveDest_Wave2_Captain"
+  position {
+    x: 61
+    y: 6
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a7792d356564e471002f2e"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Ground_MoveDest_Wave2_Heavy"
+  position {
+    x: 68
+    y: 6
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a7793d356564e471002f2f"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Ground_MoveDest_Wave2_Shotgun"
+  position {
+    x: 68
+    y: 2
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a7793f356564e471002f30"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Ground_MoveDest_Wave2_Sniper"
+  position {
+    x: 59
+    y: 3
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a77940356564e471002f31"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Ground_MoveDest_Wave2_Melee"
+  position {
+    x: 45
+    y: 4
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a77941356564e471002f32"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+patrolRoutes {
+  name: "Ground_Loop1_Bathroom"
+  pathType: 0
+  nodes {
+    position {
+      x: 69
+      z: 22
+    }
+    index: 0
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 78
+      z: 30
+    }
+    index: 1
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 78
+      z: 16
+    }
+    index: 2
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 86
+      z: 20
+    }
+    index: 3
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 91
+      z: 11
+    }
+    index: 4
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 76
+      z: 2
+    }
+    index: 5
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 60
+      z: 1
+    }
+    index: 6
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 61
+      z: 7
+    }
+    index: 7
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 76
+      z: 8
+    }
+    index: 8
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 77
+      z: 28
+    }
+    index: 9
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 69
+      z: 22
+    }
+    index: 10
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  can_move_beyond_node: false
+  is_rail: false
+  rail_speed: 1
+  rail_rotation_time: 4
+  idRef {
+    id: "59a777cd356564e471002f2b"
+  }
+  rail_draw_segments: true
+  rail_draw_nodes: true
 }
 characters {
   name: "system_spawner_playerSpawner"
@@ -19753,21 +20741,36 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 73
+    x: 94
     y: 0
-    z: 3
+    z: 11
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Captain_1"
   idRef {
     id: "59a6c6983565647809004015"
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanMaleKnightErrantCaptain"
+    prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityRigger"
     character_sheet_id: "Errant_Lv1_Captain"
     equipment_sheet_id: "Errant_Lv1_Captain"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -19776,31 +20779,49 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Captain"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    karma: 52
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 73
+    x: 58
     y: 0
     z: 4
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Pistol_1"
   idRef {
     id: "59a6c69b3565647809004016"
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/HumanMale"
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecurityCaptain"
     character_sheet_id: "Errant_Lv1_Human_Pistol"
     equipment_sheet_id: "Errant_Lv1_Pistol"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -19809,22 +20830,26 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Soldier"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
-    hiring_set_randomizer: "errant_pistol"
+    karma: 41
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 73
+    x: 88
     y: 0
-    z: 5
+    z: 4
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_E
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Shotgun"
   idRef {
     id: "59a6c69d3565647809004017"
@@ -19856,6 +20881,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Soldier"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -19872,6 +20899,8 @@ characters {
     z: 6
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Rigger_1"
   idRef {
     id: "59a6c6a03565647809004018"
@@ -19944,6 +20973,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Rigger"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -19958,21 +20989,37 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 74
+    x: 69
     y: 0
-    z: 3
+    z: 22
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
+  GeneralTags: "isPatrolWalker"
   displayName: "Ground_Initial_Captain_2"
   idRef {
     id: "59a6c6ab3565647809004019"
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanMaleKnightErrantCaptain"
+    prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityRigger"
     character_sheet_id: "Errant_Lv1_Captain"
     equipment_sheet_id: "Errant_Lv1_Captain"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -19981,21 +21028,27 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Captain"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
+    GeneralTags: "isPatrolWalker"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    karma: 52
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 74
+    x: 59
     y: 0
-    z: 6
+    z: 19
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Rigger_2"
   idRef {
     id: "59a6c6ae356564780900401a"
@@ -20068,6 +21121,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Rigger"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -20082,21 +21137,36 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 74
+    x: 76
     y: 0
-    z: 4
+    z: 31
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_N
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Pistol_2"
   idRef {
     id: "59a6c6bb356564780900401b"
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/HumanMale"
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecurityCaptain"
     character_sheet_id: "Errant_Lv1_Human_Pistol"
     equipment_sheet_id: "Errant_Lv1_Pistol"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -20105,32 +21175,49 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Soldier"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
-    hiring_set_randomizer: "errant_pistol"
+    karma: 41
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 76
+    x: 54
     y: 0
-    z: 7
+    z: 2
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave2"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce1_Captain"
   idRef {
     id: "59a6c6ca356564780900401c"
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanMaleKnightErrantCaptain"
+    prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityRigger"
     character_sheet_id: "Errant_Lv1_Captain"
     equipment_sheet_id: "Errant_Lv1_Captain"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -20139,31 +21226,49 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Captain"
+    GeneralTags: "isGroundWave2"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    karma: 52
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 76
+    x: 54
     y: 0
-    z: 8
+    z: 3
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave2"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce1_Heavy"
   idRef {
     id: "59a6c6cd356564780900401d"
   }
   lod: 0
   character_instance {
-    prefab_name: "Berlin:KnightErrants/OrkMaleKnightErrant"
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecurityCaptain"
     character_sheet_id: "Errant_Lv1_Heavy_Explosive"
     equipment_sheet_id: "Errant_Lv1_Explosive"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -20172,21 +21277,26 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Grenadier"
+    GeneralTags: "isGroundWave2"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    karma: 47
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 76
+    x: 54
     y: 0
-    z: 9
+    z: 4
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave2"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce1_Shotgun"
   idRef {
     id: "59a6c6d1356564780900401e"
@@ -20218,6 +21328,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Soldier"
+    GeneralTags: "isGroundWave2"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -20229,11 +21341,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 76
+    x: 54
     y: 0
-    z: 10
+    z: 5
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave2"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce1_Sniper"
   idRef {
     id: "59a6c6d4356564780900401f"
@@ -20265,6 +21379,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Sniper"
+    GeneralTags: "isGroundWave2"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -20278,21 +21394,36 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 78
+    x: 70
     y: 0
-    z: 8
+    z: -9
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave3"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce2_Captain"
   idRef {
     id: "59a6c6d93565647809004020"
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanMaleKnightErrantCaptain"
+    prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityRigger"
     character_sheet_id: "Errant_Lv1_Captain"
     equipment_sheet_id: "Errant_Lv1_Captain"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -20301,28 +21432,33 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Captain"
+    GeneralTags: "isGroundWave3"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    karma: 52
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 78
+    x: 70
     y: 0
-    z: 9
+    z: -8
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave3"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce2_Pistol"
   idRef {
     id: "59a6c6de3565647809004021"
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/HumanMale"
+    prefab_name: "HongKong:Tsang Security/HumanMaleTsangSecurityCaptain"
     character_sheet_id: "Errant_Lv1_Human_Pistol"
     equipment_sheet_id: "Errant_Lv1_Pistol"
     character_mod {
@@ -20347,22 +21483,26 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Soldier"
+    GeneralTags: "isGroundWave3"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
-    hiring_set_randomizer: "errant_pistol"
+    karma: 41
     scale_character_sheet: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 78
+    x: 70
     y: 0
-    z: 10
+    z: -7
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave3"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce2_Sniper"
   idRef {
     id: "59a6c6e33565647809004022"
@@ -20394,6 +21534,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Sniper"
+    GeneralTags: "isGroundWave3"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -20407,11 +21549,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 78
+    x: 70
     y: 0
-    z: 11
+    z: -6
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave3"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce2_Rigger"
   idRef {
     id: "59a6c6e73565647809004023"
@@ -20484,6 +21628,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Rigger"
+    GeneralTags: "isGroundWave3"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -20498,11 +21644,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 78
+    x: 70
     y: 0
-    z: 12
+    z: -5
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave3"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce2_Shotgun"
   idRef {
     id: "59a6c6eb3565647809004024"
@@ -20534,6 +21682,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Soldier"
+    GeneralTags: "isGroundWave3"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -20550,6 +21700,8 @@ characters {
     z: 7
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundInitialSoldier"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Initial_Melee"
   idRef {
     id: "59a6c6f63565647809004025"
@@ -20578,6 +21730,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Operative"
+    GeneralTags: "isGroundInitialSoldier"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -20589,11 +21743,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 76
+    x: 54
     y: 0
-    z: 11
+    z: 6
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isGroundWave2"
+  GeneralTags: "isGroundSoldier"
   displayName: "Ground_Reinforce1_Melee"
   idRef {
     id: "59a6c6fc3565647809004026"
@@ -20622,6 +21778,8 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Operative"
+    GeneralTags: "isGroundWave2"
+    GeneralTags: "isGroundSoldier"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -20696,6 +21854,7 @@ senseTags: "isArelia"
 senseTags: "isMasato"
 senseTags: "isIsas"
 senseTags: "isDog"
+senseTags: "canUseDoor"
 goals {
   name: "Infiltrate McClellan AFB"
   type: GoalType_Secondary
