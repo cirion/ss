@@ -6695,22 +6695,6 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "NewTrigger"
-  events {
-  }
-  conditions {
-  }
-  actions {
-  }
-  isActive: true
-  idRef {
-    id: "59a2f8a53565641cd3004fa0"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
   name: "DebugFightOutside"
   events {
     ops {
@@ -8413,6 +8397,39 @@ triggers {
         int_value: 1
       }
     }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Avoid Hostilities"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -8472,6 +8489,28 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_LonestarHostile"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -13522,6 +13561,58 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Order Actor to Patrol"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6f63565647809004025"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (PatrolRoute)"
+          args {
+            string_value: "59a78109356564e471002f37"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Patrol"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59a6c6a03565647809004018"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (PatrolRoute)"
+          args {
+            string_value: "59a781c7356564e471002f38"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -13896,10 +13987,332 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a33d0b3565641cd3005fc2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Send Fuchi Paracritters to McClellan AFB"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Plug the Sewage Pipe"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
     id: "59a77a86356564e471002f34"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Global_RemoveDoorTag"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59a77558356564e471002f18"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a77df8356564e471002f36"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Ground_TripwireFirstGuard"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59a78293356564e471002f61"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_LonestarHostile"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Interrupt Team\'s Movement"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59a33d8e3565641cd3005fd5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59a6c6983565647809004015"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59a78300356564e471002f62"
   }
   elseActions {
   }
@@ -16895,13 +17308,71 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Ground_TripwireSeeGuard"
+  position {
+    x: 96
+    y: 9
+    width: 1
+    height: 7
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59a78293356564e471002f61"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 patrolRoutes {
   name: "Ground_Loop1_Bathroom"
   pathType: 0
   nodes {
     position {
-      x: 69
-      z: 22
+      x: 73
+      z: 27
     }
     index: 0
     rail_node_pause_time: 0
@@ -16912,8 +17383,8 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: 78
-      z: 30
+      x: 76
+      z: 29
     }
     index: 1
     rail_node_pause_time: 0
@@ -17008,7 +17479,7 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: 77
+      x: 76
       z: 28
     }
     index: 9
@@ -17020,10 +17491,34 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: 69
-      z: 22
+      x: 73
+      z: 26
     }
     index: 10
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 70
+      z: 22
+    }
+    index: 11
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 73
+      z: 27
+    }
+    index: 12
     rail_node_pause_time: 0
     rail_node_flip_180_rotation: false
     rail_node_facing: -1
@@ -17036,6 +17531,644 @@ patrolRoutes {
   rail_rotation_time: 4
   idRef {
     id: "59a777cd356564e471002f2b"
+  }
+  rail_draw_segments: true
+  rail_draw_nodes: true
+}
+patrolRoutes {
+  name: "Ground_Loop2_Armory"
+  pathType: 0
+  nodes {
+    position {
+      x: 76
+      z: 0
+    }
+    index: 0
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 75
+      z: -3
+    }
+    index: 1
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 76
+      z: -9
+    }
+    index: 2
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 69
+      z: -9
+    }
+    index: 3
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 70
+      z: -4
+    }
+    index: 4
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 74
+      z: -3
+    }
+    index: 5
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 75
+      z: 0
+    }
+    index: 6
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 64
+      z: 0
+    }
+    index: 7
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 63
+      z: -3
+    }
+    index: 8
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 64
+      z: -8
+    }
+    index: 9
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 61
+      z: -8
+    }
+    index: 10
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 62
+      z: -3
+    }
+    index: 11
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 63
+      z: 0
+    }
+    index: 12
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 67
+      z: 2
+    }
+    index: 13
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 67
+      z: 8
+    }
+    index: 14
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 77
+      z: 10
+    }
+    index: 15
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 83
+      z: 10
+    }
+    index: 16
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 89
+      z: 11
+    }
+    index: 17
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 97
+      z: 13
+    }
+    index: 18
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 101
+      z: 14
+    }
+    index: 19
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 101
+      z: 11
+    }
+    index: 20
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 95
+      z: 10
+    }
+    index: 21
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 94
+      z: 5
+    }
+    index: 22
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 87
+      z: 5
+    }
+    index: 23
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 79
+      z: 6
+    }
+    index: 24
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 76
+      z: 0
+    }
+    index: 25
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  can_move_beyond_node: false
+  is_rail: false
+  rail_speed: 1
+  rail_rotation_time: 4
+  idRef {
+    id: "59a78109356564e471002f37"
+  }
+  rail_draw_segments: true
+  rail_draw_nodes: true
+}
+patrolRoutes {
+  name: "Ground_Loop3_Computer"
+  pathType: 0
+  nodes {
+    position {
+      x: 62
+      z: 9
+    }
+    index: 0
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 62
+      z: 12
+    }
+    index: 1
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 63
+      z: 15
+    }
+    index: 2
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 63
+      z: 20
+    }
+    index: 3
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 56
+      z: 20
+    }
+    index: 4
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 55
+      z: 13
+    }
+    index: 5
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 61
+      z: 12
+    }
+    index: 6
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 61
+      z: 9
+    }
+    index: 7
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 59
+      z: 8
+    }
+    index: 8
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 58
+      z: 1
+    }
+    index: 9
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 69
+      z: 1
+    }
+    index: 10
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 79
+      z: 3
+    }
+    index: 11
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 78
+      z: 12
+    }
+    index: 12
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 82
+      z: 20
+    }
+    index: 13
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 79
+      z: 24
+    }
+    index: 14
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 80
+      z: 28
+    }
+    index: 15
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 86
+      z: 28
+    }
+    index: 16
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 86
+      z: 32
+    }
+    index: 17
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 77
+      z: 30
+    }
+    index: 18
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 77
+      z: 25
+    }
+    index: 19
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 77
+      z: 17
+    }
+    index: 20
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 77
+      z: 11
+    }
+    index: 21
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 74
+      z: 9
+    }
+    index: 22
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 66
+      z: 7
+    }
+    index: 23
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 62
+      z: 9
+    }
+    index: 24
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: -1
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  can_move_beyond_node: false
+  is_rail: false
+  rail_speed: 1
+  rail_rotation_time: 4
+  idRef {
+    id: "59a781c7356564e471002f38"
   }
   rail_draw_segments: true
   rail_draw_nodes: true
@@ -20799,9 +21932,77 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "isProtectorateTalker"
   displayName: "Ground_Initial_Pistol_1"
   idRef {
     id: "59a6c69b3565647809004016"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Global_LonestarHostile"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59a34aa33565641cd3006503"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
   }
   lod: 0
   character_instance {
@@ -20828,10 +22029,11 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Protectorate Soldier"
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "isProtectorateTalker"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -20850,9 +22052,77 @@ characters {
   orientation: ORIENTATION_E
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "isProtectorateTalker"
   displayName: "Ground_Initial_Shotgun"
   idRef {
     id: "59a6c69d3565647809004017"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Global_LonestarHostile"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59a349ef3565641cd3006455"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
   }
   lod: 0
   character_instance {
@@ -20879,10 +22149,11 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Protectorate Soldier"
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "isProtectorateTalker"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -20894,13 +22165,14 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 73
+    x: 59
     y: 0
-    z: 6
+    z: 8
   }
   orientation: ORIENTATION_S
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "isPatrolWalker"
   displayName: "Ground_Initial_Rigger_1"
   idRef {
     id: "59a6c6a03565647809004018"
@@ -20975,6 +22247,7 @@ characters {
     char_name: "Protectorate Rigger"
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "isPatrolWalker"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -20989,9 +22262,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 69
+    x: 73
     y: 0
-    z: 22
+    z: 26
   }
   orientation: ORIENTATION_S
   GeneralTags: "isGroundInitialSoldier"
@@ -21049,9 +22322,77 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "isProtectorateTalker"
   displayName: "Ground_Initial_Rigger_2"
   idRef {
     id: "59a6c6ae356564780900401a"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Global_LonestarHostile"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59a34bed3565641cd30066a6"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
   }
   lod: 0
   character_instance {
@@ -21119,10 +22460,11 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Protectorate Rigger"
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "isProtectorateTalker"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -21144,9 +22486,77 @@ characters {
   orientation: ORIENTATION_N
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "isProtectorateTalker"
   displayName: "Ground_Initial_Pistol_2"
   idRef {
     id: "59a6c6bb356564780900401b"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Global_LonestarHostile"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59a347de3565641cd30063bb"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
   }
   lod: 0
   character_instance {
@@ -21173,10 +22583,11 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Protectorate Soldier"
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "isProtectorateTalker"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -21195,6 +22606,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundWave2"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "canUseDoor"
   displayName: "Ground_Reinforce1_Captain"
   idRef {
     id: "59a6c6ca356564780900401c"
@@ -21228,6 +22640,7 @@ characters {
     char_name: "Protectorate Captain"
     GeneralTags: "isGroundWave2"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -21246,6 +22659,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundWave2"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "canUseDoor"
   displayName: "Ground_Reinforce1_Heavy"
   idRef {
     id: "59a6c6cd356564780900401d"
@@ -21279,6 +22693,7 @@ characters {
     char_name: "Protectorate Grenadier"
     GeneralTags: "isGroundWave2"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -21297,6 +22712,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundWave2"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "canUseDoor"
   displayName: "Ground_Reinforce1_Shotgun"
   idRef {
     id: "59a6c6d1356564780900401e"
@@ -21330,6 +22746,7 @@ characters {
     char_name: "Protectorate Soldier"
     GeneralTags: "isGroundWave2"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -21348,6 +22765,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundWave2"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "canUseDoor"
   displayName: "Ground_Reinforce1_Sniper"
   idRef {
     id: "59a6c6d4356564780900401f"
@@ -21381,6 +22799,7 @@ characters {
     char_name: "Protectorate Sniper"
     GeneralTags: "isGroundWave2"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -21695,13 +23114,14 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 73
+    x: 79
     y: 0
-    z: 7
+    z: 6
   }
   orientation: ORIENTATION_S
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "isPatrolWalker"
   displayName: "Ground_Initial_Melee"
   idRef {
     id: "59a6c6f63565647809004025"
@@ -21710,7 +23130,7 @@ characters {
   character_instance {
     prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityMage"
     character_sheet_id: "Thug_Lv1_Melee"
-    equipment_sheet_id: "Thug_Lv1_Melee_Gear"
+    equipment_sheet_id: "Adept_Lv1_Melee_Gear"
     character_mod {
       stats {
         morale: 0
@@ -21732,6 +23152,7 @@ characters {
     char_name: "Protectorate Operative"
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "isPatrolWalker"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -21750,6 +23171,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isGroundWave2"
   GeneralTags: "isGroundSoldier"
+  GeneralTags: "canUseDoor"
   displayName: "Ground_Reinforce1_Melee"
   idRef {
     id: "59a6c6fc3565647809004026"
@@ -21758,7 +23180,7 @@ characters {
   character_instance {
     prefab_name: "HongKong:Tsang Security/HumanFemaleTsangSecurityMage"
     character_sheet_id: "Thug_Lv1_Melee"
-    equipment_sheet_id: "Thug_Lv1_Melee_Gear"
+    equipment_sheet_id: "Adept_Lv1_Melee_Gear"
     character_mod {
       stats {
         morale: 0
@@ -21780,6 +23202,7 @@ characters {
     char_name: "Protectorate Operative"
     GeneralTags: "isGroundWave2"
     GeneralTags: "isGroundSoldier"
+    GeneralTags: "canUseDoor"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -21888,6 +23311,11 @@ goals {
 goals {
   name: "Learn Where Tassender Is Being Held"
   type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Avoid Hostilities"
+  type: GoalType_Secondary
   status: GoalStatus_Hidden
 }
 worldMapLocation {
