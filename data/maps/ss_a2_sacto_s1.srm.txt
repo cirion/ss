@@ -14346,8 +14346,69 @@ props {
     z: -12
   }
   orientation: ORIENTATION_E
+  displayName: "Armory_DroneWallTurnBased"
   idRef {
     id: "592a4889356564800d00151d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 8
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
   }
   lod: 0
 }
@@ -113812,22 +113873,44 @@ props {
 props {
   name: "system_invisible_nonsolidProp"
   gridPoint {
-    x: 77
-    y: 0
-    z: -18
+    x: 74.4
+    y: 1
+    z: -11
   }
   orientation: ORIENTATION_S
+  displayName: "Ground_Interact_DroneVent_Armory_Freemove"
   idRef {
     id: "59a78762356564e4710030a1"
   }
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
-    pickupItem {
-      itemName: "Sh 2 Sandblaster"
-      destroyOnPickup: true
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
     }
-    interaction_info_text: ""
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
   }
   lod: 0
 }

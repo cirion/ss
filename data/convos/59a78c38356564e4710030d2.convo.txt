@@ -1,0 +1,115 @@
+idRef {
+  id: "59a78c38356564e4710030d2"
+}
+ui_name: "ss_a2_sacto_s1-Ground_SendDroneIn"
+nodes {
+  idRef {
+    id: "59a78c4c356564e4710030de"
+  }
+  index: 0
+  text: "This vent connects to the base\'s interior ductwork. It looks large enough to accommodate a standard security drone."
+  branches {
+    responseText: "{{GM}}Send a drone into the vent.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors on Team of Race"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Race"
+                }
+                args {
+                  int_value: 8
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703253565641042006053"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_SendDrone"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59a78c38356564e4710030d2:59a78c62356564e4710030e0"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "59a78c38356564e4710030d2:59a78c63356564e4710030e2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a78c38356564e4710030d2:59a78c38356564e4710030d6"
+  }
+}
