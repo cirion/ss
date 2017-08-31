@@ -12,10 +12,10 @@ nodes {
     responseText: "{{GM}}Send a drone into the vent.{{/GM}}"
     conditions {
       ops {
-        functionName: "Evaluate If Actor is Inside Region"
+        functionName: "Evaluate Tag for Actor"
         args {
           call_value {
-            functionName: "All Actors on Team of Race"
+            functionName: "All Actors on Team"
             args {
               call_value {
                 functionName: "Get Preset Value (string)"
@@ -46,24 +46,13 @@ nodes {
                 }
               }
             }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "Race"
-                }
-                args {
-                  int_value: 8
-                }
-              }
-            }
           }
         }
         args {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "AreOrAreNot"
+              string_value: "HasOrHasNot"
             }
             args {
               int_value: 1
@@ -72,9 +61,9 @@ nodes {
         }
         args {
           call_value {
-            functionName: "Get Map Item (Region)"
+            functionName: "Get Map Item (SenseTagList)"
             args {
-              string_value: "594703253565641042006053"
+              string_value: "isShadowrunnerDrone"
             }
           }
         }
@@ -99,13 +88,13 @@ nodes {
     }
   }
   branches {
-    responseText: ""
+    responseText: "{{GM}}Exit.{{/GM}}"
     nextNodeIndex: -1
     idRef {
       id: "59a78c38356564e4710030d2:59a78c63356564e4710030e2"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 roots {
   nextNodeIndex: 0
