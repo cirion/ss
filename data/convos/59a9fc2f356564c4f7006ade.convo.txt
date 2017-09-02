@@ -33,6 +33,50 @@ nodes {
     }
   }
   branches {
+    responseText: "{{GM}}Disable voltage regulators.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Loud Exit Stage 1: Disable Matrix Voltage Regulators"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59a9fc2f356564c4f7006ade:59ab139c356564c4f700722e"
+    }
+  }
+  branches {
     responseText: "{{GM}}Exit.{{/GM}}"
     nextNodeIndex: -1
     idRef {
@@ -233,6 +277,46 @@ nodes {
           }
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ab13c9356564c4f7007231"
+  }
+  index: 4
+  text: "> VOLTAGE LIMITS REMOVED\n> WARNING WARNING WARNING\n> EXERCISE EXTREME CAUTION WHILE SERVICING JUNCTION BOXES\n> DEADLY LOSS OF LIFE CAN OCCUR"
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    idRef {
+      id: "59a9fc2f356564c4f7006ade:59ab13cc356564c4f7007233"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ab141e356564c4f7007299"
           }
         }
       }
