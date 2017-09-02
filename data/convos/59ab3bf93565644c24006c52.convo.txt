@@ -1,0 +1,146 @@
+idRef {
+  id: "59ab3bf93565644c24006c52"
+}
+ui_name: "ss_a2_sacto_s1-Upstairs_DroneForDoor"
+nodes {
+  idRef {
+    id: "59ab3c093565644c24006c5e"
+  }
+  index: 0
+  text: "This drone is currently idling."
+  branches {
+    responseText: "{{CC}}Drone Control: $(story.Global-Skillcheck_Medium){{/CC}} {{GM}}Activate the drone.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Medium"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "59ab3bf93565644c24006c52:59ab3c1d3565644c24006c60"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "59ab3bf93565644c24006c52:59ab3c1e3565644c24006c62"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59ab3c5f3565644c24006c6c"
+  }
+  index: 1
+  text: "The drone isn\'t operable, but powering it on activates the adjacent door\'s sensors. As long as the drone is nearby, you will be able to pass through it."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ab2e043565644c24006b50"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:rigger"
+          }
+          args {
+            string_value: "DroneRotors"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59ab3bf93565644c24006c52:59ab3bfa3565644c24006c56"
+  }
+}

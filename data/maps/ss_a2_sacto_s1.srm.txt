@@ -17156,34 +17156,74 @@ props {
     interactionRadius: 1
     prerequisites {
       ops {
-        functionName: "Evaluate Goal"
+        functionName: "OR"
         args {
           call_value {
-            functionName: "Get Map Item (Goal)"
+            functionName: "Evaluate Goal"
             args {
-              string_value: "Loud Exit Stage 2: Overload Junction Boxes"
+              call_value {
+                functionName: "Get Map Item (Goal)"
+                args {
+                  string_value: "Loud Exit Stage 2: Overload Junction Boxes"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "GoalStatus"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Evaluate Goal"
             args {
-              string_value: "GoalStatus"
+              call_value {
+                functionName: "Get Map Item (Goal)"
+                args {
+                  string_value: "Quiet Exit Stage 3: Distribute Party Invites"
+                }
+              }
             }
             args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "GoalStatus"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
             args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
@@ -23683,7 +23723,7 @@ props {
 props {
   name: "pirateBarge_prop_antiAirGun03"
   gridPoint {
-    x: -105
+    x: -104
     y: 0
     z: -34
   }
@@ -24920,12 +24960,70 @@ props {
     z: -34
   }
   orientation: ORIENTATION_S
+  displayName: "Upstairs_MasatoDoor"
   idRef {
     id: "5945a311356564f03f000e91"
   }
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_DoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     doorPoint {
       doorState: false
       aiOnlyDoor: false
@@ -60264,9 +60362,9 @@ props {
 props {
   name: "tenements_decor_modernPainting01"
   gridPoint {
-    x: -113
-    y: 0
-    z: -36.5
+    x: -112.8
+    y: 0.2
+    z: -36.7
   }
   orientation: ORIENTATION_E
   lod: 0
@@ -61436,7 +61534,7 @@ props {
     z: -10
   }
   orientation: ORIENTATION_E
-  displayName: "TODO: Only openable from other side."
+  displayName: "SupplyRoom_Door"
   idRef {
     id: "5945a2c0356564f03f000e8e"
   }
@@ -114893,6 +114991,929 @@ props {
     x: 59.3
     y: 0.3
     z: -5.6
+  }
+  orientation: ORIENTATION_S
+  displayName: "SupplyRoom_Stationery"
+  idRef {
+    id: "59ab1cb13565644c24006ad8"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 1: Acquire Official Stationary"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    pickupItem {
+      itemName: "ss_a2_sacto_s1-Stationery"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Discarded Papers"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 63.1
+    y: 0.5
+    z: 22
+  }
+  orientation: ORIENTATION_S
+  displayName: "ServerRoom_MakinCopies"
+  idRef {
+    id: "59ab1eef3565644c24006adb"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 2: Print Fake Party Invites"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Print Party Invitations"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 68
+    y: 0.3
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_PartyInvite_1"
+  idRef {
+    id: "59ab22303565644c24006ade"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 3: Distribute Party Invites"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Place Party Invite"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 66.5
+    y: 0.4
+    z: 25.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_PartyInvite_2"
+  idRef {
+    id: "59ab223d3565644c24006adf"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 3: Distribute Party Invites"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Place Party Invite"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 61.9
+    y: 0.2
+    z: 13.799999
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_PartyInvite_3"
+  idRef {
+    id: "59ab225b3565644c24006ae0"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 3: Distribute Party Invites"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Place Party Invite"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 71.9
+    y: 0.2
+    z: 11.999999
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_PartyInvite_4"
+  idRef {
+    id: "59ab229d3565644c24006ae1"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 3: Distribute Party Invites"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Place Party Invite"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -121.8
+    y: 0.2
+    z: -39.9
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_PartyInvite_5"
+  idRef {
+    id: "59ab23153565644c24006ae3"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Quiet Exit Stage 3: Distribute Party Invites"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Place Party Invite"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -88
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_BasiliskShippingOrder"
+  idRef {
+    id: "59ab2c163565644c24006b17"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 13
+      fadeTime: 3
+      inspectText: "This basilisk has an ankle bracelet reading \"PROPERTY OF FUCHI INDUSTRIAL ELECTRONICS. CAUTION: DO NOT REDIRECT SHIPMENT. FOR APPROVED CONTAINMENT FACILITIES ONLY.\""
+      disableAfterInteracting: true
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -88
+    y: 0
+    z: 32
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_IDCard"
+  idRef {
+    id: "59ab2c733565644c24006b1a"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "ss_a2_sacto_s1-McClellanID"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "ID Card"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -88
+    y: 0
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_Codes"
+  idRef {
+    id: "59ab2cef3565644c24006b1c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "ss_a2_sacto_s1-CodesFromCombat"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Paper"
+  }
+  lod: 0
+}
+props {
+  name: "factory_wallDecoration_onSwitch"
+  gridPoint {
+    x: -113
+    y: 1.1
+    z: -35.4
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -113
+    y: 0.8
+    z: -35.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_DoorTerminal"
+  idRef {
+    id: "59ab324e3565644c24006bb7"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Prop Is Closed Door"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "5945a311356564f03f000e91"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Ground_DroneRoomUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59ab2d5f3565644c24006b39"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Access Panel"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -101.5
+    y: 0.7
+    z: -31.5
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_Gun"
+  idRef {
+    id: "59ab35633565644c24006bd4"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Prop Is Closed Door"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "5945a311356564f03f000e91"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Upstairs Door"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Ground_DroneRoomUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59ab35b03565644c24006beb"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Gun"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -111
+    y: -1.1920929e-008
+    z: -30
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_DroneForDoor"
+  idRef {
+    id: "59ab3bc03565644c24006c44"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Prop Is Closed Door"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "5945a311356564f03f000e91"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Upstairs Door"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Ground_DroneRoomUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59ab35b03565644c24006beb"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Drone"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 64.5
+    y: 1.2
+    z: 25.6
+  }
+  orientation: ORIENTATION_S
+  displayName: "Ground_KeyForUpstairsDoor"
+  idRef {
+    id: "59ab3e4a3565644c24006c81"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Upstairs Door"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_ItemPickup
+    interaction_info_text: "Key"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_blockMove"
+  gridPoint {
+    x: -122
+    y: 0
+    z: -42
   }
   orientation: ORIENTATION_S
   lod: 0
