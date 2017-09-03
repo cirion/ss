@@ -246,7 +246,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "5941d77f356564181c00608a"
   }
@@ -3424,6 +3424,9 @@ triggers {
     }
   }
   actions {
+    ops {
+      functionName: "End Current Team Round"
+    }
     ops {
       functionName: "End Current Team Round"
     }
@@ -13662,7 +13665,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Start Conversation"
+      functionName: "Start Conversation Between Actors"
       args {
         call_value {
           functionName: "Get Map Item (Conversation)"
@@ -13673,7 +13676,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Nothing Actor"
+          functionName: "Active Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Active Actor"
         }
       }
       args {
@@ -14387,7 +14395,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59a77a86356564e471002f34"
   }
@@ -21670,6 +21678,47 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Sewer_NuyenPickup"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59ac050435656488120083a4"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 76
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59ac053735656488120083a6"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "water_vfx"
   position {
@@ -24558,64 +24607,6 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "59a77940356564e471002f31"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "Ground_MoveDest_Wave2_Melee"
-  position {
-    x: 45
-    y: 4
-    width: 1
-    height: 1
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "59a77941356564e471002f32"
   }
   highlight_color {
     r: 0
@@ -32346,7 +32337,7 @@ scene_dimensions {
   initial_alarm_state: 0
   turns_per_round: 3
   is_matrix: true
-  max_alarm_value: 255
+  max_alarm_value: 150
   heat_response_rating: 6
 }
 scene_dimensions {
@@ -32354,10 +32345,8 @@ scene_dimensions {
   initial_alarm_state: 0
   turns_per_round: 3
   is_matrix: true
-  max_alarm_value: 50
+  max_alarm_value: 55
   heat_response_rating: 5
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
