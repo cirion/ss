@@ -435,6 +435,30 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isLi"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ac4d8e356564101c00840f"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -499,29 +523,31 @@ nodes {
       }
     }
     ops {
-      functionName: "Play FX on Actor"
+      functionName: "Play FX at Point"
       args {
-        string_value: "Berlin:BloodSpellHitReaction"
+        string_value: "Berlin:AmmoniaGasBurst"
       }
       args {
         call_value {
-          functionName: "All Actors With Tag"
+          functionName: "Current Location of Actor"
           args {
             call_value {
-              functionName: "Get Map Item (SenseTagList)"
+              functionName: "Nearest Tagged Actor to Actor"
               args {
-                string_value: "isLi"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isLi"
+                  }
+                }
               }
               args {
-                int_value: 0
+                call_value {
+                  functionName: "Get Map Item (Player)"
+                  args {
+                    int_value: 0
+                  }
+                }
               }
             }
           }
