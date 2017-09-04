@@ -12822,7 +12822,7 @@ triggers {
             string_value: "TextPopupStyle"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
@@ -12959,6 +12959,14 @@ triggers {
           args {
             int_value: 0
           }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
         }
       }
     }
@@ -13224,6 +13232,40 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isTaggedDrone"
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -13290,13 +13332,25 @@ triggers {
               functionName: "Evaluate If Actor is Inside Region"
               args {
                 call_value {
-                  functionName: "Specific Actor"
+                  functionName: "All Actors With Tag"
                   args {
                     call_value {
-                      functionName: "Triggering Actor"
+                      functionName: "Get Map Item (SenseTagList)"
+                      args {
+                        string_value: "isShadowrunnerDrone"
+                      }
                     }
                   }
                   args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "AllOrAny"
+                      }
+                      args {
+                        int_value: 1
+                      }
+                    }
                   }
                 }
               }
@@ -13315,7 +13369,7 @@ triggers {
                 call_value {
                   functionName: "Get Map Item (Region)"
                   args {
-                    string_value: "59adba1c356564742a00199b"
+                    string_value: "594b3c6f356564fc470023ee"
                   }
                 }
               }
@@ -13326,13 +13380,25 @@ triggers {
               functionName: "Evaluate If Actor is Inside Region"
               args {
                 call_value {
-                  functionName: "Specific Actor"
+                  functionName: "All Actors With Tag"
                   args {
                     call_value {
-                      functionName: "Triggering Actor"
+                      functionName: "Get Map Item (SenseTagList)"
+                      args {
+                        string_value: "isShadowrunnerDrone"
+                      }
                     }
                   }
                   args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "AllOrAny"
+                      }
+                      args {
+                        int_value: 1
+                      }
+                    }
                   }
                 }
               }
@@ -13351,7 +13417,7 @@ triggers {
                 call_value {
                   functionName: "Get Map Item (Region)"
                   args {
-                    string_value: "59adba60356564742a00199c"
+                    string_value: "594b3db2356564fc470023ef"
                   }
                 }
               }
@@ -13364,7 +13430,15 @@ triggers {
           functionName: "Evaluate If Actor is Inside Region"
           args {
             call_value {
-              functionName: "All Actors"
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isShadowrunnerDrone"
+                  }
+                }
+              }
               args {
                 call_value {
                   functionName: "Get Preset Value (int)"
@@ -13393,7 +13467,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Region)"
               args {
-                string_value: "59adba7a356564742a00199d"
+                string_value: "597fddfe356564203500289e"
               }
             }
           }
@@ -13980,7 +14054,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Prop)"
               args {
-                string_value: "59adb8ad356564742a00199a"
+                string_value: "594b3b87356564fc470023e5"
               }
             }
           }
@@ -15739,9 +15813,9 @@ regions {
   name: "Interrogation1_DroneEntry"
   position {
     x: -113
-    y: -47
+    y: -46
     width: 1
-    height: 3
+    height: 4
   }
   enabledAtStart: true
   is_camera_region: false
