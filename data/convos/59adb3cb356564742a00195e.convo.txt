@@ -1,0 +1,104 @@
+idRef {
+  id: "59adb3cb356564742a00195e"
+}
+ui_name: "ss_a3_underwater_s1-Top_SendDroneIn"
+nodes {
+  idRef {
+    id: "59adb3e6356564742a00196a"
+  }
+  index: 0
+  text: "This vent connects to the underwater base\'s air filtration and recirculation system. It looks wide enough to accommodate a standard security drone."
+  branches {
+    responseText: "{{GM}}Send a drone into the vent.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isShadowrunnerDrone"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_SendDrone"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59adb3cb356564742a00195e:59adb3f1356564742a001971"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59adb3cb356564742a00195e:59adb3f2356564742a001973"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59adb3cb356564742a00195e:59adb3cb356564742a001962"
+  }
+}
