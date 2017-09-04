@@ -1,0 +1,447 @@
+idRef {
+  id: "59ac6d53356564101c00854a"
+}
+ui_name: "ss_a3_underwater_s1-Interrogation_CarliDeath"
+nodes {
+  idRef {
+    id: "59ac6d6d356564101c008556"
+  }
+  index: 0
+  text: "Now that you\342\200\231re nice and softened up, let\342\200\231s finish this!"
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6d6e356564101c008558"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6d6e356564101c00855a"
+  }
+  index: 1
+  text: "Wait\342\200\246 is that a leyline after all? I thought that $(story.li_name) was just making that up\342\200\246"
+  branches {
+    nextNodeIndex: 2
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6d78356564101c00855e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6d78356564101c008560"
+  }
+  index: 2
+  text: "A piercing cry cuts through the room. It sounds as if it\342\200\231s coming from far away, but is louder than any noise you\342\200\231ve heard before in your life."
+  branches {
+    nextNodeIndex: 3
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6d79356564101c008562"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ambient_underground"
+          }
+          args {
+            string_value: "Screech"
+          }
+        }
+      }
+      args {
+        float_value: 2
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6d79356564101c008564"
+  }
+  index: 3
+  text: "You and Kora cover your ears, but it offers no relief. The sound continues to build, seemingly from inside your skull. You realize that you are shrieking along, in tune with the rising chord."
+  branches {
+    nextNodeIndex: 4
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6d7b356564101c008566"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59ac219c3565648812008471"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "59ac6e79356564101c008584"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_headCradle"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6d7b356564101c008568"
+  }
+  index: 4
+  text: "You notice Carli standing motionless, jaw slack, staring down at $(story.li_name)\'s corpse."
+  branches {
+    responseText: "{{CC}}Spellcasting / Conjuring / Qi Casting: $(story.Global-Skillcheck_Medium){{/CC}} {{GM}}Check Carli\342\200\231s aura.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Triggering Actor"
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Story Variable (int)"
+                    args {
+                      string_value: "58a09a016666641898001ad5"
+                    }
+                    args {
+                      string_value: "Global-Skillcheck_Medium"
+                    }
+                  }
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Triggering Actor"
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 7
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Story Variable (int)"
+                    args {
+                      string_value: "58a09a016666641898001ad5"
+                    }
+                    args {
+                      string_value: "Global-Skillcheck_Medium"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 4
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-Skillcheck_Medium"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6ef1356564101c008594"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Focus on the pain.{{/GM}}"
+    nextNodeIndex: 9
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6ef2356564101c008596"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ac6f8b356564101c008599"
+  }
+  index: 5
+  text: "You see a thread, tying Carli to $(story.li_name). It must be the remnant of the spell used to control $(story.li_him) in life, now binding the living body to the dead corpse."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6f8c356564101c00859b"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6f97356564101c0085a1"
+  }
+  index: 6
+  text: "And, indeed, $(story.li_name) managed to fall on a hairline fracture. At first you think it is a leyline, but as you look closer, you realize that it is something else. A portal, a gateway, a horizon.\n\nSomething is on the other side. And it does not sound happy at all."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6f97356564101c0085a3"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6f9a356564101c0085a7"
+  }
+  index: 7
+  text: "Carli\342\200\231s essence is rapidly draining through the cord, down into $(story.li_name)\342\200\231s body, which in turn is being devoured through the portal. You sense some THING, filled with greed, reaching out, across the threshold, crawling up the slender strand, towards Carli\342\200\231s paralyzed form\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6f9a356564101c0085a9"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6f9c356564101c0085ab"
+  }
+  index: 8
+  text: "\342\200\246 the pain grows stronger and stronger, and you force your third eye shut, and then your two eyes, willing the agony to stop\342\200\246."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6f9c356564101c0085ad"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59ac6fcc356564101c0085b0"
+  }
+  index: 9
+  text: "It builds, then abruptly dissipates. You and Kora are fine."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59ac6d53356564101c00854a:59ac6fde356564101c0085b2"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59ac6fe3356564101c0085b5"
+  }
+  index: 10
+  text: "Carli is not."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ac9bcd356564101c0085d8"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59ac6d53356564101c00854a:59ac6d53356564101c00854e"
+  }
+}
