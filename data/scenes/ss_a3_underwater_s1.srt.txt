@@ -94,7 +94,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "DebugStart"
+  name: "DebugStartAtInterrogation"
   events {
     ops {
       functionName: "On Map Start"
@@ -243,6 +243,23 @@ triggers {
             int_value: 0
           }
         }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "a1_Alameda_s1-PC0FirstWords"
+          }
+        }
+      }
+      args {
+        string_value: "HEY, SEWER MONSTER! OPEN UP!"
       }
     }
   }
@@ -6235,6 +6252,44 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Actor Dead Body Persists"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLi"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -8133,9 +8188,93 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59ac445c356564101c00816f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Camera Post Process Effect"
       args {
         int_value: 1
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ac4851356564101c0082bf"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Teleport Camera To Point"
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59ac43e5356564101c008021"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Apply Camera Zoom"
+      args {
+        float_value: 1.6
       }
     }
     ops {
@@ -8242,6 +8381,20 @@ triggers {
           args {
             string_value: "TeleportMethod"
           }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
           args {
             int_value: 0
           }
@@ -8431,6 +8584,59 @@ triggers {
           functionName: "Get Map Item (Event)"
           args {
             string_value: "Event_Cutscene"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isLi"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (Player)"
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -8910,6 +9116,36 @@ triggers {
     }
   }
   actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59ac6d53356564101c00854a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59ac219c3565648812008471"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -9308,7 +9544,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Conversation)"
           args {
-            string_value: "560030b9306364541f000190"
+            string_value: "59ac9cc1356564101c008613"
           }
         }
       }
@@ -10980,10 +11216,10 @@ regions {
 regions {
   name: "Camera_Flashback_Sewer"
   position {
-    x: -278
-    y: -46
-    width: 4
-    height: 3
+    x: -244
+    y: -40
+    width: 7
+    height: 6
   }
   enabledAtStart: true
   is_camera_region: true
@@ -12023,9 +12259,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -278
+    x: -243
     y: 0
-    z: -46
+    z: -39
   }
   orientation: ORIENTATION_S
   displayName: "FlashbackSewer_Camera"
@@ -12055,7 +12291,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "Shadowrunners"
+    team_id: "Civilians"
     char_name: "Camera"
     pc_spawn_number: -1
     ai_ignores: true
@@ -12064,16 +12300,16 @@ characters {
     hiring_type: HiringType_None
     karma: 2
     hiring_cost_override: 3000
-    is_prop_character: true
+    is_prop_character: false
     hide_floaties: true
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -275
+    x: -240
     y: 0
-    z: -46
+    z: -39
   }
   orientation: ORIENTATION_E
   displayName: "FlashbackSewer_Carli"
@@ -12159,9 +12395,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -275
+    x: -240
     y: 0
-    z: -44
+    z: -37
   }
   orientation: ORIENTATION_W
   displayName: "FlashbackSewer_Desorn"

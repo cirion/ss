@@ -21,7 +21,7 @@ nodes {
     id: "59ac4898356564101c0082f4:59ac49ee356564101c00830b"
   }
   index: 1
-  text: "You have to stop this!\n\n{{GM}}$+(story.li_he) continues facing Carli, but urgently and quietly beseeches you.{{/GM}\n\nYou have to kill me. It\342\200\231s the only way."
+  text: "You have to stop this!\n\n{{GM}}$+(story.li_he) continues facing Carli, but urgently and quietly beseeches you.{{/GM}}\n\nYou have to kill me. It\342\200\231s the only way."
   branches {
     nextNodeIndex: 2
     idRef {
@@ -76,6 +76,46 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isLi"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isLi"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -101,6 +141,7 @@ nodes {
   branches {
     responseText: "There has to be another way!"
     nextNodeIndex: 10
+    onlyOnce: true
     idRef {
       id: "59ac4898356564101c0082f4:59ac4bbf356564101c008376"
     }
@@ -224,8 +265,74 @@ nodes {
     }
   }
   branches {
-    responseText: "{{GM}}Kiss $(story.li_him).{{/GM}"
+    responseText: "{{GM}}Kiss $(story.li_him).{{/GM}}"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-DesornLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-ValiriLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 8
+    hideIfUnavailable: true
     idRef {
       id: "59ac4898356564101c0082f4:59ac4ca8356564101c0083e2"
     }
@@ -276,7 +383,7 @@ nodes {
     id: "59ac4d1b356564101c0083e7"
   }
   index: 8
-  text: "$+(story.li_his) body is rigid. $+(story.li_he) doesn\342\200\231t respond to your brief caress, and when you reach $+(story.li_his) lips, the mouth stays locked shut tight. As you draw back, though, you see $(story.li_name)\342\200\231s eyes staring intensely at yours. Wet, reddening, filled with sorrow and regret and compassion. "
+  text: "$+(story.li_his) body is rigid. $+(story.li_he) doesn\342\200\231t respond to your brief caress, and when you reach $(story.li_his) lips, the mouth stays locked shut tight. As you draw back, though, you see $(story.li_name)\342\200\231s eyes staring intensely at yours. Wet, reddening, filled with sorrow and regret and compassion. "
   branches {
     responseText: ""
     nextNodeIndex: 9
