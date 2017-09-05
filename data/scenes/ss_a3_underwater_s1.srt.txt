@@ -18788,6 +18788,93 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "Matrix_Region2_Reinforce"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isMatrixRegion2"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Activate Actor Spawner By Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isMatrixRegion2Reinforce"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "59ae20023565649854000f5b"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "Matrix_Region2_Tripwire"
   events {
     ops {
@@ -19023,93 +19110,6 @@ triggers {
   isActive: true
   idRef {
     id: "59ae1fc73565649854000f5a"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "Matrix_Region2_Reinforce"
-  events {
-    ops {
-      functionName: "On Actor Death"
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Count of Alive Actors"
-          args {
-            call_value {
-              functionName: "All Actors With Tag"
-              args {
-                call_value {
-                  functionName: "Get Map Item (SenseTagList)"
-                  args {
-                    string_value: "isMatrixRegion2"
-                  }
-                }
-              }
-              args {
-                call_value {
-                  functionName: "Get Preset Value (int)"
-                  args {
-                    string_value: "AllOrAny"
-                  }
-                  args {
-                    int_value: 0
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 4
-          }
-        }
-      }
-      args {
-        int_value: 2
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Activate Actor Spawner By Tag"
-      args {
-        call_value {
-          functionName: "Get Map Item (SenseTagList)"
-          args {
-            string_value: "isMatrixRegion2Reinforce"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: false
-  idRef {
-    id: "59ae20023565649854000f5b"
   }
   elseActions {
   }
