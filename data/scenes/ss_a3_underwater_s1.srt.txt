@@ -296,7 +296,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "5949f934356564fc4700239f"
   }
@@ -8093,39 +8093,6 @@ triggers {
       }
     }
     ops {
-      functionName: "Set Goal Status"
-      args {
-        call_value {
-          functionName: "Get Map Item (Goal)"
-          args {
-            string_value: "Forge Prisoner Transfer Orders"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "GoalStatus"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Set Waypoint on Prop"
       args {
         call_value {
@@ -8181,6 +8148,94 @@ triggers {
           }
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Rescue Tassender"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5949f91b356564fc4700239c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "594a7eac356564fc470023d2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Waypoint from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 3
           }
         }
       }
@@ -17581,22 +17636,37 @@ triggers {
       }
     }
     ops {
-      functionName: "Move Prop"
+      functionName: "Clear Waypoint from Prop"
       args {
         call_value {
-          functionName: "Get Map Item (Prop)"
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
           args {
-            string_value: "59adea0d356564742a001bb4"
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "alarmwarning"
           }
         }
       }
       args {
+        float_value: 1
+      }
+      args {
         call_value {
-          functionName: "Current Location of Prop"
+          functionName: "Get Preset Value (int)"
           args {
-            call_value {
-              functionName: "Triggering Prop"
-            }
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -18523,7 +18593,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59ae13663565649854000efb"
   }
@@ -19468,6 +19538,128 @@ triggers {
   isActive: true
   idRef {
     id: "59ae211d3565649854000f63"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Matrix_CompleteGoalPrisonerTransferRecords"
+  events {
+    ops {
+      functionName: "On Item Pickup"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Forge Prisoner Transfer Orders"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a3_underwater_s1-PrisonerTransferOrders"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Forge Prisoner Transfer Orders"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59ae25153565649854000f65"
   }
   elseActions {
   }
@@ -24943,7 +25135,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Lonestar/HumanMaleLonestarSecurityGuard"
+    prefab_name: "Seattle:Lonestar/HumanMaleLonestarGuard"
     character_sheet_id: "Errant_Lv1_Human_Pistol"
     equipment_sheet_id: "Errant_Lv1_Pistol"
     character_mod {
