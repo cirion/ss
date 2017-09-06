@@ -1569,6 +1569,23 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader"
+          }
+        }
+      }
+      args {
+        string_value: "Slagarm"
+      }
+    }
   }
   isActive: true
   idRef {
@@ -1595,6 +1612,23 @@ triggers {
             int_value: 0
           }
         }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader"
+          }
+        }
+      }
+      args {
+        string_value: "Fisheggs Fred"
       }
     }
   }
@@ -1648,9 +1682,12 @@ triggers {
       functionName: "Set Variable (bool)"
       args {
         call_value {
-          functionName: "Get Variable (bool)"
+          functionName: "Get Story Variable (bool)"
           args {
-            string_value: "Inside_LeaderDied"
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "a4_Catos_s1-LeaderDied"
           }
         }
       }
@@ -3947,6 +3984,91 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Finish_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Ally with the MPA"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Return to Berkeley"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "59af7a003565646068001003"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_CatoGround"
   position {
@@ -4945,41 +5067,6 @@ characters {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Evaluate Goal"
-        args {
-          call_value {
-            functionName: "Get Map Item (Goal)"
-            args {
-              string_value: "Acquire Fake IDs"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "GoalStatus"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-      }
-    }
     conversationPoint {
       conversationID: "599d05d83565646c650040d1"
       turnToFace: true
@@ -5372,9 +5459,19 @@ characters {
   idRef {
     id: "59af73363565646068000f42"
   }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    conversationPoint {
+      conversationID: "59af76743565646068000f45"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
+  }
   lod: 0
   character_instance {
-    prefab_name: "Wealthy/HumanMaleAutumn"
+    prefab_name: "Seattle:Core/TrollMale"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -5434,6 +5531,11 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeCautious
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "NPC_HK_Tech_DeckerWired"
     }
     team_id: "Civilians"
     char_name: "Weetabrix"
@@ -5441,25 +5543,13 @@ characters {
     ai_ignores: true
     unkillable: true
     hiring_type: HiringType_None
+    portrait {
+      filename: "backer_trollmale_ericeccher"
+    }
+    portrait_code_override: "s2h14c6b0t1"
     karma: 6
     hiring_cost_override: 3000
     hide_floaties: true
-  }
-}
-variables {
-  bool_value: false
-  variableref_value {
-    scope: TsVariableScope_Scene
-    name: "Outside_KilledAmyEarly"
-    typeName: "bool"
-  }
-}
-variables {
-  bool_value: false
-  variableref_value {
-    scope: TsVariableScope_Scene
-    name: "Inside_LeaderDied"
-    typeName: "bool"
   }
 }
 mapEvents: "Event_JackIn"
@@ -5478,6 +5568,16 @@ senseTags: "isKora"
 senseTags: "isArelia"
 senseTags: "isIsas"
 senseTags: "isMasato"
+goals {
+  name: "Ally with the MPA"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Return to Berkeley"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
 worldMapLocation {
   filename: ""
   location {
