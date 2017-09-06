@@ -148,6 +148,115 @@ nodes {
   text: "Now, let\342\200\231s go rescue Tassender!"
   nodeType: ConversationNodeType_Simple
 }
+nodes {
+  idRef {
+    id: "59affffe356564306c005d6b"
+  }
+  index: 7
+  text: "{{GM}}He looks cautiously around, lowering his voice to make sure nobody can overhear.{{/GM}}\n\nI heard what $(story.mpa_leader) said. Is it true? About you trying to negotiate with Amy and Humanis?"
+  branches {
+    responseText: "No."
+    nextNodeIndex: 8
+    idRef {
+      id: "59af76743565646068000f45:59b00004356564306c005d6d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m afraid so."
+    nextNodeIndex: 8
+    idRef {
+      id: "59af76743565646068000f45:59b00031356564306c005d75"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Lotta people saying a lotta things around here."
+    nextNodeIndex: 8
+    idRef {
+      id: "59af76743565646068000f45:59b00031356564306c005d77"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59af76743565646068000f45:59b00005356564306c005d6f"
+  }
+  index: 8
+  text: "{{GM}}He looks disappointed, but presses on.{{/GM}}\n\nLook\342\200\246 you and I go way back. And even if we didn\342\200\231t, I know how important the struggle out there is. Beyond the borders of Piedmont Ave, even beyond Orkland. $(story.mpa_leader) can only care about this neighborhood, but that doesn\342\200\231t mean the rest of the world will just leave us alone."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59af76743565646068000f45:59b00005356564306c005d71"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b00066356564306c005da9"
+  }
+  index: 9
+  text: "So, I\342\200\231ll do what I can. I have a few friends who have been feeling antsy, looking to move on to something new. I think I can convince them to attack the Mojave for you, keep your plan moving forwards."
+  branches {
+    responseText: "Good."
+    nextNodeIndex: 10
+    idRef {
+      id: "59af76743565646068000f45:59b00074356564306c005dab"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I really appreciate that. I promise that I\342\200\231ll look after everyone."
+    nextNodeIndex: 10
+    idRef {
+      id: "59af76743565646068000f45:59b00074356564306c005dad"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I came here to get cannon fodder, and I got cannon fodder. Mission accomplished."
+    nextNodeIndex: 10
+    idRef {
+      id: "59af76743565646068000f45:59b00081356564306c005daf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b00093356564306c005db2"
+  }
+  index: 10
+  text: "I\342\200\231ll keep it on the down-low. You\342\200\231d better head back before $(story.mpa_leader) gets suspicious.\n\nTalk with you later!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59af7a003565646068001003"
+          }
+        }
+      }
+    }
+  }
+}
 roots {
   conditions {
     ops {
@@ -190,5 +299,47 @@ roots {
   nextNodeIndex: 0
   idRef {
     id: "59af76743565646068000f45:59af76743565646068000f49"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Inside_ChewedOutByLeader"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 7
+  idRef {
+    id: "59af76743565646068000f45:59affff0356564306c005d68"
   }
 }
