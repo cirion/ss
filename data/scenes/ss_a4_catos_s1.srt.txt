@@ -7421,7 +7421,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Downstairs_ResetHumanisMovement"
+  name: "Downstairs_ResetHumanisMovementv1"
   events {
     ops {
       functionName: "On Region Enter"
@@ -7499,6 +7499,9 @@ triggers {
           }
         }
       }
+    }
+    ops {
+      functionName: "On Actor Start Turn"
     }
   }
   conditions {
@@ -7591,7 +7594,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59b151c6356564306c005fd4"
   }
@@ -7707,6 +7710,1073 @@ triggers {
   isActive: true
   idRef {
     id: "59b1522e356564306c005fd5"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Downstairs_Invasion_Wave2"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isInsideWave1"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Defend Pliny\'s"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isInsideWave2East"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59b0baaa356564306c005f67"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c740356564306c005fbe"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0bdfc356564306c005f93"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c6c0356564306c005fb9"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0be59356564306c005f97"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c71f356564306c005fbd"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0bdf6356564306c005f92"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c451356564306c005faa"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0be20356564306c005f94"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isInsideWave2West"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59b1e46b356564306c005fd8"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c6ff356564306c005fbc"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0bea2356564306c005f9a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c6ed356564306c005fbb"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0be90356564306c005f99"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c6c7356564306c005fba"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0be7e356564306c005f98"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b0c52b356564306c005fac"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59b0beab356564306c005f9b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59b1e3c1356564306c005fd6"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Downstairs_ResetHumanisMovementv2"
+  events {
+    ops {
+      functionName: "On Actor Start Turn"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isFastHumanis"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "OR"
+          args {
+            call_value {
+              functionName: "OR"
+              args {
+                call_value {
+                  functionName: "OR"
+                  args {
+                    call_value {
+                      functionName: "OR"
+                      args {
+                        call_value {
+                          functionName: "OR"
+                          args {
+                            call_value {
+                              functionName: "OR"
+                              args {
+                                call_value {
+                                  functionName: "OR"
+                                  args {
+                                    call_value {
+                                      functionName: "OR"
+                                      args {
+                                        call_value {
+                                          functionName: "OR"
+                                          args {
+                                            call_value {
+                                              functionName: "Evaluate If Actor is Inside Region"
+                                              args {
+                                                call_value {
+                                                  functionName: "Specific Actor"
+                                                  args {
+                                                    call_value {
+                                                      functionName: "Triggering Actor"
+                                                    }
+                                                  }
+                                                  args {
+                                                  }
+                                                }
+                                              }
+                                              args {
+                                                call_value {
+                                                  functionName: "Get Preset Value (int)"
+                                                  args {
+                                                    string_value: "AreOrAreNot"
+                                                  }
+                                                  args {
+                                                    int_value: 1
+                                                  }
+                                                }
+                                              }
+                                              args {
+                                                call_value {
+                                                  functionName: "Get Map Item (Region)"
+                                                  args {
+                                                    string_value: "59b0bddf356564306c005f91"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                          args {
+                                            call_value {
+                                              functionName: "Evaluate If Actor is Inside Region"
+                                              args {
+                                                call_value {
+                                                  functionName: "Specific Actor"
+                                                  args {
+                                                    call_value {
+                                                      functionName: "Triggering Actor"
+                                                    }
+                                                  }
+                                                  args {
+                                                  }
+                                                }
+                                              }
+                                              args {
+                                                call_value {
+                                                  functionName: "Get Preset Value (int)"
+                                                  args {
+                                                    string_value: "AreOrAreNot"
+                                                  }
+                                                  args {
+                                                    int_value: 1
+                                                  }
+                                                }
+                                              }
+                                              args {
+                                                call_value {
+                                                  functionName: "Get Map Item (Region)"
+                                                  args {
+                                                    string_value: "59b0bdfc356564306c005f93"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                      args {
+                                        call_value {
+                                          functionName: "Evaluate If Actor is Inside Region"
+                                          args {
+                                            call_value {
+                                              functionName: "Specific Actor"
+                                              args {
+                                                call_value {
+                                                  functionName: "Triggering Actor"
+                                                }
+                                              }
+                                              args {
+                                              }
+                                            }
+                                          }
+                                          args {
+                                            call_value {
+                                              functionName: "Get Preset Value (int)"
+                                              args {
+                                                string_value: "AreOrAreNot"
+                                              }
+                                              args {
+                                                int_value: 1
+                                              }
+                                            }
+                                          }
+                                          args {
+                                            call_value {
+                                              functionName: "Get Map Item (Region)"
+                                              args {
+                                                string_value: "59b0bdf6356564306c005f92"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                  args {
+                                    call_value {
+                                      functionName: "Evaluate If Actor is Inside Region"
+                                      args {
+                                        call_value {
+                                          functionName: "Specific Actor"
+                                          args {
+                                            call_value {
+                                              functionName: "Triggering Actor"
+                                            }
+                                          }
+                                          args {
+                                          }
+                                        }
+                                      }
+                                      args {
+                                        call_value {
+                                          functionName: "Get Preset Value (int)"
+                                          args {
+                                            string_value: "AreOrAreNot"
+                                          }
+                                          args {
+                                            int_value: 1
+                                          }
+                                        }
+                                      }
+                                      args {
+                                        call_value {
+                                          functionName: "Get Map Item (Region)"
+                                          args {
+                                            string_value: "59b0be20356564306c005f94"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              args {
+                                call_value {
+                                  functionName: "Evaluate If Actor is Inside Region"
+                                  args {
+                                    call_value {
+                                      functionName: "Specific Actor"
+                                      args {
+                                        call_value {
+                                          functionName: "Triggering Actor"
+                                        }
+                                      }
+                                      args {
+                                      }
+                                    }
+                                  }
+                                  args {
+                                    call_value {
+                                      functionName: "Get Preset Value (int)"
+                                      args {
+                                        string_value: "AreOrAreNot"
+                                      }
+                                      args {
+                                        int_value: 1
+                                      }
+                                    }
+                                  }
+                                  args {
+                                    call_value {
+                                      functionName: "Get Map Item (Region)"
+                                      args {
+                                        string_value: "59b0be3d356564306c005f95"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                          args {
+                            call_value {
+                              functionName: "Evaluate If Actor is Inside Region"
+                              args {
+                                call_value {
+                                  functionName: "Specific Actor"
+                                  args {
+                                    call_value {
+                                      functionName: "Triggering Actor"
+                                    }
+                                  }
+                                  args {
+                                  }
+                                }
+                              }
+                              args {
+                                call_value {
+                                  functionName: "Get Preset Value (int)"
+                                  args {
+                                    string_value: "AreOrAreNot"
+                                  }
+                                  args {
+                                    int_value: 1
+                                  }
+                                }
+                              }
+                              args {
+                                call_value {
+                                  functionName: "Get Map Item (Region)"
+                                  args {
+                                    string_value: "59b0be46356564306c005f96"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                      args {
+                        call_value {
+                          functionName: "Evaluate If Actor is Inside Region"
+                          args {
+                            call_value {
+                              functionName: "Specific Actor"
+                              args {
+                                call_value {
+                                  functionName: "Triggering Actor"
+                                }
+                              }
+                              args {
+                              }
+                            }
+                          }
+                          args {
+                            call_value {
+                              functionName: "Get Preset Value (int)"
+                              args {
+                                string_value: "AreOrAreNot"
+                              }
+                              args {
+                                int_value: 1
+                              }
+                            }
+                          }
+                          args {
+                            call_value {
+                              functionName: "Get Map Item (Region)"
+                              args {
+                                string_value: "59b0be59356564306c005f97"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Evaluate If Actor is Inside Region"
+                      args {
+                        call_value {
+                          functionName: "Specific Actor"
+                          args {
+                            call_value {
+                              functionName: "Triggering Actor"
+                            }
+                          }
+                          args {
+                          }
+                        }
+                      }
+                      args {
+                        call_value {
+                          functionName: "Get Preset Value (int)"
+                          args {
+                            string_value: "AreOrAreNot"
+                          }
+                          args {
+                            int_value: 1
+                          }
+                        }
+                      }
+                      args {
+                        call_value {
+                          functionName: "Get Map Item (Region)"
+                          args {
+                            string_value: "59b0be7e356564306c005f98"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Evaluate If Actor is Inside Region"
+                  args {
+                    call_value {
+                      functionName: "Specific Actor"
+                      args {
+                        call_value {
+                          functionName: "Triggering Actor"
+                        }
+                      }
+                      args {
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "AreOrAreNot"
+                      }
+                      args {
+                        int_value: 1
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Map Item (Region)"
+                      args {
+                        string_value: "59b0be90356564306c005f99"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Evaluate If Actor is Inside Region"
+              args {
+                call_value {
+                  functionName: "Specific Actor"
+                  args {
+                    call_value {
+                      functionName: "Triggering Actor"
+                    }
+                  }
+                  args {
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AreOrAreNot"
+                  }
+                  args {
+                    int_value: 1
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (Region)"
+                  args {
+                    string_value: "59b0bea2356564306c005f9a"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59b0beab356564306c005f9b"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Base Attribute"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 6
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "ActorAttributes"
+          }
+          args {
+            int_value: 12
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isFastHumanis"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59b1e93a356564306c005fda"
   }
   elseActions {
   }
@@ -8934,7 +10004,7 @@ regions {
   name: "CatoDownstairs_MoveDest_East_NoCover"
   position {
     x: -74
-    y: 48
+    y: 49
     width: 1
     height: 1
   }
@@ -9176,6 +10246,64 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "59b0beab356564306c005f9b"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "CatoDownstairs_EnemySpawn_West"
+  position {
+    x: -41
+    y: 39
+    width: 2
+    height: 4
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59b1e46b356564306c005fd8"
   }
   highlight_color {
     r: 0
@@ -10374,57 +11502,14 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Objects/AutoTurret"
+    prefab_name: "Seattle:Objects/AutoTurret"
     character_sheet_id: "Turret_Lv1"
     equipment_sheet_id: "Turret_Lv1_Burst_Gear"
     character_mod {
       stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 2
-        vision_cone_distance: 18
-        vision_cone_angle: 90
-        is_fearless: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-    }
-    team_id: "Turret"
-    char_name: "Auto Turret"
-    GeneralTags: "isTurret"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -62
-    y: 0
-    z: 40
-  }
-  orientation: ORIENTATION_N
-  GeneralTags: "isTurret"
-  displayName: "CatoDownstairs_Turret2"
-  idRef {
-    id: "59b00a9a356564306c005f35"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Objects/CorpTurret"
-    character_sheet_id: "Turret_Lv1"
-    equipment_sheet_id: "Turret_Lv1_Burst_Gear"
-    character_mod {
-      stats {
+        body: 2
+        hp: -30
+        armor: 2
         morale: 0
         discipline: 0
         awareness: 0
@@ -10451,7 +11536,59 @@ characters {
     portrait {
       filename: ""
     }
-    karma: 41
+    karma: 54
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -62
+    y: 0
+    z: 40
+  }
+  orientation: ORIENTATION_N
+  GeneralTags: "isTurret"
+  displayName: "CatoDownstairs_Turret2"
+  idRef {
+    id: "59b00a9a356564306c005f35"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/CorpTurret"
+    character_sheet_id: "Turret_Lv1"
+    equipment_sheet_id: "Turret_Lv1_Burst_Gear"
+    character_mod {
+      stats {
+        body: 2
+        hp: 20
+        armor: 2
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 2
+        vision_cone_distance: 18
+        vision_cone_angle: 90
+        is_fearless: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      vulnerabilities {
+      }
+    }
+    team_id: "Turret"
+    char_name: "Auto Turret"
+    GeneralTags: "isTurret"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    karma: 54
   }
 }
 characters {
@@ -10469,11 +11606,14 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Objects/AutoTurret"
+    prefab_name: "Seattle:Objects/AutoTurret"
     character_sheet_id: "Turret_Lv1"
     equipment_sheet_id: "Turret_Lv1_Burst_Gear"
     character_mod {
       stats {
+        body: 2
+        hp: 20
+        armor: 2
         morale: 0
         discipline: 0
         awareness: 0
@@ -10490,6 +11630,8 @@ characters {
       }
       specializations {
       }
+      vulnerabilities {
+      }
     }
     team_id: "Turret"
     char_name: "Auto Turret"
@@ -10498,6 +11640,7 @@ characters {
     portrait {
       filename: ""
     }
+    karma: 54
   }
 }
 characters {
@@ -13448,9 +14591,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -61
+    x: -66
     y: 0
-    z: -14
+    z: -15
   }
   orientation: ORIENTATION_S
   displayName: "Debug_Masato"
@@ -13482,7 +14625,7 @@ characters {
         perception: 0
         authority: 0
         protect_tether_range: 0
-        move_speed: 6
+        move_speed: 0
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
@@ -13710,6 +14853,8 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 100
   heat_response_rating: 0
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
