@@ -1722,6 +1722,20 @@ triggers {
         string_value: "she"
       }
     }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "mpa_leader_uncle"
+          }
+        }
+      }
+      args {
+        string_value: "aunt"
+      }
+    }
   }
   isActive: true
   idRef {
@@ -1782,6 +1796,20 @@ triggers {
       }
       args {
         string_value: "he"
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "mpa_leader_uncle"
+          }
+        }
+      }
+      args {
+        string_value: "uncle"
       }
     }
   }
@@ -15022,6 +15050,25 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Upstairs_ConvincedWeetabrixToRemain"
+  events {
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "No Effect"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59b459e3356564008b0078dd"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_CatoGround"
   position {
@@ -18766,6 +18813,40 @@ characters {
   idRef {
     id: "59af6fba3565646068000f3c"
   }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59b368fd356564008b00648e"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: ""
+  }
   lod: 0
   character_instance {
     prefab_name: "Seattle:Homeless/DwarfMaleHomelessBald"
@@ -18866,44 +18947,33 @@ characters {
   }
   interactionRoot {
     isEnabled: true
-    interactionRadius: 1
+    interactionRadius: 2
     prerequisites {
       ops {
-        functionName: "Evaluate Goal"
-        args {
-          call_value {
-            functionName: "Get Map Item (Goal)"
-            args {
-              string_value: "Rescue the Metahumans"
-            }
-          }
-        }
+        functionName: "Evaluate Turn Mode in Dimension"
         args {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "GoalStatus"
-            }
-            args {
-              int_value: 2
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
+              string_value: "TurnBasedOrFreeMove"
             }
             args {
               int_value: 1
             }
           }
         }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
       }
     }
     conversationPoint {
-      conversationID: "599e5be1356564b8c700675d"
+      conversationID: "59b36ce4356564008b0065b0"
       turnToFace: true
     }
     interactionIcon: InteractionIcon_Conversation
@@ -21876,6 +21946,14 @@ variables {
     typeName: "int"
   }
 }
+variables {
+  string_value: ""
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "mpa_leader_uncle"
+    typeName: "string"
+  }
+}
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 mapEvents: "Event_MatrixPlayTeleportSound"
@@ -21929,6 +22007,16 @@ goals {
 goals {
   name: "Persuade the MPA to Stock Moonflower\'s Bar"
   type: GoalType_Secondary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Persuade the MPA to Release Weetabrix"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Convince Weetabrix to Remain"
+  type: GoalType_Primary
   status: GoalStatus_Hidden
 }
 worldMapLocation {
