@@ -7663,6 +7663,63 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593ddcaa356564d41f005e41"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593ddcae356564d41f005e42"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Waypoint from Actor"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLeader"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -10727,6 +10784,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "593ddcae356564d41f005e42"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -12898,7 +12966,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Prop)"
           args {
-            string_value: "593ddcae356564d41f005e42"
+            string_value: "59b2a1c1356564008b005f24"
           }
         }
       }
@@ -14315,6 +14383,27 @@ triggers {
         float_value: 0
       }
     }
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59af73363565646068000f42"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
   }
   isActive: true
   idRef {
@@ -14937,7 +15026,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "599894083565640c240080d8"
   }
@@ -15569,7 +15658,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59b484ac356564008b009f27"
   }
@@ -15809,7 +15898,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Actor)"
               args {
-                string_value: "59af6fba3565646068000f3c"
+                string_value: "59af73363565646068000f42"
               }
             }
           }
@@ -19860,14 +19949,15 @@ characters {
     GeneralTags: "isPassive"
     enabled_at_start: false
     pc_spawn_number: -1
-    unkillable: true
+    unkillable: false
     hiring_type: HiringType_None
     portrait {
       filename: "backer_dwarfmale_chrisvangraas"
     }
     karma: 77
     hiring_cost_override: 3000
-    hide_floaties: true
+    hide_floaties: false
+    persistent_body: true
   }
 }
 characters {
@@ -20019,14 +20109,15 @@ characters {
     team_id: "Gangers"
     char_name: "Squopmeister"
     pc_spawn_number: -1
-    unkillable: true
+    unkillable: false
     hiring_type: HiringType_None
     portrait {
       filename: "backerpc_orkmale_maury"
     }
     karma: 50
     hiring_cost_override: 3000
-    hide_floaties: true
+    hide_floaties: false
+    persistent_body: true
   }
 }
 characters {
@@ -23041,6 +23132,14 @@ variables {
     typeName: "string"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Downstairs_GotRewardFromRagamuffin"
+    typeName: "bool"
+  }
+}
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 mapEvents: "Event_MatrixPlayTeleportSound"
@@ -23064,7 +23163,7 @@ senseTags: "isDog"
 goals {
   name: "Ally with the MPA"
   type: GoalType_Primary
-  status: GoalStatus_Hidden
+  status: GoalStatus_Started
 }
 goals {
   name: "Return to Berkeley"
@@ -23098,12 +23197,12 @@ goals {
 }
 goals {
   name: "Persuade the MPA to Release Weetabrix"
-  type: GoalType_Primary
+  type: GoalType_Secondary
   status: GoalStatus_Hidden
 }
 goals {
   name: "Convince Weetabrix to Remain"
-  type: GoalType_Primary
+  type: GoalType_Secondary
   status: GoalStatus_Hidden
 }
 worldMapLocation {
