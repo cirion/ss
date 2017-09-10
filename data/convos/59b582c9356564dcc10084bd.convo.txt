@@ -1,0 +1,627 @@
+idRef {
+  id: "59b582c9356564dcc10084bd"
+}
+ui_name: "ss_a4_fuchi_s1-Upstairs_BrianTerminal"
+nodes {
+  idRef {
+    id: "59b59101356564dcc10084c9"
+  }
+  index: 0
+  text: "> Battery remaining: 7 hrs\n> Total usage (previous 30 days): 0 hrs 0 min 0 sec\n> Terminal locked. Please log in to proceed."
+  branches {
+    responseText: "{{GM}}Log in.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b59124356564dcc10084cb"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b59138356564dcc10084d2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b59128356564dcc10084ce"
+  }
+  index: 1
+  text: "> Username:"
+  branches {
+    responseText: "admin"
+    nextNodeIndex: 2
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b59130356564dcc10084d0"
+    }
+  }
+  nodeType: ConversationNodeType_InputKeyboard
+}
+nodes {
+  idRef {
+    id: "59b59163356564dcc10084d5"
+  }
+  index: 2
+  text: "> Password:"
+  branches {
+    responseText: "admin"
+    nextNodeIndex: 3
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5916a356564dcc10084d7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5916e356564dcc10084da"
+  }
+  index: 3
+  text: "> Welcome, Brian Jenkins. Your last login was at 0:00:00 GMT on 1 January 1970."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b59178356564dcc10084dc"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b59178356564dcc10084de"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Upstairs_LoggedIntoBrianEmail"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5917d356564dcc10084e1"
+  }
+  index: 4
+  text: "\342\200\246 Seriously?!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5917f356564dcc10084e3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59b591aa356564dcc10084e8"
+  }
+  index: 5
+  text: "> Welcome BRIAN JENKINS."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b591c0356564dcc10084f1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b591c1356564dcc10084f4"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: "{{GM}}Read emails.{{/GM}}"
+    nextNodeIndex: 7
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b591c5356564dcc10084f6"
+    }
+  }
+  branches {
+    responseText: "{{GM}}View calendar.{{/GM}}"
+    nextNodeIndex: 18
+    onlyOnce: true
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bc53356564dcc1008988"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Run disk defragmenter.{{/GM}}"
+    nextNodeIndex: 19
+    onlyOnce: true
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bc73356564dcc10089d6"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the terminal unlocked.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b683356564dcc1008663"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Terminal Root"
+}
+nodes {
+  idRef {
+    id: "59b5928e356564dcc10084f9"
+  }
+  index: 7
+  text: "> Warning: Remote server count not be reached! Cached emails are available. Remaining messages will automatically be retried."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b58a356564dcc1008553"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5b58d356564dcc1008556"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: "> {{GM}}Read message from Brett Higawa.{{/GM}"
+    nextNodeIndex: 9
+    onlyOnce: true
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b592b0356564dcc10084fb"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read message from Gavan Banain{{/GM}}"
+    nextNodeIndex: 11
+    onlyOnce: true
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b5a5356564dcc100856f"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    onlyOnce: true
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b605356564dcc10085ab"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Go back.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b66a356564dcc100861b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Email Root"
+}
+nodes {
+  idRef {
+    id: "59b5b543356564dcc1008549"
+  }
+  index: 9
+  text: ">> From: Brett Higawa (CAUTION: External domain.)\n>> To: Brian Jenkins\n>> Subject: Pick up the goddamn phone!\n> Why the fuck have you gone silent on me? After all our face-to-face meetings I thought you were eager to do this thing, and now you won\342\200\231t even reply?!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b545356564dcc100854b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5b55b356564dcc100854d"
+  }
+  index: 10
+  text: "> I\342\200\231m assuming we\342\200\231re still on unless I hear otherwise from you. And be sure to delete this email! If things go south, we can try again later."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b55b356564dcc100854f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-BrianEmail"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5b5b0356564dcc1008572"
+  }
+  index: 11
+  text: ">> From: Gavan Banain, Esq.\n>> To: Brian Jenkins\n>> Subject: Course correction"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b5b2356564dcc1008574"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5b5c7356564dcc100857a"
+  }
+  index: 12
+  text: "> I was displeased to learn of your maneuvering to prevent Renraku Computer Systems from completing its acquisition of Fuchi California. As any reasonably aware person must already know, the Corporate Court has approved the transfer of all assets from Fuchi\342\200\231s Asian holdings to Renraku. As California is a protectorate of the Japanese Imperial State, your actions place you in violation of Court proceedings and subject to the severest penalties."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b5c7356564dcc100857c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5b5d2356564dcc1008580"
+  }
+  index: 13
+  text: "> Furthermore, by encouraging the infiltration of a foreign megacorporation into California territory, you additionally risk being branded an enemy of the Protectorate generally and Saito in particular. Such enemies rarely live long. Just ask the so-called patriots now floating face-down in the Sacramento River."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b5d2356564dcc1008582"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5b5d6356564dcc1008586"
+  }
+  index: 14
+  text: "> I hope you will come to your senses before the General regains the time and attention necessary to personally attend to this matter. Please think of me as a stern but loving father, only wanting what is best for you: your continued survival."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b5d6356564dcc1008588"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b5b622356564dcc10085d9"
+  }
+  index: 15
+  text: "{{GM}}Read message from Sira Ikeda.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b626356564dcc10085db"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5b634356564dcc10085e0"
+  }
+  index: 16
+  text: ">> From: Ms. Sira Ikeda\n>> To: Mr. Brian Jenkins\n>> Subject: Important business communication"
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b636356564dcc10085e2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5b636356564dcc10085e4"
+  }
+  index: 17
+  text: "> I know you\342\200\231ll never read this, so allow me to vent:\n\n> FUCK YOU AND YOUR FUCKING FUCKTASTIC FUCKERY YOU FUCKING FUCKSTICK.\n\n> Sincerely yours,\n> Sira"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5b63a356564dcc10085e8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59b4bff6356564008b00b583"
+  }
+}
+nodes {
+  idRef {
+    id: "59b5bc60356564dcc100898b"
+  }
+  index: 18
+  text: "> No appointments found."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bc65356564dcc100898d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5bc92356564dcc10089d9"
+  }
+  index: 19
+  text: "> Processing\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bcd0356564dcc10089db"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "glyphstart"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5bcd3356564dcc10089de"
+  }
+  index: 20
+  text: "Monochromatic rectangles light and dim across the screen, gradually marching from the upper left to the lower right."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bcd4356564dcc10089e0"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5bcd4356564dcc10089e2"
+  }
+  index: 21
+  text: "It seems to be going rather quickly. This computer\342\200\231s storage apparently has not received much use."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bcdd356564dcc10089e6"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5bcdd356564dcc10089e8"
+  }
+  index: 22
+  text: "> All done!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59b582c9356564dcc10084bd:59b5bcdf356564dcc10089ea"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Upstairs_LoggedIntoBrianEmail"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b582c9356564dcc10084c1"
+  }
+  comment: "Haven\'t logged in yet"
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 5
+  idRef {
+    id: "59b582c9356564dcc10084bd:59b5919b356564dcc10084e5"
+  }
+  comment: "Previously logged in"
+}
+speaker_override_id: "55897a5a613464581a001ad8"
