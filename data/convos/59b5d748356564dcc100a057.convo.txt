@@ -138,6 +138,142 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Item: Brian\'s Email{{/CC}} {{CC}}Item: Press Release{{/CC}} Do you have anything to say about these items?"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Obtain Brian\'s Key"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_IntimidatedBrian"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-AttackReport"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-BrianEmail"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 36
     idRef {
       id: "59b5d748356564dcc100a057:59b6006f3565648cb3003ef3"
@@ -1943,7 +2079,6 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  sourceWithTagInScene: "isKora"
 }
 nodes {
   idRef {
@@ -2432,7 +2567,7 @@ nodes {
     id: "59b5d748356564dcc100a057:59b5fe413565648cb3003bf9"
   }
   index: 58
-  text: "{{GM}}He rolls his eyes, but produces his commlink and twists a few dials. After several moments he nods affirmatively.{{/GM}}\n\nIt\342\200\231s done. We\342\200\231re in control."
+  text: "{{GM}}She rolls her eyes, but produces her commlink and twists a few dials. After several moments she nods affirmatively.{{/GM}}\n\nIt\342\200\231s done. We\342\200\231re in control."
   branches {
     responseText: ""
     nextNodeIndex: 59
@@ -2449,7 +2584,10 @@ nodes {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Triggering Target Actor"
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59b543493565647422002f27"
+          }
         }
       }
       args {
@@ -2477,6 +2615,52 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
