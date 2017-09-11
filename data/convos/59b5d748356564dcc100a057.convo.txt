@@ -85,6 +85,199 @@ nodes {
       id: "59b5d748356564dcc100a057:59b5db6f356564dcc100a367"
     }
   }
+  branches {
+    responseText: "Can I do something to help you?"
+    nextNodeIndex: 32
+    onlyOnce: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f80d3565648cb300316d"
+    }
+  }
+  branches {
+    responseText: "Please give me your half of the key to access the root trust certificate."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Obtain Brian\'s Key"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 35
+    hideIfUnavailable: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f84e3565648cb30032ac"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item: Brian\'s Email{{/CC}} {{CC}}Item: Press Release{{/CC}} Do you have anything to say about these items?"
+    nextNodeIndex: 36
+    idRef {
+      id: "59b5d748356564dcc100a057:59b6006f3565648cb3003ef3"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Item: Sira\342\200\231s Key{{/CC}} Here\342\200\231s Sira\342\200\231s half of the key."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-SiraKey"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-SiraKey"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 56
+    hideIfUnavailable: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcbd3565648cb3003a00"
+    }
+  }
+  branches {
+    responseText: "I\'ve altered the root trust certificate."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "a4_Fuchi_s1-GaveNovatechCert"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 56
+    hideIfUnavailable: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b600383565648cb3003ecb"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59b5d748356564dcc100a057:59b6011a3565648cb3004008"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Root"
 }
@@ -907,7 +1100,1508 @@ nodes {
   }
   index: 27
   text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006055"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 28
+    onlyOnce: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f78f3565648cb3002f6d"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006055"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 29
+    onlyOnce: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f7ba3565648cb3002fd8"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 30
+    onlyOnce: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f7bc3565648cb3002fe4"
+    }
+  }
   nodeType: ConversationNodeType_Simple
+  comment: "Reactive team loop"
+}
+nodes {
+  idRef {
+    id: "59b5f7913565648cb3002f70"
+  }
+  index: 28
+  text: "That does sound nice. I don\342\200\231t think I\342\200\231ve ever heard of a corp around here that would hire a troll for something other than a security position."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f7933565648cb3002f72"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5f7ba3565648cb3002fda"
+  }
+  index: 29
+  text: "All megacorps are inherently problematic, but Novatech has a much better reputation than most. Hopefully that actually reflects their true purposes, and not just their short tenure."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f7ba3565648cb3002fdc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5f7bc3565648cb3002fe6"
+  }
+  index: 30
+  text: "But if you do want cold hard cash, we can probably scrounge some up for you. It just won\342\200\231t be in your pocket today. Once we\342\200\231re properly established in the Protectorate, we\342\200\231ll be able to provide favors for you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 31
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f7bc3565648cb3002fe8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5f7df3565648cb3002fec"
+  }
+  index: 31
+  text: "I mean, just think of how big a footprint Fuchi had. If you need someone to look the other way while you take a job, or slip you some useful intel\342\200\246 well, you\342\200\231ll probably be happy to have me as a contact."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f7df3565648cb3002fee"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5f8193565648cb3003170"
+  }
+  index: 32
+  text: "If you could possibly talk sense into Sira, it would mean the world to me! She\342\200\231s as difficult as fitting a legal pad into a three-hole binder.\n\n{{GM}}He chuckles at his\342\200\246 joke?{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 33
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f81b3565648cb3003172"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5f81b3565648cb3003174"
+  }
+  index: 33
+  text: "Once I acquire her half of the access key, I\342\200\231ll be able to add Novatech\342\200\231s credentials to Fuchi California\342\200\231s root trust certificate. That will pave the way for them to start moving in their executives, personnel, materials, everything we need to finalize the acquisition."
+  branches {
+    responseText: ""
+    nextNodeIndex: 34
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f81f3565648cb3003178"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5f81f3565648cb300317a"
+  }
+  index: 34
+  text: "I\342\200\231d prefer that you get it from her peacefully, but I\342\200\231ll understand if she doesn\342\200\231t cooperate. This is a lot bigger than her, and one way or another, we need to resolve this impasse so the corporation can move on."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f8213565648cb300317c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59b5f8803565648cb30033a6"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5f91e3565648cb3003417"
+  }
+  index: 35
+  text: "{{GM}}He makes a face.{{/GM}}\n\nWhat, so you can hand it over to Sira? I don\342\200\231t think so!"
+  branches {
+    responseText: "{{CC}}Item: Brian\'s Email{{/CC}} {{CC}}Item: Press Release{{/CC}} You should probably take a look at these."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-AttackReport"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-BrianEmail"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 36
+    hideIfUnavailable: true
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5f9493565648cb30034a4"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} Sira will try and backstab you once you\342\200\231re distracted. Let me take care of the root certificate while you keep an eye on her."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 49
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fc063565648cb3003951"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}ESP Control: $(story.Global-Skillcheck_Easy){{/CC}} The root trust certificate must be guarded by some serious IC. You\342\200\231re more of a paper-meister. Let a digital jockey like me handle the electronics."
+    conditions {
+      ops {
+        functionName: "Compare Actor Specialization"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSpecializations"
+            }
+            args {
+              int_value: 6
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Easy"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 49
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fc243565648cb3003953"
+    }
+  }
+  branches {
+    responseText: "Just let me hold it for a minute."
+    nextNodeIndex: 53
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcca3565648cb3003a02"
+    }
+  }
+  branches {
+    responseText: "You can trust me!"
+    nextNodeIndex: 54
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcd93565648cb3003b32"
+    }
+  }
+  branches {
+    responseText: "Never mind."
+    nextNodeIndex: 55
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcdb3565648cb3003b3e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5fa553565648cb30035c1"
+  }
+  index: 36
+  text: "You pass over the records. Taken together, the attack report proves that Shiawase was behind the assault on Fuchi, and the email proves that Brian was secretly collaborating with Shiawase."
+  branches {
+    responseText: ""
+    nextNodeIndex: 37
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fa653565648cb30035c3"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Upstairs_IntimidatedBrian"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fa663565648cb30035c5"
+  }
+  index: 37
+  text: "{{GM}}He blanches as he takes the data.{{/GM}}\n\nIs\342\200\246 is this what I think it is?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 38
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fa663565648cb30035c7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fa6b3565648cb30035cb"
+  }
+  index: 38
+  text: "Something wrong, Brian?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 39
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fa6b3565648cb30035cd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59b543563565647422002f2a"
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b543563565647422002f2a"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b4bfb4356564008b00b582"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fa6d3565648cb30035cf"
+  }
+  index: 39
+  text: "N\342\200\246 no! Nothing is wrong at all!\n\nOn a totally unrelated note, I would like to have a private conversation with my new friends here. If you could just give us a moment\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 40
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fa6d3565648cb30035d1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fa6f3565648cb30035d3"
+  }
+  index: 40
+  text: "{{GM}}He gestures you aside and hisses urgently.{{/GM}}\n\nOkay, fine! So I tried to sell out Fuchi to Shiawase. Big deal! Everyone has seen the writing on the wall for years now. Fuchi was going to implode, one way or another. Making a move before our parent company lost its AAA status would have been smart: maximizing our value and getting our choice of suitors."
+  branches {
+    responseText: "It still doesn\342\200\231t look good."
+    nextNodeIndex: 41
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fa6f3565648cb30035d5"
+    }
+  }
+  branches {
+    responseText: "It would have kept this standoff from occurring."
+    nextNodeIndex: 42
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fadb3565648cb3003656"
+    }
+  }
+  branches {
+    responseText: "And I\342\200\231m sure you told Novatech all about this failed takeover, right?"
+    nextNodeIndex: 43
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fadd3565648cb300365f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5fad73565648cb3003652"
+  }
+  index: 41
+  text: "That\342\200\231s just PR, $(l.man)! The underlying fundamentals are what matter. Finding the best possible home for Fuchi California."
+  branches {
+    responseText: ""
+    nextNodeIndex: 44
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fad93565648cb3003654"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fadb3565648cb3003658"
+  }
+  index: 42
+  text: "Exactly! See, I knew that you could follow this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 44
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fadb3565648cb300365a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fadd3565648cb3003661"
+  }
+  index: 43
+  text: "Of course not! That would make me look like a devious, untrustworthy conniver! Not a principled and upstanding corporate representative!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 44
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fadd3565648cb3003663"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5fb0a3565648cb3003666"
+  }
+  index: 44
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006055"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 45
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fb323565648cb30036f2"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 46
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fb463565648cb30036f9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Kora present?"
+}
+nodes {
+  idRef {
+    id: "59b5fb363565648cb30036f5"
+  }
+  index: 45
+  text: "{{GM}}She shudders in disgust.{{/GM}}\n\nShiawase has gotten up to some seriously shady shit. I\342\200\231m disappointed that you would want to work with them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 46
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fb423565648cb30036f7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fb463565648cb30036fb"
+  }
+  index: 46
+  text: "It\342\200\231s all in the past, but if I\342\200\231m to have any hope of a future career - at Novatech, or Renraku, or Stuffer Shack - then this little nugget of info will need to STAY in the past."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Obtain Brian\'s Key"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 47
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fb463565648cb30036fd"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 48
+    idRef {
+      id: "59b5d748356564dcc100a057:59b600ba3565648cb3003f3a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59b5fb6b3565648cb3003708"
+  }
+  index: 47
+  text: "{{GM}}He hands you his access key.{{/GM}}\n\nDo what you have to."
+  branches {
+    responseText: ""
+    nextNodeIndex: 48
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fb6c3565648cb300370a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-BrianKey"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Obtain Brian\'s Key"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fb6c3565648cb300370c"
+  }
+  index: 48
+  text: "But, when the time comes, I hope that you will still flip the switch for Novatech. Say what you will about me, but the corp can be a force for good. Little podunk go-gangs will never pose a serious threat to the California Protectorate. Opposing Saito will take lots of nuyen, organization, and technical savvy.\n\nBreaking up the monopoly of Japanese megacorps is the only way to create a better opportunity for the metahumans in California."
+  branches {
+    responseText: "I\342\200\231ll consider it."
+    nextNodeIndex: -1
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fbb63565648cb30038b9"
+    }
+  }
+  branches {
+    responseText: "You make a strong point."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Isas_Forgiveness"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fbb63565648cb30038bb"
+    }
+  }
+  branches {
+    responseText: "Oh sure, NOW you\342\200\231re all about preserving the dignity of metahumans. Duly noted."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Isas_Revenge"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fbb63565648cb30038bd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Modify the Root Trust Store"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5fc413565648cb3003956"
+  }
+  index: 49
+  text: "That\342\200\231s true. And it WOULD let me continue to build my paper fort."
+  branches {
+    responseText: ""
+    nextNodeIndex: 50
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fc543565648cb30039f1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5fc563565648cb30039f4"
+  }
+  index: 50
+  text: "{{GM}}The guard snickers, eyes forward.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 51
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fc563565648cb30039f6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59b543563565647422002f2a"
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fc563565648cb30039f8"
+  }
+  index: 51
+  text: "All right, here\342\200\231s my access key. You\342\200\231ll still need to acquire Sira\342\200\231s half before you can do anything with it. Once you have both, you\342\200\231ll be able to access the central data store that houses our root trust certificate. Just reprogram it to accept Novatech\342\200\231s credentials and, um, that will be it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 52
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fc5d3565648cb30039fc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-BrianKey"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Obtain Brian\'s Key"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fc5d3565648cb30039fe"
+  }
+  index: 52
+  text: "I won\342\200\231t be able to reward you today, but please come back after it\342\200\231s done, and I\342\200\231ll give you my contact info to repay you later. Good luck!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Modify the Root Trust Store"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5fcd03565648cb3003a05"
+  }
+  index: 53
+  text: "Oh, that sounds fine\342\200\246 waaaaait a minute. I\342\200\231m not falling for that trick again!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcd23565648cb3003a07"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fcd93565648cb3003b34"
+  }
+  index: 54
+  text: "{{GM}}He stares at you for a moment.{{/GM}}\n\nYou do have trustworthy eyes. But can I trust the people who you\342\200\231re with? Or that Sira won\342\200\231t jump you as soon as you leave this room?\n\nNo. This key is a burden that I alone must bear, until the time comes when it is united with its twin."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcd93565648cb3003b36"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fcdb3565648cb3003b40"
+  }
+  index: 55
+  text: "Huh?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fcdb3565648cb3003b42"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5fe173565648cb3003bf0"
+  }
+  index: 56
+  text: "Excellent! Let me just verify that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 57
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fe3d3565648cb3003bf2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackin_rigging"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5fe403565648cb3003bf5"
+  }
+  index: 57
+  text: "Uh\342\200\246 this is a notebook.\n\nHeh, Mr. Novatech? Can you please check on the certificate status?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 58
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fe413565648cb3003bf7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59b543493565647422002f27"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fe413565648cb3003bf9"
+  }
+  index: 58
+  text: "{{GM}}He rolls his eyes, but produces his commlink and twists a few dials. After several moments he nods affirmatively.{{/GM}}\n\nIt\342\200\231s done. We\342\200\231re in control."
+  branches {
+    responseText: ""
+    nextNodeIndex: 59
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fe4e3565648cb3003bfd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59b543493565647422002f27"
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackout_rigging"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fe4e3565648cb3003bff"
+  }
+  index: 59
+  text: "Huzzah!\n\n{{GM}}He shakes your hand enthusiastically.{{/GM}}\n\nYou did it! You broke the impasse with Sira and ushered in a new age of the California economy. A new era of competition, a wave of innovation. A second age of paper!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 60
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5fe503565648cb3003c01"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5d748356564dcc100a057:59b5fe503565648cb3003c03"
+  }
+  index: 60
+  text: "It will take some time, but over the coming weeks and months we\342\200\231ll take control of old Fuchi installations and infrastructure. They have a significant footprint in California, so if you or your friends ever find yourself in need of a helping hand, just give me a ring. I\342\200\231ll help clear the way for you."
+  branches {
+    responseText: "Quid pro quo. I can work with that."
+    nextNodeIndex: 61
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5ff393565648cb3003cb7"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I look forward to our upcoming joint ventures."
+    nextNodeIndex: 61
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5ff393565648cb3003cb9"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Okay, but get ready for a lot of \342\200\234u up\342\200\235 messages."
+    nextNodeIndex: 61
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5ff393565648cb3003cbb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-BrianContact"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b5ff5b3565648cb3003cbe"
+  }
+  index: 61
+  text: "Now, if you\342\200\231ll excuse me, I have a lot of data to transcribe. Toodles!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 62
+    idRef {
+      id: "59b5d748356564dcc100a057:59b5ff623565648cb3003cc5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5ff643565648cb3003cc8"
+  }
+  index: 62
+  text: "Bah! I\342\200\231m out of ink!!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59b5ff8f3565648cb3003d83"
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0
