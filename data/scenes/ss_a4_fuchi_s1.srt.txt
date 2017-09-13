@@ -5153,7 +5153,7 @@ triggers {
                 string_value: "FactionList"
               }
               args {
-                int_value: 0
+                int_value: 4
               }
             }
           }
@@ -5188,7 +5188,7 @@ triggers {
             string_value: "FactionList"
           }
           args {
-            int_value: 0
+            int_value: 4
           }
         }
       }
@@ -5221,7 +5221,7 @@ triggers {
             string_value: "FactionList"
           }
           args {
-            int_value: 0
+            int_value: 4
           }
         }
       }
@@ -5319,7 +5319,7 @@ triggers {
             string_value: "FactionList"
           }
           args {
-            int_value: 0
+            int_value: 4
           }
         }
       }
@@ -12070,6 +12070,14 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
       functionName: "Set Prop Visible"
       args {
         call_value {
@@ -12232,6 +12240,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59b698753565648cb3004b4a"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -12259,6 +12289,14 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
     ops {
       functionName: "Set Prop Visible"
       args {
@@ -18809,6 +18847,67 @@ characters {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Actor)"
+                    args {
+                      string_value: "59b4bfb4356564008b00b582"
+                    }
+                  }
+                }
+                args {
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
     conversationPoint {
       conversationID: "59b5d748356564dcc100a057"
       turnToFace: true
