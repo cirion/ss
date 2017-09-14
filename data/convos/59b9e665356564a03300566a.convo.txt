@@ -1,0 +1,425 @@
+idRef {
+  id: "59b9e665356564a03300566a"
+}
+ui_name: "ss_a4_fuchi_s1-Lobby_Receptionist"
+nodes {
+  idRef {
+    id: "59b9e7a8356564a033005756"
+  }
+  index: 0
+  text: "{{GM}}$+(s.he) peers at you uncertainly.{{/GM}}\n\nAre you here to fix the power?"
+  branches {
+    responseText: "Yes."
+    nextNodeIndex: 1
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e7c0356564a033005758"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Why else would I be here?"
+    nextNodeIndex: 1
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e7c0356564a03300575a"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "As far as you know: Yes. Yes, I am here to fix the power."
+    nextNodeIndex: 1
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e7c0356564a03300575c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b9e7d2356564a03300575f"
+  }
+  index: 1
+  text: "Well, get to it, then! The execs are PISSED - they had downloaded 90% of Fuchi\342\200\231s financials when it died, and they\342\200\231ll need to start all over again once it\342\200\231s back up."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59b53f1b3565647422002f1c"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b9e68e356564a03300567a"
+  }
+  index: 2
+  text: "{{GM}}$+(s.he) recoils.{{/GM}}\n\n$+(l.sir)! Dogs are not permitted within this facility!"
+  branches {
+    responseText: "Oh."
+    nextNodeIndex: 3
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e6a5356564a03300567c"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "She\342\200\231s an emotional-support animal."
+    nextNodeIndex: 3
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e6a5356564a03300567e"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "YOU try telling her that!"
+    nextNodeIndex: 3
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e6a5356564a033005680"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b9e6bb356564a033005683"
+  }
+  index: 3
+  text: "Grrrr\342\200\246."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e6bc356564a033005685"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDog"
+}
+nodes {
+  idRef {
+    id: "59b9e6d5356564a03300569d"
+  }
+  index: 4
+  text: "Excuse me, $(l.sir), but you need to exit the building immediately."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e6df356564a03300569f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b9e6e0356564a0330056a2"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "Can I please come in?"
+    nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e6fb356564a0330056b8"
+    }
+  }
+  branches {
+    responseText: "No excuses: You\342\200\231re going down! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59b9e8ad356564a0330057aa"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e781356564a033005751"
+    }
+  }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e9d8356564a0330057d1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59b9e700356564a0330056bb"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e706356564a0330056bd"
+    }
+    comment: "Human = \"people\""
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e706356564a0330056bf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Race check"
+}
+nodes {
+  idRef {
+    id: "59b9e710356564a0330056c2"
+  }
+  index: 7
+  text: "Have you been living under a rock? Renraku is completing its takeover of Fuchi assets, starting here in Sacramento. They can\342\200\231t finish their work if random people come wandering in off the streets."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e712356564a0330056c4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b9e665356564a03300566a:59b9e733356564a0330056ed"
+  }
+  index: 8
+  text: "Have you been living under a rock? Renraku is completing its takeover of Fuchi assets, starting here in Sacramento. They can\342\200\231t finish their work if random $(l.race_plural) come wandering in off the streets."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e733356564a0330056ef"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b9e75d356564a033005712"
+  }
+  index: 9
+  text: "{{GM}}The light momentarily flickers, and he glares at it.{{/GM}}\n\nHopefully they\342\200\231ll be able to patch up the power grid while they\342\200\231re at it. This thing is held together with baling wire and duct tape."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59b9e665356564a03300566a:59b9e767356564a033005714"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Outside_FuchiPowerOut"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_PowerRestored"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "59b9e665356564a03300566a:59b9e796356564a033005753"
+  }
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDog"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "594703903565641042006056"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 2
+  onlyOnce: true
+  idRef {
+    id: "59b9e665356564a03300566a:59b9e665356564a03300566e"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 4
+  idRef {
+    id: "59b9e665356564a03300566a:59b9e6d4356564a03300569a"
+  }
+}
