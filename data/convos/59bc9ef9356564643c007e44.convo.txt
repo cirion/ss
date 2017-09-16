@@ -1,0 +1,176 @@
+idRef {
+  id: "59bc9ef9356564643c007e44"
+}
+ui_name: "ss_a4_fuchi_s1-Matrix_PowerBackup"
+nodes {
+  idRef {
+    id: "59bc9f11356564643c007e50"
+  }
+  index: 0
+  text: "> Renraku backup power system.\n> Status: Online\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bc9f4d356564643c007e5c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bca016356564643c007e64"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Shut down the backup power supply.{{/GM}}"
+    nextNodeIndex: 2
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bca01d356564643c007e66"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Abort.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bca05a356564643c007e81"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59bca025356564643c007e69"
+  }
+  index: 2
+  text: "> CAUTION: Most wired systems within the facility will be at risk of inoperability. Only critical battery-powered infrastructure will continue to be accessible in the event of a failure in the main electrical power grid.\n> Shutdown should only be initiated in the event of critical system maintenance.\n> Continue with shutdown?"
+  branches {
+    responseText: "{{GM}}Yes.{{/GM}}"
+    nextNodeIndex: 3
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bca045356564643c007e6b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}No.{{/GM}}"
+    nextNodeIndex: 0
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bca045356564643c007e6d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bca058356564643c007e7f"
+  }
+  index: 3
+  text: "> Shutdown complete."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bca06f356564643c007e83"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bca071356564643c007e86"
+  }
+  index: 4
+  text: "The Matrix system appears to run off of yet another power system. You\342\200\231ve been spared dumpshock for one more day."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59bc9f6a356564643c007e60"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bc9f3f356564643c007e55"
+  }
+  index: 5
+  text: "> Renraku backup power system.\n> Status: Offline\n"
+  branches {
+    responseText: "{{GM}}Abort.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bc9ef9356564643c007e44:59bc9f48356564643c007e57"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_InteriorPowerDisabled"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "59bc9ef9356564643c007e44:59bc9ef9356564643c007e48"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 5
+  idRef {
+    id: "59bc9ef9356564643c007e44:59bc9f3e356564643c007e52"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad9"

@@ -1,0 +1,290 @@
+idRef {
+  id: "59bc7412356564643c00793c"
+}
+ui_name: "ss_a4_fuchi_s1-Sacto_HurlgCrate"
+nodes {
+  idRef {
+    id: "59bc7427356564643c007948"
+  }
+  index: 0
+  text: "There\342\200\231s a powerful smell of alcohol inside this car. The contents of these crates must be very potent."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc7412356564643c00793c:59bc7428356564643c00794a"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc7412356564643c00793c:59bc7428356564643c00794c"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Examine the crates.{{/GM}}"
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "59bc7412356564643c00793c:59bc742b356564643c007950"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Take a drink.{{/GM}}"
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59bc7412356564643c00793c:59bc7499356564643c00795f"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item: Soykaf{{/CC}} {{GM}}Spike the soykaf with hurlg.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-Soykaf"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    idRef {
+      id: "59bc7412356564643c00793c:59bc74a6356564643c00796b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bc7412356564643c00793c:59bc74c0356564643c007973"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59bc7412356564643c00793c:59bc742b356564643c007952"
+  }
+  index: 2
+  text: "This appears to be a wholesale shipment of manufactured hurlg, an especially potent form of ale. For years hurlg has been drunk by orks and trolls, but in recent years it has grown in popularity among a thrill-seeking demographic of humans. Traditional means of preparation are not scalable, and the contents of these crates are almost certainly synthesized reproductions.\n\nStill strong, though."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc7412356564643c00793c:59bc742c356564643c007954"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc7412356564643c00793c:59bc7499356564643c007961"
+  }
+  index: 3
+  text: "There aren\342\200\231t any cups or other containers available. You aren\342\200\231t about to stick your face into one of these crates, either."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc7412356564643c00793c:59bc7499356564643c007963"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc7412356564643c00793c:59bc74a6356564643c00796d"
+  }
+  index: 4
+  text: "You carefully tap one of the crates and top off the soykaf with the hurlg. It mixes easily into the brown liquid, leaving no trace of its presence."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "597fd12e3565642035002895"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59bc7412356564643c00793c:59bc74a6356564643c00796f"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc7412356564643c00793c:59bc74ec356564643c007975"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-Soykaf"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-SpikedSoykaf"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bc74ee356564643c007978"
+  }
+  index: 5
+  text: "NOW it\342\200\231s a party!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc7412356564643c00793c:59bc74f1356564643c00797a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59bc7412356564643c00793c:59bc7412356564643c007940"
+  }
+}
