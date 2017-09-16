@@ -12137,7 +12137,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "594703903565641042006056"
+            string_value: "59bd74a2356564a428006f74"
           }
         }
       }
@@ -12215,16 +12215,18 @@ triggers {
         }
       }
     }
+  }
+  actions {
     ops {
-      functionName: "Evaluate Turn Mode in Dimension"
+      functionName: "Interrupt Team\'s Movement"
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Preset Value (string)"
           args {
-            string_value: "TurnBasedOrFreeMove"
+            string_value: "FactionList"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -12236,9 +12238,18 @@ triggers {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
     }
-  }
-  actions {
     ops {
       functionName: "Start Conversation"
       args {
@@ -12856,67 +12867,6 @@ triggers {
     ops {
       functionName: "Set Ambient Light Color"
       args {
-        float_value: 26
-      }
-      args {
-        float_value: 33
-      }
-      args {
-        float_value: 58
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (CameraRegion)"
-          args {
-            string_value: "594703903565641042006055"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Directional Light Color"
-      args {
-        float_value: 23
-      }
-      args {
-        float_value: 71
-      }
-      args {
-        float_value: 80
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        float_value: -0.5
-      }
-      args {
-        float_value: -1
-      }
-      args {
-        float_value: -0.75
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (CameraRegion)"
-          args {
-            string_value: "594703903565641042006055"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Ambient Light Color"
-      args {
         float_value: 79
       }
       args {
@@ -12971,6 +12921,67 @@ triggers {
           functionName: "Get Map Item (CameraRegion)"
           args {
             string_value: "594703903565641042006056"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Ambient Light Color"
+      args {
+        float_value: 26
+      }
+      args {
+        float_value: 33
+      }
+      args {
+        float_value: 58
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "594703903565641042006055"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 23
+      }
+      args {
+        float_value: 71
+      }
+      args {
+        float_value: 80
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: -0.5
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        float_value: -0.75
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "594703903565641042006055"
           }
         }
       }
@@ -17976,12 +17987,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Current Location of Actor"
+          functionName: "Current Location of Prop"
           args {
             call_value {
-              functionName: "Get Map Item (Actor)"
+              functionName: "Get Map Item (Prop)"
               args {
-                string_value: "59b4bf6d356564008b00b57f"
+                string_value: "59b7f8253565648cb3004c23"
               }
             }
           }
@@ -18092,7 +18103,7 @@ triggers {
         call_value {
           functionName: "Get Variable (bool)"
           args {
-            string_value: "Global_InteriorPowerDisabled"
+            string_value: "Outside_ExteriorPowerDisabled"
           }
         }
       }
@@ -18438,7 +18449,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "59b9f9f8356564a033005dcf"
   }
@@ -21200,6 +21211,153 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Cause Damage Over Time"
+      args {
+        call_value {
+          functionName: "All Actors on Team of Race"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 4
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (int)"
+          args {
+            call_value {
+              functionName: "Get Variable (int)"
+              args {
+                string_value: "Sewer_ElectricalDamageOrganicsLow"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Variable (int)"
+              args {
+                string_value: "Sewer_ElectricalDamageOrganicsHigh"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+    ops {
+      functionName: "Cause Damage"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -21259,6 +21417,17 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59bd69a3356564a428006e90"
           }
         }
       }
@@ -21420,7 +21589,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Send Event"
+      functionName: "Send Event After Delay"
       args {
         call_value {
           functionName: "Get Map Item (Event)"
@@ -21428,6 +21597,9 @@ triggers {
             string_value: "Event_InteriorPowerDisabled"
           }
         }
+      }
+      args {
+        float_value: 3
       }
     }
   }
@@ -22120,7 +22292,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "59bd1fb13565642c2f003772"
+            string_value: "59bd6236356564a428006e86"
           }
         }
       }
@@ -23917,7 +24089,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59bd21463565642c2f003778"
   }
@@ -24367,6 +24539,266 @@ triggers {
   isActive: true
   idRef {
     id: "59bd60fe356564a428006e81"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Sacto_PickupNuyen"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59bd69fe356564a428006e92"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 176
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59bd6a38356564a428006e94"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Global_EventInteriorPowerDisabled"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_InteriorPowerDisabled"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_InteriorPowerDisabled"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        string_value: "Both the hardware and software of the backup generator are now disabled. It will be offline for quite some time."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 5
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59bd6c88356564a428006ed1"
+  }
+  elseActions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_InteriorPowerDisabled"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_CheckPowerStatus"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Sacto_TripwireCrowsChip"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59bd6d4a356564a428006ed2"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play FX at Point"
+      args {
+        string_value: "EnvironmentCrowFlyAway"
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5941d730356564181c006087"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5941d730356564181c006087"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ambient_graveyard"
+          }
+          args {
+            string_value: "Raven"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59bd6d5f356564a428006ed3"
   }
   elseActions {
   }
@@ -24893,64 +25325,6 @@ regions {
   combat_intro_stinger: ""
   combat_outro_stinger: ""
   vfx_fill_prefab_name: "defaultWaterFill"
-}
-regions {
-  name: "Sacto_TripwireCrowsTrainyard"
-  position {
-    x: 14
-    y: -9
-    width: 5
-    height: 9
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "597fd12e3565642035002899"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
 }
 regions {
   name: "Sacto_FuchiExit"
@@ -29524,6 +29898,122 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Sacto_TripwireCrowsChip"
+  position {
+    x: -3
+    y: -58
+    width: 6
+    height: 6
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59bd6d4a356564a428006ed2"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Lobby_TripwireGuard"
+  position {
+    x: -107
+    y: 5
+    width: 3
+    height: 12
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59bd74a2356564a428006f74"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
@@ -29948,9 +30438,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 80
+    x: 79
     y: 0
-    z: 82
+    z: 84
   }
   orientation: ORIENTATION_N
   displayName: "FuchiResearch_Wave2_BlackMelee"
@@ -29964,16 +30454,16 @@ characters {
     equipment_sheet_id: "IC Black Melee Lv1 Gear"
     character_mod {
       stats {
-        morale: 24
+        morale: 0
         discipline: 24
-        awareness: 24
+        awareness: 0
         perception: 0
         authority: 0
-        protect_tether_range: 5
-        move_speed: 2
-        vision_peripheral_distance: 2
-        vision_cone_distance: 18
-        vision_cone_angle: 90
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
         is_fearless: 0
       }
       skills {
@@ -33490,7 +33980,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "Matrix"
+    dimension_name: "Matrix Fuchi"
     scale_character_sheet: true
   }
 }
