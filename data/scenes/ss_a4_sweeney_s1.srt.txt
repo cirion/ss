@@ -9393,7 +9393,7 @@ triggers {
             string_value: "Comparison Ops"
           }
           args {
-            int_value: 0
+            int_value: 5
           }
         }
       }
@@ -9827,6 +9827,39 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Complete Override Before Time Expires"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Variable (int)"
       args {
         call_value {
@@ -10080,6 +10113,88 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLockdownActor"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Inside_LockdownNodesLabel"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Inside_LockdownTimeLabel"
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -10304,6 +10419,63 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Inside_NodeDisableLabel"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Inside_LockdownNodeOverriddden"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Inside_LockdownNodesLabel"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Inside_LockdownNodesLabel"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Inside_LockdownNodesReset"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Inside_LockdownNodesTotal"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59bebdb63565640444004a1c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Outside"
@@ -12991,6 +13163,7 @@ characters {
     z: 12
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isLockdownActor"
   displayName: "Inside_Lockdown_Shadowrunner"
   idRef {
     id: "59beb14a35656404440047fb"
@@ -13062,6 +13235,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Shadowrunner"
+    GeneralTags: "isLockdownActor"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     karma: 6
@@ -13073,9 +13247,10 @@ characters {
   gridPoint {
     x: -128
     y: 0
-    z: 13
+    z: 12
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isLockdownActor"
   displayName: "Inside_Lockdown_Turnbased"
   idRef {
     id: "59beb17735656404440047fc"
@@ -13105,9 +13280,9 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
+        vision_peripheral_distance: -2
+        vision_cone_distance: -16
+        vision_cone_angle: -45
       }
       skills {
         ranged_combat: 0
@@ -13147,6 +13322,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "TurnBased"
+    GeneralTags: "isLockdownActor"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     karma: 6
@@ -13178,7 +13354,7 @@ variables {
   }
 }
 variables {
-  int_value: 12
+  int_value: 13
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Inside_LockdownTimeTotal"
@@ -13306,7 +13482,7 @@ team_affiliations {
   affiliation: 1
   affiliation: 0
   affiliation: 0
-  affiliation: 0
+  affiliation: 1
 }
 team_affiliations {
   team_name: "Gangers"
@@ -13346,7 +13522,7 @@ team_affiliations {
 }
 team_affiliations {
   team_name: "Turn Based"
-  affiliation: 1
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
