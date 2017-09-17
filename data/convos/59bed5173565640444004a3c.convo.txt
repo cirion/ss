@@ -92,6 +92,40 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-AntidoteFormula"
+            }
+          }
+        }
+      }
     }
     actions {
       ops {
@@ -335,6 +369,40 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-AntidoteFormula"
+            }
+          }
+        }
+      }
     }
     actions {
       ops {
@@ -354,6 +422,111 @@ nodes {
       id: "59bed5173565640444004a3c:59bed93b3565640444004a92"
     }
   }
+  branches {
+    responseText: "{{CC}}Item: Weapon Schematics{{/CC}} {{CC}}Item: Venom Sac{{/CC}} {{GM}}Create a poison weapon.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Evaluate If Actor Has Item"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "HasOrHasNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (Item)"
+                args {
+                  string_value: "ss_a4_sweeney_s1-VenomSac1"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Evaluate If Actor Has Item"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "HasOrHasNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (Item)"
+                args {
+                  string_value: "ss_a4_sweeney_s1-VenomSac2"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59bed5173565640444004a3c:59bed9bb3565640444004ab2"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item: Venom Sac{{/CC}} What does everyone think I should do with the extra venom?"
+    nextNodeIndex: 11
+    onlyOnce: true
+    idRef {
+      id: "59bed5173565640444004a3c:59bee6f93565645841003cc1"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bed5173565640444004a3c:59bee7de3565645841003d7b"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Root"
 }
@@ -363,6 +536,14 @@ nodes {
   }
   index: 4
   text: "The process goes more smoothly the second time. You\'re now able to extract more usable material, and finish with sufficient antivenom to service your team well into the future."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59bed5173565640444004a3c:59bed9b33565640444004aa7"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_GM_Voice
   actions {
     ops {
@@ -410,7 +591,866 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Isas_Forgiveness"
+          }
+        }
+      }
+    }
   }
+}
+nodes {
+  idRef {
+    id: "59bee27d3565640444004ab5"
+  }
+  index: 5
+  text: "There are quite a few options listed, but you only have enough venom for one. Which do you choose?"
+  branches {
+    responseText: "{{GM}}Make a venomous axe.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Inside_ConsumeVenomSac"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "59bed5173565640444004a3c:59bee29b3565640444004ab7"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Make a poisoned grenade launcher.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Inside_ConsumeVenomSac"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59bed5173565640444004a3c:59bee3433565645841003c0e"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Cyber Affinity: 1{{/CC}} {{GM}}Create and install poisoned hand razors.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 19
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Inside_ConsumeVenomSac"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    idRef {
+      id: "59bed5173565640444004a3c:59bee3463565645841003c14"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Make an advanced Acid Stream spell.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Inside_ConsumeVenomSac"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    idRef {
+      id: "59bed5173565640444004a3c:59bee3b63565645841003c32"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Conjuring: 5{{/CC}}{{GM}} Make an advanced Acid Bolt spell.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 7
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Inside_ConsumeVenomSac"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59bed5173565640444004a3c:59bee60b3565645841003c38"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Reconsider.{{/GM}}"
+    nextNodeIndex: 3
+    idRef {
+      id: "59bed5173565640444004a3c:59bee6a93565645841003c7a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bee2d83565640444004ad1"
+  }
+  index: 6
+  text: "You look critically at the result. Not bad."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sword 2 Poison"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Isas_Revenge"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee3433565645841003c10"
+  }
+  index: 7
+  text: "You look critically at the result. Not bad."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Ex 1 Poison"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Isas_Revenge"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee3463565645841003c16"
+  }
+  index: 8
+  text: "You look critically at the result. Not bad."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Cyberwear to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Weapon 2 Poison Razor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Isas_Revenge"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee3b63565645841003c34"
+  }
+  index: 9
+  text: "With such potent ingredients on hand, you easily craft the corresponding spell."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Spell Acid Stream 2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Isas_Revenge"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee60b3565645841003c3a"
+  }
+  index: 10
+  text: "With such potent ingredients on hand, you easily craft the corresponding spell."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Spell Toxic Bolt 3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Isas_Revenge"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bee7053565645841003cc4"
+  }
+  index: 11
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    onlyOnce: true
+    idRef {
+      id: "59bed5173565640444004a3c:59bee70d3565645841003cc6"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 13
+    onlyOnce: true
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72b3565645841003cd6"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    onlyOnce: true
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72d3565645841003ce2"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+    onlyOnce: true
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72d3565645841003cea"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72d3565645841003cf2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "59bee7103565645841003cc9"
+  }
+  index: 12
+  text: "Oh, you should definitely make more antivenom!\n\nIt sounds like the formula isn\342\200\231t well-known outside of this base. We could help other victims with it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59bed5173565640444004a3c:59bee7123565645841003ccb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee72b3565645841003cd8"
+  }
+  index: 13
+  text: "The People\342\200\231s University few weapons has. This poison unpleasant is, but it an edge provides. We more good with it could accomplish."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72b3565645841003cda"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee72d3565645841003ce4"
+  }
+  index: 14
+  text: "I\342\200\231m just saying: we don\342\200\231t NEED to use it all up. Novascorpion venom fetches a pretty price on the black market.\n\nNo, don\342\200\231t ask me how I know. But if we take this stuff back to Berkeley with us, I can guarantee a nice payout."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72d3565645841003ce6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59bed5173565640444004a3c:59bee72d3565645841003cec"
+  }
+  index: 15
+  text: "This stuff is hella potent, it would be a shame to just hand it off. Whether you want to forge it into a sword or a shield, we can put it to good use."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59bed5173565640444004a3c:59bee72d3565645841003cee"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
 }
 roots {
   conditions {
