@@ -1,0 +1,326 @@
+idRef {
+  id: "59c1b292356564c04e0079b3"
+}
+ui_name: "ss_a4_sweeney_s1-Outside_ClosedHatch"
+nodes {
+  idRef {
+    id: "59c1b2a4356564c04e0079bf"
+  }
+  index: 0
+  text: "The hatch is sealed shut tightly, with no obvious lock visible. It must be operated from below."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1b2bf356564c04e0079c1"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c1b568356564c04e007ab0"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59c1b2c0356564c04e0079c4"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}Item: Explosives{{/CC}} Okay, let\342\200\231s get this thing open."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1b966356564c04e007aee"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave for now.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1b972356564c04e007af0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59c1b9b6356564c04e007afc"
+  }
+  index: 2
+  text: "As you begin to lay the explosives, you hear muffled shouting coming from the other side of the hatch. It sounds similar to the foreign voice you heard earlier over your commlink."
+  branches {
+    responseText: "{{CC}}Metatype: Elf{{/CC}} (Speaking in Sperethiel) (I am here, friend! Open the door that I may enter!)"
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1ba0a356564c04e007b08"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} (Speaking in Sperethiel) (Here I have come boon companion! Gate open please for enter I wish!)"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1ba2d356564c04e007b0a"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} {{GM}}Tap out a message in Morse code.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1ba6f356564c04e007b0f"
+    }
+  }
+  branches {
+    responseText: "Stand clear! {{GM}}Detonate the explosives.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1badf356564c04e007b30"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Detonate the explosives.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1baf5356564c04e007b32"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c1ba8d356564c04e007b12"
+  }
+  index: 3
+  text: "You tap out CT to get his attention, then SOS in warning. While he may not speak English, he apparently recognizes international Morse prosigns. You hear a tapped SN for acknowledgment, followed by silence."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1b292356564c04e0079b3:59c1ba9c356564c04e007b14"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c1ba9e356564c04e007b17"
+  }
+  index: 4
+  text: "A muffled click signals the unlocking of the hatch."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c1b407356564c04e007a5c"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59c1b292356564c04e0079b3:59c1b292356564c04e0079b7"
+  }
+}
