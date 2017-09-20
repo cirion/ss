@@ -1,0 +1,406 @@
+idRef {
+  id: "59c1d682356564c04e008029"
+}
+ui_name: "ss_a4_sweeney_s1-Outside_OpeningCall"
+nodes {
+  idRef {
+    id: "59c1d6a5356564c04e008035"
+  }
+  index: 0
+  text: "Your commlink vibrates. Incoming message."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d6a5356564c04e008037"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c1d682356564c04e008029:59c1d6a5356564c04e008039"
+  }
+  index: 1
+  text: "Testing, testing. Big Sister checking in, can you hear me?"
+  branches {
+    responseText: "Loud and clear."
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d6bf356564c04e00803d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Sigh.{{/GM}} \342\200\246 Little $(story.brother) responding, affirmative."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Marines"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d6bf356564c04e00803f"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Remain silent.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Masato_Self"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d6bf356564c04e008041"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59bde0383565640441007fe1"
+}
+nodes {
+  idRef {
+    id: "59c1d824356564c04e00804e"
+  }
+  index: 2
+  text: "Atta$(story.boy)!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d826356564c04e008050"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59c1d8a3356564c04e00805f"
+  }
+  index: 3
+  text: "I can hear you breathing, you know!\n\nFine, fine."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d8a6356564c04e008061"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59c1d8a8356564c04e008064"
+  }
+  index: 4
+  text: "Just a quick reminder: if you want Ares to have your back, you\342\200\231ll need to shut down the Protectorate\342\200\231s missile silo here. That will give them more flexibility in operating from Silicon Valley and pose a greater threat to General Saito."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d8fd356564c04e00807c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Seize the Missiles"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59c1d8ff356564c04e00807f"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d906356564c04e008094"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    onlyOnce: true
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d92c356564c04e0080a4"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    onlyOnce: true
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d92e356564c04e0080b0"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d92e356564c04e0080b8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "59c1d908356564c04e008097"
+  }
+  index: 6
+  text: "If we with Ares can join, we great things can accomplish! A corporation and rebels, arm in arm, we against a common foe will fight!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d90a356564c04e008099"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59c1d682356564c04e008029:59c1d92c356564c04e0080a6"
+  }
+  index: 7
+  text: "I\'m not so certain about that. Ares might be on our side, but they don\342\200\231t share our goals. Remember, at the end of the day their greatest motivation is making money. We can only trust them as long as Saito\342\200\231s plans threaten their profits."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d92c356564c04e0080a8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59c1d682356564c04e008029:59c1d92e356564c04e0080b2"
+  }
+  index: 8
+  text: "Ares is the only force Saito really fears, along with Hestaby. He lucked out when he inherited this installation. If we can take those missiles from him, he won\342\200\231t be able to easily get them back."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59c1d682356564c04e008029:59c1d92e356564c04e0080b4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59c1d682356564c04e008029:59c1d92e356564c04e0080ba"
+  }
+  index: 9
+  text: "They\342\200\231re probably jamming unapproved frequencies, so I won\342\200\231t be able to contact you once you get closer to the site. See if you can open up a channel from inside the facility after you\342\200\231ve infiltrated it. Good luck!"
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59c1d682356564c04e008029:59c1d682356564c04e00802d"
+  }
+}
+speaker_override_id: "59bde0383565640441007fe1"
