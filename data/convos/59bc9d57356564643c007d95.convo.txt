@@ -1,0 +1,339 @@
+idRef {
+  id: "59bc9d57356564643c007d95"
+}
+ui_name: "ss_a4_fuchi_s1-Sewer_PowerBoxDisarmed"
+nodes {
+  idRef {
+    id: "59bc9da8356564643c007da1"
+  }
+  index: 0
+  text: "The electrical box is now exposed."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9db6356564643c007da3"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc9db7356564643c007da6"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Examine the wiring.{{/GM}}"
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9dbc356564643c007da8"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Drone Control: $(story.Global-Skillcheck_Hard){{/CC}} {{GM}}Short out the backup power generator.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9dc6356564643c007db8"
+    }
+  }
+  branches {
+    responseText: "Masato, do you have any ideas here?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "597fd12e3565642035002894"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9e40356564643c007de8"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9e88356564643c007e0a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59bc9dbd356564643c007dab"
+  }
+  index: 2
+  text: "Looking closely at the diagrams, you see that this unit offers surge protection for the backup generator. Just ripping out wires here won\342\200\231t affect the main unit, but if you can introduce a feedback loop, you could cause some serious damage to the building\342\200\231s offline power supply."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9dbf356564643c007dad"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc9d57356564643c007d95:59bc9dc6356564643c007dba"
+  }
+  index: 3
+  text: "With the countermeasures disposed of, you can easily manipulate the exposed components. You remove the grounding wire, twist the positive cable, and in short order have modified the surge protector into a surge producer."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9dc6356564643c007dbc"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc9e15356564643c007de6"
+  }
+  index: 4
+  text: "You hear the sound of electrical agony as the backup power system bites the dust."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ambient_tenement"
+          }
+          args {
+            string_value: "NoiseElectric"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59bc9e90356564643c007e1f"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bc9d57356564643c007d95:59bc9e40356564643c007dea"
+  }
+  index: 5
+  text: "Mmm-hmm. I\342\200\231m not just good at pushing buttons, I\342\200\231m also good at striking sparks.\n\n{{GM}}He fiddles with the exposed components, nodding in satisfaction. The barely-perceptible hum of electricity changes tone and tenor as the generator starts to experience distress.{{/GM}}\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59bc9d57356564643c007d95:59bc9e40356564643c007dec"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59bc9d57356564643c007d95:59bc9d57356564643c007d99"
+  }
+}

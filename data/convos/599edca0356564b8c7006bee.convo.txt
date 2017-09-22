@@ -1,0 +1,267 @@
+idRef {
+  id: "599edca0356564b8c7006bee"
+}
+ui_name: "ss_a2_piedmont_s1-Avenue_Opening"
+nodes {
+  idRef {
+    id: "599edcf7356564b8c7006bfa"
+  }
+  index: 0
+  text: "Sirens rise and fall, cutting through the night air.  It sounds like the Protectorate is sweeping the neighborhood again."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "599edca0356564b8c7006bee:599edcfa356564b8c7006bfc"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "599edca0356564b8c7006bee:599edcfa356564b8c7006bfe"
+  }
+  index: 1
+  text: ""
+  branches {
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd12356564b8c7006c02"
+    }
+  }
+  branches {
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593c5a34356564841d001a66"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd3b356564b8c7006c11"
+    }
+  }
+  branches {
+    responseText: "Let\342\200\231s move."
+    nextNodeIndex: -1
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd3d356564b8c7006c1d"
+    }
+  }
+  branches {
+    responseText: "Watch your step."
+    nextNodeIndex: -1
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd3d356564b8c7006c1f"
+    }
+  }
+  branches {
+    responseText: "Race you!"
+    nextNodeIndex: -1
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd3e356564b8c7006c21"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "599edca0356564b8c7006bee:599edd12356564b8c7006c04"
+  }
+  index: 2
+  text: "{{GM}}He points northward.{{/GM}}\n\nWilco should be further in. He does not have much appetite for danger, so we should look for a likely hiding hole."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd21356564b8c7006c06"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDesorn"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDesorn"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_attack_unarmed_throw"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "599edca0356564b8c7006bee:599edd3b356564b8c7006c13"
+  }
+  index: 3
+  text: "Such a waste! I remember when this used to be a bustling, vibrant area. Now\342\200\246\n\n{{GM}}She sighs.{{/GM}}\n\nWell, once we get Tassender back, maybe we\342\200\231ll have a better chance at helping the folks around here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "599edca0356564b8c7006bee:599edd3b356564b8c7006c15"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "599edca0356564b8c7006bee:599edca0356564b8c7006bf2"
+  }
+}

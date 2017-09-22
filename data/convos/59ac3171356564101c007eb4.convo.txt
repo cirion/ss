@@ -1,0 +1,173 @@
+idRef {
+  id: "59ac3171356564101c007eb4"
+}
+ui_name: "ss_a3_underwater_s1-Interrogation_Murder"
+nodes {
+  idRef {
+    id: "59ac317f356564101c007ec0"
+  }
+  index: 0
+  text: "$(story.victim_name)!! Oh, no!\n\n$(story.li_name), what have you done?!"
+  branches {
+    responseText: "We need answers, $(story.li_name)!"
+    nextNodeIndex: 1
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3ef6356564101c007f00"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I can\342\200\231t believe I just saw that\342\200\246"
+    nextNodeIndex: 1
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3ef6356564101c007f02"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I feel like I missed something here..."
+    nextNodeIndex: 1
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3ef6356564101c007f04"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLi"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isKora"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ac3f0b356564101c007f07"
+  }
+  index: 1
+  text: "{{GM}}$+(story.li_he) stares at $(story.li_his) hands, blinking rapidly.{{/GM}}\n\nWhat\342\200\246 I didn\342\200\231t mean to\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3f90356564101c007f22"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isLi"
+}
+nodes {
+  idRef {
+    id: "59ac3f92356564101c007f25"
+  }
+  index: 2
+  text: "{{GM}}$+(story.li_he) looks up at you, fear washing over $(story.li_his) face.{{/GM}}\n\n$(l.name), you have to get out of here! NOW! It\342\200\231s a trap!"
+  branches {
+    responseText: "What are you talking about?"
+    nextNodeIndex: 3
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3fde356564101c007f41"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "You\342\200\231re coming with me, right?"
+    nextNodeIndex: 3
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3fde356564101c007f43"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Can I kill someone on the way out?"
+    nextNodeIndex: 3
+    idRef {
+      id: "59ac3171356564101c007eb4:59ac3fe5356564101c007f48"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ac3ff9356564101c007f4b"
+  }
+  index: 3
+  text: "This\342\200\246 I forgot, but now I remember and... \n\nThere\342\200\231s no hope! Please, leave me! You won\342\200\231t be safe for as long as I\342\200\231m here!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ac403b356564101c007f77"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59ac3171356564101c007eb4:59ac3171356564101c007eb8"
+  }
+}

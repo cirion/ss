@@ -1,0 +1,851 @@
+idRef {
+  id: "59c1d49e356564c04e007f03"
+}
+ui_name: "ss_a4_sweeney_s1-Outside_ElfDistressCall"
+nodes {
+  idRef {
+    id: "59c1d4b2356564c04e007f0f"
+  }
+  index: 0
+  text: "Your commlink springs back to life, but you don\342\200\231t recognize the speaker on the other end."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d4b2356564c04e007f11"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "PDA-Ring1"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d4b2356564c04e007f13"
+  }
+  index: 1
+  text: "The voice speaks frantically, over and over again, in what seems to be a looped message. It isn\342\200\231t in English. Or in Japanese."
+  branches {
+    responseText: "{{CC}}Metatype: Elf{{/CC}} Hey, it\342\200\231s elvish!"
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d4d1356564c04e007f17"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} Hm, I think I can translate\342\200\246"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d4d1356564c04e007f19"
+    }
+  }
+  branches {
+    responseText: "Can anyone else understand this?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isCrew"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d4d2356564c04e007f1b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Turn it off.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d60a356564c04e007fe5"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c1d502356564c04e007f1e"
+  }
+  index: 2
+  text: "You recognize the dialect of Sperethiel, spoken by elves in Tir Tairngire. Desorn would probably have sounded like this in conversations back home."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d510356564c04e007f20"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d511356564c04e007f22"
+  }
+  index: 3
+  text: "The words are clear and unmistakable: \342\200\234Send help.\342\200\235 No other information is provided."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d511356564c04e007f24"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c1d51f356564c04e007f29"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d529356564c04e007f3a"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d541356564c04e007f4a"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d545356564c04e007f56"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d545356564c04e007f5e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "59c1d52b356564c04e007f3d"
+  }
+  index: 5
+  text: "Well. That\342\200\231s unnerving."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d52d356564c04e007f3f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d541356564c04e007f4c"
+  }
+  index: 6
+  text: "Elves nearby are? Perhaps they us can aid. We a common cause may share."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d541356564c04e007f4e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d545356564c04e007f58"
+  }
+  index: 7
+  text: "It sounds like they\342\200\231re in trouble! Maybe they\342\200\231re being held prisoner? Or tortured!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d545356564c04e007f5a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d545356564c04e007f60"
+  }
+  index: 8
+  text: "This is weird. Tir elves almost never come this far south, let alone to a hardened military site."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d545356564c04e007f62"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59c1d5af356564c04e007fba"
+  }
+  index: 9
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5a8356564c04e007fb1"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5be356564c04e007fc9"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5c4356564c04e007fd5"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594bc66c3565641c29003143"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 13
+    onlyOnce: true
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5c5356564c04e007fdd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop 2"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d5a8356564c04e007fb3"
+  }
+  index: 10
+  text: "No."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5a8356564c04e007fb5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d5be356564c04e007fcb"
+  }
+  index: 11
+  text: "It sounds like they\342\200\231re in trouble, whoever it is."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5be356564c04e007fcd"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d5c4356564c04e007fd7"
+  }
+  index: 12
+  text: "Oh, I think it\342\200\231s Elvish! It sounds kind of like the traders from Tir Tairngire."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5c4356564c04e007fd9"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d5c5356564c04e007fdf"
+  }
+  index: 13
+  text: "Elvish from Tir Tairngire, but none of us can translate it.\n\nThat\342\200\231s really strange, though. Tir elves almost never come this far south, let alone to a hardened military site."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59c1d49e356564c04e007f03:59c1d5c5356564c04e007fe1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59c1d49e356564c04e007f03:59c1d49e356564c04e007f07"
+  }
+}

@@ -1,0 +1,104 @@
+idRef {
+  id: "59b9442f35656408300048f5"
+}
+ui_name: "ss_a4_fuchi_s1-Upstairs_SendDroneIn"
+nodes {
+  idRef {
+    id: "59b944a53565640830004908"
+  }
+  index: 0
+  text: "This vent connects to the office HVAC system. It looks large enough to accommodate a standard security drone."
+  branches {
+    responseText: "{{GM}}Send a drone into the vent.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isShadowrunnerDrone"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_SendDrone"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59a78c38356564e4710030d2:59b944cc356564083000490f"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a78c38356564e4710030d2:59b944d13565640830004912"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59b9442f35656408300048f5:59b9442f35656408300048f9"
+  }
+}

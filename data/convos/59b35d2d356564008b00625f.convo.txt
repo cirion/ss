@@ -1,0 +1,209 @@
+idRef {
+  id: "59b35d2d356564008b00625f"
+}
+ui_name: "ss_a4_catos_s1-TurretsHacked"
+nodes {
+  idRef {
+    id: "59b35d4a356564008b00626b"
+  }
+  index: 0
+  text: "A voice comes over the PA."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59b35d2d356564008b00625f:59b35d4b356564008b00626d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "VidPhone"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b35d2d356564008b00625f:59b35d4b356564008b00626f"
+  }
+  index: 1
+  text: "New targeting parameters assigned."
+  branches {
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "59af71223565646068000f3f"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593dd7b7356564d41f005e3b"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59b35d2d356564008b00625f:59b35d4d356564008b006273"
+    }
+    comment: "Squop still alive?"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b35d2d356564008b00625f:59b35da6356564008b006284"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "598d254935656460340078c8"
+}
+nodes {
+  idRef {
+    id: "59b35d2d356564008b00625f:59b35d4d356564008b006275"
+  }
+  index: 2
+  text: "That sounds ominous."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59b35d2d356564008b00625f:59b35da4356564008b006282"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59af71223565646068000f3f"
+  }
+}
+nodes {
+  idRef {
+    id: "59b35da8356564008b006287"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isLeader"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "593dd7b7356564d41f005e3b"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59b35d2d356564008b00625f:59b35dca356564008b00628c"
+    }
+    comment: "Leader still alive?"
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Check for leader"
+}
+nodes {
+  idRef {
+    id: "59b35dd4356564008b00628f"
+  }
+  index: 4
+  text: "If any of you can sling code, get your ass into Weetabrix\'s system and bring those turrets back around, or we\342\200\231re all fucked!"
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isLeader"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59b35d2d356564008b00625f:59b35d2d356564008b006263"
+  }
+}

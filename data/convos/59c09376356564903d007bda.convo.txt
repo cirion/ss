@@ -1,0 +1,384 @@
+idRef {
+  id: "59c09376356564903d007bda"
+}
+ui_name: "ss_a4_sweeney_s1-Inside_TirElf"
+nodes {
+  idRef {
+    id: "59c0938f356564903d007be6"
+  }
+  index: 0
+  text: "He raises his gun at you, speaking words of warning."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 18
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Race"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Race"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "59c09376356564903d007bda:59c09394356564903d007be8"
+    }
+    comment: "Elf or have Academic etiquette"
+  }
+  branches {
+    responseText: "I don\342\200\231t speak elvish. Let\342\200\231s work this out."
+    nextNodeIndex: 7
+    idRef {
+      id: "59c09376356564903d007bda:59c09394356564903d007bea"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Raise your hands.{{/GM}} We don\342\200\231t want any trouble."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Arelia_Universal"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59c09376356564903d007bda:59c094db356564903d007c67"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nobody\'s gonna hurt anybody. We\'re gonna be like three little Fonzies here. And what\'s Fonzie like?"
+    nextNodeIndex: 7
+    idRef {
+      id: "59c09376356564903d007bda:59c094db356564903d007c69"
+    }
+  }
+  branches {
+    responseText: "It is ON! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Arelia_Selfish"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59c0946f356564903d007c46"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59c09376356564903d007bda:59c0950d356564903d007c8e"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59c093c4356564903d007bed"
+  }
+  index: 1
+  text: "{{GM}}Speaking in Sperethiel:{{/GM}}\n\n(You aren\342\200\231t allowed to come in here! And how did you get past the [unfamiliar word]?)"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59c09376356564903d007bda:59c093dc356564903d007bef"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59c093de356564903d007bf2"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "(What are you doing here?)"
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59c09376356564903d007bda:59c093e4356564903d007bfe"
+    }
+  }
+  branches {
+    responseText: "(What were those creatures?)"
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "59c09376356564903d007bda:59c0941a356564903d007c1e"
+    }
+  }
+  branches {
+    responseText: "(You should get out of here.)"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Arelia_Universal"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    onlyOnce: true
+    idRef {
+      id: "59c09376356564903d007bda:59c09431356564903d007c2a"
+    }
+  }
+  branches {
+    responseText: "(I demand you tell me what is going on!)"
+    nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "59c09376356564903d007bda:59c09485356564903d007c48"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59c093fe356564903d007c03"
+  }
+  index: 3
+  text: "{{GM}}He shakes his head in refusal.{{/GM}}\n\n(Word of our mission cannot be spoken to a goronagit like you, nor socel\303\251nit like your companions. I will die before betraying my cause. I will kill before I violate the will of Ele Arandur.)"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59c09376356564903d007bda:59c0940c356564903d007c05"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59c09376356564903d007bda:59c0941a356564903d007c20"
+  }
+  index: 4
+  text: "(The [unfamiliar word] were brought here by the socel\303\251. They hoped to use them to defend this site. But they have overrun the area, both above and below. Only a few meraerthsa remain.)"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59c09376356564903d007bda:59c0941a356564903d007c22"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59c09376356564903d007bda:59c09431356564903d007c2c"
+  }
+  index: 5
+  text: "{{GM}}He hesitates, considering, and then bows.{{/GM}}\n\n(Our mission here has failed. May you find greater success.)"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c0944f356564903d007c45"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59c09376356564903d007bda:59c09485356564903d007c4a"
+  }
+  index: 6
+  text: "(Never!)"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c0946f356564903d007c46"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59c094e8356564903d007c6c"
+  }
+  index: 7
+  text: "He isn\342\200\231t having it. Shouting loudly, he dives for cover."
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c0946f356564903d007c46"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59c09376356564903d007bda:59c09376356564903d007bde"
+  }
+}

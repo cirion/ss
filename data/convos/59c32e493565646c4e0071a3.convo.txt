@@ -1,0 +1,479 @@
+idRef {
+  id: "59c32e493565646c4e0071a3"
+}
+ui_name: "ss_a5_mojave_s1-Barracks_DoorTerminal"
+nodes {
+  idRef {
+    id: "59c33e1b3565646c4e0075e3"
+  }
+  index: 0
+  text: "Blah blah blah."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59c32f4a3565646c4e0071af"
+  }
+  index: 1
+  text: "This terminal has been left unlocked. Recent messages are still visible via the inbox."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c32f8b3565646c4e0071b1"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c32f8b3565646c4e0071b3"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59c32f8f3565646c4e0071b6"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594fe02e356564b444005eab"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    onlyOnce: true
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c32f953565646c4e0071b8"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594fe02e356564b444005eab"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330053565646c4e0071ec"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330073565646c4e0071f8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive crew check"
+}
+nodes {
+  idRef {
+    id: "59c32f973565646c4e0071bb"
+  }
+  index: 3
+  text: "Let\342\200\231s see what else they\342\200\231re up to."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c32f983565646c4e0071bd"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59c32e493565646c4e0071a3:59c330053565646c4e0071ee"
+  }
+  index: 4
+  text: "Ah, the typical bureaucracy of the military. They can\342\200\231t fart without producing an auditable trail of electronic records."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330053565646c4e0071f0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59c3301d3565646c4e00720c"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "{{GM}}Open Door{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Barracks_isEastDoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330283565646c4e007224"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c33d793565646c4e00759c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59c3307e3565646c4e007229"
+  }
+  index: 6
+  text: "> ERROR: Checksum invalid.\n> Current time: 00:00:00\n> Please input correct time."
+  branches {
+    responseText: "10:10:00"
+    nextNodeIndex: 7
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330a63565646c4e007255"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "2:50:00"
+    nextNodeIndex: 7
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330b93565646c4e007257"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "02:50:00"
+    nextNodeIndex: 7
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330c33565646c4e007259"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "22:10:00"
+    nextNodeIndex: 7
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330d23565646c4e00725b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "14:50:00"
+    nextNodeIndex: 7
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c330e33565646c4e00725d"
+    }
+  }
+  nodeType: ConversationNodeType_InputKeyboard
+}
+nodes {
+  idRef {
+    id: "59c330f23565646c4e007260"
+  }
+  index: 7
+  text: "> Checksum confirmed.\n> Camera online.\n> Door unlocked."
+  branches {
+    responseText: "{{GM}}View camera.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59c334063565646c4e00730f"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59c32e493565646c4e0071a3:59c3312a3565646c4e0072c4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Barracks_isEastDoorUnlocked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isDebugging"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c334063565646c4e00730f"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c334173565646c4e007310"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  hideIfUnavailable: true
+  onlyOnce: true
+  idRef {
+    id: "59c32e493565646c4e0071a3:59c33e013565646c4e0075e0"
+  }
+}
+roots {
+  nextNodeIndex: 1
+  idRef {
+    id: "59c32e493565646c4e0071a3:59c32e493565646c4e0071a7"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad8"

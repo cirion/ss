@@ -1,0 +1,258 @@
+idRef {
+  id: "59bc8f39356564643c007bc8"
+}
+ui_name: "ss_a4_fuchi_s1-Matrix_JobAdministration"
+nodes {
+  idRef {
+    id: "59bc8f5b356564643c007bd4"
+  }
+  index: 0
+  text: "> Work authorization node. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc8f39356564643c007bc8:59bc8f76356564643c007bd6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bc8f77356564643c007bd9"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}Item: Work Order{{/CC}} {{GM}}Modify work order.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-WorkOrder"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-PlanningDocCoordinates"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59bc8f39356564643c007bc8:59bc8f79356564643c007bdb"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item: Work Order{{/CC}} {{GM}}Modify work order.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-WorkOrder"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-PlanningDocCoordinates"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "59bc8f39356564643c007bc8:59bc903d356564643c007bff"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Abort.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bc8f39356564643c007bc8:59bc8f86356564643c007bfd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bc8f7b356564643c007bde"
+  }
+  index: 2
+  text: "A modification would make this order much more useful, but you don\342\200\231t have anything particular to add. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59bc8f39356564643c007bc8:59bc8f7d356564643c007be0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bc8f39356564643c007bc8:59bc903d356564643c007c01"
+  }
+  index: 3
+  text: "You plug in the coordinates from the planning documents. Anyone who follows the work order will now drill directly into one of the city\342\200\231s underground cables. This could be useful."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59bc905d356564643c007c1a"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59bc8f39356564643c007bc8:59bc8f39356564643c007bcc"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad9"

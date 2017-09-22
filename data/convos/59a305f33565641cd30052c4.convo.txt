@@ -1,0 +1,555 @@
+idRef {
+  id: "59a305f33565641cd30052c4"
+}
+ui_name: "ss_a2_sacto_s1-Fuchi_Receptionist"
+nodes {
+  idRef {
+    id: "59a306343565641cd30052d0"
+  }
+  index: 0
+  text: "Apologies, $(l.sir), but, this whole building is under quarantine. Nobody can enter or leave until we get the all-clear from Ms. Atherford."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306443565641cd30052d7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a306453565641cd30052da"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "I need to redirect the next shipment of paracritters."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Send Fuchi Paracritters to McClellan AFB"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "59a305f33565641cd30052c4:59a307433565641cd3005314"
+    }
+  }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59a305f33565641cd30052c4:59a30ade3565641cd30053f3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59a307633565641cd3005317"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Fuchi_ConvincedReceptionistToRedirect"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59a305f33565641cd30052c4:59a63f6a35656430c8004fdf"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Sacto_KnowAboutParacritters"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306733565641cd30052dc"
+    }
+    comment: "Not yet."
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Already convinced the receptionist to redirect?"
+}
+nodes {
+  idRef {
+    id: "59a63f6e35656430c8004fe2"
+  }
+  index: 3
+  text: "Do you have an address for me?"
+  branches {
+    responseText: "Yes."
+    nextNodeIndex: 4
+    idRef {
+      id: "59a305f33565641cd30052c4:59a63f7b35656430c8004fe4"
+    }
+  }
+  branches {
+    responseText: "I forget\342\200\246"
+    nextNodeIndex: 7
+    idRef {
+      id: "59a305f33565641cd30052c4:59a30a5a3565641cd300537b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a307a63565641cd300533c"
+  }
+  index: 4
+  text: "What\342\200\231s the street address of the new destination?"
+  branches {
+    responseText: "301"
+    nextNodeIndex: 5
+    idRef {
+      id: "59a305f33565641cd30052c4:59a643ef35656430c8005141"
+    }
+  }
+  branches {
+    responseText: "406"
+    nextNodeIndex: 6
+    idRef {
+      id: "59a305f33565641cd30052c4:59a307be3565641cd300533e"
+    }
+  }
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 3
+}
+nodes {
+  idRef {
+    id: "59a643f735656430c8005144"
+  }
+  index: 5
+  text: "Pardon me, $(l.sir), but that\'s the address of this building. I thought you said you wanted to change it to a different destination?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a305f33565641cd30052c4:59a6441235656430c8005146"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a30a523565641cd3005379"
+  }
+  index: 6
+  text: "Done and done! Whoever lives there is about to get a heavy dose of weirdness from the Mojave."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a30a963565641cd30053f1"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59a30a6c3565641cd300539b"
+  }
+  index: 7
+  text: "Well, then you\342\200\231d better find out. I can\342\200\231t send these critters elsewhere until I know where they need to go!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a305f33565641cd30052c4:59a30a773565641cd300539d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a306883565641cd30052df"
+  }
+  index: 8
+  text: "Really? In-person delivery changes are highly unorthodox. I\342\200\231ll need some assurance that this order has been approved."
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} The brass need plausible deniability in case it leads to another embarrassing infestation. Keep this off the books."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 9
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306913565641cd30052e1"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_Hard){{/CC}} I have this directly from Carli\342\200\231s lips. Go ahead and confirm with her if you need to, but I should warn you that she\342\200\231s already in a foul mood."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306c33565641cd30052f3"
+    }
+  }
+  branches {
+    responseText: "{{CC}}\302\24550{{/CC}} I don\342\200\231t want to run all the way back for some damn paperwork. Let\342\200\231s just settle this here."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 50
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 50
+        }
+      }
+    }
+    nextNodeIndex: 11
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306c93565641cd30052fc"
+    }
+  }
+  branches {
+    responseText: "Forget it."
+    nextNodeIndex: 13
+    idRef {
+      id: "59a305f33565641cd30052c4:59a63ec135656430c8004f16"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a306b03565641cd30052e4"
+  }
+  index: 9
+  text: "Ah, I got you.\n\n{{GM}}He taps the side of his nose, conspiratorially.{{/GM}}\n\nI should have realized it as soon as I saw how you folks were dressed. Your secret is safe with me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306c03565641cd30052f1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a305f33565641cd30052c4:59a306c33565641cd30052f5"
+  }
+  index: 10
+  text: "{{GM}}He shudders.{{/GM}}\n\nNo, thank you. I still haven\342\200\231t recovered from her eruption this morning."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306c33565641cd30052f7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a305f33565641cd30052c4:59a306c93565641cd30052fe"
+  }
+  index: 11
+  text: "In that case, you can consider this order approved."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59a305f33565641cd30052c4:59a306c93565641cd3005300"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59a3078c3565641cd3005332"
+  }
+  index: 12
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59a305f33565641cd30052c4:59a307a23565641cd3005339"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Fuchi_ConvincedReceptionistToRedirect"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Update var: convinced receptionist"
+}
+nodes {
+  idRef {
+    id: "59a63ec735656430c8004f19"
+  }
+  index: 13
+  text: "Hm?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a305f33565641cd30052c4:59a63ecd35656430c8004f1b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59a305f33565641cd30052c4:59a305f33565641cd30052c8"
+  }
+}

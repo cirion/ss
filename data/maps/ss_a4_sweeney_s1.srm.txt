@@ -145,9 +145,9 @@ props {
 props {
   name: "undergroundBase_wall_concreteConnector02"
   gridPoint {
-    x: -27
+    x: 4
     y: 0
-    z: 30
+    z: 3
   }
   orientation: ORIENTATION_N
   idRef {
@@ -275,9 +275,9 @@ props {
 props {
   name: "undergroundBase_wall_concreteEdge06"
   gridPoint {
-    x: -27
+    x: 4
     y: 0
-    z: 28
+    z: 1
   }
   orientation: ORIENTATION_S
   idRef {
@@ -288,9 +288,9 @@ props {
 props {
   name: "undergroundBase_wall_concreteEdge06"
   gridPoint {
-    x: -27
+    x: 4
     y: 0
-    z: 26
+    z: -1
   }
   orientation: ORIENTATION_S
   idRef {
@@ -301,9 +301,9 @@ props {
 props {
   name: "undergroundBase_wall_concreteEdge06"
   gridPoint {
-    x: -27
+    x: 4
     y: 0
-    z: 24
+    z: -3
   }
   orientation: ORIENTATION_S
   idRef {
@@ -327,9 +327,9 @@ props {
 props {
   name: "undergroundBase_wall_concreteConnector02"
   gridPoint {
-    x: -27
+    x: 4
     y: 0
-    z: 21
+    z: -6
   }
   orientation: ORIENTATION_S
   idRef {
@@ -457,9 +457,9 @@ props {
 props {
   name: "undergroundBase_wall_concreteEdge06"
   gridPoint {
-    x: -27
+    x: 4
     y: 0
-    z: 22
+    z: -5
   }
   orientation: ORIENTATION_S
   idRef {
@@ -886,7 +886,7 @@ props {
   gridPoint {
     x: -48
     y: 0
-    z: 17
+    z: 16.5
   }
   orientation: ORIENTATION_N
   idRef {
@@ -10924,36 +10924,45 @@ props {
     z: 32
   }
   orientation: ORIENTATION_E
+  displayName: "Inside_DoorSouth"
   idRef {
     id: "594de5df356564b444005dd3"
   }
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
-    doorPoint {
-      doorState: false
-      aiOnlyDoor: false
-      doorSound: "DoorSlide"
-      doorSoundBundle: "HongKong:props"
+    prerequisites {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+      }
     }
-    interaction_info_text: ""
-  }
-  lod: 0
-}
-props {
-  name: "factory_wall_angledDoor01Mid"
-  gridPoint {
-    x: -111
-    y: 0
-    z: 37
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "592cbd41356564f02e002649"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
     doorPoint {
       doorState: false
       aiOnlyDoor: false
@@ -10972,6 +10981,40 @@ props {
     z: 44
   }
   orientation: ORIENTATION_N
+  displayName: "Inside_DroneVent_TurnBased"
+  idRef {
+    id: "59be9ffe3565640444003f5f"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
+  }
   lod: 0
 }
 props {
@@ -11157,19 +11200,6 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "592d7ed6356564281d006e8e"
-  }
-  lod: 0
-}
-props {
-  name: "secretLab_wall_spyVentFill"
-  gridPoint {
-    x: -127
-    y: 0
-    z: 46
-  }
-  orientation: ORIENTATION_W
-  idRef {
-    id: "592d7ede356564281d006e90"
   }
   lod: 0
 }
@@ -22354,10 +22384,11 @@ props {
   gridPoint {
     x: -46
     y: 0
-    z: 34
+    z: 35
   }
   orientation: ORIENTATION_S
-  displayName: "Outside_HatchClosed"
+  GeneralTags: "isClosedHatch"
+  displayName: "Outside_HatchClosedProp"
   idRef {
     id: "594dbbb63565641c29003415"
   }
@@ -22378,6 +22409,8 @@ props {
     z: 35
   }
   orientation: ORIENTATION_N
+  GeneralTags: "isInitiallyInvisible"
+  GeneralTags: "isOpenHatch"
   displayName: "Outside_HatchOpened"
   idRef {
     id: "594dbbbc3565641c29003417"
@@ -22677,9 +22710,9 @@ props {
 props {
   name: "vfx_fx_barrelFire"
   gridPoint {
-    x: -44
+    x: -43.8
     y: 0
-    z: 30
+    z: 30.2
   }
   orientation: ORIENTATION_S
   properties {
@@ -23147,7 +23180,7 @@ props {
   gridPoint {
     x: -20
     y: 0
-    z: 50
+    z: 49
   }
   orientation: ORIENTATION_E
   properties {
@@ -23406,8 +23439,8 @@ props {
   name: "pikePlace_wallDecoration_genericGrafitti04"
   gridPoint {
     x: -30
-    y: -1
-    z: 31
+    y: -0.9
+    z: 31.1
   }
   orientation: ORIENTATION_E
   lod: 0
@@ -23527,7 +23560,7 @@ props {
   gridPoint {
     x: -45.8
     y: 0
-    z: 14.4
+    z: 13.9
   }
   orientation: ORIENTATION_S
   lod: 0
@@ -24278,7 +24311,7 @@ props {
 props {
   name: "secretLab_tech_hugeMachine"
   gridPoint {
-    x: -91
+    x: -92
     y: 0
     z: 45
   }
@@ -24288,7 +24321,7 @@ props {
 props {
   name: "secretLab_tech_hugeMachine_lights"
   gridPoint {
-    x: -89.8
+    x: -90.8
     y: 0.1
     z: 46.699997
   }
@@ -24702,9 +24735,9 @@ props {
 props {
   name: "trawler_tech_navigationTable02"
   gridPoint {
-    x: -104
+    x: -103.5
     y: 0
-    z: 10
+    z: 10.4
   }
   orientation: ORIENTATION_S
   idRef {
@@ -25311,9 +25344,9 @@ props {
 props {
   name: "vfx_fx_fallingsparks"
   gridPoint {
-    x: -101.9
+    x: -101.4
     y: 0
-    z: 11.899994
+    z: 12.299994
   }
   orientation: ORIENTATION_S
   properties {
@@ -25328,7 +25361,7 @@ props {
 props {
   name: "vfx_fx_flicker"
   gridPoint {
-    x: -88
+    x: -89
     y: 1
     z: 49
   }
@@ -26250,7 +26283,7 @@ props {
     sound_file: "HongKong:props:generatorloop"
     attenuation_type: 1
     min_volume: 0
-    max_volume: 1
+    max_volume: 0.6
     min_radius: 3
     max_radius: 8
     crossfade_in_time: 1
@@ -26674,6 +26707,8 @@ props {
     z: 35
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isInitiallyInvisible"
+  GeneralTags: "isOpenHatch"
   displayName: "Outside_Hatch"
   idRef {
     id: "594de29f356564b444005dc6"
@@ -26681,6 +26716,63 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Hatch"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Bunker"
   }
@@ -26701,6 +26793,63 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Revert Lockdown"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Sweeney Ridge"
   }
@@ -26714,36 +26863,45 @@ props {
     z: 28
   }
   orientation: ORIENTATION_E
+  displayName: "Inside_DoorWest"
   idRef {
     id: "594de5cf356564b444005dd0"
   }
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
-    doorPoint {
-      doorState: false
-      aiOnlyDoor: false
-      doorSound: "DoorSlide"
-      doorSoundBundle: "HongKong:props"
+    prerequisites {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+      }
     }
-    interaction_info_text: ""
-  }
-  lod: 0
-}
-props {
-  name: "factory_wall_angledDoor01Mid"
-  gridPoint {
-    x: -105
-    y: 0
-    z: 31
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "594de5d2356564b444005dd1"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
     doorPoint {
       doorState: false
       aiOnlyDoor: false
@@ -27381,7 +27539,7 @@ props {
     z: -23
   }
   orientation: ORIENTATION_S
-  GeneralTags: "Blocker_Control"
+  GeneralTags: "MatrixDoor_Blocker"
   idRef {
     id: "59811a86356564d42000704d"
   }
@@ -28257,7 +28415,7 @@ props {
     z: -23
   }
   orientation: ORIENTATION_E
-  GeneralTags: "Blocker_Control"
+  GeneralTags: "MatrixDoor_Blocker"
   idRef {
     id: "59811a86356564d420007099"
   }
@@ -29472,9 +29630,9 @@ props {
 props {
   name: "matrixHK_clutter_cube05"
   gridPoint {
-    x: 74
-    y: 28
-    z: 9
+    x: 62
+    y: 15
+    z: -5
   }
   orientation: ORIENTATION_S
   idRef {
@@ -29563,9 +29721,9 @@ props {
 props {
   name: "matrixHK_clutter_cube01"
   gridPoint {
-    x: 77
-    y: 28
-    z: 17
+    x: 58
+    y: 10
+    z: -3
   }
   orientation: ORIENTATION_S
   idRef {
@@ -30022,19 +30180,6 @@ props {
   orientation: ORIENTATION_W
   idRef {
     id: "59811a86356564d420007133"
-  }
-  lod: 0
-}
-props {
-  name: "chars_scaleRef_human"
-  gridPoint {
-    x: 49
-    y: 0
-    z: -21
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "59811a86356564d420007134"
   }
   lod: 0
 }
@@ -33780,7 +33925,7 @@ props {
     z: -27
   }
   orientation: ORIENTATION_S
-  displayName: "Floor 26: Secure Data Store"
+  displayName: "Door Control"
   idRef {
     id: "59811a87356564d420007298"
   }
@@ -33800,7 +33945,7 @@ props {
                   call_value {
                     functionName: "Get Map Item (Actor)"
                     args {
-                      string_value: "55884fbe3030316418005508"
+                      string_value: "59811a87356564d4200072db"
                     }
                   }
                 }
@@ -34500,7 +34645,7 @@ props {
     z: 57
   }
   orientation: ORIENTATION_N
-  displayName: "Security Network Node: Floor 26"
+  displayName: "Messages"
   idRef {
     id: "59811a87356564d4200072d7"
   }
@@ -34520,7 +34665,7 @@ props {
                   call_value {
                     functionName: "Get Map Item (Actor)"
                     args {
-                      string_value: "5588744a303031601d003a28"
+                      string_value: "59811a87356564d420007202"
                     }
                   }
                 }
@@ -35891,9 +36036,9 @@ props {
 props {
   name: "matrixHK_clutter_cube05"
   gridPoint {
-    x: 62
-    y: 0
-    z: -15
+    x: 59
+    y: -3
+    z: -18
   }
   orientation: ORIENTATION_S
   idRef {
@@ -37013,7 +37158,7 @@ props {
     z: -23
   }
   orientation: ORIENTATION_S
-  GeneralTags: "Blocker_Control"
+  GeneralTags: "MatrixDoor_Blocker"
   idRef {
     id: "59811a87356564d4200073b7"
   }
@@ -39154,7 +39299,7 @@ props {
     z: -23
   }
   orientation: ORIENTATION_E
-  GeneralTags: "Blocker_Control"
+  GeneralTags: "MatrixDoor_Blocker"
   idRef {
     id: "59811a87356564d42000747f"
   }
@@ -40240,6 +40385,4617 @@ props {
   orientation: ORIENTATION_N
   idRef {
     id: "5986959335656440030020a3"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -108.5
+    y: 2.5
+    z: 11.5
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_ExitToBerkeley"
+  idRef {
+    id: "59bdebc7356564044100823d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Return to Berkeley"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    transitionPoint {
+      scene_name: "ss_hub"
+      confirmation_text: "You are about to leave this location and return to the library. Continue?"
+    }
+    interaction_info_text: "Berkeley"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -45
+    y: -2.7755576e-017
+    z: 41
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_ExitToBerkeley"
+  idRef {
+    id: "59bdec00356564044100823f"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Return to Berkeley"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    transitionPoint {
+      scene_name: "ss_hub"
+      confirmation_text: "You are about to leave this location and return to the library. Continue?"
+    }
+    interaction_info_text: "Berkeley"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -107
+    y: 1.2
+    z: 10
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_MissileTerminal"
+  idRef {
+    id: "59bdeed235656404410082cb"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Seize the Missiles"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59bddf763565640441007f5b"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Missile Targeting Terminal"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -95.3
+    y: 1.1
+    z: 46.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_MessageTerminal"
+  idRef {
+    id: "59be01523565640441008a5e"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59bdefa33565640441008426"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Message Terminal"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 31
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01c13565640441008a60"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01d23565640441008a61"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01d33565640441008a62"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 31
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01d43565640441008a63"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 32
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01d93565640441008a64"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 31
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01da3565640441008a65"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 35
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01dc3565640441008a66"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01dc3565640441008a67"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 33
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01dc3565640441008a68"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 36
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01de3565640441008a69"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01df3565640441008a6a"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 32
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a6b"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 35
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a6c"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a6d"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 31
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a6e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a6f"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 33
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a70"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 36
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a71"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e13565640441008a72"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e33565640441008a73"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e43565640441008a74"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e53565640441008a75"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e53565640441008a76"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e63565640441008a77"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01e63565640441008a78"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01ea3565640441008a79"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01ea3565640441008a7a"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01ea3565640441008a7b"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01ea3565640441008a7c"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01ea3565640441008a7d"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be01eb3565640441008a7e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a80"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 46
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a82"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a83"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 43
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a84"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a85"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 47
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a86"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 46
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a87"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 44
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a88"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 45
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a89"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a8a"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a8b"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 46
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a8c"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a8d"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 45
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a8e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 43
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a8f"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a90"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a91"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 48
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a92"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a94"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a95"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 43
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a96"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a97"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 46
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a98"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 44
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a99"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 47
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a9a"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a9b"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 43
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a9c"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a9d"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a9e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 48
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008a9f"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008aa0"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -67
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59be02033565640441008aa1"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -41.000004
+    y: -9.5367433e-008
+    z: 33.000004
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_SummonAirShrineSpirit"
+  idRef {
+    id: "59be06483565640441008d7c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 7
+    summonPoint {
+      hasCharacter: true
+      summon_icon: ""
+      max_summon_force: 6
+      is_shrine_spirit: true
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Spirits/SpiritShrineFire"
+    character_sheet_id: "Shrine Spirit Water"
+    equipment_sheet_id: "Shrine Spirit Water F6 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    char_name: "Sizer"
+    portrait {
+      filename: "Generic_ShrineSpirit_Water"
+    }
+    karma: 268
+  }
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -19.7
+    y: 4.3
+    z: 51.1
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_Antenna"
+  idRef {
+    id: "59be0b343565640441008e01"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Repair the Antenna"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59be846f3565640444003c0a"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Antenna"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -13.000004
+    y: -9.5367433e-008
+    z: 47.000004
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_SummonAirSpiritNPC"
+  idRef {
+    id: "59be0d143565640441008e3c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 2
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Repair the Antenna"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Actor)"
+                    args {
+                      string_value: "59be082e3565640441008d7e"
+                    }
+                  }
+                }
+                args {
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 8
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-AntennaSchematics"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Summon
+    interaction_info_text: ""
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Spirits/SpiritShrineFire"
+    character_sheet_id: "Shrine Spirit Water"
+    equipment_sheet_id: "Shrine Spirit Water F6 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    char_name: "Sizer"
+    portrait {
+      filename: "Generic_ShrineSpirit_Water"
+    }
+    karma: 268
+  }
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -13.000004
+    y: -9.5367433e-008
+    z: 47.000004
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_DummySummoningFX"
+  idRef {
+    id: "59be0fff3565640441008e6b"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 2
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    summonPoint {
+      hasCharacter: true
+      summon_icon: ""
+      max_summon_force: 1
+      is_shrine_spirit: false
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Spirits/SpiritShrineFire"
+    character_sheet_id: "Shrine Spirit Water"
+    equipment_sheet_id: "Shrine Spirit Water F6 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    char_name: "Sizer"
+    portrait {
+      filename: "Generic_ShrineSpirit_Water"
+    }
+    karma: 268
+  }
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -137
+    y: 0
+    z: -27
+  }
+  orientation: ORIENTATION_S
+  displayName: "Nowhere"
+  idRef {
+    id: "59be85263565640444003c51"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    dummyInteraciton {
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -28.7
+    y: 1.6
+    z: 21
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_WallWiring"
+  idRef {
+    id: "59be902a3565640444003d3c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Acquire Wiring"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59be8d3c3565640444003cd5"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Distressed Wires"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -28.6
+    y: 0
+    z: 39.7
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_WiresAresCorpse"
+  idRef {
+    id: "59be94c73565640444003ddf"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Acquire Wiring"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59be90db3565640444003d72"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Ares Soldier"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -104
+    y: 0.6
+    z: 40.2
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_HamRadio"
+  idRef {
+    id: "59be97dd3565640444003e84"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Find Antenna Schematics"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59be965e3565640444003e4e"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Ham Radio"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -91.3
+    y: 1.7
+    z: 45
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_Wiring_South"
+  idRef {
+    id: "59be9a533565640444003f23"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Acquire Wiring"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_ItemPickup
+    interaction_info_text: "Exposed Wires"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -101.5
+    y: 0.9
+    z: 12.5
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_Wiring_West"
+  idRef {
+    id: "59be9a593565640444003f24"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Acquire Wiring"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_ItemPickup
+    interaction_info_text: "Exposed Wires"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -130
+    y: -0.2
+    z: 44.6
+  }
+  orientation: ORIENTATION_S
+  displayName: "DroneRoom_PickupDocWagon"
+  idRef {
+    id: "59be9b6e3565640444003f28"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "DocWagonGold"
+      destroyOnPickup: true
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -130.5
+    y: 1.2
+    z: 39
+  }
+  orientation: ORIENTATION_S
+  displayName: "DroneRoom_Schematics"
+  idRef {
+    id: "59be9b753565640444003f29"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Find Antenna Schematics"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-AntennaSchematics"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Maintenance Manuals"
+  }
+  lod: 0
+}
+props {
+  name: "ares_decor_gunDisplay02"
+  gridPoint {
+    x: -130.6
+    y: 1
+    z: 47.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "DroneRoom_PickupRareSMG"
+  idRef {
+    id: "59be9d423565640444003f2d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "SMG 2 Wild One"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Weapon Prototype"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_spyVentFill"
+  gridPoint {
+    x: -127
+    y: 0
+    z: 46
+  }
+  orientation: ORIENTATION_W
+  displayName: "DroneRoom_DroneVent_TurnBased"
+  idRef {
+    id: "59bea0123565640444003f60"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -117.2
+    y: 0.3
+    z: 44
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_DroneVent_Freemove"
+  idRef {
+    id: "59bea0c93565640444003f63"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59be9de53565640444003f36"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
+  }
+  lod: 0
+}
+props {
+  name: "sewer_floor_vent05"
+  gridPoint {
+    x: -129
+    y: 0
+    z: 12
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59beb13d35656404440047fa"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -130
+    y: 0
+    z: 11
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb18b35656404440047fd"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -130
+    y: 0
+    z: 12
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb19035656404440047fe"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -130
+    y: 0
+    z: 13
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb19135656404440047ff"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -130
+    y: 0
+    z: 14
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1923565640444004800"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -129
+    y: 0
+    z: 14
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1923565640444004801"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -128
+    y: 0
+    z: 14
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1933565640444004802"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -127
+    y: 0
+    z: 14
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1933565640444004803"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -127
+    y: 0
+    z: 13
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1943565640444004804"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -127
+    y: 0
+    z: 12
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1953565640444004805"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -127
+    y: 0
+    z: 11
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1953565640444004806"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -128
+    y: 0
+    z: 11
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1963565640444004807"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -129
+    y: 0
+    z: 11
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beb1963565640444004808"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -105
+    y: 1
+    z: 8.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_LockdownRelease_West"
+  idRef {
+    id: "59beb4d03565640444004950"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Revert Lockdown"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Override Lockdown"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -97.8
+    y: 0.8
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_LockdownRelease_South"
+  idRef {
+    id: "59beb9063565640444004957"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Revert Lockdown"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Override Lockdown"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -100.7
+    y: 1.8
+    z: 27.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_LockdownRelease_Center"
+  idRef {
+    id: "59beb90b3565640444004958"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Revert Lockdown"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Override Lockdown"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -89
+    y: 0.6
+    z: 48.9
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_PoisonStation"
+  idRef {
+    id: "59bee83f3565645841003db2"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59bed5173565640444004a3c"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Chem/Bio Fabrication Unit"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -94.2
+    y: 0
+    z: 15.400002
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59beeaa93565645841003ea5"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -110.89999
+    y: 1
+    z: 29
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_InspectWestDoor"
+  idRef {
+    id: "59beeee93565645841003f1c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "All Actors With Tag"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isInsideNovascorpion"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "AllOrAny"
+                    }
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 0
+      inspectText: "Listening closely, you hear the faint scuttering of claws on tile."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Listen"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -107.8
+    y: 2.3
+    z: 22.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_ReadAntidote"
+  idRef {
+    id: "59befbc8356564584100422e"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-AntidoteFormula"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_sweeney_s1-SmallAntidote"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59bef8ad356564584100417c"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Research Monitor"
+  }
+  lod: 0
+}
+props {
+  name: "sewer_floor_vent05"
+  gridPoint {
+    x: -89
+    y: 0
+    z: 50
+  }
+  orientation: ORIENTATION_E
+  idRef {
+    id: "59befbdf356564584100422f"
+  }
+  lod: 0
+}
+props {
+  name: "sewer_floor_vent05"
+  gridPoint {
+    x: -89
+    y: 0
+    z: 48
+  }
+  orientation: ORIENTATION_E
+  idRef {
+    id: "59befbe03565645841004230"
+  }
+  lod: 0
+}
+props {
+  name: "sewer_floor_vent05"
+  gridPoint {
+    x: -89
+    y: 0
+    z: 46
+  }
+  orientation: ORIENTATION_E
+  idRef {
+    id: "59befbe23565645841004231"
+  }
+  lod: 0
+}
+props {
+  name: "sewer_floor_vent05"
+  gridPoint {
+    x: -89
+    y: 0
+    z: 44
+  }
+  orientation: ORIENTATION_E
+  idRef {
+    id: "59befbe33565645841004232"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -96
+    y: 0
+    z: 27
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -96
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59bfd544356564903d0079d0"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -97
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59bfd55e356564903d0079d1"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -98
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c0843f356564903d0079d3"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -99
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08440356564903d0079d4"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -100
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08440356564903d0079d5"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -101
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08441356564903d0079d6"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -102
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08442356564903d0079d7"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -103
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08442356564903d0079d8"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -104
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08443356564903d0079d9"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -105
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08443356564903d0079da"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -97
+    y: 0
+    z: 36
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -97
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08472356564903d0079dc"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -97
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08472356564903d0079dd"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -98
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08473356564903d0079de"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -99
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08474356564903d0079df"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -100
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08474356564903d0079e0"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -101
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08475356564903d0079e1"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -102
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08475356564903d0079e2"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -103
+    y: 0
+    z: 38
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c08476356564903d0079e3"
+  }
+  lod: 0
+}
+props {
+  name: "factory_wall_angledDoor01Mid"
+  gridPoint {
+    x: -111
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_DoorEast"
+  idRef {
+    id: "59c084d4356564903d0079e6"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: false
+      doorSound: "DoorSlide"
+      doorSoundBundle: "HongKong:props"
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "factory_wall_angledDoor01Mid"
+  gridPoint {
+    x: -105
+    y: 0
+    z: 31
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c084d5356564903d0079e7"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: false
+      doorSound: "DoorSlide"
+      doorSoundBundle: "HongKong:props"
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -109.7
+    y: 1
+    z: 36.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_InspectEastDoor"
+  idRef {
+    id: "59c08624356564903d007ad5"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "All Actors With Tag"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isInsideTir"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "AllOrAny"
+                    }
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 0
+      inspectText: "The other side is quiet, but you think you hear a muffled cough."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Listen"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -105.6
+    y: 1
+    z: 32.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_InspectCenterDoor"
+  idRef {
+    id: "59c08655356564903d007ad7"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "All Actors With Tag"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isInsideTir"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "AllOrAny"
+                    }
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 0
+      inspectText: "You hear the quiet hum of machinery on the other side of the door."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Listen"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -78
+    y: 0
+    z: 41
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_PickupVenomSac1"
+  idRef {
+    id: "59c08f86356564903d007b1e"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "ss_a4_sweeney_s1-VenomSac1"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Venom Sac"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -78
+    y: 0
+    z: 43
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_PickupVenomSac2"
+  idRef {
+    id: "59c08fd4356564903d007b20"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "ss_a4_sweeney_s1-VenomSac2"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Venom Sac"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -114.6
+    y: 0
+    z: 30.7
+  }
+  orientation: ORIENTATION_S
+  displayName: "Inside_ExamineDeadElf"
+  idRef {
+    id: "59c090bd356564903d007b25"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    conversationPoint {
+      conversationID: "59c090e7356564903d007b3d"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Dead Elf"
+  }
+  lod: 0
+}
+props {
+  name: "undergroundBase_groundDecoration_scorchMark01"
+  gridPoint {
+    x: -115
+    y: 0
+    z: 31
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isExplosionProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59c091d4356564903d007b8b"
+  }
+  lod: 0
+}
+props {
+  name: "bikerBar_wallDecoration_burnMark01"
+  gridPoint {
+    x: -116
+    y: 1
+    z: 30.3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isExplosionProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59c098f4356564903d007d13"
+  }
+  lod: 0
+}
+props {
+  name: "bikerBar_wallDecoration_burnMark01"
+  gridPoint {
+    x: -116
+    y: 0.1
+    z: 30.3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isExplosionProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59c098fc356564903d007d14"
+  }
+  lod: 0
+}
+props {
+  name: "bikerBar_wallDecoration_burnMark02"
+  gridPoint {
+    x: -113
+    y: 0.1
+    z: 29
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "isExplosionProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59c09907356564903d007d15"
+  }
+  lod: 0
+}
+props {
+  name: "bikerBar_wallDecoration_burnMark03"
+  gridPoint {
+    x: -116
+    y: -0.6
+    z: 31.8
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isExplosionProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59c09918356564903d007d16"
+  }
+  lod: 0
+}
+props {
+  name: "vfx_fx_smokeyFire"
+  gridPoint {
+    x: -115
+    y: 0
+    z: 34
+  }
+  orientation: ORIENTATION_S
+  properties {
+    property_id: "fxScript"
+    string_value: "Berlin:EnvironmentSmokeyFire"
+  }
+  GeneralTags: "isExplosionProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59c0993b356564903d007d17"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700797e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700797f"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 55
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007980"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 58
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007981"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007982"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 59
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007983"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -70
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007984"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007985"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 54
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007986"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 59
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007987"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 54
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007988"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007989"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 54
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700798a"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700798c"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700798d"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700798e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 54
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700798f"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007990"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -72
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007991"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 55
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007992"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 57
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007993"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 57
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007994"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007995"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 58
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007996"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007997"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -69
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007998"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 56
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f73565647447007999"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 53
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700799a"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -74
+    y: 0
+    z: 57
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700799b"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -68
+    y: 0
+    z: 56
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700799c"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 60
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700799d"
+  }
+  lod: 0
+}
+props {
+  name: "vicHarbor_ground_dirt01"
+  gridPoint {
+    x: -71
+    y: 0
+    z: 57
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c119f7356564744700799e"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -45
+    y: 0
+    z: 35
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isInitiallyInvisible"
+  GeneralTags: "isOpenHatch"
+  displayName: "Outside_HatchDetainment"
+  idRef {
+    id: "59c11a1935656474470079a1"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Evaluate Goal"
+            args {
+              call_value {
+                functionName: "Get Map Item (Goal)"
+                args {
+                  string_value: "Defeat the Novascorpions"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "GoalStatus"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Evaluate Goal"
+            args {
+              call_value {
+                functionName: "Get Map Item (Goal)"
+                args {
+                  string_value: "Flee the Novascorpions"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "GoalStatus"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Hatch"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Bunker"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -43
+    y: 0
+    z: 37
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_DebugNovascorpionAttack"
+  idRef {
+    id: "59c11e5635656474470079ab"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "isDebugging"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Debug Novascorpion Attack"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -53
+    y: 1.3
+    z: 28.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_Circuits"
+  idRef {
+    id: "59c1b61c356564c04e007ad6"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Hatch"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59c1b2c8356564c04e0079cc"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Matrix
+    interaction_info_text: "Circuit Box"
+  }
+  lod: 0
+}
+props {
+  name: "taiPo_furniture_missileCrate01"
+  gridPoint {
+    x: -10.9
+    y: 0
+    z: 51.2
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1b664356564c04e007ad7"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -10.2
+    y: 0.1
+    z: 51.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_ExplosivePickup"
+  idRef {
+    id: "59c1b6ff356564c04e007ad9"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Hatch"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    pickupItem {
+      itemName: "ss_a4_sweeney_s1-Explosives"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Loose Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -45
+    y: 0
+    z: 35
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isClosedHatch"
+  displayName: "Outside_HatchClosedConvo"
+  idRef {
+    id: "59c1b85c356564c04e007add"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Hatch"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59c1b292356564c04e0079b3"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Hatch"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_lightCover"
+  gridPoint {
+    x: -44
+    y: 0
+    z: 30
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -28.6
+    y: 0
+    z: 39.7
+  }
+  orientation: ORIENTATION_S
+  displayName: "Outside_ExamineAresCorpse"
+  idRef {
+    id: "59c1d0fb356564c04e007bb3"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Open the Hatch"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59c1d11e356564c04e007bc5"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Ares Soldier"
+  }
+  lod: 0
+}
+props {
+  name: "haven_wall_fadeFill2"
+  gridPoint {
+    x: 8
+    y: -0.2
+    z: -1.5
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "haven_wall_fadeFill2"
+  gridPoint {
+    x: 8
+    y: -0.2
+    z: 0.5
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea53356564c04e008429"
+  }
+  lod: 0
+}
+props {
+  name: "haven_wall_fadeFill2"
+  gridPoint {
+    x: 8
+    y: -0.2
+    z: 2.5
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea55356564c04e00842a"
+  }
+  lod: 0
+}
+props {
+  name: "haven_wall_fadeFill2"
+  gridPoint {
+    x: 8
+    y: -0.2
+    z: 4.5
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea57356564c04e00842b"
+  }
+  lod: 0
+}
+props {
+  name: "haven_wall_fadeFill2"
+  gridPoint {
+    x: 8
+    y: -0.2
+    z: 6.5
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea58356564c04e00842c"
+  }
+  lod: 0
+}
+props {
+  name: "haven_wall_fadeFill1"
+  gridPoint {
+    x: 8
+    y: -0.2
+    z: 8.3
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 22
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 24
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea93356564c04e00842e"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 26
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea94356564c04e00842f"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 28
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea95356564c04e008430"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 29.4
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1ea99356564c04e008431"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 20.7
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1eaa5356564c04e008432"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -26.5
+    y: 0
+    z: 29.3
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c1eb04356564c04e008434"
   }
   lod: 0
 }

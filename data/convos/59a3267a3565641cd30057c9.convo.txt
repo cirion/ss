@@ -1,0 +1,93 @@
+idRef {
+  id: "59a3267a3565641cd30057c9"
+}
+ui_name: "ss_a2_sacto_s1-Sewer_Producer"
+nodes {
+  idRef {
+    id: "59a327c43565641cd30057d6"
+  }
+  index: 0
+  text: "The woman nods at you as you approach but remains focused on her playing. \n\nYou see a credstick slot in her music rig for donations."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a3267a3565641cd30057c9:59a327c93565641cd30057d8"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59a327cb3565641cd30057db"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}\302\24525{{/CC}} {{GM}}Make a donation.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 25
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 25
+        }
+      }
+    }
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "59a3267a3565641cd30057c9:59a327d13565641cd30057dd"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59a3267a3565641cd30057c9:59a327d23565641cd30057df"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59a3287f3565641cd30057eb"
+  }
+  index: 2
+  text: "She smiles at you and continues performing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59a3267a3565641cd30057c9:59a328813565641cd30057ed"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+  idRef {
+    id: "59a3267a3565641cd30057c9:59a3267a3565641cd30057cd"
+  }
+}

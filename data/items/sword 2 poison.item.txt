@@ -1,0 +1,44 @@
+id: "Sword 2 Poison"
+type: ItemType_Melee1H
+uirep {
+  icon: "icon_melee_axe"
+  name: "Poisoned Axe"
+  description: "Melee: A heavy axe coated in deadly novascorpion venom. Deals ongoing poison damage that bypasses armor. Will not do AP DMG on normal hits."
+}
+equipPrefabName: "Axe"
+anim_type: AnimType_Melee1H
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Edged
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_CloseCombat >= 3"
+prereqStrings: "Player.RACE != RACE.DRONE"
+prereqStrings: "Player.RACE != RACE.FREEDRONE"
+maxAmmo: 0
+baseHPDamage: 6
+baseAPDamage: -10
+rangeModTable: 10
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "DC Melee (Advanced Sword)"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Poison: HP -3"
+  }
+  stackingCategory: "Poison"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -3
+    damageType: VulnerabilityType_Poison
+  }
+  fxScript: "Berlin:ToxinPoisonStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+store_cost: 100
+sorting_group: "Unique"
+maim_always: true

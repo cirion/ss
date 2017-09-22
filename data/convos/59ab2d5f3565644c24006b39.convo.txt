@@ -1,0 +1,715 @@
+idRef {
+  id: "59ab2d5f3565644c24006b39"
+}
+ui_name: "ss_a2_sacto_s1-Upstairs_LockedDoor"
+nodes {
+  idRef {
+    id: "59ab2d793565644c24006b45"
+  }
+  index: 0
+  text: ">>ADMINISTRATIVE RECORDS ROOM SEALED\n>>AUTHORIZATION: MASATO"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab2dae3565644c24006b47"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ab41293565644c24006c89"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ab2daf3565644c24006b4a"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}Decking: $(story.Global-Skillcheck_Hard){{/CC}} {{GM}}Bypass the security.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab2db43565644c24006b4c"
+    }
+  }
+  branches {
+    responseText: "Kora, can you take care of this?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5945ad2e3565642c12007ef5"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab2e353565644c24006b52"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Examine the door.{{/GM}}"
+    nextNodeIndex: 4
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab2ea53565644c24006b69"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab2eb23565644c24006b6e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59ab2df33565644c24006b4f"
+  }
+  index: 2
+  text: ">>OVERRIDE ACCEPTED."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ab2e043565644c24006b50"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ab2e6d3565644c24006b55"
+  }
+  index: 3
+  text: "Yup! I guess they don\'t care about securing their books as much as they care about securing their munitions. Just give me a sec...\n\nDone!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab2e8f3565644c24006b57"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59ab2eb03565644c24006b6c"
+  }
+  index: 4
+  text: "It\'s made of glass. Not the sturdiest material in the world."
+  branches {
+    responseText: "{{CC}}Strength: $(story.Global-Skillcheck_Hard){{/CC}} {{GM}}Smash through the door.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab30a83565644c24006b90"
+    }
+  }
+  branches {
+    responseText: "Desorn, could you break down that door?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDesorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5945ad2e3565642c12007ef5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab43a33565644c24006e36"
+    }
+  }
+  branches {
+    responseText: "Arelia, do you think you can..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5945ad2e3565642c12007ef5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab30ab3565644c24006b92"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab30af3565644c24006b96"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59ab31593565644c24006b9e"
+  }
+  index: 5
+  text: "The door shatters. Sometimes the direct approach is best."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "glasscasebreak"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5945a311356564f03f000e91"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59ab324e3565644c24006bb7"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ab2d5f3565644c24006b39:59ab43a33565644c24006e38"
+  }
+  index: 6
+  text: "{{GM}}He pauses, considering.{{/GM}}\n\nYes. Nobody will be hurt by this loss of property, and removing this obstacle will prevent you from being tempted to harm another person to open it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab43a33565644c24006e3a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "59ab311b3565644c24006b99"
+  }
+  index: 7
+  text: "Oh! Um, sure! That\'s one nice thing about having such rocky skin: broken glass doesn\'t really bother me all that much."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59ab2d5f3565644c24006b39:59ab31553565644c24006b9b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59ab2d5f3565644c24006b39:59ab2d5f3565644c24006b3d"
+  }
+}

@@ -1,0 +1,132 @@
+idRef {
+  id: "59ac24c23565648812008483"
+}
+ui_name: "ss_a3_underwater_s1-Interrogation_Tassender"
+nodes {
+  idRef {
+    id: "59ac2511356564881200848f"
+  }
+  index: 0
+  text: "At last! I had feared we would never find you!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59ac24c23565648812008483:59ac253f3565648812008496"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isDesorn"
+}
+nodes {
+  idRef {
+    id: "59ac25413565648812008499"
+  }
+  index: 1
+  text: "Tassender smiles at you, but makes no sound."
+  branches {
+    responseText: "We need to move, let\342\200\231s go!"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Valiri_Speed"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59ac24c23565648812008483:59ac2563356564881200849b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Talk to me!"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Valiri_Caution"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59ac24c23565648812008483:59ac2563356564881200849d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "No, no, it\342\200\231s cool! I\342\200\231ll wait! I don\342\200\231t have anything else going on anyways!"
+    nextNodeIndex: 2
+    idRef {
+      id: "59ac24c23565648812008483:59ac2563356564881200849f"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59ac2673356564101c007e58"
+  }
+  index: 2
+  text: "Hey, are you okay? We came as quickly as we could\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59ac24c23565648812008483:59ac26aa356564101c007e6c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59ac26ac356564101c007e6f"
+  }
+  index: 3
+  text: "Something is wrong here\342\200\246"
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isValiri"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ac2747356564101c007e7f"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59ac24c23565648812008483:59ac24c23565648812008487"
+  }
+}

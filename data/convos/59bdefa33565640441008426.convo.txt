@@ -1,0 +1,1133 @@
+idRef {
+  id: "59bdefa33565640441008426"
+}
+ui_name: "ss_a4_sweeney_s1-Inside_MessageTerminal"
+nodes {
+  idRef {
+    id: "59bdf0213565640441008432"
+  }
+  index: 0
+  text: "> California Protectorate Archival System.\n> Property of Gavan Banain.\n> Authenticate to proceed."
+  branches {
+    responseText: "{{GM}}Log in.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "59bdefa33565640441008426:59bdf0363565640441008439"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Forgot Password?{{/GM}}"
+    nextNodeIndex: 2
+    idRef {
+      id: "59bdefa33565640441008426:59bdf0db3565640441008463"
+    }
+  }
+  branches {
+    responseText: "Kora, can you take care of this?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "59bdefa33565640441008426:59bdf036356564044100843b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bdefa33565640441008426:59bdf037356564044100843d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdf0493565640441008440"
+  }
+  index: 1
+  text: "> Enter password for GBANAIN."
+  branches {
+    responseText: "actually"
+    nextNodeIndex: 4
+    idRef {
+      id: "59bdefa33565640441008426:59bdf0603565640441008442"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "2036"
+    nextNodeIndex: 4
+    idRef {
+      id: "59bdefa33565640441008426:59bdf0613565640441008444"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_InputKeyboard
+}
+nodes {
+  idRef {
+    id: "59bdf0eb3565640441008466"
+  }
+  index: 2
+  text: "> Password hint:\n> Year of CalFree independence from UCAS."
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    idRef {
+      id: "59bdefa33565640441008426:59bdf0ec3565640441008468"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdf0aa3565640441008447"
+  }
+  index: 3
+  text: "You got it, $(l.firstname)!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59bdefa33565640441008426:59bdf0ab3565640441008449"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "BBS_Typing"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bdf0ad356564044100844c"
+  }
+  index: 4
+  text: "> This computer was improperly shut down before the Delete All operation could complete.\n> 1038 of 1041 messages have been deleted."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59bdefa33565640441008426:59bdf1263565640441008489"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdf12e356564044100848c"
+  }
+  index: 5
+  text: "> Select from the following menu."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59bdefa33565640441008426:59bdf13a356564044100848e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdf13c3565640441008491"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: "{{GM}}Read message: \342\200\234Priority Hit\342\200\235.{{/GM}}"
+    nextNodeIndex: 7
+    onlyOnce: true
+    idRef {
+      id: "59bdefa33565640441008426:59bdf14d35656404410084ab"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read message: \342\200\234Free Humanity!\342\200\235{{/GM}}"
+    nextNodeIndex: 15
+    onlyOnce: true
+    idRef {
+      id: "59bdefa33565640441008426:59bdf4723565640441008667"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read Message: \"Forger Fraternization\"{{/GM}}"
+    nextNodeIndex: 28
+    onlyOnce: true
+    idRef {
+      id: "59bdefa33565640441008426:59bdf5c6356564044100882c"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Log out.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59bdefa33565640441008426:59bdf58b35656404410087d4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59bdf14f35656404410084ae"
+  }
+  index: 7
+  text: "The message was sent approximately one month ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59bdefa33565640441008426:59bdf15e35656404410084b4"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf15e35656404410084b6"
+  }
+  index: 8
+  text: "> This serves as a formal request for the immediate termination of Stephen, a troll who may be going by the name of Slate. Photo attached, along with the SIN that he may or may not be using. Do not under any circumstances make contact with or speak with the target. Dispose of the body as quickly as possible."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59bdefa33565640441008426:59bdf16235656404410084ba"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf16235656404410084bc"
+  }
+  index: 9
+  text: "> I expect this to be a high priority of the Protectorate, superseded only by directives from the General himself. But I also do not anticipate it will take you long, as Stephen has no formal combat training or significant contacts.\n\n> The persons who accomplish this mission will receive a personal recommendation from me for immediate advancement within the Protectorate hierarchy. Regards."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59bdefa33565640441008426:59bdf16435656404410084be"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59bdefa33565640441008426:59bdf1b535656404410084c6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf16435656404410084c0"
+  }
+  index: 10
+  text: "Any time I even start to get a hint of regret about going AWOL, I\342\200\231m reminded of bullshit like this and it all fades away.\n\nThe higher up someone is, the more they think that the service is their own personal valet that they can order around for whatever dickish vendetta is on their mind today."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59bdefa33565640441008426:59bdf16635656404410084c2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59bdf1b735656404410084c9"
+  }
+  index: 11
+  text: "You examine the attached image. The troll is characteristically tall, but appears scrawny and rather young, perhaps only a teenager. He stares at the camera with a look that is surly and guarded but not particularly menacing."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    idRef {
+      id: "59bdefa33565640441008426:59bdf1e535656404410084f2"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59bdefa33565640441008426:59bdf1fc35656404410084fe"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_sweeney_s1-StephenHit"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf1e535656404410084f4"
+  }
+  index: 12
+  text: "Aw\342\200\246 he looks sweet! I hope nothing bad happened to him..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59bdefa33565640441008426:59bdf1e535656404410084f6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59bdf1fe3565640441008501"
+  }
+  index: 13
+  text: "The metadata to this message indicates that a single reply was received 5 days later, but the associated message has already been deleted."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    idRef {
+      id: "59bdefa33565640441008426:59bdf2183565640441008506"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59bdefa33565640441008426:59bdf235356564044100856d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf2183565640441008508"
+  }
+  index: 14
+  text: "That discouraging is. They him most likely killed. Otherwise, Gavan more messages would have sent."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59bdefa33565640441008426:59bdf218356564044100850a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59bdf47c356564044100866a"
+  }
+  index: 15
+  text: "This appears to be a draft. It was composed in October of 2056."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "59bdefa33565640441008426:59bdf47d356564044100866c"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf47e356564044100866e"
+  }
+  index: 16
+  text: ">>To: ::ERROR_UNKNOWN_RECIPIENTS::\n>>From: Gavan Banain, Esq.\n>>Subject: A humble proposal\n> My dear sirs: I was immensely pleased to receive word through our mutual contacts of your interest in my work here in CalFree. This may go without saying, but allow me to be clear: I greatly admire the work of Human Nation, and have looked upon your activities with, I will admit, a fair amount of envy. The idea that we might collaborate in the future fills me with the warmest delight."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 17
+    idRef {
+      id: "59bdefa33565640441008426:59bdf47e3565640441008670"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 18
+    idRef {
+      id: "59bdefa33565640441008426:59bdf4ad3565640441008678"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf48c3565640441008674"
+  }
+  index: 17
+  text: "{{GM}}She rocks back in shock.{{/GM}}\n\nHuman Nation?!\n\nAre they for real? The rumors I read about them in the Matrix make Humanis seem like the Mothers of Metahumans."
+  branches {
+    responseText: ""
+    nextNodeIndex: 18
+    idRef {
+      id: "59bdefa33565640441008426:59bdf48c3565640441008676"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf4ad356564044100867a"
+  }
+  index: 18
+  text: "> Allow me to lay out my credentials for you. I am an eighth-generation Californian of the purest human stock. Like my ancestors, I wield enormous influence in the halls of Sacramento and the boardrooms of San Francisco. My name never is mentioned in news reports, but any significant political action that takes place in California has first passed across my desk."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 19
+    idRef {
+      id: "59bdefa33565640441008426:59bdf4ad356564044100867c"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "59bdefa33565640441008426:59bdf4e5356564044100868b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdf4e13565640441008687"
+  }
+  index: 19
+  text: "{{GM}}She frowns.{{/GM}}\n\nSo, wait\342\200\246 is he taking credit for the awful stagnation in California over the last few decades?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "59bdefa33565640441008426:59bdf4e33565640441008689"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf4e5356564044100868d"
+  }
+  index: 20
+  text: "> We are arriving now at a crucial juncture, and I believe that CalFree presents a unique opportunity for turning the Human Nation\342\200\231s dreams into reality."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59bdefa33565640441008426:59bdf4e5356564044100868f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf50e35656404410086da"
+  }
+  index: 21
+  text: "> The Japanese Imperial State has amassed unparalleled military might within their stronghold in San Francisco, led by the brilliant and visionary Colonel Saito. I oversee a web of political connections binding the governor\342\200\231s mansion, agribusiness, and the other major players of the state. Saito and I share a commitment to human culture, the willingness to defend it, and the levers necessary to bring about needed reform."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 22
+    idRef {
+      id: "59bdefa33565640441008426:59bdf50e35656404410086dc"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "59bdefa33565640441008426:59bdf53235656404410086e4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf51235656404410086e0"
+  }
+  index: 22
+  text: "This reads like the beginning of a romance. I know how this one ends, though, and I am NOT A FAN."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "59bdefa33565640441008426:59bdf51235656404410086e2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf53235656404410086e6"
+  }
+  index: 23
+  text: "> I would ask two things from you. First, funding. CalFree has many homegrown Humanis policlubs and sympathizers, and with appropriate resources, we could marshal these actors: have them run for local office, clamor for Saito to rescue them from the trogs, and even arm them to act as a paramilitary force. I assure you that such an investment would reap an immense harvest."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594dbc183565641c29003419"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 24
+    idRef {
+      id: "59bdefa33565640441008426:59bdf53235656404410086e8"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "59bdefa33565640441008426:59bdf56035656404410086f5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf55c35656404410086f2"
+  }
+  index: 24
+  text: "The powerful this always do: the powerless against one another pit. Until the weak together join, they always will lose."
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "59bdefa33565640441008426:59bdf53b35656404410086ef"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf56035656404410086f7"
+  }
+  index: 25
+  text: "> Secondly, I would ask for your support. I know that Human Nation holds deep contacts in UCAS and other parties who might take an interest in CalFree. If you could ensure that they, and the rest of the world, turn a blind eye to CalFree\342\200\231s internal affairs, we will be able to accomplish our work more swiftly and efficiently."
+  branches {
+    responseText: ""
+    nextNodeIndex: 26
+    idRef {
+      id: "59bdefa33565640441008426:59bdf56035656404410086f9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf5833565640441008752"
+  }
+  index: 26
+  text: "> As I said before, we stand at a unique moment in time, and I believe we have an obligation to capitalize on it: to our illustrious human ancestors, to our great human civilization, and to our human children who will inherit this earth. Let California be the place where your vision is first realized, the first Human Nation, the model from which all others will follow."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59bdefa33565640441008426:59bdf5833565640441008754"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf5863565640441008758"
+  }
+  index: 27
+  text: "> I remain respectfully and obediently yours, and eagerly await your response."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59bdefa33565640441008426:59bdf586356564044100875a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59bdf5d8356564044100882f"
+  }
+  index: 28
+  text: "> We recently received notice that one Stephen., who has been flagged as a criminal and enemy of the Protectorate, was attempting to establish contact with \342\200\234Wilco\342\200\235, a known forger who has aided others in escaping Protectorate justice."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "a1_Piedmont_s1-WilcoDied"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 29
+    idRef {
+      id: "59bdefa33565640441008426:59bdf5e63565640441008831"
+    }
+    comment: "Wilco died"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 31
+    idRef {
+      id: "59bdefa33565640441008426:59bdf5e63565640441008833"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdf5fb3565640441008836"
+  }
+  index: 29
+  text: "> Wilco\342\200\231s criminal activities had earlier resulted in his death at the hands of similar metahuman scum. As Stephen was unable to obtain his forged papers, he easily fell to our dragnet."
+  branches {
+    responseText: ""
+    nextNodeIndex: 30
+    idRef {
+      id: "59bdefa33565640441008426:59bdf5fe3565640441008838"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdefa33565640441008426:59bdf60d356564044100883a"
+  }
+  index: 30
+  text: "> We have carried out the execution as requested. This file may now be safely closed."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59bdefa33565640441008426:59bdf60d356564044100883c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59bdf62a35656404410088ce"
+  }
+  index: 31
+  text: "> We captured Wilco and agreed to spare his life in exchange for his cooperation in bringing down the more dangerous target. Wilco assisted us in identifying Stephen\342\200\231s location and drew him out of hiding with a promise of aid."
+  branches {
+    responseText: ""
+    nextNodeIndex: 30
+    idRef {
+      id: "59bdefa33565640441008426:59bdf62c35656404410088d0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59bdefa33565640441008426:59bdefa3356564044100842a"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad8"

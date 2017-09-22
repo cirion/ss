@@ -1,0 +1,172 @@
+idRef {
+  id: "59b20a5535656440450019af"
+}
+ui_name: "ss_a4_catos_s1-MatrixAttacked"
+nodes {
+  idRef {
+    id: "59b20a5935656440450019b7"
+  }
+  index: 0
+  text: "A panicked voice comes over the PA."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59b20a5535656440450019af:59b20aa535656440450019be"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "VidPhone"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b20a5535656440450019af:59b20aa535656440450019c0"
+  }
+  index: 1
+  text: "Humanis is inside the system! They sleazed past my firewall and have invaded our Matrix node! If we don\342\200\231t stop them soon, they\342\200\231ll\342\200\246"
+  branches {
+    nextNodeIndex: 2
+    idRef {
+      id: "59b20a5535656440450019af:59b20aa735656440450019c4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59af73363565646068000f42"
+  }
+}
+nodes {
+  idRef {
+    id: "59b20a5535656440450019af:59b20aa735656440450019c6"
+  }
+  index: 2
+  text: "The words dissolve into a loud staticky fuzz. The PA system goes silent."
+  branches {
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "All Actors With Tag"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isLeader"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "AllOrAny"
+                    }
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59b20a5535656440450019af:59b20aa935656440450019c8"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:decker"
+          }
+          args {
+            string_value: "DeckingJackOut"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b20a5535656440450019af:59b20aa935656440450019ca"
+  }
+  index: 3
+  text: "Someone check on my boy!"
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isLeader"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59b20a5535656440450019af:59b20a5535656440450019b3"
+  }
+}

@@ -1,0 +1,1512 @@
+idRef {
+  id: "59b56bd3356564dcc1006e4a"
+}
+ui_name: "ss_a4_fuchi_s1-Downstairs_SiraEmail"
+nodes {
+  idRef {
+    id: "59b56c31356564dcc1006e56"
+  }
+  index: 0
+  text: "The terminal has no power and is non-functional."
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59b56c41356564dcc1006e5b"
+  }
+  index: 1
+  text: "> WARNING WARNING\n> System was improperly shut down. Resetting to defaults."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56c44356564dcc1006e5d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56c5a356564dcc1006e62"
+  }
+  index: 2
+  text: "> Total usage (previous 30 days): 257 hrs 42 min 0 sec\n> Terminal locked. Please log in to proceed."
+  branches {
+    responseText: "{{GM}}Log in.{{/GM}}"
+    nextNodeIndex: 3
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56c83356564dcc1006e72"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56c84356564dcc1006e74"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56c95356564dcc1006e77"
+  }
+  index: 3
+  text: "> Username:"
+  branches {
+    responseText: "admin"
+    nextNodeIndex: 4
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56ca5356564dcc1006e79"
+    }
+  }
+  nodeType: ConversationNodeType_InputKeyboard
+}
+nodes {
+  idRef {
+    id: "59b56ca9356564dcc1006e7c"
+  }
+  index: 4
+  text: "> Password:"
+  branches {
+    responseText: "admin"
+    nextNodeIndex: 5
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56caf356564dcc1006e7e"
+    }
+  }
+  nodeType: ConversationNodeType_InputKeyboard
+}
+nodes {
+  idRef {
+    id: "59b56cb3356564dcc1006e81"
+  }
+  index: 5
+  text: "> Welcome, Sira Ikeda. Your last login was at 11:23:05 GMT."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56d13356564dcc1006eb9"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56d13356564dcc1006ebb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Downstairs_LoggedIntoSiraEmail"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b56d29356564dcc1006ebe"
+  }
+  index: 6
+  text: "Okay, that was too easy. You don\342\200\231t get to call yourself a hacker by just typing the defaults!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56e62356564dcc1006ed5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59b56e8c356564dcc1006eda"
+  }
+  index: 7
+  text: "> Please select a command."
+  branches {
+    responseText: "{{GM}}View email.{{/GM}}"
+    nextNodeIndex: 8
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56ee3356564dcc1006efb"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Log out.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56ee3356564dcc1006efd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56ef7356564dcc1006f00"
+  }
+  index: 8
+  text: "> WARNING: Remote server datastore could not be reached!\n> Cached emails are available. Remaining messages will automatically be retried."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f18356564dcc1006f1f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56f1a356564dcc1006f22"
+  }
+  index: 9
+  text: ""
+  branches {
+    responseText: "{{GM}}Read message from Gavan Banain.{{/GM}}"
+    nextNodeIndex: 10
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f23356564dcc1006f43"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read another message from Gavan Banain.{{/GM}}"
+    nextNodeIndex: 23
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5718f356564dcc10070de"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read message from Carli Atherford.{{/GM}}"
+    nextNodeIndex: 33
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b573bb356564dcc1007308"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read message from Fuchi Bay.{{/GM}}"
+    nextNodeIndex: 38
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57834356564dcc10074ea"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read message from Orkland Support Strike Force{{/GM}}"
+    nextNodeIndex: 44
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578dc356564dcc100773e"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Log out.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5793e356564dcc1007824"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Email loop"
+}
+nodes {
+  idRef {
+    id: "59b56f54356564dcc1006f46"
+  }
+  index: 10
+  text: "This message was sent several days ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f56356564dcc1006f48"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56f57356564dcc1006f4a"
+  }
+  index: 11
+  text: ">> From: Gavan Banain, Esq.\n>> To: Ms. Sira Taneka\n>> Subject: Friendly advice\n\n> I am pleased that you found the time to speak with me at McClellan the other day. I\342\200\231m certain you found the conversation edifying. I can already tell that you are much brighter and more focused than your predecessor."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f57356564dcc1006f4c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56f80356564dcc1006f92"
+  }
+  index: 12
+  text: "> We are, of course, in agreement on the suitability of Renraku. They hold a privileged position in the Protectorate, both benefiting from and supporting the General\342\200\231s mission. And all of us would be well served by creating a stronger force to hold Ares at bay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f80356564dcc1006f94"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56f85356564dcc1006f98"
+  }
+  index: 13
+  text: "> Officially, the Protectorate cannot aid in the resolution of the acquisition dilemma. (You may have forgotten that \342\200\234dilemma\342\200\235 literally means \342\200\234two horns\342\200\235. In this case, the horns are metaphors referring to Renraku and Novatech, the two megacorporations pursuing Fuchi.) "
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56fae356564dcc1006fa8"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f85356564dcc1006f9a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56fbe356564dcc1006fab"
+  }
+  index: 14
+  text: "Ugh. This guy\342\200\246\n\n{{GM}}He makes an obscene gesture.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56fc0356564dcc1006fad"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56f88356564dcc1006f9c"
+  }
+  index: 15
+  text: "> We seek to promote harmony among all the corporations supporting Saito, and were we to appear to favor Renraku, other parties such as Mitsuhama and Shiawase would fear that we were upsetting the balance of power. Now that I have explained the situation, surely you will agree with me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f88356564dcc1006f9e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56f89356564dcc1006fa0"
+  }
+  index: 16
+  text: "> However, I do hold extensive contacts beyond the Protectorate, and would be delighted to bring their influence to bear in your support. They would only request what you have already shown a willingness to provide: Support for the Protectorate\342\200\231s cultural zone policies, including within the extraterritorial areas under your control."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f89356564dcc1006fa2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56f8c356564dcc1006fa4"
+  }
+  index: 17
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 18
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56f8c356564dcc1006fa6"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 19
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b570d6356564dcc1007031"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b570d9356564dcc100703d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+  comment: "Reactive team check"
+}
+nodes {
+  idRef {
+    id: "59b56ffa356564dcc1006fef"
+  }
+  index: 18
+  text: "Well, it isn\342\200\231t as if the megacorps are hotbeds of resistance to Saito\342\200\231s awful laws. If he\342\200\231s even cracking down on them, though..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b56ffd356564dcc1006ff1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b570d6356564dcc1007033"
+  }
+  index: 19
+  text: "It does seem a little weird that he would care so much\342\200\246 right? Don\342\200\231t governments usually let the corps get away with whatever they want?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b570d6356564dcc1007035"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b570d9356564dcc100703f"
+  }
+  index: 20
+  text: "> And, should your star continue to rise, my friends could promote your advancement in further regions. By which I mean, they could grant you more power outside of California."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 21
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b570d9356564dcc1007041"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57135356564dcc100704a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b5711b356564dcc1007046"
+  }
+  index: 21
+  text: "Um, yeah, we GOT that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57130356564dcc1007048"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59b57138356564dcc100704d"
+  }
+  index: 22
+  text: "> Finally, I thank you for your discretion on that little matter you looked into. I will be grateful if you, or rather your people, would keep their ears and eyes open for further word of her. In other words, remain alert for additional information, and report such information to me: Gavan Banain."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57180356564dcc1007093"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b571de356564dcc1007125"
+  }
+  index: 23
+  text: "This message was sent one week ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 24
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57205356564dcc1007127"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59b57207356564dcc100712a"
+  }
+  index: 24
+  text: ">> From: Gavan Banain, Esq.\n>> To: Ms. Sira Taneka\n>> Subject: Need you to do something for me.\n\n> By now you should have received the remains of Ms. Atherford, shipped (at considerable expense) from her death scene underneath the San Francisco Bay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57258356564dcc1007130"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57258356564dcc1007132"
+  }
+  index: 25
+  text: "> What happened to her does not matter. She was an eager partner, but an unreliable one, and paid the price for her refusal to follow General Saito\342\200\231s clear direction.\n> That direction being, to stay far away from magic. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 26
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5725c356564dcc1007136"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b5725c356564dcc1007138"
+  }
+  index: 26
+  text: "> Ms. Atherford\342\200\231s ridiculous plot to maintain an independent Fuchi California has ended, and it is in the interests of the Protectorate to usher your organization into a suitable alliance. I am certain we share the same opinion on who the proper suitor is. Come visit me at McClellan Airfield at 11:00AM tomorrow morning for us to discuss the next steps."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5725e356564dcc100713a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b5725e356564dcc100713c"
+  }
+  index: 27
+  text: "> As a personal favor, I would appreciate it if you could help me with a small matter. My wife Olivia has recently gone missing. I am attaching her SIN and identifying information to this email. I would prefer not to involve uniformed Protectorate forces in this search."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57317356564dcc100718b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+}
+nodes {
+  idRef {
+    id: "59b57319356564dcc100718e"
+  }
+  index: 28
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 29
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57327356564dcc1007190"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 30
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5734e356564dcc10071a5"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "594703903565641042006056"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 31
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57351356564dcc10071b1"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 32
+    onlyOnce: true
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57351356564dcc10071b9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive team check"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57327356564dcc1007192"
+  }
+  index: 29
+  text: "That strange is. General Saito spies has. Why not them use?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57327356564dcc1007194"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b5734e356564dcc10071a7"
+  }
+  index: 30
+  text: "It\342\200\246 sounds like Gavan might be embarrassed? Not something he wants widely known among his subordinates?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5734e356564dcc10071a9"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57351356564dcc10071b3"
+  }
+  index: 31
+  text: "If this was a simple missing persons case, he would have used his bullhorn to get the word out. Perhaps blackmail is involved? Or something less savory?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57351356564dcc10071b5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57351356564dcc10071bb"
+  }
+  index: 32
+  text: "And don\342\200\231t bother eating breakfast before coming over. We have the best cooks at McClellan. I assure you that you will want to savor every bite."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57351356564dcc10071bd"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59924a6f356564b877000ebe"
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_fuchi_s1-GavanEmail"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59b577d4356564dcc100736b"
+  }
+  index: 33
+  text: "{{GM}}This message was sent several weeks ago.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 34
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b577d6356564dcc100736d"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59b577dc356564dcc1007370"
+  }
+  index: 34
+  text: ">> From: Ms. Carli Atherford, President\n>> To: Ms. Sira Taneka, Director of Strategic Projects \n>> Subject: Re: Fwd: Urgent: Succession plan desperately needed\n\n>  Sira, darling! I hope you\342\200\231re having a good time looking after after the shop while I\342\200\231m away."
+  branches {
+    responseText: ""
+    nextNodeIndex: 35
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b577de356564dcc1007372"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "599a13be3565646c65003013"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b577ff356564dcc10073d8"
+  }
+  index: 35
+  text: "> I\342\200\231ll forget all about those incredibly mean things you said. This ISN\342\200\231T a \342\200\234wild goose chase\342\200\235 or an \342\200\234idiotic diversion\342\200\235. It is THE key to continuity of Fuchi California. If we can unite the Fountainhead with Camelot, then we will become essential to Saito\342\200\231s grand victory. Not those awfully mundane schemes of Mr. Banain, but a golden opportunity to upend regional power structures."
+  branches {
+    responseText: ""
+    nextNodeIndex: 36
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b577ff356564dcc10073da"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "599a13be3565646c65003013"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57803356564dcc10073de"
+  }
+  index: 36
+  text: "> And, no, I won\342\200\231t appoint you OR Mr. Jenkins as my successor. That would only make my position more precarious than it already is. Which is already very precarious!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 37
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57803356564dcc10073e0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "599a13be3565646c65003013"
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57805356564dcc10073e2"
+  }
+  index: 37
+  text: "> You\342\200\231re doing really good work, so please give the backstabbing a rest until I can tie things up by the coast and return. And please pass this message along to Brian, I know that boy never checks his email. Toodles!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57805356564dcc10073e4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "599a13be3565646c65003013"
+}
+nodes {
+  idRef {
+    id: "59b5783c356564dcc10074ed"
+  }
+  index: 38
+  text: ">> From: Fuchi Bay High-Value Prisoner Collection Detainment Facility\n>> To: <Undisclosed Recipients>\n>> Subject: Urgent: Security breach and executive death\n\n> It is with a heavy heart that I must announce the death of Ms. Carli Atherford, who was brutally murdered by a mob of anarchists that invaded our containment facility."
+  branches {
+    responseText: ""
+    nextNodeIndex: 39
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5783f356564dcc10074ef"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b5784d356564dcc10074f5"
+  }
+  index: 39
+  text: "> We are still conducting an internal investigative review, but at this time we believe that these terrorists were seeking to break their leader out of prison. One silver lining in this tragedy is the fact that the leader in question had recently been transferred into government custody, depriving these rebels of their primary goal.\n\n> However, that is cold comfort in light of the devastation they have wrought upon us and our organization."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "a3_Underwater_s1-Attacked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 40
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b5784d356564dcc10074f7"
+    }
+    comment: "Went loud in underwater base"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57897356564dcc1007504"
+    }
+    comment: "Stealthed through the base"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b5787f356564dcc10074fc"
+  }
+  index: 40
+  text: "> Security camera footage reveals a chilling scene: a merciless band of killers, coldly murdering the brave guards who stood in their path. We honor the sacrifices made by those who sought to keep such lawlessness at bay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 42
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57881356564dcc10074fe"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b57897356564dcc1007506"
+  }
+  index: 41
+  text: "> Security camera footage reveals that the invaders used subterfuge and guile to penetrate the facility. We are reviewing our training protocols to defend against similar incursions in the future."
+  branches {
+    responseText: ""
+    nextNodeIndex: 42
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b57897356564dcc1007508"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b578ad356564dcc100750e"
+  }
+  index: 42
+  text: "> Our internal investigation is still ongoing, but to the best of our knowledge, Ms. Atherford had successfully infiltrated the revolutionary organization known as the People\342\200\231s University. She deliberately drew its remaining leaders into the prison, in hopes of neutralizing them and stopping the Bay Area insurrection. Ms. Atherford was well-known for her off-book style, and few records remain to shed light on the precise contours of her plan."
+  branches {
+    responseText: ""
+    nextNodeIndex: 43
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578bf356564dcc100758a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b578c1356564dcc100758d"
+  }
+  index: 43
+  text: "> In light of the massive security breach, Gavan Banain has taken control over this facility, and henceforth it will be considered a part of the California Protectorate security apparatus. Fuchi assets will be returned to the parent corporation once the legal successor to Fuchi California has been definitively established.\n\n> Please direct all future communication and requests to the Protectorate."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578d3356564dcc1007608"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b578e6356564dcc1007741"
+  }
+  index: 44
+  text: ">> From: Special Operations, Magic Division\n>> To: Ms. Sira Taneka\n>> Subject: Patrol summary\n\n> We have completed our joint operations with the Protectorate on Piedmont Avenue. Let\342\200\231s not do that again. I\342\200\231m all for clearing trogs out of our neighborhoods, but having those anti-magic fanatics breathing down our necks gets tiring, fast."
+  branches {
+    responseText: ""
+    nextNodeIndex: 45
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578e8356564dcc1007743"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b578f7356564dcc1007749"
+  }
+  index: 45
+  text: "> I know this is part of Carli\342\200\231s strategic plan. I really hope she knows what she\342\200\231s doing.\n\n> We\342\200\231ve already lost too many good people. One of our teams was in the middle of an argument with the Protectorate when a band of metahumans snuck up and cut them down. I don\342\200\231t know if it was the MPA or the PU and I don\342\200\231t care. There\342\200\231s nothing of value in that neighborhood, and no reason for us to spill Fuchi blood there."
+  branches {
+    responseText: ""
+    nextNodeIndex: 46
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578f7356564dcc100774b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b578fc356564dcc100774f"
+  }
+  index: 46
+  text: "> What makes it worse is knowing that Carli was right there, but too obsessed with her quest for magical artifacts to bother helping us out. She\342\200\231s so focused on the big picture that she can\342\200\231t see things falling apart on the ground floor."
+  branches {
+    responseText: ""
+    nextNodeIndex: 47
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578fc356564dcc1007751"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b578ff356564dcc1007753"
+  }
+  index: 47
+  text: "> Sorry for venting. I really hope that you get to take over soon, you seem infinitely more reasonable than Ms. Atherford. In the meantime, we\342\200\231ll keep our heads down and play ball."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59b56bd3356564dcc1006e4a:59b578ff356564dcc1007755"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_PowerRestored"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Outside_FuchiPowerOut"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56bd3356564dcc1006e4e"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 1
+  onlyOnce: true
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56c3d356564dcc1006e58"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Downstairs_LoggedIntoSiraEmail"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 2
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56c58356564dcc1006e5f"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 7
+  idRef {
+    id: "59b56bd3356564dcc1006e4a:59b56e7c356564dcc1006ed7"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad8"
