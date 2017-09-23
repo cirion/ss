@@ -7156,17 +7156,12 @@ triggers {
                 string_value: "Arithmetic Ops"
               }
               args {
-                int_value: 5
+                int_value: 6
               }
             }
           }
           args {
-            call_value {
-              functionName: "Get Variable (int)"
-              args {
-                string_value: "Abattoir_AccumulatedGasTotal"
-              }
-            }
+            int_value: 0
           }
         }
       }
@@ -7216,6 +7211,82 @@ triggers {
   is_oneshot: false
 }
 triggers {
+  name: "Abattoir_CapGasProgress"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_AccumulatedGas"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_AccumulatedGasTotal"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_AccumulatedGas"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_AccumulatedGasTotal"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c6a64a356564280c007afa"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "Abattoir_DamageFromGas"
   events {
     ops {
@@ -7245,7 +7316,7 @@ triggers {
         }
       }
       args {
-        int_value: 0
+        int_value: 10
       }
     }
     ops {
@@ -7367,9 +7438,28 @@ triggers {
           functionName: "Arithmetic (int)"
           args {
             call_value {
-              functionName: "Get Variable (int)"
+              functionName: "Arithmetic (int)"
               args {
-                string_value: "Abattoir_AccumulatedGas"
+                call_value {
+                  functionName: "Get Variable (int)"
+                  args {
+                    string_value: "Abattoir_AccumulatedGas"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "Arithmetic Ops"
+                  }
+                  args {
+                    int_value: 1
+                  }
+                }
+              }
+              args {
+                int_value: 10
               }
             }
           }
@@ -7451,7 +7541,7 @@ triggers {
         }
       }
       args {
-        int_value: 0
+        int_value: 10
       }
     }
     ops {
@@ -7642,6 +7732,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6bcd9356564ec420056af"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6bcf3356564ec420056b0"
+          }
+        }
+      }
+    }
   }
   conditions {
   }
@@ -7660,7 +7772,7 @@ triggers {
         }
       }
       args {
-        float_value: 1
+        float_value: 0.5
       }
       args {
         call_value {
@@ -7745,6 +7857,28 @@ triggers {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "594fedf1356564b444005fdc"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6bcd9356564ec420056af"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6bcf3356564ec420056b0"
           }
         }
       }
@@ -8276,6 +8410,39 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Interrupt Team\'s Movement"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Prop Visible by Tag"
       args {
         call_value {
@@ -8523,6 +8690,138 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59c6bcf3356564ec420056b0"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59c6bcd9356564ec420056af"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59c6bd30356564ec420056b2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59c6967c356564280c007ae1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c6be68356564ec420056b5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -8531,6 +8830,276 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Abattoir_EnableFanUpdateVar"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6bd30356564ec420056b2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6967c356564280c007ae1"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "turbineon"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_CurrentExhaustFans"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Play FX at Point"
+      args {
+        string_value: "HongKong:EnvironmentHelicopterWash"
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Triggering Prop"
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c6be68356564ec420056b4"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Abattoir_EnableFanUpdateGoal"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6bd30356564ec420056b2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c6967c356564280c007ae1"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_CurrentExhaustFans"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_MaxExhaustFans"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Turn On Exhaust Fans"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Abattoir_LabelExhaustFans"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c6be68356564ec420056b5"
+  }
+  elseActions {
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Abattoir_LabelExhaustFans"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Abattoir_LabelExhaustFans"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_CurrentExhaustFans"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Abattoir_MaxExhaustFans"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Mojave"
@@ -14097,12 +14666,12 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -52
+    x: -58
     y: 0
-    z: 110
+    z: 105
   }
   orientation: ORIENTATION_S
-  displayName: "Protectorate_Melee_1"
+  displayName: "Abattoir_Wave1_Melee"
   idRef {
     id: "59c69fda356564280c007af9"
   }
@@ -14159,7 +14728,7 @@ variables {
   }
 }
 variables {
-  int_value: 3
+  int_value: 5
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Abattoir_MaxGasVents"
@@ -14167,7 +14736,7 @@ variables {
   }
 }
 variables {
-  int_value: 3
+  int_value: 5
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Abattoir_CurrentGasVents"
@@ -14207,7 +14776,7 @@ variables {
   }
 }
 variables {
-  int_value: 10
+  int_value: 20
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Abattoir_AccumulatedGasTotal"
