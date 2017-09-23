@@ -3345,6 +3345,348 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Interact_CastFire"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c66abf356564c45a000d0a"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play FX on Actor"
+      args {
+        string_value: "FireSpellPrepare"
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c66a9f356564c45a000d08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Wait"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait for Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Wait"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play FX at Point With Target Actor"
+      args {
+        string_value: "FlamethrowerThrowAction"
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c66a9f356564c45a000d08"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c66ad1356564c45a000d0b"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "59c66ade356564c45a000d0c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Interact_CastFire"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59c66abf356564c45a000d0a"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Team Alliance"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeamAlliance"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c66cff356564c45a000d0f"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "BarrelDestroyed"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "59c66ad1356564c45a000d0b"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Team Alliance"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeamAlliance"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Clear ThreatList"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c66a9f356564c45a000d08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Actor Orders"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c66a9f356564c45a000d08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "End Current Team Round"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c66e30356564c45a000d10"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera"
   position {
@@ -3408,7 +3750,7 @@ characters {
   gridPoint {
     x: 2
     y: 0
-    z: 9
+    z: 0
   }
   orientation: ORIENTATION_S
   idRef {
@@ -3476,7 +3818,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 5
+    x: -2
     y: 0
     z: 0
   }
@@ -3575,33 +3917,35 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 2
+    x: 3
     y: 0
-    z: 4
+    z: 1
   }
   orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Dwarf_Female"
+  GeneralTags: "isPassive"
+  GeneralTags: "canExit"
+  GeneralTags: "isHalferville"
+  displayName: "Dorbi"
   idRef {
-    id: "59c26add356564c047005e15"
+    id: "59c66a9f356564c45a000d08"
   }
   lod: 0
   character_instance {
-    prefab_name: "Berlin:HavenCivilians/DwarfFemaleHavenKerchief_2"
-    character_sheet_id: "BaseCivilian"
+    prefab_name: "Seattle:Core/DwarfFemale"
+    character_sheet_id: "RedSamurai_Lv6_Mage"
     character_mod {
       stats {
-        body: 0
+        body: 2
         quickness: 0
         strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
+        charisma: 5
+        intelligence: 4
+        willpower: 2
         essence: 0
         magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
+        hp: 20
+        ap: 1
+        armor: -3
         force: 0
         morale: 0
         discipline: 0
@@ -3615,15 +3959,15 @@ characters {
         vision_cone_angle: 0
       }
       skills {
-        ranged_combat: 0
+        ranged_combat: -3
         close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
+        throwing_weapons: -2
+        spellcasting: 3
         decking: 0
         conjuring: 0
         spirit_summoning: 0
         drone_control: 0
-        biotech: 0
+        biotech: 3
         dodge: 0
         etiquette_corporate: 0
         etiquette_security: 0
@@ -3633,9 +3977,10 @@ characters {
         etiquette_shadowrunner: 0
         etiquette_street: 0
         etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
-        pistol: 0
+        pistol: -1
         rifle: 0
         shotgun: 0
         smg: 0
@@ -3645,184 +3990,45 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 1
-    y: 0
-    z: 7
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isGuard"
-  GeneralTags: "isGuardSync2"
-  displayName: "Guard_1"
-  idRef {
-    id: "59c26af5356564c047005e16"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Core/HumanMale"
-    character_sheet_id: "Errant_Lv1_Captain"
-    equipment_sheet_id: "Errant_Lv1_Captain"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
+      archetypeName: "gumbo_Mage"
       attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
       vulnerabilities {
       }
     }
     equipment {
-      prefab_name: "NPC_SamuraiPunk"
-    }
-    team_id: "Civilians"
-    char_name: "Protectorate Guard"
-    GeneralTags: "isGuard"
-    GeneralTags: "isGuardSync2"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-    portrait_code_override: "s6h12c4b8c4t0"
-    karma: 52
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 2
-    y: 0
-    z: 7
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isGuard"
-  GeneralTags: "isGuardSync1"
-  displayName: "Guard_2"
-  idRef {
-    id: "59c272ca356564883600323c"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Core/HumanMale"
-    character_sheet_id: "Errant_Lv1_Captain"
-    equipment_sheet_id: "Errant_Lv1_Captain"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
+      prefab_name: "Dorbi Inferno Power"
     }
     equipment {
-      prefab_name: "NPC_SamuraiPunk"
-    }
-    team_id: "Civilians"
-    char_name: "Protectorate Guard"
-    GeneralTags: "isGuard"
-    GeneralTags: "isGuardSync1"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-    portrait_code_override: "s5h6c11b11c11t0"
-    karma: 52
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 3
-    y: 0
-    z: 7
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isGuard"
-  GeneralTags: "isGuardSync1"
-  displayName: "Guard_3"
-  idRef {
-    id: "59c272f5356564883600323d"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Core/HumanFemale"
-    character_sheet_id: "Errant_Lv1_Captain"
-    equipment_sheet_id: "Errant_Lv1_Captain"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
+      prefab_name: "Dorbi Heat Wave"
     }
     equipment {
-      prefab_name: "NPC_SamuraiPunk"
+      prefab_name: "Spell Firebolt 4"
     }
-    team_id: "Civilians"
-    char_name: "Protectorate Guard"
-    GeneralTags: "isGuard"
-    GeneralTags: "isGuardSync1"
+    equipment {
+      prefab_name: "Spell Fireball 3"
+    }
+    equipment {
+      prefab_name: "Fire Barrier 5 Dorbi"
+    }
+    equipment {
+      prefab_name: "Spell Flamethrower 4"
+    }
+    equipment {
+      prefab_name: "Dorbi_Coat Lv3"
+    }
+    team_id: "Dorbi"
+    char_name: "Dorbi"
+    GeneralTags: "isPassive"
+    GeneralTags: "canExit"
+    GeneralTags: "isHalferville"
     pc_spawn_number: -1
+    cyberware_left_arm: "(Arm) JoltAlert"
     portrait {
-      filename: ""
+      filename: "pc_dwarffemale_06"
     }
-    portrait_code_override: "s4h6c1b0t0"
-    karma: 52
-    scale_character_sheet: true
+    portrait_code_override: "s4h17c5b0c0t0"
+    karma: 235
+    cyberware_skin: "(Skin) Tailored Pheromones (Bioware)"
   }
 }
 characters {
@@ -3830,905 +4036,34 @@ characters {
   gridPoint {
     x: 4
     y: 0
-    z: 7
+    z: 6
   }
-  orientation: ORIENTATION_W
-  GeneralTags: "isGuard"
-  GeneralTags: "isGuardSync2"
-  displayName: "Guard_4"
+  orientation: ORIENTATION_S
+  displayName: "Barrel"
   idRef {
-    id: "59c2779f356564883600323f"
+    id: "59c66ad1356564c45a000d0b"
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Core/HumanFemale"
-    character_sheet_id: "Errant_Lv1_Captain"
-    equipment_sheet_id: "Errant_Lv1_Captain"
+    prefab_name: "Berlin:Objects/FireExplosiveBarrel"
+    character_sheet_id: "Environment_Barrel_Explosive"
+    equipment_sheet_id: "Environment_Barrel_Fire"
     character_mod {
       stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
+      archetypeName: "Non-Combatant"
     }
-    equipment {
-      prefab_name: "NPC_SamuraiPunk"
-    }
-    equipment {
-      prefab_name: "Pi 1 Fichetti Security 500"
-    }
-    team_id: "Civilians"
-    char_name: "Protectorate Guard"
-    GeneralTags: "isGuard"
-    GeneralTags: "isGuardSync2"
+    team_id: "Barrel"
+    char_name: "Barrel"
     pc_spawn_number: -1
+    ai_ignores: false
     portrait {
       filename: ""
     }
-    portrait_code_override: "s6h15c5b0t0"
-    karma: 52
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 5
-    y: 0
-    z: 7
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isGuard"
-  GeneralTags: "isGuardSync1"
-  displayName: "Guard_5"
-  idRef {
-    id: "59c277d53565648836003240"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Core/HumanMale"
-    character_sheet_id: "Errant_Lv1_Captain"
-    equipment_sheet_id: "Errant_Lv1_Captain"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
-    }
-    equipment {
-      prefab_name: "NPC_SamuraiPunk"
-    }
-    team_id: "Civilians"
-    char_name: "Protectorate Guard"
-    GeneralTags: "isGuard"
-    GeneralTags: "isGuardSync1"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-    portrait_code_override: "s4h8c7b0t0"
-    karma: 52
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 1
-    y: 0
-    z: 4
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Dwarf_Male"
-  idRef {
-    id: "59c30863356564285100260e"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Berlin:HavenCivilians/DwarfMaleHavenBigJacket_2"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 2
-    y: 0
-    z: 3
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Ork_Male"
-  idRef {
-    id: "59c30882356564285100260f"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Berlin:HavenCivilians/OrkMaleHavenCivilian_1"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 5
-    y: 0
-    z: 3
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Troll_Female"
-  idRef {
-    id: "59c308ba3565642851002610"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Berlin:HavenCivilians/TrollFemaleHavenCivilian_2"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 4
-    y: 0
-    z: 2
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Ork_Male_Samuel"
-  idRef {
-    id: "59c308e33565642851002611"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Berlin:Story/OrkMaleSamuel"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-    persistent_body: false
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 5
-    y: 0
-    z: 4
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Ork_Male_Triad"
-  idRef {
-    id: "59c309293565642851002612"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Triads/OrkMaleTriad1"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 3
-    y: 0
-    z: 4
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Elf_Female_Poor"
-  idRef {
-    id: "59c309733565642851002613"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Triads/OrkMaleTriad1"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 4
-    y: 0
-    z: 4
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Ork_Female_Poor"
-  idRef {
-    id: "59c309b43565642851002615"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:HKPoor/OrkFemalePoorCivilian"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 3
-    y: 0
-    z: 3
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Ork_Male_Poor"
-  idRef {
-    id: "59c30a1a3565642851002616"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:HKPoor/OrkMalePoorCivilian"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 2
-    y: 0
-    z: 2
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isVictim"
-  displayName: "Victim_Ork_Male_Pirate"
-  idRef {
-    id: "59c30a563565642851002617"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Pirates/OrkMalePirate"
-    character_sheet_id: "BaseCivilian"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "Non-Combatant"
-      attitude: AttitudeCautious
-      vulnerabilities {
-      }
-    }
-    team_id: "Civilians"
-    char_name: "Victim"
-    GeneralTags: "isVictim"
-    enabled_at_start: false
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    karma: 6
-    hiring_cost_override: 3000
   }
 }
 variables {
@@ -4787,6 +4122,8 @@ team_affiliations {
   affiliation: 1
   affiliation: 1
   affiliation: 0
+  affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Gangers"
@@ -4794,11 +4131,15 @@ team_affiliations {
   affiliation: 0
   affiliation: 1
   affiliation: 0
+  affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "LoneStar"
   affiliation: 1
   affiliation: 1
+  affiliation: 0
+  affiliation: 0
   affiliation: 0
   affiliation: 0
 }
@@ -4808,11 +4149,29 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "Dorbi"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "Barrel"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
 }
 scene_dimensions {
   dimension_name: "Default"
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
