@@ -5472,7 +5472,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Actor)"
               args {
-                string_value: "59c5e010356564c45a000beb"
+                string_value: "59c5e441356564c45a000bf3"
               }
             }
           }
@@ -5484,7 +5484,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "59c663d7356564c45a000c05"
+            string_value: "59c6638e356564c45a000c04"
           }
         }
       }
@@ -6304,7 +6304,7 @@ triggers {
             string_value: "PlayerOrAI"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
@@ -6853,6 +6853,137 @@ triggers {
   isActive: true
   idRef {
     id: "59c68421356564c45a00110f"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Global_KeepTassenderSeated"
+  events {
+    ops {
+      functionName: "On Actor Start Turn"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59c48d17356564ac1d00401e"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Leave the Mojave"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Defeat the Guards"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59c48d17356564ac1d00401e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/downed_idle"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c68703356564c45a001115"
   }
   elseActions {
   }
@@ -10187,9 +10318,6 @@ characters {
     z: 108
   }
   orientation: ORIENTATION_E
-  GeneralTags: "isPassive"
-  GeneralTags: "canExit"
-  GeneralTags: "isHalferville"
   displayName: "Dorbi"
   idRef {
     id: "59c48109356564c449003b49"
@@ -10293,9 +10421,6 @@ characters {
     }
     team_id: "Shadowrunners"
     char_name: "Dorbi"
-    GeneralTags: "isPassive"
-    GeneralTags: "canExit"
-    GeneralTags: "isHalferville"
     pc_spawn_number: -1
     cyberware_left_arm: "(Arm) JoltAlert"
     portrait {
@@ -10314,16 +10439,13 @@ characters {
     z: 114
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isTassender"
-  GeneralTags: "isPassive"
-  GeneralTags: "canExit"
   displayName: "Tassender"
   idRef {
     id: "59c48d17356564ac1d00401e"
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Core/ElfMale"
+    prefab_name: "Berlin:Aztechnology/ElfMaleAztechBloodMage"
     character_sheet_id: "Adept_Lv1_HtH"
     character_mod {
       stats {
@@ -10331,7 +10453,7 @@ characters {
         quickness: 0
         strength: 0
         charisma: 10
-        intelligence: 0
+        intelligence: 3
         willpower: 0
         essence: 0
         hp: 0
@@ -10350,6 +10472,7 @@ characters {
       }
       skills {
         close_combat: 0
+        biotech: 3
         dodge: 0
         etiquette_corporate: 1
         etiquette_security: 1
@@ -10367,23 +10490,17 @@ characters {
       vulnerabilities {
       }
     }
-    equipment {
-      prefab_name: "NPC_HK_Tech_RiggerTrench"
-    }
     team_id: "Civilians"
     char_name: "Tassender"
-    GeneralTags: "isTassender"
-    GeneralTags: "isPassive"
-    GeneralTags: "canExit"
     pc_spawn_number: -1
     ai_ignores: true
     uninjurable: true
     unkillable: true
     portrait {
-      filename: "backerpc_elfmale_alanedens"
+      filename: "backerpc_elfmale_andrewwhite"
     }
     portrait_code_override: "s5h13c6b4c6t0"
-    karma: 147
+    karma: 165
     hide_floaties: true
   }
 }
@@ -11775,9 +11892,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -63
+    x: -64
     y: 0
-    z: 121
+    z: 122
   }
   orientation: ORIENTATION_W
   GeneralTags: "canUseDoor"
@@ -11832,9 +11949,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -65
+    x: -63
     y: 0
-    z: 94
+    z: 93
   }
   orientation: ORIENTATION_S
   GeneralTags: "canUseDoor"
@@ -11889,9 +12006,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -64
+    x: -62
     y: 0
-    z: 94
+    z: 93
   }
   orientation: ORIENTATION_S
   GeneralTags: "canUseDoor"
