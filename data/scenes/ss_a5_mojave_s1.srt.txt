@@ -156,7 +156,7 @@ triggers {
             string_value: "FactionList"
           }
           args {
-            int_value: 3
+            int_value: 4
           }
         }
       }
@@ -4835,7 +4835,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "59c48109356564c449003b49"
+            string_value: "59c5e429356564c45a000bef"
           }
         }
       }
@@ -4846,7 +4846,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -4870,6 +4870,35 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c48109356564c449003b49"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
     ops {
       functionName: "Set Team Alliance"
       args {
@@ -5071,6 +5100,72 @@ triggers {
             }
           }
           args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c48109356564c449003b49"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c48109356564c449003b49"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -6365,6 +6460,109 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Play FX at Point"
+      args {
+        string_value: "HongKong:EnvironmentHelicopterWash"
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c48d17356564ac1d00401e"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "GasRelease"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isConferenceBelljar"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c48d17356564ac1d00401e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -6564,6 +6762,101 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Global_RemoveDoorTag"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59c6840b356564c45a00110e"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59c6845f356564c45a001110"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c68421356564c45a00110f"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Mojave"
@@ -8087,6 +8380,122 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "59c66551356564c45a000c1f"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Conference_RemoveDoorTagEast"
+  position {
+    x: -67
+    y: 118
+    width: 6
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59c6840b356564c45a00110e"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Conference_RemoveDoorTagWest"
+  position {
+    x: -64
+    y: 97
+    width: 6
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59c6845f356564c45a001110"
   }
   highlight_color {
     r: 0
@@ -9707,7 +10116,7 @@ characters {
         perception: 0
         authority: 0
         protect_tether_range: 0
-        move_speed: 6
+        move_speed: 0
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
@@ -9785,16 +10194,6 @@ characters {
   idRef {
     id: "59c48109356564c449003b49"
   }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    conversationPoint {
-      conversationID: "598f86d23565649836004626"
-      turnToFace: false
-    }
-    interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: ""
-  }
   lod: 0
   character_instance {
     prefab_name: "Seattle:Core/DwarfFemale"
@@ -9856,9 +10255,10 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Mage"
       attitude: AttitudeAggressive
       vulnerabilities {
+        fire: VulnerabilityLevel_Immune
       }
     }
     equipment {
@@ -9881,6 +10281,15 @@ characters {
     }
     equipment {
       prefab_name: "Dorbi_Coat Lv3"
+    }
+    equipment {
+      prefab_name: "DocWagonPlatinum"
+    }
+    equipment {
+      prefab_name: "HealthPack_hi"
+    }
+    equipment {
+      prefab_name: "HealthPack_hi"
     }
     team_id: "Shadowrunners"
     char_name: "Dorbi"
@@ -9921,7 +10330,7 @@ characters {
         body: 0
         quickness: 0
         strength: 0
-        charisma: 0
+        charisma: 10
         intelligence: 0
         willpower: 0
         essence: 0
@@ -9942,7 +10351,14 @@ characters {
       skills {
         close_combat: 0
         dodge: 0
+        etiquette_corporate: 1
+        etiquette_security: 1
+        etiquette_gang: 1
+        etiquette_socialite: 1
         chi_casting: 0
+        etiquette_shadowrunner: 1
+        etiquette_street: 1
+        etiquette_academic: 1
       }
       specializations {
         unarmed: 0
@@ -9961,12 +10377,13 @@ characters {
     GeneralTags: "canExit"
     pc_spawn_number: -1
     ai_ignores: true
+    uninjurable: true
     unkillable: true
     portrait {
       filename: "backerpc_elfmale_alanedens"
     }
     portrait_code_override: "s5h13c6b4c6t0"
-    karma: 72
+    karma: 147
     hide_floaties: true
   }
 }
@@ -10010,7 +10427,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     pc_spawn_number: -1
     portrait {
@@ -10061,7 +10478,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     pc_spawn_number: -1
     portrait {
@@ -10112,7 +10529,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     pc_spawn_number: -1
     portrait {
@@ -10163,7 +10580,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     pc_spawn_number: -1
     portrait {
@@ -10214,7 +10631,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     pc_spawn_number: -1
     portrait {
@@ -11398,7 +11815,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     GeneralTags: "canUseDoor"
     GeneralTags: "isConference"
@@ -11613,7 +12030,7 @@ characters {
     equipment {
       prefab_name: "NPC_SamuraiPunk"
     }
-    team_id: "Civilians"
+    team_id: "LoneStar"
     char_name: "Protectorate Guard"
     GeneralTags: "canUseDoor"
     GeneralTags: "isConference"
@@ -12077,6 +12494,8 @@ team_affiliations {
 }
 scene_dimensions {
   dimension_name: "Default"
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
