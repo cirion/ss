@@ -4446,52 +4446,6 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Abattoir_RemoveRoofCover"
-  events {
-    ops {
-      functionName: "On Item Interaction"
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "594fdfec356564b444005ea5"
-          }
-        }
-      }
-    }
-  }
-  conditions {
-  }
-  actions {
-    ops {
-      functionName: "Delete Props by Tag"
-      args {
-        call_value {
-          functionName: "Get Map Item (SenseTagList)"
-          args {
-            string_value: "isAbattoirRoof"
-          }
-        }
-      }
-      args {
-        float_value: -1
-      }
-      args {
-        call_value {
-          functionName: "Everywhere"
-        }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "59c47f3b356564c449003aff"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
   name: "Mojave_BuffSpellcasting"
   events {
     ops {
@@ -11433,7 +11387,7 @@ triggers {
             string_value: "DeathMethod"
           }
           args {
-            int_value: 3
+            int_value: 0
           }
         }
       }
@@ -11455,7 +11409,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
@@ -11680,6 +11634,90 @@ triggers {
   isActive: true
   idRef {
     id: "59c6da49356564ec42005718"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Abattoir_OpenDoorRemoveRoofCover"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "594fdfec356564b444005ea5"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isAbattoirRoof"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c6e3f2356564ec4200574b"
   }
   elseActions {
   }
