@@ -1,6 +1,6 @@
-minX: -75
+minX: -70
 minZ: -10
-numX: 79
+numX: 74
 numZ: 139
 props {
   name: "haven_wall_brickBarrierEnd01"
@@ -3040,32 +3040,6 @@ props {
   orientation: ORIENTATION_E
   idRef {
     id: "592f7cf1356564e039006c9f"
-  }
-  lod: 0
-}
-props {
-  name: "sleekOffice_wall_blackEdge05"
-  gridPoint {
-    x: -75
-    y: 0
-    z: 87
-  }
-  orientation: ORIENTATION_E
-  idRef {
-    id: "592f7d02356564e039006ca0"
-  }
-  lod: 0
-}
-props {
-  name: "sleekOffice_wall_blackSpyVent01"
-  gridPoint {
-    x: -73
-    y: 0
-    z: 87
-  }
-  orientation: ORIENTATION_E
-  idRef {
-    id: "592f7d0a356564e039006ca1"
   }
   lod: 0
 }
@@ -14005,16 +13979,6 @@ props {
   lod: 0
 }
 props {
-  name: "office_wallDecoration_wallProjection01"
-  gridPoint {
-    x: -75.9
-    y: 0.1
-    z: 90
-  }
-  orientation: ORIENTATION_E
-  lod: 0
-}
-props {
   name: "office_wallDecoration_wallProjection02"
   gridPoint {
     x: -69
@@ -14292,6 +14256,55 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Abattoir_IsNorthDoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Evaluate Tag for Actor"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Triggering Actor"
+                  }
+                }
+                args {
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "HasOrHasNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "canUseDoor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     doorPoint {
       doorState: false
       aiOnlyDoor: false
@@ -21833,6 +21846,53 @@ props {
     property_id: "fxScript"
     string_value: "PoisonGasYellowVentEnvironment"
   }
+  GeneralTags: "isInitiallyInvisible"
+  GeneralTags: "isGasVent"
+  displayName: "Abattoir_GasWest"
+  idRef {
+    id: "59c69d5c356564280c007af0"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Shut Off Gas Vents"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: ""
+  }
   lod: 0
 }
 props {
@@ -21847,8 +21907,52 @@ props {
     property_id: "fxScript"
     string_value: "PoisonGasYellowVentEnvironment"
   }
+  GeneralTags: "isInitiallyInvisible"
+  GeneralTags: "isGasVent"
+  displayName: "Abattoir_GasSouth"
   idRef {
     id: "594fedf1356564b444005fdc"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Shut Off Gas Vents"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -28846,9 +28950,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -43
+    x: -25
     y: 0
-    z: 104
+    z: 111
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28860,9 +28964,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -40
+    x: -22
     y: 0
-    z: 110
+    z: 117
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28874,9 +28978,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -37
+    x: -19
     y: 0
-    z: 112
+    z: 119
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28888,9 +28992,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -45
+    x: -27
     y: 0
-    z: 104
+    z: 111
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28902,9 +29006,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -40
+    x: -22
     y: 0
-    z: 114
+    z: 121
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28916,9 +29020,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -38
+    x: -20
     y: 0
-    z: 108
+    z: 115
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28930,9 +29034,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -45
+    x: -27
     y: 0
-    z: 105
+    z: 112
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -28944,9 +29048,9 @@ props {
 props {
   name: "secretLab_wall_4x4fill"
   gridPoint {
-    x: -41
+    x: -23
     y: 0
-    z: 106
+    z: 113
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAbattoirRoof"
@@ -29846,6 +29950,228 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "59c684f8356564c45a001112"
+  }
+  lod: 0
+}
+props {
+  name: "vfx_fx_poisongasYellowvent"
+  gridPoint {
+    x: -52
+    y: 0
+    z: 115
+  }
+  orientation: ORIENTATION_E
+  properties {
+    property_id: "fxScript"
+    string_value: "PoisonGasYellowVentEnvironment"
+  }
+  GeneralTags: "isInitiallyInvisible"
+  GeneralTags: "isGasVent"
+  displayName: "Abattoir_GasNorth"
+  idRef {
+    id: "59c6956c356564280c007adf"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Shut Off Gas Vents"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "vfx_fx_poisongasYellowvent"
+  gridPoint {
+    x: -42
+    y: 0
+    z: 127
+  }
+  orientation: ORIENTATION_E
+  properties {
+    property_id: "fxScript"
+    string_value: "PoisonGasYellowVentEnvironment"
+  }
+  displayName: "Abattoir_GasCenter"
+  idRef {
+    id: "59c695a6356564280c007ae0"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_clutter_wallSpeaker"
+  gridPoint {
+    x: -52.5
+    y: 0.2
+    z: 107
+  }
+  orientation: ORIENTATION_E
+  lod: 0
+}
+props {
+  name: "secretLab_clutter_wallSpeaker"
+  gridPoint {
+    x: -47.2
+    y: -0.3
+    z: 102.2
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59c6967c356564280c007ae1"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -44
+    y: 0
+    z: 122
+  }
+  orientation: ORIENTATION_S
+  displayName: "Abattoir_DisableGasNorth"
+  idRef {
+    id: "59c696c9356564280c007ae3"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Shut Off Gas Vents"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Gas Vent"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_blockMove"
+  gridPoint {
+    x: -39
+    y: 0
+    z: 115
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -43
+    y: 0
+    z: 122
+  }
+  orientation: ORIENTATION_S
+  displayName: "Abattoir_DisableGasNorth"
+  idRef {
+    id: "59c69cf4356564280c007aed"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Shut Off Gas Vents"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Gas Vent"
   }
   lod: 0
 }
