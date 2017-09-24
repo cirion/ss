@@ -15,6 +15,44 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Teleport Camera To Point"
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "59c81190356564b4100055a9"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 500
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -240,6 +278,22 @@ nodes {
     comment: "Default: PC0 is female"
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Gender check"
+}
+nodes {
+  idRef {
+    id: "59c81c29356564b4100061fa"
+  }
+  index: 9
+  text: "{{GM}}Facing you, she reaches back and feels between your legs. You stir. She pauses a moment, considering.{{/GM}}\n\nHm. I can probably work with this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59c81aa8356564b4100060d5:59c81c2b356564b4100061fc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
   actions {
     ops {
       functionName: "Trigger: Run Alternate Trigger"
@@ -286,22 +340,6 @@ nodes {
       }
     }
   }
-  comment: "Stash items + gender check"
-}
-nodes {
-  idRef {
-    id: "59c81c29356564b4100061fa"
-  }
-  index: 9
-  text: "{{GM}}Facing you, she reaches back and feels between your legs. You stir. She pauses a moment, considering.{{/GM}}\n\nHm. I can probably work with this."
-  branches {
-    responseText: ""
-    nextNodeIndex: 10
-    idRef {
-      id: "59c81aa8356564b4100060d5:59c81c2b356564b4100061fc"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
@@ -451,6 +489,25 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/sitting_idle_attitude"
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -481,6 +538,23 @@ nodes {
             string_value: "59c81dca356564b41000624c"
           }
         }
+      }
+    }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 0
       }
     }
   }
@@ -613,6 +687,50 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c81c61356564b410006203"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -665,7 +783,7 @@ nodes {
     id: "59c81aa8356564b4100060d5:59c81f45356564b41000636b"
   }
   index: 28
-  text: "She wraps her arms around your legs as she presses on, steady but gradually quickening, increasingly confident in her task. "
+  text: "She wraps her arms around your legs as she presses on, steady but gradually quickening, increasingly confident in her task."
   branches {
     responseText: ""
     nextNodeIndex: 29
@@ -748,6 +866,27 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/sitting_idle_attitude"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -801,6 +940,25 @@ nodes {
   index: 36
   text: "She comes, quietly, emphatically, and a look of contentment washes over her face. With a deep, happy sigh, she extracts herself from you and pads away, collecting her garments."
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -854,6 +1012,25 @@ nodes {
   index: 40
   text: "You press on and soon bring her reward. She gasps, jerks, shudders. A small warm bundle, now satisfied, she gingerly swings her legs from your face.\n\nAble to see her face again, you notice something unusual: a wide smile, atop a look of contentment.\n\nWith a deep, happy sigh, she pads away, collecting her garments."
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -862,6 +1039,25 @@ nodes {
   index: 41
   text: "You catch just a fraction of a second of disappointment before she shoves it aside, smoothing her hair and standing to gather her clothes."
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -886,6 +1082,23 @@ nodes {
   text: "{{GM}}She looks at you a little wistfully and sighs. A faint grin plays at the edge of her face.{{/GM}}\n\nAh, well. It would have been fun. Maybe in the next life.\n\nSee you around, $(l.name)."
   nodeType: ConversationNodeType_Simple
   actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
     ops {
       functionName: "Enable/Disable Trigger"
       args {
