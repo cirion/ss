@@ -6938,6 +6938,88 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isAbattoirEnemy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721903565642422005a5e"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Activate Actor Spawner"
       args {
         call_value {
@@ -7088,29 +7170,18 @@ triggers {
       }
     }
     ops {
-      functionName: "Set Variable (bool)"
+      functionName: "Force-Use Interactable Object (Basic)"
       args {
         call_value {
-          functionName: "Get Variable (bool)"
+          functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "isDebugging"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
+            string_value: "594fe019356564b444005eaa"
           }
         }
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "59c67824356564c45a000d92"
   }
@@ -8499,17 +8570,6 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Remove Screen Label"
-      args {
-        call_value {
-          functionName: "Get Variable (string)"
-          args {
-            string_value: "Abattoir_LabelAccumulatedGas"
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Enable/Disable Trigger"
       args {
         call_value {
@@ -8590,6 +8650,17 @@ triggers {
           functionName: "Get Map Item (Animation)"
           args {
             string_value: "HongKong:General/downed_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Abattoir_LabelAccumulatedGas"
           }
         }
       }
@@ -13230,7 +13301,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59c72b4e3565642422005ed0"
   }
@@ -13428,6 +13499,36 @@ triggers {
       }
     }
     ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEntryWave1"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        float_value: 5
+      }
+    }
+    ops {
       functionName: "Isolated Team Turn"
       args {
         call_value {
@@ -13455,7 +13556,7 @@ triggers {
     ops {
       functionName: "Trigger: Wait for Rounds"
       args {
-        int_value: 1
+        int_value: 2
       }
       args {
         call_value {
@@ -14297,6 +14398,607 @@ triggers {
   isActive: true
   idRef {
     id: "59c735cc356564242200626f"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Setup_PoisonImmunity"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_sweeney_s1-LargeAntidote"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Vulnerability"
+      args {
+        call_value {
+          functionName: "All Actors on Team of Race"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "VulnerabilityType"
+          }
+          args {
+            int_value: 16
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Vulnerability"
+      args {
+        call_value {
+          functionName: "All Actors on Team of Race"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 2
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "VulnerabilityType"
+          }
+          args {
+            int_value: 16
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Vulnerability"
+      args {
+        call_value {
+          functionName: "All Actors on Team of Race"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "VulnerabilityType"
+          }
+          args {
+            int_value: 16
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Vulnerability"
+      args {
+        call_value {
+          functionName: "All Actors on Team of Race"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 3
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "VulnerabilityType"
+          }
+          args {
+            int_value: 16
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Vulnerability"
+      args {
+        call_value {
+          functionName: "All Actors on Team of Race"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 4
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "VulnerabilityType"
+          }
+          args {
+            int_value: 16
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c7ec06356564140d000121"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Debug_Start"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59c7eca1356564140d000123"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59c33c3f3565646c4e007577"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59c33c323565646c4e007576"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a4_sweeney_s1-LargeAntidote"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "59c7ec88356564140d000122"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Conference_TassenderKneelsOpenDoor"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "594fe019356564b444005eaa"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59c48d17356564ac1d00401e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/downed_idle"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59c80d79356564140d00024e"
   }
   elseActions {
   }
@@ -18017,8 +18719,8 @@ regions {
 regions {
   name: "Entry_MoveDest_Wave2_Rigger"
   position {
-    x: -33
-    y: 28
+    x: -39
+    y: 24
     width: 1
     height: 1
   }
@@ -18076,7 +18778,7 @@ regions {
   name: "Entry_MoveDest_Wave2_Grenadier"
   position {
     x: -38
-    y: -24
+    y: 22
     width: 1
     height: 1
   }
@@ -24541,6 +25243,102 @@ characters {
     scale_character_sheet: true
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -13
+    y: 0
+    z: 6
+  }
+  orientation: ORIENTATION_S
+  displayName: "Debug_Isas"
+  idRef {
+    id: "59c7eca1356564140d000123"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/OrkMale"
+    character_sheet_id: "crew_isas_lv1"
+    equipment_sheet_id: "crew_isas_lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Player"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Shadowrunners"
+    char_name: "Isas"
+    GeneralTags: "isIsas"
+    GeneralTags: "isCrew"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "pc_orkmale_excl_oni"
+    }
+    portrait_code_override: "s10h16c1b0c0t0"
+    karma: 71
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Street Samurai"
+    id: "crew_lv1_isas"
+  }
+}
 variables {
   bool_value: false
   variableref_value {
@@ -24689,7 +25487,7 @@ worldMapLocation {
 }
 mapName: "ss_a5_mojave_s1"
 parentStory: ""
-scene_title: "New Scene"
+scene_title: "PROCESS"
 scene_subtitle: ""
 scene_synopsis: "The journey south to the Mojave Desert is fraught, cutting near the heart of Saito\342\200\231s power base in the Central Valley. Fortunately, your actions atop Sweeney Ridge threw Saito\342\200\231s plans into disarray, and his troops are too busy repositioning to pay much attention to your smaller team. A loose contingent of California Rangers escorts you much of the way, scaring off the isolated go-gangers who might have given you trouble.\n\nThe processing center rises bleak and ugly from the desert wasteland, a boil erupting on the earth\342\200\231s skin. This is where the Protectorate\342\200\231s cultural zones are enforced, where resistance to human rule is corrected. This is also where Tassender, the PU\342\200\231s best negotiator, is being held. The journey here has been long and full of losses, but at long last, his salvation is finally within reach."
 scene_image: "ss_a5_mojave_s1"
