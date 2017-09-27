@@ -16012,6 +16012,116 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "RainOutsideStart"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "5983c12f356564a8130031bf"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 200
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5938c34835656410400002f4"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "RainInsideStop"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "593dd7f4356564d41f005e3c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "593dd7b7356564d41f005e3b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "59811d443565645405002c97"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5938c39235656410400002f5"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_CatoGround"
   position {
@@ -23142,6 +23252,76 @@ characters {
     has_fist: false
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -75
+    y: 0
+    z: 52
+  }
+  orientation: ORIENTATION_S
+  displayName: "CatoDownstairs_Barrel1"
+  idRef {
+    id: "59cabe6d643431150efbb917"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Berlin:Objects/ExplosiveBarrel"
+    character_sheet_id: "Environment_Barrel_Explosive"
+    equipment_sheet_id: "Environment_Barrel_Explosive"
+    character_mod {
+      stats {
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      archetypeName: "Non-Combatant"
+    }
+    team_id: "Barrel"
+    char_name: "Barrel"
+    pc_spawn_number: -1
+    ai_ignores: true
+    portrait {
+      filename: ""
+    }
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -76
+    y: 0
+    z: 42
+  }
+  orientation: ORIENTATION_S
+  displayName: "CatoDownstairs_Barrel2"
+  idRef {
+    id: "59cabe83643431150efbb918"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Berlin:Objects/ExplosiveBarrel"
+    character_sheet_id: "Environment_Barrel_Explosive"
+    equipment_sheet_id: "Environment_Barrel_Explosive"
+    character_mod {
+      stats {
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      archetypeName: "Non-Combatant"
+    }
+    team_id: "Barrel"
+    char_name: "Barrel"
+    pc_spawn_number: -1
+    ai_ignores: true
+    portrait {
+      filename: ""
+    }
+  }
+}
 variables {
   bool_value: false
   variableref_value {
@@ -23335,6 +23515,7 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 1
 }
 team_affiliations {
   team_name: "Gangers"
@@ -23343,6 +23524,7 @@ team_affiliations {
   affiliation: 1
   affiliation: 0
   affiliation: 1
+  affiliation: 0
   affiliation: 0
   affiliation: 0
 }
@@ -23355,9 +23537,11 @@ team_affiliations {
   affiliation: 1
   affiliation: 1
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Civilians"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -23375,6 +23559,7 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Turret"
@@ -23385,9 +23570,22 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Dog"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "Barrel"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
