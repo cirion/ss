@@ -16,6 +16,41 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Rime"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -248,6 +283,13 @@ nodes {
       id: "59cad27e643431150efbb978:59cad336643431150efbb9ec"
     }
   }
+  branches {
+    responseText: "I\342\200\231m trying to get upstairs, but Ms. Yamazaki locked down the elevator."
+    nextNodeIndex: 10
+    idRef {
+      id: "59cad27e643431150efbb978:59caf391356564bc2c001b5a"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Root node + initial reactions"
 }
@@ -347,12 +389,67 @@ nodes {
     id: "59cad27e643431150efbb978:59cad3ed643431150efbba23"
   }
   index: 7
-  text: "You sense danger. The magic here is\342\200\246 wrong, off."
+  text: "You sense danger. The astral environment feels\342\200\246 wrong, off."
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59532bc0356564907e002343"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 8
     idRef {
       id: "59cad27e643431150efbb978:59cad3ed643431150efbba25"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59cad27e643431150efbb978:59caf34c356564bc2c001adb"
     }
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -362,16 +459,128 @@ nodes {
     id: "59cad27e643431150efbb978:59cad465643431a412a0fbf9"
   }
   index: 8
-  text: "You sense danger. The magic here is\342\200\246 wrong, off."
+  text: "{{GM}}She whispers to you as quietly as possible.{{/GM}}\n\nI\342\200\231d stay out of the astral plane if I were you. There\342\200\231s... a rather high background count."
   branches {
     responseText: ""
-    nextNodeIndex: -1
+    nextNodeIndex: 9
     idRef {
       id: "59cad27e643431150efbb978:59cad465643431a412a0fbfb"
     }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59caf351356564bc2c001ade"
+  }
+  index: 9
+  text: "{{GM}}She wags her finger at you.{{/GM}}\n\nBeware, $(l.firstname) $(l.lastname). Do not go looking for monsters under the bed.\n\nIf you do not see the monsters, they cannot eat you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59cad27e643431150efbb978:59caf387356564bc2c001b02"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59caf3a7356564bc2c001b5d"
+  }
+  index: 10
+  text: "Science and magic: they were meant to be separate, but joined together in a shotgun wedding, unholy, polluted. The ladder of science seeks to elevate humanity up to the heavens, the vine of magic descends from the clouds, beckoning.\n\nNow the vine grows through the ladder, its tendrils tightening.\n\nTo crush? To reinforce? "
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59cad27e643431150efbb978:59caf3aa356564bc2c001b5f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cad27e643431150efbb978:59caf3ab356564bc2c001b61"
+  }
+  index: 11
+  text: "She laughs, then gestures inside."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59cad27e643431150efbb978:59caf3ab356564bc2c001b63"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59cad27e643431150efbb978:59caf3b3356564bc2c001b67"
+  }
+  index: 12
+  text: "\nPlay your game of science. Answer the riddles that lie within.\nBut beware! The world is askew.\n\nWhen logic fails, madness will prevail. When the physical world is mocked, the spiritual world will exact its price."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59cad27e643431150efbb978:59caf3b3356564bc2c001b69"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59caf3b5356564bc2c001b6c"
+  }
+  index: 13
+  text: "{{GM}}She howls at you, her face contorted, her eyes wide and wild.{{/GM}}\n\nGO!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59caf3e8356564bc2c001b96"
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0
