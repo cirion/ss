@@ -1,0 +1,101 @@
+idRef {
+  id: "59cbbb7d643431d819148673"
+}
+ui_name: "ss_a6_monterey_s1-Matrix_ElectricalOverload"
+nodes {
+  idRef {
+    id: "59cbbba4643431d819148683"
+  }
+  index: 0
+  text: "> ELECTRICAL GRID ONLINE."
+  branches {
+    responseText: "{{GM}}Overload the aquarium electrical system.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "59cbbb7d643431d819148673:59cbbbc1643431d819148685"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59cbbb7d643431d819148673:59cbbbc1643431d819148687"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cbbc1c643431d819148699"
+  }
+  index: 1
+  text: "> CAUTION CAUTION CAUTION\n> DISCHARGING ELECTRICITY WILL DAMAGE ALL ORGANIC LIFE NEAR THE AQUARIUM.\n> CAUTION CAUTION CAUTION\n> CATASTROPHIC DAMAGE TO MACHINERY.\n> PROCEED WITH DISCHARGE?"
+  branches {
+    responseText: "{{GM}}Yes.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59cbbcd4643431d8191486b9"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59cbbb7d643431d819148673:59cbbc68643431d81914869b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}No.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59cbbb7d643431d819148673:59cbbc68643431d81914869d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cbbbf6643431d819148693"
+  }
+  index: 2
+  text: "> ELECTRICAL GRID RECHARGING.\n> TIME TO CAPACITY: $(scene.Matrix_OverloadRechargeTime)."
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59cbbb7d643431d819148673:59cbbc15643431d819148695"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59cbbb7d643431d819148673:59cbbb7d643431d819148677"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 2
+  idRef {
+    id: "59cbbb7d643431d819148673:59cbbbf3643431d819148690"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad9"
