@@ -29,7 +29,7 @@ nodes {
     id: "59cbbc1c643431d819148699"
   }
   index: 1
-  text: "> CAUTION CAUTION CAUTION\n> DISCHARGING ELECTRICITY WILL DAMAGE ALL ORGANIC LIFE NEAR THE AQUARIUM.\n> CAUTION CAUTION CAUTION\n> CATASTROPHIC DAMAGE TO MACHINERY.\n> PROCEED WITH DISCHARGE?"
+  text: "> CAUTION CAUTION CAUTION\n> DISCHARGING ELECTRICITY WILL DAMAGE ALL ORGANIC LIFE IN THE AQUARIUM CORRIDOR.\n> CAUTION CAUTION CAUTION\n> CATASTROPHIC DAMAGE TO ELECTRONICS.\n> PROCEED WITH DISCHARGE?"
   branches {
     responseText: "{{GM}}Yes.{{/GM}}"
     actions {
@@ -86,6 +86,33 @@ nodes {
   nodeType: ConversationNodeType_Simple
 }
 roots {
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Matrix_OverloadRechargeTime"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
   nextNodeIndex: 0
   idRef {
     id: "59cbbb7d643431d819148673:59cbbb7d643431d819148677"

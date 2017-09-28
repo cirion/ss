@@ -10295,7 +10295,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59cbb34d356564f00900735c"
   }
@@ -10322,7 +10322,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Start Conversation"
+      functionName: "Start Conversation Between Actors"
       args {
         call_value {
           functionName: "Get Map Item (Conversation)"
@@ -10333,7 +10333,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Nothing Actor"
+          functionName: "Active Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Active Actor"
         }
       }
       args {
@@ -10343,7 +10348,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -10360,6 +10365,9 @@ triggers {
 triggers {
   name: "Matrix_DoElectricalOverload"
   events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
   }
   conditions {
   }
@@ -11043,6 +11051,20 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_ReturnCameraToActiveActor"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
   }
   isActive: false
   idRef {
@@ -11192,8 +11214,57 @@ triggers {
 triggers {
   name: "Matrix_Electricity_MoveIC"
   events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003ebb"
+          }
+        }
+      }
+    }
   }
   conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -11203,7 +11274,10 @@ triggers {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59811ef93565644422003a86"
+              }
             }
           }
           args {
@@ -11215,6 +11289,117 @@ triggers {
           functionName: "Get Map Item (Region)"
           args {
             string_value: "59811ef93565644422003f31"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59811ef93565644422003fb7"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003f4e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59811ef93565644422003cc6"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003ea3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59811ef93565644422003c44"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003f2c"
           }
         }
       }
@@ -11566,6 +11751,896 @@ triggers {
     id: "59cc45d43565649c3d005528"
   }
   elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix_HackPaydata"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59811ef93565644422003afc"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_monterey_s1-Paydata"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cc62c23565649c3d005547"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Matrix_EntranceAmbush"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003d2f"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Interrupt Team\'s Movement"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner By Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isEntranceIC"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cc63c43565649c3d00554c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59cc63803565649c3d00554a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cc63d83565649c3d00554d"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59cc635f3565649c3d005549"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cc63f73565649c3d00554e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59cc63903565649c3d00554b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "59cc640c3565649c3d00554f"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Matrix_EnableAmbush"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003c3b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59811ef93565644422003ebb"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59cc640c3565649c3d00554f"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cc64b13565649c3d005550"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Debug_Matrix"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59cb2307356564bc2c0024b2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59c83fbc356564b41000798d"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59869c9f35656440030020df"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59c83fcd356564b41000798e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_IsDebugging"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "59869c8e35656440030020de"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Defend Yamazaki"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cc65383565649c3d005551"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Global_ReturnCameraToActiveActor"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_ReturnCameraToActiveActor"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Active Actor"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cc67cb3565649c3d00558a"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Office_ResetElectricalRecharge"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59cc68713565649c3d0055a6"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Matrix_OverloadRechargeTime"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        string_value: "Electrical systems at standard levels. Discharge function can be accessed within local Matrix grid."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 5
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cc68753565649c3d0055a7"
+  }
+  elseActions {
+    ops {
+      functionName: "Display Text over Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        string_value: "Recharge accelerated. Discharge available again."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 4
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Matrix_OverloadRechargeTime"
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
   }
   is_oneshot: false
 }
@@ -14225,6 +15300,180 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "59cc38c66434313726c7f440"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Matrix_Entrance_MoveDest_Ranged1"
+  position {
+    x: -34
+    y: -33
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cc635f3565649c3d005549"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Matrix_Entrance_MoveDest_Melee"
+  position {
+    x: -37
+    y: -26
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cc63803565649c3d00554a"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Matrix_Entrance_MoveDest_Ranged2"
+  position {
+    x: -39
+    y: -30
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cc63903565649c3d00554b"
   }
   highlight_color {
     r: 0
@@ -18945,6 +20194,327 @@ characters {
     scale_character_sheet: true
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 14
+    y: 0
+    z: -26
+  }
+  orientation: ORIENTATION_N
+  displayName: "Matrix_Data_Support_1"
+  idRef {
+    id: "59cc62583565649c3d005542"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Support"
+    character_sheet_id: "IC_Lv1_White_Ranged"
+    equipment_sheet_id: "IC White Support Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Shield"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "White Sentry IC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 7
+    y: 0
+    z: -20
+  }
+  orientation: ORIENTATION_N
+  displayName: "Matrix_Data_Charge_1"
+  idRef {
+    id: "59cc62713565649c3d005543"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_whiteLaser"
+    character_sheet_id: "IC_Lv1_White_ChargeLaser"
+    equipment_sheet_id: "IC White ChargeLaser Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Laser"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "White Charge IC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -2
+    y: 0
+    z: -24
+  }
+  orientation: ORIENTATION_N
+  displayName: "Matrix_Data_Ranged_1"
+  idRef {
+    id: "59cc62963565649c3d005544"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
+    character_sheet_id: "IC_Lv1_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "White Ranged IC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -10
+    y: 0
+    z: -18
+  }
+  orientation: ORIENTATION_N
+  displayName: "Matrix_Data_Melee_1"
+  idRef {
+    id: "59cc62a53565649c3d005545"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Melee"
+    character_sheet_id: "IC_Lv1_White_Melee"
+    equipment_sheet_id: "IC White Melee Lv1 Gear"
+    character_mod {
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+    }
+    team_id: "LoneStar"
+    char_name: "White Melee IC"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -36
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_W
+  GeneralTags: "isEntranceIC"
+  displayName: "Matrix_Entrance_Melee"
+  idRef {
+    id: "59cc63c43565649c3d00554c"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Melee"
+    character_sheet_id: "IC_Lv1_White_Melee"
+    equipment_sheet_id: "IC White Melee Lv1 Gear"
+    character_mod {
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+    }
+    team_id: "LoneStar"
+    char_name: "White Melee IC"
+    GeneralTags: "isEntranceIC"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -37
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_W
+  GeneralTags: "isEntranceIC"
+  displayName: "Matrix_Entrance_Ranged_1"
+  idRef {
+    id: "59cc63d83565649c3d00554d"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
+    character_sheet_id: "IC_Lv1_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "White Ranged IC"
+    GeneralTags: "isEntranceIC"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -35
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_W
+  GeneralTags: "isEntranceIC"
+  displayName: "Matrix_Entrance_Ranged_2"
+  idRef {
+    id: "59cc63f73565649c3d00554e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
+    character_sheet_id: "IC_Lv1_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Lv1 Gear"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "White Ranged IC"
+    GeneralTags: "isEntranceIC"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
 variables {
   bool_value: false
   variableref_value {
@@ -19023,6 +20593,7 @@ mapEvents: "Event_Influence_Arelia_Universal"
 mapEvents: "Event_RingElevatorVidPhone"
 mapEvents: "Event_SendDrone"
 mapEvents: "Event_CheckForDroneInVent"
+mapEvents: "Event_ReturnCameraToActiveActor"
 mapEvents: "New Event"
 senseTags: "isCamera"
 senseTags: "isArelia"
@@ -19169,8 +20740,6 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 255
   heat_response_rating: 0
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
