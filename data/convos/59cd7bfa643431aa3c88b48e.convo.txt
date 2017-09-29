@@ -1,0 +1,620 @@
+idRef {
+  id: "59cd7bfa643431aa3c88b48e"
+}
+ui_name: "ss_a6_treasure_s1-Entry_DoorGuard"
+nodes {
+  idRef {
+    id: "59cd7c1d643431aa3c88b49c"
+  }
+  index: 0
+  text: "Back already? I thought it would take far longer to\342\200\246\n\n{{GM}}He looks up and freezes, taking in the sight of you and your crew. He reaches for his gun.{{/GM}}"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7cfd643431aa3c88b4ab"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7d1d643431aa3c88b4bb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionIncreases"
+          }
+        }
+      }
+    }
+  }
+  comment: "TODO: Maybe select gun, unless he already has it"
+}
+nodes {
+  idRef {
+    id: "59cd7cff643431aa3c88b4ae"
+  }
+  index: 1
+  text: "$+(l.race_plural) sure as fuck aren\342\200\231t allowed in San Francisco, let alone on Treasure Island! Identify yourself before I perforate you!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7d07643431aa3c88b4b0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionIncreases"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd7d1d643431aa3c88b4bd"
+  }
+  index: 2
+  text: "What the fuck are you doing with all these pointy-ears?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7d1d643431aa3c88b4bf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7d4a643431aa3c88b4d1"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7d54643431aa3c88b4d6"
+    }
+    comment: "TODO: Masato is present"
+  }
+  branches {
+    responseText: "Target practice. Someone wanted live specimens."
+    nextNodeIndex: 5
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7d54643431aa3c88b4d8"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "This is a prisoner transfer. Standard relocation."
+    nextNodeIndex: 5
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7dc8643431aa3c88b4fc"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Your supervisor has, um, \342\200\234exotic\342\200\235 tastes. We aim to please."
+    nextNodeIndex: 5
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7dc8643431aa3c88b4fe"
+    }
+  }
+  branches {
+    responseText: "Die, human scum! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59cd81ca643431ca3e88ade5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7dc9643431aa3c88b500"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Check for Masato"
+}
+nodes {
+  idRef {
+    id: "59cd7d5a643431aa3c88b4db"
+  }
+  index: 4
+  text: "{{GM}}He spreads his hands wide and smiles, non-threateningly.{{/GM}}\n\nRelax! Didn\342\200\231t your commander tell you we were coming?\n\nI\342\200\231m Lieutenant Fujikawa from Fort McClellan. I assure you this has been approved at the highest levels and there\342\200\231s absolutely nothing to be concerned about."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd7d5d643431aa3c88b4dd"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59cd81f0643431ca3e88adfe"
+  }
+  index: 5
+  text: "I was told nothing about this.\n\n{{GM}}He draws his weapon.{{/GM}}\n\nI want to see a badge NOW."
+  branches {
+    responseText: "{{CC}}Item: Badge{{/CC}} Relax!"
+    nextNodeIndex: 6
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8230643431ca3e88ae35"
+    }
+    comment: "TODO: Have badge quest item"
+  }
+  branches {
+    responseText: "I lost it\342\200\246"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionCurrent"
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Downstairs_SuspicionIncreases"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8231643431ca3e88ae37"
+    }
+  }
+  branches {
+    responseText: "Fuck this. {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59cd81ca643431ca3e88ade5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8233643431ca3e88ae39"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "TODO: Aim at you."
+}
+nodes {
+  idRef {
+    id: "59cd833c643431ca3e88aeee"
+  }
+  index: 6
+  text: "{{GM}}He does, in fact, visibly relax.{{/GM}}\n\nHey, if you have the badge, I open the door. I don\342\200\231t want to hear anything else about what you\342\200\231re up to."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd833e643431ca3e88aef0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd833e643431ca3e88aef2"
+  }
+  index: 7
+  text: "{{GM}}He scans the card and frowns at the readout.{{/GM}}\n\nYou aren\342\200\231t scheduled to be back here for several more days. If I were you, I\342\200\231d check in with Lt. Otsuka before you meet with the XO. She does not like anything out of order, particularly not today."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8575643431ca3e88b00b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackout_rigging"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionIncreases"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:cyberware"
+          }
+          args {
+            string_value: "Cyberware_Electronic_On"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59cd8283643431ca3e88aeaf"
+          }
+        }
+      }
+    }
+  }
+  comment: "TODO: Check sound"
+}
+nodes {
+  idRef {
+    id: "59cd826d643431ca3e88ae91"
+  }
+  index: 8
+  text: "Oh, for\342\200\246\n\nYou\342\200\231re too incompetent to be dangerous. But whoever sent you here fucked up big.\n\nIf I were you, I\342\200\231d talk with Lt. Otsuka before you meet with the XO. She does not like anything out of order, particularly not today."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8572643431ca3e88b008"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59cd8283643431ca3e88aeaf"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59cd853a643431ca3e88afb9"
+  }
+  index: 9
+  text: "What?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8540643431ca3e88afbb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd8567643431ca3e88b004"
+  }
+  index: 10
+  text: ""
+  branches {
+    responseText: "Where can I find Lt. Otsuka?"
+    nextNodeIndex: 11
+    onlyOnce: true
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8616643431ca3e88b036"
+    }
+  }
+  branches {
+    responseText: "Who is the XO?"
+    nextNodeIndex: 12
+    onlyOnce: true
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8628643431ca3e88b046"
+    }
+  }
+  branches {
+    responseText: "Do you know anything about Mr. Beaumont?"
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8652643431ca3e88b081"
+    }
+    comment: "TODO: Heard of Beaumont"
+  }
+  branches {
+    responseText: "Bye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8750643431ca3e88b0ea"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59cd8619643431ca3e88b039"
+  }
+  index: 11
+  text: "{{GM}}He smirks.{{/GM}}\n\nScrubbing toilets. Or licking them clean if he\342\200\231s managed to piss of any more of the brass. He can tell you all the savory details."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd861d643431ca3e88b03b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd8628643431ca3e88b048"
+  }
+  index: 12
+  text: "Lieutenant Commander Sano. I\342\200\231d generally recommend steering clear of her, but if you\342\200\231re going to parade metahuman filth through here, she\342\200\231s definitely going to notice.\n\nFortunately for you, she has plenty of other shit to deal with today."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8628643431ca3e88b04a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd8671643431ca3e88b084"
+  }
+  index: 13
+  text: "Yeah, that Human Nation \342\200\234gentleman\342\200\235.\n\nOh\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8673643431ca3e88b086"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd8674643431ca3e88b088"
+  }
+  index: 14
+  text: "{{GM}}A sheepish expression crosses his face.{{/GM}}\n\nThat\342\200\231s right. He wanted to be notified if anything unusual happened on the Bay Bridge after his arrival. It looks like traffic has slowed way down starting\342\200\246 hm, about an hour ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8674643431ca3e88b08a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd8678643431ca3e88b08e"
+  }
+  index: 15
+  text: "SOMEONE should probably tell him. He won\342\200\231t be happy that we waited this long, though."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd7bfa643431aa3c88b48e:59cd8678643431ca3e88b090"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "TODO: Update goal or var for this info"
+}
+roots {
+  nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd7bfa643431aa3c88b492"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 9
+  idRef {
+    id: "59cd7bfa643431aa3c88b48e:59cd7c19643431aa3c88b499"
+  }
+}

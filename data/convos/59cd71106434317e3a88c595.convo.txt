@@ -1,0 +1,743 @@
+idRef {
+  id: "59cd71106434317e3a88c595"
+}
+ui_name: "ss_a6_treasure_s1-Outside_PrisonerNormal"
+nodes {
+  idRef {
+    id: "59cd71416434317e3a88c5a1"
+  }
+  index: 0
+  text: "He\342\200\231s still in bad shape, groaning quietly. He can\342\200\231t move in his current condition."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd740f643431aa3c88aeb1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  comment: "TODO: Maybe start optional goal here?"
+}
+nodes {
+  idRef {
+    id: "59cd73d2643431aa3c88ae38"
+  }
+  index: 1
+  text: "He stares numbly at you as you approach."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd73d4643431aa3c88ae3a"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59cd73ec643431aa3c88ae59"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Attempt to heal him.{{/GM}}"
+    nextNodeIndex: 3
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd71476434317e3a88c5a3"
+    }
+    comment: "TODO: If the goal isn\'t complete yet"
+  }
+  branches {
+    responseText: "{{GM}}Question him.{{/GM}}"
+    nextNodeIndex: 8
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd73f5643431aa3c88ae81"
+    }
+    comment: "TODO: Probably a goal for this, too?"
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd71b56434317e3a88c5af"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59cd71496434317e3a88c5a6"
+  }
+  index: 3
+  text: "You look at his wounds again. They\342\200\231re bad and haven\342\200\231t been treated properly, but there\342\200\231s nothing too unusual here."
+  branches {
+    responseText: "{{CC}}Biotech: $(story.Global-Skillcheck_Medium){{/CC}} Hold on, I\342\200\231m going to improvise something\342\200\246"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 11
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Medium"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd71ea6434317e3a88c5b9"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item: Medkit{{/CC}} This will stop the bleeding\342\200\246"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd72226434317e3a88c5da"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Check for medkit in inventory. Ideally just one option and will remove the cheapest version."
+  }
+  branches {
+    responseText: "{{CC}}Item: Shamanic Salve{{/CC}} This will help your body heal itself..."
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd72a06434319a3c88ade6"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Check for item"
+  }
+  branches {
+    responseText: "{{CC}}Item: Doc Wagon Trauma Kit{{/CC}} This will fix your leg\342\200\246"
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd72a06434319a3c88ade8"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Check for item. Like medkit, should be unlocked by any, and remove the cheapest version"
+  }
+  branches {
+    responseText: "{{CC}}Item: Bliss{{/CC}} This should take away the pain\342\200\246"
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd72a16434319a3c88adea"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Check for item"
+  }
+  branches {
+    responseText: "I can\342\200\231t help you."
+    nextNodeIndex: 5
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd72a16434319a3c88adec"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59cd720e6434317e3a88c5ce"
+  }
+  index: 4
+  text: "You tear fabric from the prisoner\342\200\231s uniform, checking each strip to verify it\342\200\231s clean. You replace the bandages on the head and apply a makeshift tourniquet to the injured leg.\n\nIt isn\342\200\231t much, but it will stop the bleeding and ease his pain a little."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd72fa643431aa3c88adef"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd72fb643431aa3c88adf1"
+    }
+    comment: "TODO: If Arelia is present"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7308643431aa3c88adf6"
+  }
+  index: 6
+  text: "I think I can.\n\n{{GM}}She crouches by the prisoner and lays hands on him, murmuring quietly under her breath. There\342\200\231s no flashy burst of light or sparkle of color, but whatever she\342\200\231s doing seems to be working.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7331643431aa3c88ae0a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+  comment: "TODO: Animate, sound, sfx"
+}
+nodes {
+  idRef {
+    id: "59cd7334643431aa3c88ae0d"
+  }
+  index: 7
+  text: "The prisoner\342\200\231s breathing eases and grows more regular. He seems more alert now."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7387643431aa3c88ae0f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "59cd743b643431aa3c88aee2"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    onlyOnce: true
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd743d643431aa3c88aee4"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd743d643431aa3c88aee6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7441643431aa3c88aee9"
+  }
+  index: 9
+  text: "{{GM}}He glares at you with a mixture of defiance and fear.{{/GM}}\n\nYour trog friends couldn\342\200\231t break me. What makes you think that you will?"
+  branches {
+    responseText: "{{GM}}Say nothing. Just stare at him.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Arelia_Selfish"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd745b643431aa3c88aeeb"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m sorry they hurt you. I just want to talk."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Arelia_Universal"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd745b643431aa3c88aeed"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I have a VERY active imagination."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Influence_Arelia_Selfish"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd745c643431aa3c88aeef"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd749f643431aa3c88af96"
+  }
+  index: 10
+  text: "{{GM}}He starts to shiver. Whether from trauma or from fear, you are not sure.{{/GM}}\n\nYou aren\342\200\231t going to learn my secret! I can only deliver it to Gavan Banain, nobody else!"
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} You\342\200\231re in no shape to deliver anything. You need a subcontractor. Lucky you, I\342\200\231m great at slipping through enemy lines. You can trust me, I\342\200\231m a professional."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 11
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd74cc643431aa3c88afcb"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} The best way to protect a secret is to encrypt it. Fortunately for you, I\342\200\231m adept in a wide variety of ciphers and codes. Why don\342\200\231t you tell me your secret, so I can make sure nobody steals it?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 11
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd74e7643431aa3c88affa"
+    }
+  }
+  branches {
+    responseText: "Come on, spit it out."
+    nextNodeIndex: 18
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd75e6643431aa3c88b18b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Please share your burden with me."
+    nextNodeIndex: 18
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd75f1643431aa3c88b18d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Well, luckily for you, I am Gavan Banain! Saved you a trip!"
+    nextNodeIndex: 18
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd75f1643431aa3c88b18f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd7545643431aa3c88b034"
+  }
+  index: 11
+  text: "{{GM}}He seems delirious. He nods.{{/GM}}\n\nOkay. Okay. Here goes:"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7559643431aa3c88b069"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd755b643431aa3c88b06c"
+  }
+  index: 12
+  text: "\342\200\234The operation is underway. Every soldier we can spare has been sent to attack Point Richmond. We do not anticipate a strong resistance. Once we secure the eastern span, we will be able cut off any reinforcements to the East Bay arriving from the Pacific.\342\200\235"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7569643431aa3c88b06e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd756b643431aa3c88b071"
+  }
+  index: 13
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    onlyOnce: true
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7570643431aa3c88b073"
+    }
+    comment: "TODO: Actor in region"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    onlyOnce: true
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7591643431aa3c88b0bb"
+    }
+    comment: "TODO: Actor in region"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    onlyOnce: true
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7593643431aa3c88b0c7"
+    }
+    comment: "TODO: Actor in region"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd75b4643431aa3c88b0cf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reactive loop"
+}
+nodes {
+  idRef {
+    id: "59cd7573643431aa3c88b076"
+  }
+  index: 14
+  text: "A bold move, far from their typical theater of operations. But it could change the state of play. Thoroughly isolate the PU and MPA, at the very moment that they are starting to get traction in gathering allies."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7575643431aa3c88b078"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59cd71106434317e3a88c595:59cd7591643431aa3c88b0bd"
+  }
+  index: 15
+  text: "In this moment, those soldiers vulnerable are. But if they succeed, difficult to dislodge will be."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7591643431aa3c88b0bf"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59cd71106434317e3a88c595:59cd7593643431aa3c88b0c9"
+  }
+  index: 16
+  text: "Stopping Camelot still takes top priority. But this could be very bad. If Camelot succeeds, and the Protectorate holds all the bridges, then we\342\200\231ll be trapped, unable to mount any significant operations outside the East Bay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7593643431aa3c88b0cb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59cd75b6643431aa3c88b0d2"
+  }
+  index: 17
+  text: "His head slumps down, exhausted."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd75d7643431aa3c88b116"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "TODO: Update goal or something"
+}
+nodes {
+  idRef {
+    id: "59cd760f643431aa3c88b1d9"
+  }
+  index: 18
+  text: "No! NO!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7621643431aa3c88b1e0"
+    }
+    comment: "TODO: Isas is present"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7621643431aa3c88b1e2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cd763e643431aa3c88b2b7"
+  }
+  index: 19
+  text: "Allow me.\n\n{{GM}}He trains his weapon on the prisoner. The action seems to get his attention.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7640643431aa3c88b2b9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+  comment: "TODO: Isas draws weapon, aims, faces the prisoner"
+}
+nodes {
+  idRef {
+    id: "59cd71106434317e3a88c595:59cd7647643431aa3c88b30a"
+  }
+  index: 20
+  text: "You your soul have tainted. The small actions you took a wall helped build: a wall of suffering, of division, of hate.\n\nMuch harm on California already has been delivered. Far, far more harm still will come."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7647643431aa3c88b30c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59cd71106434317e3a88c595:59cd7650643431aa3c88b310"
+  }
+  index: 21
+  text: "You may atone. You a brick from this wall may remove. You this information will share, so we your damage may undo."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "59cd71106434317e3a88c595:59cd7650643431aa3c88b312"
+    }
+    auxiliaryLink: true
+    comment: "TODO: Isas stops aiming"
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59cd71106434317e3a88c595:59cd71106434317e3a88c599"
+  }
+  comment: "TODO: Prisoner isn\'t healed yet."
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 1
+  idRef {
+    id: "59cd71106434317e3a88c595:59cd73ca643431aa3c88ae35"
+  }
+  comment: "Default: Prisoner healed"
+}
