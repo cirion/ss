@@ -1068,12 +1068,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Current Location of Prop"
+          functionName: "Get Random Point Within Region"
           args {
             call_value {
-              functionName: "Get Map Item (Prop)"
+              functionName: "Get Map Item (Region)"
               args {
-                string_value: "595447e7356564907e002371"
+                string_value: "59cf12c83565644c3d006d13"
               }
             }
           }
@@ -1181,12 +1181,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Current Location of Prop"
+          functionName: "Get Random Point Within Region"
           args {
             call_value {
-              functionName: "Get Map Item (Prop)"
+              functionName: "Get Map Item (Region)"
               args {
-                string_value: "595447e7356564907e002371"
+                string_value: "59cf12c83565644c3d006d13"
               }
             }
           }
@@ -3677,6 +3677,28 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599894083565640c240080d8"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Goal Status"
       args {
         call_value {
@@ -3935,6 +3957,87 @@ triggers {
       }
     }
     ops {
+      functionName: "Add Tag to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDog"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDog"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59c83e6f356564b410007987"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Order Actor to Move To (Region)"
       args {
         call_value {
@@ -3984,6 +4087,31 @@ triggers {
           }
           args {
             int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 4
           }
         }
       }
@@ -7384,105 +7512,6 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Setup_SpawnRenrakuRep"
-  events {
-    ops {
-      functionName: "On Map Setup"
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Story Variable (bool)"
-          args {
-            string_value: "58a09a016666641898001ad5"
-          }
-          args {
-            string_value: "a4_Fuchi_s1-KilledSira"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "59c83cdb356564b4100077d2"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "59c727db3565642422005c3d"
-  }
-  elseActions {
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "59c83cdb356564b4100077d3"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  is_oneshot: true
-}
-triggers {
   name: "Upstairs_CrewMemberExits"
   events {
     ops {
@@ -9078,6 +9107,165 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cf18573565644c3d006d1e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59cf18323565644c3d006d1b"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cf18573565644c3d006d1f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59cf183c3565644c3d006d1c"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cf18573565644c3d006d20"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59cf18473565644c3d006d1d"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -9143,7 +9331,7 @@ triggers {
         }
       }
       args {
-        string_value: "Nothing happens when you press the button. The display readout says \342\200\234LOCKDOWN IN EFFECT\342\200\235."
+        string_value: "Nothing happens when you approach the door. The display readout says \342\200\234LOCKDOWN IN EFFECT\342\200\235."
       }
       args {
         float_value: 0
@@ -9636,8 +9824,57 @@ triggers {
 triggers {
   name: "Downstairs_NovatechCallAfterFirstFight"
   events {
+    ops {
+      functionName: "On Actor Death"
+    }
   }
   conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isDownstairsRenraku"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
   }
   actions {
     ops {
@@ -9841,7 +10078,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor Reference)"
           args {
-            string_value: "59c83fbc356564b41000798d"
+            string_value: "59c83fcd356564b41000798e"
           }
         }
       }
@@ -9935,7 +10172,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59cb2441356564bc2c0024b3"
   }
@@ -14861,6 +15098,27 @@ triggers {
       }
     }
     ops {
+      functionName: "Set Actor AI Script"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59c912b33565648012006b37"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        string_value: "Guard - Seek And Destroy"
+      }
+    }
+    ops {
       functionName: "Change Actor Team"
       args {
         call_value {
@@ -17677,6 +17935,325 @@ triggers {
   isActive: true
   idRef {
     id: "59cdd94b3565646c090030ec"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_RatsSwarm"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isOutsideRat"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isOutsideRat"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isOutsideRat"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cf1a523565644c3d006d21"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Downstairs_RenrakuChat"
+  events {
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isDownstairsRenraku"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isRenrakuGreeter"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59cf1ce13565644c3d006d6c"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cf1fb53565644c3d006e1f"
   }
   elseActions {
   }
@@ -20735,7 +21312,7 @@ regions {
   position {
     x: -42
     y: 39
-    width: 2
+    width: 3
     height: 3
   }
   enabledAtStart: true
@@ -20976,6 +21553,238 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "59cf0b993565644c3d006bce"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Upstairs_ElevatorEntry"
+  position {
+    x: -57
+    y: 61
+    width: 2
+    height: 4
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cf12c83565644c3d006d13"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_WarpDest_Rat_4"
+  position {
+    x: 11
+    y: 32
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cf18323565644c3d006d1b"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_WarpDest_Rat_5"
+  position {
+    x: 0
+    y: 45
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cf183c3565644c3d006d1c"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Outside_WarpDest_Rat_6"
+  position {
+    x: 1
+    y: 28
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59cf18473565644c3d006d1d"
   }
   highlight_color {
     r: 0
@@ -21878,6 +22687,39 @@ characters {
           }
         }
       }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Exit the Aquarium"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
     }
     conversationPoint {
       conversationID: "59c83455356564b41000731d"
@@ -22641,7 +23483,7 @@ characters {
       }
       specializations {
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_noncombatant"
       attitude: AttitudeBoss
       attackRandom: AttackStyle_AllEqual
       vulnerabilities {
@@ -22864,7 +23706,7 @@ characters {
   gridPoint {
     x: -4
     y: 0
-    z: 96
+    z: 98
   }
   orientation: ORIENTATION_S
   displayName: "Downstairs_WaterSpirit_2"
@@ -22961,6 +23803,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isDownstairsRenraku"
+  GeneralTags: "isRenrakuGreeter"
   displayName: "Downstairs_Renraku_Shotgun"
   idRef {
     id: "59cbae9c356564f009007283"
@@ -22993,6 +23836,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Renraku Enforcer"
     GeneralTags: "isDownstairsRenraku"
+    GeneralTags: "isRenrakuGreeter"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -23010,7 +23854,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isDownstairsRenraku"
-  displayName: "Renraku_Captain"
+  displayName: "Downstairs_Renraku_Captain"
   idRef {
     id: "59cbae9c356564f009007284"
   }
@@ -23059,6 +23903,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isDownstairsRenraku"
+  GeneralTags: "isRenrakuGreeter"
   displayName: "Downstairs_Renraku_Pistol"
   idRef {
     id: "59cbae9c356564f009007286"
@@ -23091,6 +23936,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Renraku Guard"
     GeneralTags: "isDownstairsRenraku"
+    GeneralTags: "isRenrakuGreeter"
     pc_spawn_number: -1
     portrait {
       filename: "npc_humanmale_gaichutrust_redsamurai"
@@ -23108,7 +23954,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isDownstairsRenraku"
-  displayName: "Renraku_Sniper"
+  displayName: "Downstairs_Renraku_Sniper"
   idRef {
     id: "59cbae9c356564f009007287"
   }
@@ -23159,6 +24005,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isDownstairsRenraku"
+  GeneralTags: "isRenrakuGreeter"
   displayName: "Downstairs_Renraku_Rigger"
   idRef {
     id: "59cbae9c356564f009007288"
@@ -23232,6 +24079,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Renraku Rigger"
     GeneralTags: "isDownstairsRenraku"
+    GeneralTags: "isRenrakuGreeter"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -23252,7 +24100,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isDownstairsRenraku"
-  displayName: "Renraku_Grenadier"
+  displayName: "Downstairs_Renraku_Grenadier"
   idRef {
     id: "59cbae9c356564f009007289"
   }
@@ -23473,344 +24321,6 @@ characters {
     }
     karma: 68
     hiring_cost_override: 1000
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -72
-    y: 0
-    z: 21
-  }
-  orientation: ORIENTATION_E
-  GeneralTags: "isDownstairsRenraku"
-  displayName: "Downstairs_Captain"
-  idRef {
-    id: "59cc1e206434311d227b9dcd"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Red Samurai/HumanMaleRedSamuraiCaptain"
-    character_sheet_id: "Errant_Lv1_Captain"
-    equipment_sheet_id: "Errant_Lv1_Captain"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Renraku Captain"
-    GeneralTags: "isDownstairsRenraku"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-    karma: 52
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -71
-    y: 0
-    z: 21
-  }
-  orientation: ORIENTATION_N
-  GeneralTags: "isDownstairsRenraku"
-  displayName: "Downstairs_Pistol_1"
-  idRef {
-    id: "59cc1e226434311d227b9dce"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Story/RenrakuSamurai"
-    character_sheet_id: "Errant_Lv1_Human_Pistol"
-    equipment_sheet_id: "Errant_Lv1_Pistol"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Renraku Guard"
-    GeneralTags: "isDownstairsRenraku"
-    pc_spawn_number: -1
-    portrait {
-      filename: "npc_humanmale_gaichutrust_redsamurai"
-    }
-    karma: 41
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -70
-    y: 0
-    z: 21
-  }
-  orientation: ORIENTATION_N
-  GeneralTags: "isDownstairsRenraku"
-  displayName: "Downstairs_Pistol_2"
-  idRef {
-    id: "59cc1e266434311d227b9dcf"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "Seattle:Story/RenrakuSamurai"
-    character_sheet_id: "Errant_Lv1_Human_Pistol"
-    equipment_sheet_id: "Errant_Lv1_Pistol"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Renraku Guard"
-    GeneralTags: "isDownstairsRenraku"
-    pc_spawn_number: -1
-    portrait {
-      filename: "npc_humanmale_gaichutrust_redsamurai"
-    }
-    karma: 41
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -69
-    y: 0
-    z: 21
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isDownstairsRenraku"
-  displayName: "Downstairs_Shotgun_1"
-  idRef {
-    id: "59cc1e286434311d227b9dd0"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Red Samurai/HumanMaleRedSamuraiSoldier"
-    character_sheet_id: "Errant_Lv1_Ork_Shotgun"
-    equipment_sheet_id: "Errant_Lv1_Shotgun"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Renraku Enforcer"
-    GeneralTags: "isDownstairsRenraku"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-    karma: 41
-    scale_character_sheet: true
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -68
-    y: 0
-    z: 21
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isDownstairsRenraku"
-  displayName: "Downstairs_Rigger"
-  idRef {
-    id: "59cc1e2b6434311d227b9dd1"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Red Samurai/HumanFemaleRedSamuraiMage"
-    character_sheet_id: "Errant_Lv1_Rigger"
-    equipment_sheet_id: "Errant_Lv1_Rigger_Gear"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_grunt"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Renraku Rigger"
-    GeneralTags: "isDownstairsRenraku"
-    pc_spawn_number: -1
-    hiring_type: HiringType_None
-    portrait {
-      filename: ""
-    }
-    karma: 44
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-    cyberware_head: "(Head) Datajack"
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: -67
-    y: 0
-    z: 21
-  }
-  orientation: ORIENTATION_W
-  GeneralTags: "isDownstairsRenraku"
-  displayName: "Downstairs_Shotgun_2"
-  idRef {
-    id: "59cc1e436434311d227b9dd2"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Red Samurai/HumanMaleRedSamuraiSoldier"
-    character_sheet_id: "Errant_Lv1_Ork_Shotgun"
-    equipment_sheet_id: "Errant_Lv1_Shotgun"
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "gumbo_Soldier"
-      attitude: AttitudeAggressive
-      attackRandom: AttackStyle_AllEqual
-      vulnerabilities {
-      }
-    }
-    team_id: "LoneStar"
-    char_name: "Renraku Enforcer"
-    GeneralTags: "isDownstairsRenraku"
-    pc_spawn_number: -1
-    portrait {
-      filename: ""
-    }
-    karma: 41
     scale_character_sheet: true
   }
 }
@@ -26624,6 +27134,285 @@ characters {
     portrait {
       filename: ""
     }
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -66
+    y: 0
+    z: 21
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isOutsideRat"
+  displayName: "Outside_DevilRat_4"
+  idRef {
+    id: "59cf18573565644c3d006d1e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Creatures/RatDevil"
+    character_sheet_id: "Creature_Lv1_DevilRat"
+    equipment_sheet_id: "DevilRat_Lv1_Powers"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: -1
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+        poison: VulnerabilityLevel_Less
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Devil Rat"
+    GeneralTags: "isOutsideRat"
+    pc_spawn_number: -1
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    karma: 49
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -66
+    y: 0
+    z: 22
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isOutsideRat"
+  displayName: "Outside_DevilRat_5"
+  idRef {
+    id: "59cf18573565644c3d006d1f"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Creatures/RatDevil"
+    character_sheet_id: "Creature_Lv1_DevilRat"
+    equipment_sheet_id: "DevilRat_Lv1_Powers"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: -1
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+        poison: VulnerabilityLevel_Less
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Devil Rat"
+    GeneralTags: "isOutsideRat"
+    pc_spawn_number: -1
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    karma: 49
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -66
+    y: 0
+    z: 23
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isOutsideRat"
+  displayName: "Outside_DevilRat_6"
+  idRef {
+    id: "59cf18573565644c3d006d20"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Creatures/RatDevil"
+    character_sheet_id: "Creature_Lv1_DevilRat"
+    equipment_sheet_id: "DevilRat_Lv1_Powers"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: -1
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+        poison: VulnerabilityLevel_Less
+      }
+    }
+    team_id: "LoneStar"
+    char_name: "Devil Rat"
+    GeneralTags: "isOutsideRat"
+    pc_spawn_number: -1
+    hiring_type: HiringType_None
+    portrait {
+      filename: ""
+    }
+    karma: 49
+    hiring_cost_override: 1000
+    scale_character_sheet: true
   }
 }
 variables {
