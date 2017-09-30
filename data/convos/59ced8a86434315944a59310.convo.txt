@@ -1,0 +1,656 @@
+idRef {
+  id: "59ced8a86434315944a59310"
+}
+ui_name: "ss_a6_treasure_s1-Mess_Sano"
+nodes {
+  idRef {
+    id: "59ced8b66434315944a5931c"
+  }
+  index: 0
+  text: "{{GM}}The woman looks harried, barking out orders to people around her and on the other end of her commlink.{{/GM}}\n\n\342\200\246 FIVE MINUTES, or you\342\200\231ll be joining Otsuka on bathroom detail! Make it happen!"
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59ced8a86434315944a59310:59ced8c26434315944a59323"
+    }
+    comment: "PC0 is human"
+  }
+  branches {
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "59ced8a86434315944a59310:59ced90d6434315944a5933f"
+    }
+    comment: "PC0 is meta"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59ced8c26434315944a59325"
+  }
+  index: 1
+  text: "{{GM}}She does a double-take when you approach.{{/GM}}\n\nLet\342\200\231s see some credentials."
+  branches {
+    nextNodeIndex: 3
+    idRef {
+      id: "59ced8a86434315944a59310:59ced8c56434315944a59329"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59ced90d6434315944a59341"
+  }
+  index: 2
+  text: "{{GM}}She does a double-take when you approach.{{/GM}}\n\nLet\342\200\231s some credentials, $(l.race)."
+  branches {
+    nextNodeIndex: 3
+    idRef {
+      id: "59ced8a86434315944a59310:59ced90d6434315944a59343"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced9246434315944a59349"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{CC}}Item: Flagged Badge{{/CC}} Here."
+    conditions {
+      ops {
+        functionName: "No Condition"
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59ced8a86434315944a59310:59ced92f6434315944a5934e"
+    }
+    comment: "TODO: Check for item"
+  }
+  branches {
+    responseText: "{{CC}}Item: Cleared Badge{{/CC}} Here."
+    nextNodeIndex: 5
+    idRef {
+      id: "59ced8a86434315944a59310:59ced9926434315944a5935e"
+    }
+    comment: "TODO: Item"
+  }
+  branches {
+    responseText: "I, uh, left my badge in my other pants."
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionCurrent"
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Downstairs_SuspicionIncreases"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "59ced8a86434315944a59310:59ceda87643431b8452fcc76"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Present your ID"
+}
+nodes {
+  idRef {
+    id: "59ced9ca643431b8452fcc04"
+  }
+  index: 4
+  text: "{{GM}}She scans it with a reader, frowning at the readout.{{/GM}}\n\nSays here that you aren\342\200\231t due back for a while. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59ced8a86434315944a59310:59ced9cc643431b8452fcc06"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionIncreases"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ui"
+          }
+          args {
+            string_value: "badpassword"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackout_rigging"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ceda3f643431b8452fcc3c"
+  }
+  index: 5
+  text: "{{GM}}She scans the badge with her reader, giving a slight nod.{{/GM}}\n\nCredentials check out."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59ced8a86434315944a59310:59ceda78643431b8452fcc74"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_jackout_rigging"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ui"
+          }
+          args {
+            string_value: "puzzlesuccess"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59cedaaf643431b8452fcc8d"
+  }
+  index: 6
+  text: "I find that very hard to believe."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59ced8a86434315944a59310:59cedabc643431b8452fcca4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cedabf643431b8452fcca7"
+  }
+  index: 7
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    idRef {
+      id: "59ced8a86434315944a59310:59cedad2643431b8452fccc7"
+    }
+    comment: "PC0 human. TODO: Check for other metas on team, too?"
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb3b643431b8452fcd0b"
+    }
+    comment: "PC0 metahuman"
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Check for race"
+}
+nodes {
+  idRef {
+    id: "59cedafd643431b8452fccca"
+  }
+  index: 8
+  text: "Why have you brought metahuman filth into my facility?"
+  branches {
+    responseText: "I\342\200\231m just following orders."
+    nextNodeIndex: 10
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb1a643431b8452fcce7"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Fort McClellan needed to transfer some prisoners. Here they are."
+    nextNodeIndex: 10
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb1a643431b8452fcce9"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Something about \342\200\234specimens\342\200\235 or \342\200\234targets\342\200\235, it should all be on the paperwork."
+    nextNodeIndex: 10
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb1b643431b8452fcceb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionIncreases"
+          }
+        }
+      }
+    }
+  }
+  comment: "TODO: Add hostile response?"
+}
+nodes {
+  idRef {
+    id: "59cedb4a643431b8452fcd0e"
+  }
+  index: 9
+  text: "Since when do $(l.race_plural) get Protectorate badges? This is as deep in a human cultural zone as you can get. What are you and your companions doing here?"
+  branches {
+    responseText: "We\342\200\231re deep-cover agents, working counterintelligence."
+    nextNodeIndex: 10
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb57643431b8452fcd30"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Metatype: Elf{{/CC}} We\342\200\231re on special assignment from Tir Tairngire."
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb59643431b8452fcd32"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "We\342\200\231re Shadowrunners. All I know is that someone hired us to deal with problems the Protectorate has been having."
+    nextNodeIndex: 10
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb5a643431b8452fcd34"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m sorry, but that information is classified."
+    nextNodeIndex: 10
+    idRef {
+      id: "59ced8a86434315944a59310:59cedb65643431b8452fcd36"
+    }
+  }
+  branches {
+    responseText: "We don\342\200\231t need no stinking badges! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59cd81ca643431ca3e88ade5"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59ced8a86434315944a59310:59cedc65643431b8452fce85"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cedb9a643431b8452fcd5d"
+  }
+  index: 10
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionCurrent"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionMax"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59cedbeb643431b8452fcdf0"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+    idRef {
+      id: "59ced8a86434315944a59310:59cedbb8643431b8452fcd97"
+    }
+    comment: "Over suspicion limit"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "59ced8a86434315944a59310:59cedc16643431b8452fce1e"
+    }
+    comment: "Default: Below suspicion limit"
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Check for suspicion"
+}
+nodes {
+  idRef {
+    id: "59cedc27643431b8452fce24"
+  }
+  index: 11
+  text: "I don\342\200\231t know who you are or what you\342\200\231re really doing here, but you clearly don\342\200\231t belong. I\342\200\231ll need to completely revamp our security protocols, right after we deal with this breach."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59cedc1e643431b8452fce21"
+  }
+  index: 12
+  text: "{{GM}}She grunts in frustration.{{/GM}}\n\nOf COURSE nobody bothered to inform me. They haven\342\200\231t told me about anything else today, so why start now?"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionDecreases"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "59ced8a86434315944a59310:59ced8a86434315944a59314"
+  }
+}

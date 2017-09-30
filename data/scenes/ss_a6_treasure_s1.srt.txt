@@ -5068,6 +5068,58 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Downstairs_ExceededSuspicion_OFF"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "59cedbeb643431b8452fcdf0"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Downstairs_DecrementSuspicion"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Downstairs_SuspicionIncreases"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Downstairs_SuspicionCurrent"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59cedc33643431b8452fce54"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Water"
   position {
@@ -7601,6 +7653,7 @@ mapEvents: "Event_Influence_Isas_Forgiveness"
 mapEvents: "Event_Influence_Arelia_Selfish"
 mapEvents: "Event_Influence_Arelia_Universal"
 mapEvents: "Event_Downstairs_SuspicionIncreases"
+mapEvents: "Event_Downstairs_SuspicionDecreases"
 senseTags: "isCamera"
 senseTags: "isResponseIC"
 senseTags: "isArelia"
