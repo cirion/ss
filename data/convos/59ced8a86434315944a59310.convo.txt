@@ -577,30 +577,6 @@ nodes {
         }
       }
     }
-    actions {
-      ops {
-        functionName: "Enable/Disable Trigger"
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "EnableOrDisable"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (Trigger)"
-            args {
-              string_value: "59cedbeb643431b8452fcdf0"
-            }
-          }
-        }
-      }
-    }
     nextNodeIndex: 11
     idRef {
       id: "59ced8a86434315944a59310:59cedbb8643431b8452fcd97"
@@ -625,6 +601,30 @@ nodes {
   index: 11
   text: "I don\342\200\231t know who you are or what you\342\200\231re really doing here, but you clearly don\342\200\231t belong. I\342\200\231ll need to completely revamp our security protocols, right after we deal with this breach."
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59cedbeb643431b8452fcdf0"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -632,6 +632,14 @@ nodes {
   }
   index: 12
   text: "{{GM}}She grunts in frustration.{{/GM}}\n\nOf COURSE nobody bothered to inform me. They haven\342\200\231t told me about anything else today, so why start now?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59ced8a86434315944a59310:59d2751c643431bb57b53c5f"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -647,10 +655,840 @@ nodes {
     }
   }
 }
+nodes {
+  idRef {
+    id: "59d2750a643431bb57b53c22"
+  }
+  index: 13
+  text: "Speak."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59ced8a86434315944a59310:59d2750c643431bb57b53c24"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d27511643431bb57b53c27"
+  }
+  index: 14
+  text: ""
+  branches {
+    responseText: "{{CC}}Item: MPA Trophy{{/CC}} I took care of a problem outside for you."
+    conditions {
+      ops {
+        functionName: "No Condition"
+      }
+    }
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59ced8a86434315944a59310:59d27572643431bb57b53c98"
+    }
+    comment: "TODO: Requires quest item. Remove it."
+  }
+  branches {
+    responseText: "It seems a little tense here today."
+    nextNodeIndex: 17
+    onlyOnce: true
+    idRef {
+      id: "59ced8a86434315944a59310:59d27ab86434318558b566af"
+    }
+  }
+  branches {
+    responseText: "Can you give me access to see Mr. Beaumont?"
+    nextNodeIndex: 27
+    idRef {
+      id: "59ced8a86434315944a59310:59d27cbf6434310359b56660"
+    }
+    comment: "TODO: Goal started visit Beaumont"
+  }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59ced8a86434315944a59310:59d2a6df6434310359b56dad"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root note"
+}
+nodes {
+  idRef {
+    id: "59d275bf6434318558b565ec"
+  }
+  index: 15
+  text: "Oh! No wonder you weren\342\200\231t following normal procedures. This is huge, I can see why you would want to get this to me ASAP."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "59ced8a86434315944a59310:59d275e66434318558b5665e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Downstairs_SuspicionCurrent"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionDecreases"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d275e76434318558b56660"
+  }
+  index: 16
+  text: "I\342\200\231ll notify HQ about this. Between our operation in Point Richmond and finally getting rid of $(story.mpa_leader), we may have finally turned the corner in ending this insurgency."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59ced8a86434315944a59310:59d275e76434318558b56662"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Downstairs_SuspicionCurrent"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionDecreases"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59d27b3f6434318558b56722"
+  }
+  index: 17
+  text: "That\342\200\231s an understatement."
+  branches {
+    responseText: ""
+    nextNodeIndex: 18
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b426434318558b56724"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27b466434318558b56726"
+  }
+  index: 18
+  text: "A VIP from Human Nation showed up this morning, unannounced. Calls himself Mr. Beaumont. I\342\200\231m juggling him while also managing our Point Richmond operation and dealing with blowback from the Sweeney Ridge fiasco.\n\nSo, yeah, you picked a pretty bad day to pay a visit."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b466434318558b56728"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Gain Access to Mr. Beaumont"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27b4a6434318558b5672c"
+  }
+  index: 19
+  text: ""
+  branches {
+    responseText: "What does Mr. Beaumont want?"
+    nextNodeIndex: 20
+    onlyOnce: true
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b4a6434318558b5672e"
+    }
+  }
+  branches {
+    responseText: "Why are you short-staffed?"
+    nextNodeIndex: 24
+    onlyOnce: true
+    idRef {
+      id: "59ced8a86434315944a59310:59d27bd46434318558b5682d"
+    }
+  }
+  branches {
+    responseText: "I see."
+    nextNodeIndex: 26
+    idRef {
+      id: "59ced8a86434315944a59310:59d27c106434318558b568ad"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Inner interrogation loop"
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27b4d6434318558b56730"
+  }
+  index: 20
+  text: "He\342\200\231s auditing Treasure Island. Not very explicit on exactly what he\342\200\231s looking for, but he demanded total access to all of our files and records, dating all the way back to when the Marines first landed in San Francisco. He\342\200\231s taken over the classified area upstairs, and who knows how long he\342\200\231ll be there."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b4d6434318558b56732"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27b8c6434318558b567be"
+  }
+  index: 21
+  text: "{{GM}}She sighs in frustration.{{/GM}}\n\nI hate dealing with politics. Beaumont isn\342\200\231t in my chain of command, so he shouldn\342\200\231t be giving me orders. But he works for the organization that was responsible for creating the Protectorate and elevating Saito to Protector-General."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b8c6434318558b567c0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27b916434318558b567c4"
+  }
+  index: 22
+  text: "I\342\200\231m screwed no matter what.\n\nIf I turn away Beaumont, he\342\200\231ll go direct to Saito and a ton of bricks will come crashing down on me. But none of what he\342\200\231s doing here is on the books! So if my own ops slip because I\342\200\231m busy coddling him, my own commander won\342\200\231t accept his presence as an excuse."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b916434318558b567c6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27b936434318558b567c8"
+  }
+  index: 23
+  text: "Bah!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59ced8a86434315944a59310:59d27b936434318558b567ca"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d27bde6434318558b56830"
+  }
+  index: 24
+  text: "Treasure Island was Saito\342\200\231s first base outside the City, and over the years we\342\200\231ve become responsible for much of the administrative and record-keeping aspects. First of the Imperial Marine Landing Forces, and eventually of the Protectorate Armed Forces."
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "59ced8a86434315944a59310:59d27be26434318558b56832"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27be36434318558b56834"
+  }
+  index: 25
+  text: "We don\342\200\231t normally run operations, but I just mustered a strike force to take Point Richmond. We were planning on putting our admin functions on pause until that was done\342\200\246 but with Mr. Beaumont here, we need to shift into overdrive, right when all of our staff is freezing in the Bay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59ced8a86434315944a59310:59d27be36434318558b56836"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d27c126434318558b568b0"
+  }
+  index: 26
+  text: "Lucky me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59ced8a86434315944a59310:59d27c146434318558b568b2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d27cd36434310359b56663"
+  }
+  index: 27
+  text: "{{GM}}She scrutinizes you closely.{{/GM}}\n\nThat\342\200\231s an unusual thing to ask\342\200\246 Private."
+  branches {
+    responseText: "{{CC}}Etiquette: Socialite{{/CC}} Mr. Beaumont has taken a particular interest in relatives of mine. We know each other from Harker. I\342\200\231m sure he would want to see me."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 16
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 28
+    idRef {
+      id: "59ced8a86434315944a59310:59d27f356434310359b566bd"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} The sooner Beaumont finds the records he\342\200\231s looking for, the sooner he\342\200\231ll be out of your hair. I\342\200\231m an expert at hunting down obscure references, cross-checking sources, drawing inferences, all the stuff that will help his search."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 30
+    idRef {
+      id: "59ced8a86434315944a59310:59d27f616434310359b56779"
+    }
+  }
+  branches {
+    responseText: "Mr. Beaumont requested to be notified when the Bay Bridge shut down. That happened an hour ago."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Downstairs_KnowAboutBeaumontRequest"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 31
+    hideIfUnavailable: true
+    idRef {
+      id: "59ced8a86434315944a59310:59d291016434310359b56966"
+    }
+  }
+  branches {
+    responseText: "One of your higher-ups asked me to keep an eye on him."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Downstairs_SuspicionIncreases"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 33
+    idRef {
+      id: "59ced8a86434315944a59310:59d291966434310359b56b4e"
+    }
+  }
+  branches {
+    responseText: "Mr. Beaumont called down a few minutes ago and asked someone to deliver him a pot of green tea."
+    nextNodeIndex: 34
+    idRef {
+      id: "59ced8a86434315944a59310:59d295986434310359b56c9b"
+    }
+  }
+  branches {
+    responseText: "Never mind."
+    nextNodeIndex: 35
+    idRef {
+      id: "59ced8a86434315944a59310:59d295c16434310359b56caf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d27f596434310359b56719"
+  }
+  index: 28
+  text: "He doesn\342\200\231t strike me as the socializing type. But honestly, I\342\200\231d be relieved to have someone else deal with him. If you can talk golf and canapes and all that rich-prick nonsense, then that saves me from the same."
+  branches {
+    responseText: ""
+    nextNodeIndex: 29
+    idRef {
+      id: "59ced8a86434315944a59310:59d27f5f6434310359b56775"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27f616434310359b56777"
+  }
+  index: 29
+  text: "Here. This will give you access to the classified areas. "
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_treasure_s1-ElevatorMagpass"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Gain Access to Mr. Beaumont"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d27f646434310359b5677d"
+  }
+  index: 30
+  text: "You have no idea just how badly I need a clerk right now. I would trade twenty commandos for one paper-pusher."
+  branches {
+    responseText: ""
+    nextNodeIndex: 29
+    idRef {
+      id: "59ced8a86434315944a59310:59d27f646434310359b5677f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d2910f6434310359b56969"
+  }
+  index: 31
+  text: "{{GM}}She closes her eyes and breathes deeply, subvocally counts to ten, and then looks at you again.{{/GM}}\n\nFucking shitstain good-for-nothing fuckups. Can\342\200\231t ANYONE around here do ANYTHING right?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 32
+    idRef {
+      id: "59ced8a86434315944a59310:59d291126434310359b5696b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d291136434310359b5696d"
+  }
+  index: 32
+  text: "I sure as hell am not going to deliver him that bad news this late.\n\nThis is on you, private. Tell him yourself."
+  branches {
+    responseText: ""
+    nextNodeIndex: 29
+    idRef {
+      id: "59ced8a86434315944a59310:59d291136434310359b5696f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d291ac6434310359b56b51"
+  }
+  index: 33
+  text: "Really? I knew that the chain of command was broken, but I didn\342\200\231t think that it was THIS broken."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionCurrent"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionMax"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+    idRef {
+      id: "59ced8a86434315944a59310:59d291f26434310359b56c25"
+    }
+    auxiliaryLink: true
+    comment: "Over suspicion limit"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 29
+    idRef {
+      id: "59ced8a86434315944a59310:59d291f26434310359b56c27"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ced8a86434315944a59310:59d295b36434310359b56ca0"
+  }
+  index: 34
+  text: "And a PRIVATE is going to handle this request?! Has every role in our entire organization been reassigned?"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionCurrent"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionMax"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+    idRef {
+      id: "59ced8a86434315944a59310:59d295b36434310359b56ca2"
+    }
+    auxiliaryLink: true
+    comment: "Over suspicion limit"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 29
+    idRef {
+      id: "59ced8a86434315944a59310:59d295b36434310359b56ca6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d295c46434310359b56cb2"
+  }
+  index: 35
+  text: "She just stares at you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59ced8a86434315944a59310:59d295c66434310359b56cb4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
 roots {
   nextNodeIndex: 0
   onlyOnce: true
   idRef {
     id: "59ced8a86434315944a59310:59ced8a86434315944a59314"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 13
+  idRef {
+    id: "59ced8a86434315944a59310:59d27503643431bb57b53c1f"
   }
 }
