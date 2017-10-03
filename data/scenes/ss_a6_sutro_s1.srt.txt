@@ -12799,6 +12799,91 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59d13411356564cc43003961"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:Creature/Dog/standing_barking"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599894083565640c240080d8"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a232ab35656464c8003b67"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59a2326635656464c8003b66"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -19442,12 +19527,39 @@ triggers {
           functionName: "Arithmetic (int)"
           args {
             call_value {
-              functionName: "Get Actor Attribute"
+              functionName: "Arithmetic (int)"
               args {
                 call_value {
-                  functionName: "Get Map Item (Actor)"
+                  functionName: "Get Actor Attribute"
                   args {
-                    string_value: "59d1679b356564642200815f"
+                    call_value {
+                      functionName: "Get Map Item (Actor)"
+                      args {
+                        string_value: "59d1679b356564642200815f"
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "BaseOrCurrent"
+                      }
+                      args {
+                        int_value: 1
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "ActorAttributes"
+                      }
+                      args {
+                        int_value: 14
+                      }
+                    }
                   }
                 }
               }
@@ -19455,23 +19567,15 @@ triggers {
                 call_value {
                   functionName: "Get Preset Value (int)"
                   args {
-                    string_value: "BaseOrCurrent"
+                    string_value: "Arithmetic Ops"
                   }
                   args {
-                    int_value: 0
+                    int_value: 2
                   }
                 }
               }
               args {
-                call_value {
-                  functionName: "Get Preset Value (int)"
-                  args {
-                    string_value: "ActorAttributes"
-                  }
-                  args {
-                    int_value: 14
-                  }
-                }
+                int_value: 3
               }
             }
           }
@@ -19482,31 +19586,12 @@ triggers {
                 string_value: "Arithmetic Ops"
               }
               args {
-                int_value: 2
+                int_value: 3
               }
             }
           }
           args {
-            call_value {
-              functionName: "Arithmetic (int)"
-              args {
-                int_value: 3
-              }
-              args {
-                call_value {
-                  functionName: "Get Preset Value (int)"
-                  args {
-                    string_value: "Arithmetic Ops"
-                  }
-                  args {
-                    int_value: 3
-                  }
-                }
-              }
-              args {
-                int_value: 4
-              }
-            }
+            int_value: 4
           }
         }
       }
@@ -19648,7 +19733,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Debug_BossFight"
+  name: "Debug_DemonBossFight"
   events {
     ops {
       functionName: "On Map Start"
@@ -20104,10 +20189,97 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Inside_SomeoneTurned"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
     id: "59d2fd353565646c3e001090"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "BossFight_PickupManaMill"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59d2f72e3565646c3e000fd9"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59d27147643431bb57b53b47"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59d304763565646c3e0011c2"
   }
   elseActions {
   }
