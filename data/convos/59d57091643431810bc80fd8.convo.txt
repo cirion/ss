@@ -1,0 +1,153 @@
+idRef {
+  id: "59d57091643431810bc80fd8"
+}
+ui_name: "ss_a7_space_s1-Command_GavanCorpse"
+nodes {
+  idRef {
+    id: "59d5709b643431810bc80fe4"
+  }
+  index: 0
+  text: "Gavan lies mangled. A vintage saber rests at his hip, and a startled look on his face."
+  branches {
+    nextNodeIndex: 1
+    idRef {
+      id: "59d57091643431810bc80fd8:59d570a1643431810bc80fe6"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59d57091643431810bc80fd8:59d570a1643431810bc80fe8"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Search his pockets.{{/GM}}"
+    nextNodeIndex: 2
+    onlyOnce: true
+    idRef {
+      id: "59d57091643431810bc80fd8:59d570b5643431810bc80fec"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Cut off his head.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Acquire Optical Identification"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59d57091643431810bc80fd8:59d570d3643431810bc81006"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59d57091643431810bc80fd8:59d570d3643431810bc81008"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59d57091643431810bc80fd8:59d570b5643431810bc80fee"
+  }
+  index: 2
+  text: "Nothing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59d57091643431810bc80fd8:59d570b6643431810bc80ff0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59d570e5643431810bc81018"
+  }
+  index: 3
+  text: "Grimacing with effort, you slam the blade down into Gavan\342\200\231s throat. The floor beneath provides a sturdy backing surface for cutting.\n\nTwo slices later and you hold the decapitated head in your hand, held aloft by his thinning hair, blood spattering down to the tiles below."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59d57091643431810bc80fd8:59d570e7643431810bc8101a"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59d570ea643431810bc81021"
+  }
+  index: 4
+  text: "His face looks even more surprised now."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59d57134643431810bc81052"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59d57091643431810bc80fd8:59d57091643431810bc80fdc"
+  }
+}
