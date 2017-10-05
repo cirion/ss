@@ -274,7 +274,7 @@ nodes {
     id: "59d2aab76434310359b56fdf:59d2af5b643431c55bb5668f"
   }
   index: 3
-  text: "{{GM}}He looks at Arelia.{{/GM}}\n\nThose tusks, those horns, that skin\342\200\246 I still do not understand how trolls can continue to reproduce now that SURGE has finally abated. Who would possibly be willing to kiss that jagged mouth? Who would stroke that rocky flesh? How can you creatures copulate without vomiting in revulsion?\n Even you must understand how hideous you are."
+  text: "{{GM}}He looks at Arelia.{{/GM}}\n\nThose tusks, those horns, that skin\342\200\246 I still do not understand how trolls can continue to reproduce now that SURGE has finally abated. Who would possibly be willing to kiss that jagged mouth? Who would stroke that rocky flesh? How can you creatures copulate without vomiting in revulsion?\n\nEven you must understand how hideous you are."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -1066,6 +1066,13 @@ nodes {
       id: "59d2aab76434310359b56fdf:59d2beb2643431485eb566f2"
     }
   }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59d2aab76434310359b56fdf:59d63e643565649047005def"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Root node"
 }
@@ -1074,7 +1081,7 @@ nodes {
     id: "59d2b028643431fa5bb565fa"
   }
   index: 19
-  text: "We have grown concerned with the difficulty Keiji Saito and Gavan Banain have had in wiping out the resistance in the Bay Area.\n\nThe rest of California has fallen fairly easily, but even though Saito has occupied these lands for decades, the metahumans remain stubbornly noncompliant."
+  text: "We have grown concerned with how slowly Keiji Saito and Gavan Banain are wiping out the resistance in the Bay Area.\n\nThe rest of California has fallen fairly easily, but even though Saito has occupied these lands for decades, the metahumans here remain stubbornly noncompliant."
   branches {
     responseText: ""
     nextNodeIndex: 20
@@ -1207,6 +1214,30 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Upstairs_HeardOfTraitor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1383,7 +1414,7 @@ nodes {
     id: "59d2b64e643431fa5bb56841"
   }
   index: 31
-  text: "Yes. For years we have worked from the shadows, carefully guiding events, whispering in the halls of power, providing funds and knowledge to those who could advance our cause. But now the time is drawing near: our plans approaching fruition, our dreams becoming reality. Soon the name that has only been murmured will be spoken confidently, in every human nation in the world, in every nation on Earth."
+  text: "Yes. For years we have worked from the shadows, carefully guiding events, whispering in the halls of power, providing funds and knowledge to those who could advance our cause. But now the time is drawing near: our plans approaching fruition, our dreams becoming reality.\n\nSoon the name that has only been murmured will be spoken confidently, in every human nation in the world, in every nation on Earth."
   branches {
     responseText: ""
     nextNodeIndex: 32
@@ -1690,7 +1721,52 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Give pass, update goal, check for successful stealth"
+  actions {
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59d2bba7643431885db56aa7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
