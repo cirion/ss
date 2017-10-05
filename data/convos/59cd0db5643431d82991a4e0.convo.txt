@@ -137,14 +137,43 @@ nodes {
     responseText: "I convinced $(story.mpa_leader) to release you."
     conditions {
       ops {
-        functionName: "No Condition"
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Convince the MPA to Release the Singer"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
       }
     }
     nextNodeIndex: 7
     idRef {
       id: "59cd0db5643431d82991a4e0:59cd0f46643431d82991a5ee"
     }
-    comment: "TODO: Requires goal success"
   }
   nodeType: ConversationNodeType_Simple
   comment: "Empty root"

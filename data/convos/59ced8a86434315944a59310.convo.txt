@@ -680,7 +680,74 @@ nodes {
     responseText: "{{CC}}Item: MPA Trophy{{/CC}} I took care of a problem outside for you."
     conditions {
       ops {
-        functionName: "No Condition"
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-MpaLeaderTrophy"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-MpaLeaderTrophy"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
       }
     }
     nextNodeIndex: 15
@@ -689,7 +756,6 @@ nodes {
     idRef {
       id: "59ced8a86434315944a59310:59d27572643431bb57b53c98"
     }
-    comment: "TODO: Requires quest item. Remove it."
   }
   branches {
     responseText: "It seems a little tense here today."
@@ -701,11 +767,46 @@ nodes {
   }
   branches {
     responseText: "Can you give me access to see Mr. Beaumont?"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Gain Access to Mr. Beaumont"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 27
+    hideIfUnavailable: true
     idRef {
       id: "59ced8a86434315944a59310:59d27cbf6434310359b56660"
     }
-    comment: "TODO: Goal started visit Beaumont"
   }
   branches {
     responseText: "Goodbye."

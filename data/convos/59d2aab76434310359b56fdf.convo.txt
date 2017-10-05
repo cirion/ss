@@ -23,28 +23,169 @@ nodes {
   index: 1
   text: ""
   branches {
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59505a14356564f86e006023"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 2
     onlyOnce: true
     idRef {
       id: "59d2aab76434310359b56fdf:59d2af5b643431c55bb5668b"
     }
-    comment: "TODO: Isas in region"
   }
   branches {
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59505a14356564f86e006023"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
     onlyOnce: true
     idRef {
       id: "59d2aab76434310359b56fdf:59d2af5b643431c55bb5668e"
     }
-    comment: "TODO: Arelia in region"
   }
   branches {
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59505a14356564f86e006023"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 4
     onlyOnce: true
     idRef {
       id: "59d2aab76434310359b56fdf:59d2af5b643431c55bb56691"
     }
-    comment: "TODO: Kora in region"
   }
   branches {
     nextNodeIndex: 5
@@ -831,7 +972,6 @@ nodes {
     idRef {
       id: "59d2aab76434310359b56fdf:59d2b5d1643431fa5bb5677c"
     }
-    comment: "TODO: Is this accurate to the map? Maybe drop a PDA or something"
   }
   branches {
     responseText: "You\342\200\231re a part of Human Nation, right?"
@@ -1121,8 +1261,49 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
   }
-  comment: "TODO: Anim?"
 }
 nodes {
   idRef {
@@ -1138,6 +1319,33 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1372,17 +1580,54 @@ nodes {
       }
     }
     nextNodeIndex: 39
+    hideIfUnavailable: true
     idRef {
       id: "59d2aab76434310359b56fdf:59d2b9f1643431885db56793"
     }
   }
   branches {
     responseText: "{{CC}}Item: Gavan\342\200\231s Personal Records{{/CC}} You may be interested in these records about Gavan Banain."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-GavanRecords"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 44
+    hideIfUnavailable: true
     idRef {
       id: "59d2aab76434310359b56fdf:59d2bcee643431f15db567cc"
     }
-    comment: "TODO: Have the quest item"
   }
   nodeType: ConversationNodeType_Simple
 }

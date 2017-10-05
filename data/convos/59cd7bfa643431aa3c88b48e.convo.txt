@@ -154,12 +154,59 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "595056f9356564f86e006021"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 4
     onlyOnce: true
     idRef {
       id: "59cd7bfa643431aa3c88b48e:59cd7d54643431aa3c88b4d6"
     }
-    comment: "TODO: Masato is present"
   }
   branches {
     responseText: "Target practice. Someone wanted live specimens."
@@ -243,11 +290,64 @@ nodes {
   text: "I was told nothing about this.\n\n{{GM}}He draws his weapon.{{/GM}}\n\nI want to see a badge NOW."
   branches {
     responseText: "{{CC}}Item: Badge{{/CC}} Relax!"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Badge"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Target Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_idle"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 6
     idRef {
       id: "59cd7bfa643431aa3c88b48e:59cd8230643431ca3e88ae35"
     }
-    comment: "TODO: Have badge quest item"
   }
   branches {
     responseText: "I lost it\342\200\246"
@@ -273,6 +373,22 @@ nodes {
             functionName: "Get Map Item (Event)"
             args {
               string_value: "Event_Downstairs_SuspicionIncreases"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Target Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_idle"
             }
           }
         }
@@ -315,7 +431,24 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Aim at you."
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_aiming_shotgun"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -507,13 +640,47 @@ nodes {
   }
   branches {
     responseText: "Do you know anything about Mr. Beaumont?"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Gain Access to Mr. Beaumont"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 13
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "59cd7bfa643431aa3c88b48e:59cd8652643431ca3e88b081"
     }
-    comment: "TODO: Heard of Beaumont"
   }
   branches {
     responseText: "Bye."
@@ -626,7 +793,6 @@ nodes {
       }
     }
   }
-  comment: "TODO: Update goal or var for this info"
 }
 roots {
   nextNodeIndex: 0
