@@ -2837,6 +2837,39 @@ props {
           }
         }
       }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Armory_DoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
     }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Vent"
@@ -11038,7 +11071,7 @@ props {
     interactionRadius: 1
     doorPoint {
       doorState: false
-      aiOnlyDoor: false
+      aiOnlyDoor: true
       doorSound: "DoorSlide"
       doorSoundBundle: "HongKong:props"
     }
@@ -38115,8 +38148,8 @@ props {
   name: "system_invisible_nonsolidProp"
   gridPoint {
     x: -81.2
-    y: 1
-    z: -87.2
+    y: 0.7
+    z: -85.6
   }
   orientation: ORIENTATION_S
   displayName: "Armory_Explosives"
@@ -38161,12 +38194,34 @@ props {
           }
         }
       }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
     }
     conversationPoint {
       conversationID: "59d2a97b6434310359b56ef0"
       turnToFace: true
     }
-    interactionIcon: InteractionIcon_Inspect
+    interactionIcon: InteractionIcon_ItemPickup
     interaction_info_text: "Explosives"
   }
   lod: 0
@@ -39192,6 +39247,53 @@ props {
       disableAfterInteracting: true
     }
     interaction_info_text: "Command Center"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -81
+    y: 1.2
+    z: -87
+  }
+  orientation: ORIENTATION_S
+  displayName: "Armory_PickupGrenade"
+  idRef {
+    id: "59d70be635656448420075ca"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    pickupItem {
+      itemName: "Grenade 3 (Shock)"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Grenade"
   }
   lod: 0
 }
