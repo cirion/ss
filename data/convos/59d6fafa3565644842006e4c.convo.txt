@@ -1,0 +1,71 @@
+idRef {
+  id: "59d6fafa3565644842006e4c"
+}
+ui_name: "ss_a6_treasure_s1-Upstairs_Safe"
+nodes {
+  idRef {
+    id: "59d6fb003565644842006e54"
+  }
+  index: 0
+  text: "The safe is shut tight."
+  branches {
+    responseText: "{{GM}}Attempt to open the safe.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "59d6fafa3565644842006e4c:59d6fb1c3565644842006e5b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59d6fafa3565644842006e4c:59d6fb1c3565644842006e5d"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59d6fb2d3565644842006e60"
+  }
+  index: 1
+  text: "Enter code."
+  branches {
+    responseText: "2316"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59d6fbfc3565644842006e78"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59d6fafa3565644842006e4c:59d6fb3a3565644842006e62"
+    }
+  }
+  nodeType: ConversationNodeType_InputNumpad
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59d6fafa3565644842006e4c:59d6fafa3565644842006e50"
+  }
+}

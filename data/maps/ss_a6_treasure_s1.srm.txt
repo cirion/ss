@@ -10942,7 +10942,7 @@ props {
   name: "barrens_vehicle_headTurnerMotorcycle01"
   gridPoint {
     x: -44.9
-    y: -2.7755576e-17
+    y: -2.7755576e-017
     z: -25
   }
   orientation: ORIENTATION_W
@@ -11166,34 +11166,8 @@ props {
           }
         }
       }
-    }
-    doorPoint {
-      doorState: false
-      aiOnlyDoor: false
-      doorSound: "DoorSlide"
-      doorSoundBundle: "HongKong:props"
-    }
-    interaction_info_text: ""
-  }
-  lod: 0
-}
-props {
-  name: "hive_wall_02DoorMid01"
-  gridPoint {
-    x: -44
-    y: 0
-    z: -154
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "59501fea356564f86e005f61"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
       ops {
-        functionName: "Comparison (bool)"
+        functionName: "OR"
         args {
           call_value {
             functionName: "Get Variable (bool)"
@@ -11204,23 +11178,9 @@ props {
         }
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
+              string_value: "Upstairs_LonestarHostile"
             }
           }
         }
@@ -12576,7 +12536,7 @@ props {
   name: "apartments_appliance_toilet01"
   gridPoint {
     x: -45.300003
-    y: 2.7755576e-17
+    y: 2.7755576e-017
     z: -75
   }
   orientation: ORIENTATION_E
@@ -14596,11 +14556,24 @@ props {
 props {
   name: "office_wall_bigSafeDarkOpen"
   gridPoint {
-    x: -55
+    x: -50
     y: 0
-    z: -161
+    z: -157
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isSafeOpenProp"
+  GeneralTags: "isInitiallyInvisible"
+  displayName: "Upstairs_SafeOpened"
+  idRef {
+    id: "59d6f7563565644842006dac"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    dummyInteraciton {
+    }
+    interaction_info_text: ""
+  }
   lod: 0
 }
 props {
@@ -14611,6 +14584,17 @@ props {
     z: -157
   }
   orientation: ORIENTATION_E
+  displayName: "Upstairs_SafeClosed"
+  idRef {
+    id: "59d6f7ee3565644842006db0"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    dummyInteraciton {
+    }
+    interaction_info_text: ""
+  }
   lod: 0
 }
 props {
@@ -16125,6 +16109,64 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-ElevatorMagpass"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Command Center"
   }
@@ -16145,6 +16187,30 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Bay Bridge"
   }
@@ -16165,6 +16231,30 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Treasure Island Barracks"
   }
@@ -16185,6 +16275,63 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Return to Berkeley"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Barracks"
   }
@@ -28929,9 +29076,9 @@ props {
 props {
   name: "matrixHK_clutter_cube05"
   gridPoint {
-    x: -56
-    y: 28
-    z: -177
+    x: -71
+    y: 13
+    z: -192
   }
   orientation: ORIENTATION_S
   idRef {
@@ -29839,9 +29986,9 @@ props {
 props {
   name: "matrixHK_clutter_cube06"
   gridPoint {
-    x: -62
-    y: 22
-    z: -200
+    x: -69
+    y: 15
+    z: -207
   }
   orientation: ORIENTATION_S
   idRef {
@@ -30454,9 +30601,9 @@ props {
 props {
   name: "matrixHK_clutter_cube04"
   gridPoint {
-    x: -64
-    y: 23
-    z: -196
+    x: -69
+    y: 18
+    z: -201
   }
   orientation: ORIENTATION_S
   idRef {
@@ -32325,9 +32472,9 @@ props {
 props {
   name: "matrixHK_clutter_cube05"
   gridPoint {
-    x: -61
-    y: 28
-    z: -198
+    x: -71
+    y: 18
+    z: -208
   }
   orientation: ORIENTATION_S
   idRef {
@@ -37824,7 +37971,7 @@ props {
 props {
   name: "system_invisible_nonsolidProp"
   gridPoint {
-    x: -47.5
+    x: -47.3
     y: 1.1
     z: -153.9
   }
@@ -37876,7 +38023,7 @@ props {
       turnToFace: false
     }
     interactionIcon: InteractionIcon_Matrix
-    interaction_info_text: ""
+    interaction_info_text: "Terminal"
   }
   lod: 0
 }
@@ -38635,6 +38782,358 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "59d6bacb643431b921bb8f86"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -57.7
+    y: 0.4
+    z: -160.6
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_PickupItem"
+  idRef {
+    id: "59d6d69c3565644842006da7"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_SafeOpened"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    pickupItem {
+      itemName: "HealthPack_hi"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "TODO: Give a weapon instead"
+  }
+  lod: 0
+}
+props {
+  name: "ares_decor_gunDisplay02"
+  gridPoint {
+    x: -48.6
+    y: 1.3
+    z: -155.6
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "isSafeOpenProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59d6f8553565644842006db3"
+  }
+  lod: 0
+}
+props {
+  name: "asylum_decor_doctorBag"
+  gridPoint {
+    x: -48.7
+    y: 0.8
+    z: -156
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "isSafeOpenProp"
+  GeneralTags: "isInitiallyInvisible"
+  idRef {
+    id: "59d6f8333565644842006db2"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_SafeOpened"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    pickupItem {
+      itemName: "DocWagonPlatinum"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "DocWagon Trauma Kit"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -48.6
+    y: 1
+    z: -156
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_ClosedSafeConvo"
+  idRef {
+    id: "59d6fdbe3565644842006e84"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_SafeOpened"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59d6fafa3565644842006e4c"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Safe"
+  }
+  lod: 0
+}
+props {
+  name: "hive_wall_02DoorMid01"
+  gridPoint {
+    x: -44
+    y: 0
+    z: -154
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6ff6c356564484200704f"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_HeardOfCamelot"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_HeardOfCamelot"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Upstairs_LonestarHostile"
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: false
+      doorSound: "DoorSlide"
+      doorSoundBundle: "HongKong:props"
+    }
+    interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -72
+    y: 0.6
+    z: -94
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_ExamineElevator"
+  idRef {
+    id: "59d700ca3565644842007053"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-ElevatorMagpass"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 6
+      fadeTime: 0
+      inspectText: "The elevator is sealed with a maglock. You cannot proceed without an appropriate pass."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Command Center"
   }
   lod: 0
 }

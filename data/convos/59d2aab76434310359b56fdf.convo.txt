@@ -15,6 +15,24 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1017,6 +1035,40 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-ProtectoratePasses"
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: 36
     hideIfUnavailable: true
@@ -1068,6 +1120,50 @@ nodes {
   }
   branches {
     responseText: "Goodbye."
+    actions {
+      ops {
+        functionName: "Order Actor to Face Direction"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Target Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "FacingDirection"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Target Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:Human/Ambrose/standing_idle_tapkeyboard"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "59d2aab76434310359b56fdf:59d63e643565649047005def"
@@ -1551,12 +1647,60 @@ nodes {
   text: "Indeed? I certainly hope you have evidence to back your claim. I am not inclined to simply accept your words."
   branches {
     responseText: "The traitor is\342\200\246"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Matrix_PlantedEvidence"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Evaluate If Actor Has Item"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Triggering Actor"
+                  }
+                }
+                args {
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "HasOrHasNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (Item)"
+                args {
+                  string_value: "ss_a6_treasure_s1-GavanRecords"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 38
     hideIfUnavailable: true
     idRef {
       id: "59d2aab76434310359b56fdf:59d2b6e8643431fa5bb56afd"
     }
-    comment: "TODO: Must have at least one of the following."
   }
   branches {
     responseText: "I\342\200\231ll get back to you on that."
@@ -1697,7 +1841,7 @@ nodes {
     id: "59d2aab76434310359b56fdf:59d2ba36643431885db56892"
   }
   index: 41
-  text: "As for you. Against all odds, you have proven some value to our great work. You may still yet provide even more value before the end. I will give you that for which you asked."
+  text: "As for you.\n\nAgainst all odds, you have proven some value to our great work. You may still yet provide even more value before the end. I will grant you that which you asked: a sneak peek into the future that awaits you all, into the cold perfection of untainted humanity."
   branches {
     responseText: ""
     nextNodeIndex: 42

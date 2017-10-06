@@ -148,9 +148,40 @@ nodes {
     id: "59d2c04f643431485eb56b5c"
   }
   index: 2
-  text: "Sure!\n{{GM}}She chats absent-mindedly while tapping away.{{/GM}}\n\nProtectorate data security is hella rigid. Pretty good metaphor for their whole operation, really. Strong barriers, but nothing backing it up. Once you slip past it, there\342\200\231s nothing else stopping you.\n\nSpeaking of which: okay, you\342\200\231re in!"
+  text: "Sure!\n\n{{GM}}She chats absent-mindedly while tapping away.{{/GM}}\n\nProtectorate data security is hella rigid. Pretty good metaphor for their whole operation, really. Strong barriers, but nothing backing it up. Once you slip past it, there\342\200\231s nothing else stopping you.\n\nSpeaking of which: okay, you\342\200\231re in!"
   branches {
     responseText: ""
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_idle"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
     idRef {
       id: "59d2bfed643431485eb56b32:59d2c051643431485eb56b5e"
@@ -158,6 +189,65 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "BBS_Typing"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/decking_idle"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -220,6 +310,19 @@ nodes {
   }
   branches {
     responseText: "{{GM}}View record details: Ingress: Gavan Banain.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Upstairs_ReadRecord"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 9
     onlyOnce: true
     idRef {
@@ -244,6 +347,19 @@ nodes {
   }
   branches {
     responseText: "{{GM}}View record details: Ingress: Stephen Banain.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Upstairs_ReadRecord"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 18
     onlyOnce: true
     idRef {
@@ -260,6 +376,19 @@ nodes {
   }
   branches {
     responseText: "{{GM}}View record update: Stephen Banain.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Upstairs_ReadRecord"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 22
     onlyOnce: true
     idRef {
@@ -268,6 +397,19 @@ nodes {
   }
   branches {
     responseText: "{{GM}}View record update: Stephen Banain.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Upstairs_ReadRecord"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 27
     onlyOnce: true
     idRef {
@@ -409,7 +551,7 @@ nodes {
     id: "59d2bfed643431485eb56b32:59d2c138643431485eb56be2"
   }
   index: 9
-  text: "> Name: Gavan Banain\n> SIN: AG72-54BX-P36N\n> Date of Birth: 10 October 2003\n> Classification: Human.\n> Blood type: A+\n> Entry to CalFree system: 10 October 2008\n> Entered under the authority of: Irvin Banain.\n> Role: Heir\n> Benefits: Full"
+  text: "> Name: Gavan Banain\n> SIN: AG72-54BX-P36N\n> Date of Birth: 10 October 2003\n> Classification: Human.\n> Blood type: A+\n> Entry to CalFree system: 10 October 2008\n> Entered under the authority of: Irvin Banain\n> Role: Heir\n> Benefits: Full"
   branches {
     responseText: ""
     nextNodeIndex: 10
@@ -512,7 +654,7 @@ nodes {
     id: "59d2bfed643431485eb56b32:59d2c235643431485eb56d09"
   }
   index: 12
-  text: "IDENTIFYING FIELDS\n===\nName: Gavan Banain\nSIN: AG72-54BX-P36N\n\nUPDATED FIELDS\n===\nRole: Senior advisor.\nClearance: Top Secret"
+  text: "IDENTIFYING FIELDS\n===\nName: Gavan Banain\nSIN: AG72-54BX-P36N\n\nUPDATED FIELDS\n===\nRole: Senior advisor\nClearance: Top Secret"
   branches {
     responseText: ""
     conditions {
@@ -1331,6 +1473,19 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Upstairs_ReadRecord"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1360,7 +1515,7 @@ nodes {
       id: "59d2bfed643431485eb56b32:59d2cb7c643431485eb576a7"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Speaker_Voice
 }
 nodes {
   idRef {
@@ -1597,6 +1752,7 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
 }
 nodes {
   idRef {
@@ -1618,10 +1774,25 @@ nodes {
     id: "59d2bfed643431485eb56b32:59d2cd05643431d3603d1da8"
   }
   index: 41
-  text: ">>From: <<UNKNOWN_SENDER}}\n>>To: Mr. Gavan Banain\n>>Subject: Accomplishments and rumors\n> We believe in recognizing good work, and wish to formally congratulate you on the remarkable success you have contributed to. The California Protectorate is young, and already sets a wonderful example for the rest of the world to follow. Compared with the previous California Free State administration, you have already achieved a decline of 1.6% in the elf population, 1.9% in the dwarf, 2.2% in the troll, and an impressive 4.6% in the ork. We are encouraged to see that the rates of decline are accelerating, and we have every reason to believe that our mutual goal of 100% compliance will be achieved in the coming years."
+  text: ">>From: <<UNKNOWN_SENDER>>\n>>To: Mr. Gavan Banain\n>>Subject: Accomplishments and rumors\n> We believe in recognizing good work, and wish to formally congratulate you on the remarkable success you have contributed to. The California Protectorate is young, and already sets a wonderful example for the rest of the world to follow."
   branches {
     responseText: ""
     nextNodeIndex: 42
+    idRef {
+      id: "59d2bfed643431485eb56b32:59d6d1f2356564484200682e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59d6d1f53565644842006831"
+  }
+  index: 42
+  text: "> Compared with the previous California Free State administration, you have already achieved a decline of 1.6% in the elf population, 1.9% in the dwarf, 2.2% in the troll, and an impressive 4.6% in the ork. We are encouraged to see that the rates of decline are accelerating, and we have every reason to believe that our mutual goal of 100% compliance will be achieved in the coming years."
+  branches {
+    responseText: ""
+    nextNodeIndex: 43
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd05643431d3603d1daa"
     }
@@ -1632,11 +1803,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cd22643431d3603d1dae"
   }
-  index: 42
+  index: 43
   text: "> We feel proud of your work, and pleased with our own contribution to the same. Our investment has been immense: not only the large sums of money disbursed, but providing political support from other nations, sympathetic coverage from the news media, and sharing our own previous research on the subject. We made such investments expecting them to be repaid in results, and you have delivered."
   branches {
     responseText: ""
-    nextNodeIndex: 43
+    nextNodeIndex: 44
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd22643431d3603d1db0"
     }
@@ -1647,11 +1818,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cd26643431d3603d1db4"
   }
-  index: 43
+  index: 44
   text: "> Nonetheless, our investment also gives us ownership over your actions, and we have heard disturbing rumors recently about your lack of purity. As you well know, anyone associated with Human Nation must be wholly devoted to our cause. Not only your body, but your family and associations must be kept free from any hint of a taint. Humanity alone can save humanity."
   branches {
     responseText: ""
-    nextNodeIndex: 44
+    nextNodeIndex: 45
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd26643431d3603d1db6"
     }
@@ -1662,11 +1833,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cd28643431d3603d1db8"
   }
-  index: 44
+  index: 45
   text: "> No half measures."
   branches {
     responseText: ""
-    nextNodeIndex: 45
+    nextNodeIndex: 46
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd28643431d3603d1dba"
     }
@@ -1677,11 +1848,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cd2b643431d3603d1dbc"
   }
-  index: 45
+  index: 46
   text: "> We must prove to the world that pure humanity will triumph. A flawed instrument will pollute our victory. Far better to discard such an instrument and start afresh than to continue on a course that will be forever questioned."
   branches {
     responseText: ""
-    nextNodeIndex: 46
+    nextNodeIndex: 47
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd2b643431d3603d1dbe"
     }
@@ -1692,11 +1863,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cd2d643431d3603d1dc0"
   }
-  index: 46
+  index: 47
   text: "> We will shortly begin a thorough evaluation of this matter, and hope to find no evidence that would give weight to these disturbing rumors. Once the allegations have been disposed of, we will resume our association and advance to the next phase of the great plan. Best regards."
   branches {
     responseText: ""
-    nextNodeIndex: 47
+    nextNodeIndex: 48
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd2d643431d3603d1dc2"
     }
@@ -1707,8 +1878,8 @@ nodes {
   idRef {
     id: "59d2cd8f643431d3603d1f03"
   }
-  index: 47
-  text: "Crew reactions"
+  index: 48
+  text: ""
   branches {
     responseText: ""
     conditions {
@@ -1759,7 +1930,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 48
+    nextNodeIndex: 49
     onlyOnce: true
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd91643431d3603d1f05"
@@ -1815,7 +1986,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 49
+    nextNodeIndex: 50
     onlyOnce: true
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cda2643431d3603d1f16"
@@ -1871,7 +2042,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 50
+    nextNodeIndex: 51
     onlyOnce: true
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cda5643431d3603d1f22"
@@ -1927,7 +2098,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 51
+    nextNodeIndex: 52
     onlyOnce: true
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cda5643431d3603d1f2a"
@@ -1942,16 +2113,17 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Crew reactions"
 }
 nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cd93643431d3603d1f07"
   }
-  index: 48
+  index: 49
   text: "Wow! Those guys are the WORST! They can\342\200\231t even treat their own awful people decently."
   branches {
     responseText: ""
-    nextNodeIndex: 47
+    nextNodeIndex: 48
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cd93643431d3603d1f09"
     }
@@ -1964,11 +2136,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cda2643431d3603d1f18"
   }
-  index: 49
+  index: 50
   text: "Such efforts inevitably must fail. We one body are. When we a limb chop off, we the body damage, not improve."
   branches {
     responseText: ""
-    nextNodeIndex: 47
+    nextNodeIndex: 48
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cda2643431d3603d1f1a"
     }
@@ -1981,11 +2153,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cda5643431d3603d1f24"
   }
-  index: 50
+  index: 51
   text: "I just\342\200\246 can\342\200\231t understand how anyone can possibly be so COLD. So emotionless. When talking about all of this!\n\nIt\342\200\231s\342\200\246 do they really not see us as people? At all? Just some abstract threat that needs to be eliminated?"
   branches {
     responseText: ""
-    nextNodeIndex: 47
+    nextNodeIndex: 48
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cda5643431d3603d1f26"
     }
@@ -1998,11 +2170,11 @@ nodes {
   idRef {
     id: "59d2bfed643431485eb56b32:59d2cda5643431d3603d1f2c"
   }
-  index: 51
-  text: "This is hella important. Human Nation seems to be behind what Saito is doing in California, but this isn\342\200\231t their only play. And it sounds like they\342\200\231re skilled at suppressing information they don\342\200\231t want widely known. The People\342\200\231s University needs to get the word out, spread this message, let people around the world know about the danger we\342\200\231re all in."
+  index: 52
+  text: "This is hella terrifying.\n\nHuman Nation seems to be behind what Saito is doing in California, but this isn\342\200\231t their only play. And it sounds like they\342\200\231re skilled at suppressing information they don\342\200\231t want widely known.\n\nThe People\342\200\231s University needs to get the word out, spread this message, let people around the world know about the danger we\342\200\231re all in."
   branches {
     responseText: ""
-    nextNodeIndex: 47
+    nextNodeIndex: 48
     idRef {
       id: "59d2bfed643431485eb56b32:59d2cda5643431d3603d1f2e"
     }
