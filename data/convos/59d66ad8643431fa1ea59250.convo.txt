@@ -1,0 +1,104 @@
+idRef {
+  id: "59d66ad8643431fa1ea59250"
+}
+ui_name: "ss_a6_treasure_s1-Downstairs_SendDroneIn"
+nodes {
+  idRef {
+    id: "59cbb05f356564f009007322:59d66d67643431fa1ea59262"
+  }
+  index: 0
+  text: "This vent provides circulation to the storage area on the other side of the wall. It looks large enough to accommodate a standard security drone."
+  branches {
+    responseText: "{{GM}}Send a drone into the vent.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isShadowrunnerDrone"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_SendDrone"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59cbb05f356564f009007322:59d66d67643431fa1ea59264"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59cbb05f356564f009007322:59d66d67643431fa1ea59266"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59d66ad8643431fa1ea59250:59d66ad8643431fa1ea59254"
+  }
+}

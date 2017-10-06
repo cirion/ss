@@ -2777,8 +2777,69 @@ props {
     z: -86
   }
   orientation: ORIENTATION_S
+  displayName: "Armory_VentTurnBased"
   idRef {
     id: "59342dc43565644021001ba0"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 8
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
   }
   lod: 0
 }
@@ -9850,6 +9911,56 @@ props {
     z: -150
   }
   orientation: ORIENTATION_S
+  idRef {
+    id: "59d6a79e643431fa1ea5927d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "canUseDoor"
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: true
+      doorSound: ""
+      doorSoundBundle: ""
+    }
+    interaction_info_text: ""
+  }
   lod: 0
 }
 props {
@@ -9890,6 +10001,71 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Armory_DoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 8
+            }
+          }
+        }
+      }
+    }
     doorPoint {
       doorState: false
       aiOnlyDoor: false
@@ -10766,7 +10942,7 @@ props {
   name: "barrens_vehicle_headTurnerMotorcycle01"
   gridPoint {
     x: -44.9
-    y: -2.7755576e-017
+    y: -2.7755576e-17
     z: -25
   }
   orientation: ORIENTATION_W
@@ -10838,7 +11014,7 @@ props {
     interactionRadius: 1
     doorPoint {
       doorState: false
-      aiOnlyDoor: false
+      aiOnlyDoor: true
       doorSound: "DoorSlide"
       doorSoundBundle: "HongKong:props"
     }
@@ -12400,7 +12576,7 @@ props {
   name: "apartments_appliance_toilet01"
   gridPoint {
     x: -45.300003
-    y: 2.7755576e-017
+    y: 2.7755576e-17
     z: -75
   }
   orientation: ORIENTATION_E
@@ -37701,6 +37877,764 @@ props {
     }
     interactionIcon: InteractionIcon_Matrix
     interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "office_clutter_paperStacks01"
+  gridPoint {
+    x: -59
+    y: 0
+    z: -158
+  }
+  orientation: ORIENTATION_S
+  displayName: "Upstairs_PickupPasses"
+  idRef {
+    id: "59d6683c643431231eeae7a3"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "ss_a6_treasure_s1-ProtectoratePasses"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Passes"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -81.2
+    y: 1
+    z: -87.2
+  }
+  orientation: ORIENTATION_S
+  displayName: "Armory_Explosives"
+  idRef {
+    id: "59d668ff643431a91e28ee69"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59d2a97b6434310359b56ef0"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -73
+    y: 0.3
+    z: -88.9
+  }
+  orientation: ORIENTATION_S
+  displayName: "Armory_UnlockDoor"
+  idRef {
+    id: "59d669ff643431dc1ea59246"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Armory_DoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 8
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Unlock Door"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -72
+    y: 1.1
+    z: -85.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_Vent_Freemove"
+  idRef {
+    id: "59d66a97643431fa1ea59246"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Armory_DoorUnlocked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59d66ad8643431fa1ea59250"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Vent"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -79
+    y: 0
+    z: -81
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d69b2a643431fa1ea59274"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -83
+    y: 0
+    z: -81
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d69b31643431fa1ea59275"
+  }
+  lod: 0
+}
+props {
+  name: "hive_floor_cement01"
+  gridPoint {
+    x: -34
+    y: 0
+    z: -151
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6a7fd6434311a2125b456"
+  }
+  lod: 0
+}
+props {
+  name: "hive_floor_cement01"
+  gridPoint {
+    x: -34
+    y: 0
+    z: -149
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6a8036434311a2125b457"
+  }
+  lod: 0
+}
+props {
+  name: "hive_floor_cement01"
+  gridPoint {
+    x: -70
+    y: 0
+    z: -154
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6a8396434311a2125b458"
+  }
+  lod: 0
+}
+props {
+  name: "hive_floor_cement01"
+  gridPoint {
+    x: -70
+    y: 0
+    z: -152
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6a83c6434311a2125b459"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -48
+    y: 0.6
+    z: -95.4
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_1"
+  idRef {
+    id: "59d6af39643431b921bb8f69"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -40.6
+    y: 0.70000005
+    z: -99
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_2"
+  idRef {
+    id: "59d6af7e643431b921bb8f6b"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -33.6
+    y: 0.90000004
+    z: -85.8
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_3"
+  idRef {
+    id: "59d6afa6643431b921bb8f6c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -51.199997
+    y: 2.2
+    z: -78.8
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_4"
+  idRef {
+    id: "59d6afcd643431b921bb8f6d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -59
+    y: 0.50000006
+    z: -90.8
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_5"
+  idRef {
+    id: "59d6b018643431b921bb8f6e"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -70.3
+    y: 0.70000005
+    z: -96.8
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_6"
+  idRef {
+    id: "59d6b053643431b921bb8f70"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -68.3
+    y: 0.90000004
+    z: -90.3
+  }
+  orientation: ORIENTATION_S
+  displayName: "Downstairs_PlantExplosives_7"
+  idRef {
+    id: "59d6b078643431b921bb8f71"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Explosives"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Explosion
+    interaction_info_text: "Place Explosives"
+  }
+  lod: 0
+}
+props {
+  name: "school_floor_stripeTile02"
+  gridPoint {
+    x: -67
+    y: 0
+    z: -106
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6ba60643431b921bb8f84"
+  }
+  lod: 0
+}
+props {
+  name: "school_floor_stripeTile02"
+  gridPoint {
+    x: -69
+    y: 0
+    z: -106
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6ba61643431b921bb8f85"
+  }
+  lod: 0
+}
+props {
+  name: "hive_floor_cement01"
+  gridPoint {
+    x: -71
+    y: 0
+    z: -145
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "59d6bacb643431b921bb8f86"
   }
   lod: 0
 }
