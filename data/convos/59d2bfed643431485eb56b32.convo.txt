@@ -100,7 +100,7 @@ nodes {
     id: "59d2c07a643431485eb56b77"
   }
   index: 1
-  text: "> Password required."
+  text: "Password required."
   branches {
     responseText: "Camelot"
     nextNodeIndex: 3
@@ -176,7 +176,7 @@ nodes {
           call_value {
             functionName: "Get Map Item (Animation)"
             args {
-              string_value: "HongKong:General/standing_idle"
+              string_value: "HongKong:General/standing_jackout_decking"
             }
           }
         }
@@ -257,6 +257,42 @@ nodes {
   text: "> Please select an option from the menu."
   branches {
     responseText: "{{GM}}View personnel records.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-GavanRecords"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 4
     idRef {
       id: "59d2bfed643431485eb56b32:59d2c0e2643431485eb56bab"
@@ -1455,7 +1491,7 @@ nodes {
     }
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Speaker_Voice
   sourceWithTagInScene: "isArelia"
 }
 nodes {
