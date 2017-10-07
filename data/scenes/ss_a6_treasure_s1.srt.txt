@@ -2784,6 +2784,123 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Add Tag to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59d665ff643431231eeae783"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor In Passive Mode"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59d665ff643431231eeae783"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59d665ff643431231eeae783"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59d79e70643431df297d6469"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
   }
   isActive: false
   idRef {
@@ -7444,16 +7561,144 @@ triggers {
 triggers {
   name: "Setup_SpawnWeetabrixIfLeader"
   events {
+    ops {
+      functionName: "On Map Setup"
+    }
   }
   conditions {
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "a4_Catos_s1-BetrayedMpa"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "a4_Catos_s1-LeaderDied"
+          }
+        }
+      }
+    }
   }
   actions {
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59d6478d643431d811ec21d1"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader_he"
+          }
+        }
+      }
+      args {
+        string_value: "he"
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader"
+          }
+        }
+      }
+      args {
+        string_value: "Weetabrix"
+      }
+    }
   }
   isActive: true
   idRef {
     id: "59d64ab26434314e170d04cc"
   }
   elseActions {
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59d925ea3565644c47002f9e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   is_oneshot: true
 }
@@ -13858,38 +14103,6 @@ triggers {
         }
       }
       args {
-        int_value: 5
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "ActorSkills"
-          }
-          args {
-            int_value: 10
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Actor Base Skill"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
         int_value: 1
       }
       args {
@@ -13904,28 +14117,65 @@ triggers {
         }
       }
     }
+  }
+  isActive: true
+  idRef {
+    id: "59d854a63565645822004a09"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Setup_SpawnSlagarmOrFred"
+  events {
+  }
+  conditions {
     ops {
-      functionName: "Add Item to Actor"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Get Map Item (Item)"
+          functionName: "Get Story Variable (bool)"
           args {
-            string_value: "ss_a6_treasure_s1-Badge"
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "a1_Piedmont_s1-SlagarmDied"
           }
         }
       }
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Preset Value (int)"
           args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
+            string_value: "IsOrIsNot"
           }
           args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59d6478d643431d811ec21d3"
           }
         }
       }
@@ -13937,6 +14187,212 @@ triggers {
           }
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader"
+          }
+        }
+      }
+      args {
+        string_value: "Slagarm"
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader_he"
+          }
+        }
+      }
+      args {
+        string_value: "she"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59d925ea3565644c47002f9e"
+  }
+  elseActions {
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "59d6478d643431d811ec21d2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader"
+          }
+        }
+      }
+      args {
+        string_value: "Fred"
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "mpa_leader_he"
+          }
+        }
+      }
+      args {
+        string_value: "he"
+      }
+    }
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Outside_CerysExits"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59d79e70643431df297d6469"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59d665ff643431231eeae783"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-hasUpgradedClubSinger"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
           }
         }
       }
@@ -13955,7 +14411,94 @@ triggers {
   }
   isActive: true
   idRef {
-    id: "59d854a63565645822004a09"
+    id: "59d92b4c3565644c47003908"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Downstairs_StartStealthGoal"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "595056f9356564f86e006021"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Avoid Detection"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59d934e03565644c47003e92"
   }
   elseActions {
   }
@@ -21792,7 +22335,7 @@ characters {
     interactionRadius: 1
     conversationPoint {
       conversationID: "59cd6fba6434317e3a88c4a5"
-      turnToFace: true
+      turnToFace: false
     }
     interactionIcon: InteractionIcon_Conversation
     interaction_info_text: ""
@@ -22281,6 +22824,22 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  int_value: 0
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Outside_ConvinceLeaderPoints"
+    typeName: "int"
+  }
+}
+variables {
+  int_value: 3
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Outside_ConvinceLeaderMax"
+    typeName: "int"
+  }
+}
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 mapEvents: "Event_MatrixPlayTeleportSound"
@@ -22354,6 +22913,11 @@ goals {
 }
 goals {
   name: "Question the Prisoner"
+  type: GoalType_Secondary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Investigate the Attack Site"
   type: GoalType_Secondary
   status: GoalStatus_Hidden
 }
@@ -22486,6 +23050,8 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 50
   heat_response_rating: 0
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {

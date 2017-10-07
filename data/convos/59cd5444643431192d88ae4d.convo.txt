@@ -167,7 +167,7 @@ nodes {
     id: "59cd5444643431192d88ae4d:59cd54fe643431192d88aea9"
   }
   index: 3
-  text: "You realize that, while the prisoner\342\200\231s movements and reactions make no sense for a fighter, they make perfect sense for a messenger. He\342\200\231s wearing a uniform, but is unfamiliar with his sidearm.\n\nHe must have been en route to personally deliver a communique when $(story.mpa_leader)\342\200\231s crew intercepted him."
+  text: "You realize that, while the prisoner\342\200\231s movements and reactions make no sense for a fighter, they make perfect sense for a messenger. He was wearing a uniform, but is unfamiliar with his sidearm.\n\nHe must have been en route to personally deliver a communique when $(story.mpa_leader)\342\200\231s crew intercepted him."
   branches {
     responseText: ""
     nextNodeIndex: 4
@@ -184,7 +184,41 @@ nodes {
   index: 4
   text: "He doesn\342\200\231t pose a threat. $(story.mpa_leader) may be interested to learn that."
   nodeType: ConversationNodeType_GM_Voice
-  comment: "TODO: Update goal or var with this info"
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Investigate the Attack Site"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -273,7 +307,41 @@ nodes {
   text: "Take it from me: this is some country boy who wants to wear the uniform and be a part of something bigger, not a combat-trained soldier. Probably just running messenger duty.\n\nThese MPA friends of yours haven\342\200\231t stopped a dangerous killer, just a wannabe who\342\200\231s in way over his head."
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isMasato"
-  comment: "TODO: Update goal or whatever"
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Investigate the Attack Site"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0

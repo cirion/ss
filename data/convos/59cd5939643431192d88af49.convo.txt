@@ -7,7 +7,7 @@ nodes {
     id: "59cd59e6643431192d88af55"
   }
   index: 0
-  text: "{{GM}}$+(s.he) pets $(story.dog_name) absent-mindedly.{{/GM}}\n\nHey there, girl. We\342\200\231re both a long way from Piedmont Avenue, aren\342\200\231t we?"
+  text: "{{GM}}$+(s.he) pets $(story.Global-DogName) absent-mindedly.{{/GM}}\n\nHey there, girl. We\342\200\231re both a long way from Piedmont Avenue, aren\342\200\231t we?"
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -16,6 +16,52 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59cd10d9643431192d88ae2f"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -86,6 +132,31 @@ nodes {
           }
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
           }
         }
       }
@@ -385,7 +456,7 @@ nodes {
     }
   }
   branches {
-    responseText: "I learned something that might change your mind."
+    responseText: "I learned something that might change your mind about attacking Treasure Island."
     conditions {
       ops {
         functionName: "Evaluate Goal"
@@ -422,18 +493,77 @@ nodes {
       }
     }
     nextNodeIndex: 29
+    hideIfUnavailable: true
     idRef {
       id: "59cd5939643431192d88af49:59cd626d6434317e3a88b5bd"
     }
-    comment: "TODO: Convince goal is started"
   }
   branches {
     responseText: "I can\342\200\231t let you ruin this. {{GM}}Attack.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Persuade the MPA to Fall Back"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59d8040b6434311d38d53efa"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
+    hideIfUnavailable: true
     idRef {
       id: "59cd5939643431192d88af49:59cd6ea96434317e3a88c3ce"
     }
-    comment: "TODO: Maybe only if convince quest is started? Start fight on trigger."
   }
   branches {
     responseText: "Goodbye."
@@ -697,7 +827,7 @@ nodes {
     id: "59cd5dd6643431192d88b221"
   }
   index: 11
-  text: "It was exciting! We faced down legit soldiers, but they were running scared because of the movements Ares was making. The processing centers were running a skeleton crew, nobody knew what the fuck they were supposed to be doing, and we took advantage of the confusion."
+  text: "It was hella exciting! We faced down legit soldiers, but they were running scared because of the movements Ares was making. The processing centers were running a skeleton crew, nobody knew what the fuck they were supposed to be doing, and we took advantage of the confusion."
   branches {
     responseText: ""
     nextNodeIndex: 13
@@ -759,7 +889,7 @@ nodes {
     id: "59cd5939643431192d88af49:59cd5e4e643431192d88b2d5"
   }
   index: 15
-  text: "I used to think that the Halferville forces were cowards, hiding in their holes, but now that they\342\200\231re in the fight, they are somethin\342\200\231 to behold. I\342\200\231ve seen the ground open up beneath a Protectorate squadron, swallowing everyone whole before they can get off a single shot. I\342\200\231ve seen dozens of dwarves leaping from sewer grates, raining hellfire on Humanis pricks, before disappearing back below. "
+  text: "I used to think that the Halferville forces were cowards, hiding in their holes, but now that they\342\200\231re in the fight, they are somethin\342\200\231 to behold.\n\nI\342\200\231ve seen the ground open up beneath a Protectorate squadron, swallowing everyone whole before they can get off a single shot. I\342\200\231ve seen dozens of dwarves leaping from sewer grates, raining hellfire on Humanis pricks, before disappearing back below. "
   branches {
     responseText: ""
     nextNodeIndex: 16
@@ -1145,6 +1275,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1162,6 +1331,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isMasato"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isMasato"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1179,6 +1387,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isIsas"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isIsas"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1196,13 +1443,52 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isArelia"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isArelia"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59cd5939643431192d88af49:59cd5fbb6434317e3a88afd4"
   }
   index: 22
-  text: "{{GM}}$+(s.he) shrugs.{{/GM}}\n\nI didn\342\200\231t realize Dorbi was so controversial. From where I\342\200\231m standing, it looks like she\342\200\231s the leader of the anti-Saito coalition. As long as she\342\200\231s on the front lines, hitting the Protectorate with her MASSIVE ARMY, I\342\200\231ll be glad to fight under her direction."
+  text: "{{GM}}$+(s.he) shrugs.{{/GM}}\n\nI didn\342\200\231t realize Dorbi was so controversial. From where I\342\200\231m standing, it looks like she\342\200\231s the leader of the anti-Saito coalition.\n\nAs long as she\342\200\231s on the front lines, hitting the Protectorate with her MASSIVE ARMY, I\342\200\231ll be glad to fight under her direction."
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -1255,7 +1541,7 @@ nodes {
         call_value {
           functionName: "Get Map Item (Animation)"
           args {
-            string_value: "HongKong:General/standing_cast_matrix"
+            string_value: "HongKong:General/standing_summon"
           }
         }
       }
@@ -1267,7 +1553,7 @@ nodes {
     id: "59cd60f46434317e3a88b37c"
   }
   index: 25
-  text: "We\342\200\231ve been pumping him for information. Schedules, weak spots, details that will help us hit Treasure Island as hard as possible, as quickly as possible, with as little risk as possible.\n\n{{GM}$+(s.he) spits on the ground with contempt.{{/GM}}\n\nLittle fucker is useless, though. Wouldn\342\200\231t speak, then wouldn\342\200\231t stop crying, now won\342\200\231t say anything useful."
+  text: "We\342\200\231ve been pumping him for information. Schedules, weak spots, details that will help us hit Treasure Island as hard as possible, as quickly as possible, with as little risk as possible.\n\n{{GM}}$+(s.he) spits on the ground with contempt.{{/GM}}\n\nLittle fucker is useless, though. Wouldn\342\200\231t speak, then wouldn\342\200\231t stop crying, now won\342\200\231t say anything useful."
   branches {
     responseText: ""
     nextNodeIndex: 26
@@ -1335,6 +1621,39 @@ nodes {
           functionName: "Get Map Item (Goal)"
           args {
             string_value: "Question the Prisoner"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Investigate the Attack Site"
           }
         }
       }
@@ -1476,33 +1795,135 @@ nodes {
   text: ""
   branches {
     responseText: "That \342\200\234soldier\342\200\235 is just a message-runner, not a fighter."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Investigate the Attack Site"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 31
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "59cd5939643431192d88af49:59cd62876434317e3a88b5c2"
     }
-    comment: "TODO: Learned about soldier\'s role"
   }
   branches {
     responseText: "Your prisoner is healthy enough to move. You can take him with you to extract more intel."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Heal the Prisoner"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 32
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "59cd5939643431192d88af49:59cd62e76434317e3a88b6c6"
     }
-    comment: "TODO: Healed prisoner"
   }
   branches {
     responseText: "The real fight going to happen back on shore, at Point Richmond."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Question the Prisoner"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 33
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "59cd5939643431192d88af49:59cd62f46434317e3a88b6d2"
     }
-    comment: "TODO: Got intel from prisoner"
   }
   branches {
     responseText: "Never mind."
@@ -1513,20 +1934,77 @@ nodes {
   }
   branches {
     responseText: "Our need is greater than your own."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Outside_ConvinceLeaderPoints"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
     nextNodeIndex: 35
     hideIfUnavailable: true
     idRef {
       id: "59cd5939643431192d88af49:59cd63b16434317e3a88b83b"
     }
-    comment: "TODO: Have at least 1 \"convincing\" point."
   }
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Outside_ConvinceLeaderPoints"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Outside_ConvinceLeaderMax"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 44
     idRef {
       id: "59cd5939643431192d88af49:59cd6d936434317e3a88bebb"
     }
-    comment: "TODO: If you have enough convincing points"
   }
   nodeType: ConversationNodeType_Simple
   comment: "Inner convincing loop"
@@ -1814,12 +2292,43 @@ nodes {
   }
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Outside_ConvinceLeaderPoints"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Outside_ConvinceLeaderMax"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 44
     idRef {
       id: "59cd5939643431192d88af49:59cd6e416434317e3a88c084"
     }
     auxiliaryLink: true
-    comment: "TODO: Have enough convincing points"
   }
   nodeType: ConversationNodeType_Simple
   comment: "Way-inner convincing loop \"need\""
@@ -1839,7 +2348,22 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Increment convince var"
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Outside_ConvinceLeaderPoints"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1856,7 +2380,22 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Increment convince var"
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Outside_ConvinceLeaderPoints"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1889,6 +2428,22 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Outside_ConvinceLeaderPoints"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1968,7 +2523,59 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Update goal, enable peaceful route trigger. (Karma?)"
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Persuade the MPA to Fall Back"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Actor Karma"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1985,7 +2592,53 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Give item."
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_treasure_s1-Badge"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   conditions {
@@ -2034,45 +2687,6 @@ roots {
   }
 }
 roots {
-  conditions {
-    ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Count of Alive Actors"
-          args {
-            call_value {
-              functionName: "Specific Actor"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "59cd10d9643431192d88ae2f"
-                  }
-                }
-              }
-              args {
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        int_value: 0
-      }
-    }
-  }
   nextNodeIndex: 2
   onlyOnce: true
   idRef {
