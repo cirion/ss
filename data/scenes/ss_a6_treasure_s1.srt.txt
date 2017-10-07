@@ -5714,22 +5714,6 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Downstairs_WentHostile_OFF"
-  events {
-  }
-  conditions {
-  }
-  actions {
-  }
-  isActive: false
-  idRef {
-    id: "59cd81ca643431ca3e88ade5"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
   name: "Entry_PassedGuard_OFF"
   events {
     ops {
@@ -5754,12 +5738,208 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Downstairs_ExceededSuspicion_OFF"
+  name: "Downstairs_StartFighting_OFF"
   events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
   }
   conditions {
   }
   actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "Alarm3"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Downstairs_LonestarHostile"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Team Alliance"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeamAlliance"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Team Alliance"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeamAlliance"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Downstairs_SuspicionScreenLabel"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59d8231a3565645822003527"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -9454,7 +9634,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -10341,7 +10521,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -10433,7 +10613,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -10623,7 +10803,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -10807,7 +10987,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -10991,7 +11171,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -11175,7 +11355,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -12027,6 +12207,40 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isLeader"
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -12054,6 +12268,125 @@ triggers {
   isActive: true
   idRef {
     id: "59d805f16434311d38d53f00"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Global_FailInfiltrationGoal"
+  events {
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Avoid Detection"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_treasure_s1-ProtectoratePasses"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Avoid Detection"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59d8231a3565645822003527"
   }
   elseActions {
   }
@@ -15286,8 +15619,8 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: -69
-      z: -86
+      x: -68
+      z: -85
     }
     index: 2
     rail_node_pause_time: 0
@@ -15394,8 +15727,8 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: -68
-      z: -86
+      x: -67
+      z: -85
     }
     index: 11
     rail_node_pause_time: 0
@@ -15431,7 +15764,7 @@ patrolRoutes {
   nodes {
     position {
       x: -64
-      z: -91
+      z: -92
     }
     index: 14
     rail_node_pause_time: 0
@@ -15731,7 +16064,7 @@ patrolRoutes {
   nodes {
     position {
       x: -61
-      z: -89
+      z: -90
     }
     index: 39
     rail_node_pause_time: 0
@@ -15743,7 +16076,7 @@ patrolRoutes {
   nodes {
     position {
       x: -64
-      z: -92
+      z: -91
     }
     index: 40
     rail_node_pause_time: 0
@@ -15778,7 +16111,7 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: -68
+      x: -67
       z: -99
     }
     index: 43
@@ -15850,7 +16183,7 @@ patrolRoutes {
   }
   nodes {
     position {
-      x: -69
+      x: -68
       z: -99
     }
     index: 49
@@ -16853,7 +17186,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Guard"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave1"
@@ -17840,7 +18173,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "LtCol Sano"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave1"
@@ -17958,7 +18291,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Otsuka"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave1"
@@ -18952,7 +19285,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Soldier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isPatroller"
@@ -19007,7 +19340,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Captain"
     GeneralTags: "isDownstairs"
     GeneralTags: "isPatroller"
@@ -19024,11 +19357,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -60
+    x: -52
     y: 0
-    z: -98
+    z: -95
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_E
   GeneralTags: "isDownstairs"
   GeneralTags: "isPatroller"
   GeneralTags: "isPassive"
@@ -19062,7 +19395,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Grenadier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isPatroller"
@@ -19156,7 +19489,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Rigger"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave1"
@@ -19210,7 +19543,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Soldier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave1"
@@ -19261,7 +19594,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Sniper"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave2"
@@ -19355,7 +19688,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Rigger"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave2"
@@ -19409,7 +19742,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Soldier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave2"
@@ -19460,7 +19793,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Grenadier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave2"
@@ -19511,7 +19844,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Captain"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave3"
@@ -19562,7 +19895,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Soldier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave3"
@@ -19613,7 +19946,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Soldier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave3"
@@ -19664,7 +19997,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "LoneStarDownstairs"
     char_name: "Protectorate Sniper"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave3"
@@ -20465,9 +20798,11 @@ team_affiliations {
   affiliation: 0
   affiliation: 1
   affiliation: 1
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Gangers"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -20485,9 +20820,11 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Civilians"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -20505,9 +20842,11 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Barrel"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -20525,6 +20864,18 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "LoneStarDownstairs"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
 }
 scene_dimensions {
   dimension_name: "Default"
@@ -20536,8 +20887,6 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 50
   heat_response_rating: 0
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
