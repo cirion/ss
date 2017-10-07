@@ -49,12 +49,89 @@ nodes {
   }
   branches {
     responseText: "Can you help me out with my badge?"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "See Otsuka About Your Badge"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Clear Waypoint from Actor"
+        args {
+          call_value {
+            functionName: "Triggering Target Actor"
+          }
+        }
+      }
+      ops {
+        functionName: "Set Goal Status"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "See Otsuka About Your Badge"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 8
     hideIfUnavailable: true
     idRef {
       id: "59cd877b643431ca3e88b123:59cd8d44643431ca3e88b238"
     }
-    comment: "TODO: Have to know about his rank (quest from guard?)"
   }
   branches {
     responseText: "Goodbye."
@@ -399,12 +476,46 @@ nodes {
   }
   branches {
     responseText: "I already checked the central card reader, but automated functions are down while the VIP is on site."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Lobby_InspectedCardReader"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 11
     hideIfUnavailable: true
     idRef {
       id: "59cd877b643431ca3e88b123:59cd8db3643431ca3e88b268"
     }
-    comment: "TODO: Only after you\'ve already inspected the card reader thingy"
   }
   branches {
     responseText: "I\342\200\231ll owe you one."
@@ -542,11 +653,46 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Badge"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 15
     idRef {
       id: "59cd877b643431ca3e88b123:59cd9018643431ca3e88b454"
     }
-    comment: "TODO: Have an old card"
   }
   branches {
     responseText: ""
@@ -578,7 +724,7 @@ nodes {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Triggering Target Actor"
         }
       }
       args {
@@ -599,7 +745,7 @@ nodes {
             string_value: "HongKong:ui"
           }
           args {
-            string_value: "BeepGeneric_Good"
+            string_value: "nextstage"
           }
         }
       }
@@ -618,8 +764,41 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_treasure_s1-Badge"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
-  comment: "TODO: Find a good sound here. Also, remove badge"
 }
 nodes {
   idRef {
@@ -635,7 +814,53 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Add new, good badge. Disable him unless that\'s driven by having the item."
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_treasure_s1-ClearedBadge"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -682,7 +907,53 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Add new, good badge"
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a6_treasure_s1-ClearedBadge"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {

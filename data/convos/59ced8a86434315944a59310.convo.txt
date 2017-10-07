@@ -95,22 +95,87 @@ nodes {
     responseText: "{{CC}}Item: Flagged Badge{{/CC}} Here."
     conditions {
       ops {
-        functionName: "No Condition"
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Badge"
+            }
+          }
+        }
       }
     }
     nextNodeIndex: 4
     idRef {
       id: "59ced8a86434315944a59310:59ced92f6434315944a5934e"
     }
-    comment: "TODO: Check for item"
   }
   branches {
     responseText: "{{CC}}Item: Cleared Badge{{/CC}} Here."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-ClearedBadge"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 5
     idRef {
       id: "59ced8a86434315944a59310:59ced9926434315944a5935e"
     }
-    comment: "TODO: Item"
   }
   branches {
     responseText: "I, uh, left my badge in my other pants."
@@ -343,7 +408,7 @@ nodes {
     idRef {
       id: "59ced8a86434315944a59310:59cedad2643431b8452fccc7"
     }
-    comment: "PC0 human. TODO: Check for other metas on team, too?"
+    comment: "PC0 human."
   }
   branches {
     responseText: ""
@@ -418,21 +483,38 @@ nodes {
     }
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Send Event"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "Event_Downstairs_SuspicionIncreases"
+  branches {
+    responseText: "To wipe you out! {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Trigger"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59cedbeb643431b8452fcdf0"
+            }
           }
         }
       }
     }
+    nextNodeIndex: -1
+    idRef {
+      id: "59ced8a86434315944a59310:59d841433565645822003b85"
+    }
   }
-  comment: "TODO: Add hostile response?"
+  nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
@@ -536,6 +618,19 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Downstairs_SuspicionIncreases"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {

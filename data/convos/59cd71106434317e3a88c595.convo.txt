@@ -17,7 +17,6 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
-  comment: "TODO: Maybe start optional goal here?"
 }
 nodes {
   idRef {
@@ -42,19 +41,89 @@ nodes {
   text: ""
   branches {
     responseText: "{{GM}}Attempt to heal him.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Heal the Prisoner"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
+    hideIfUnavailable: true
     idRef {
       id: "59cd71106434317e3a88c595:59cd71476434317e3a88c5a3"
     }
-    comment: "TODO: If the goal isn\'t complete yet"
   }
   branches {
     responseText: "{{GM}}Question him.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Question the Prisoner"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 8
+    hideIfUnavailable: true
     idRef {
       id: "59cd71106434317e3a88c595:59cd73f5643431aa3c88ae81"
     }
-    comment: "TODO: Probably a goal for this, too?"
   }
   branches {
     responseText: "{{GM}}Leave.{{/GM}}"
@@ -227,6 +296,14 @@ nodes {
   }
   index: 4
   text: "You tear fabric from the prisoner\342\200\231s uniform, checking each strip to verify it\342\200\231s clean. You replace the bandages on the head and apply a makeshift tourniquet to the injured leg.\n\nIt isn\342\200\231t much, but it will stop the bleeding and ease his pain a little."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59cd71106434317e3a88c595:59d842803565645822003ed8"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
@@ -300,6 +377,37 @@ nodes {
   text: "I think I can.\n\n{{GM}}She crouches by the prisoner and lays hands on him, murmuring quietly under her breath. There\342\200\231s no flashy burst of light or sparkle of color, but whatever she\342\200\231s doing seems to be working.{{/GM}}"
   branches {
     responseText: ""
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_idle"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 7
     idRef {
       id: "59cd71106434317e3a88c595:59cd7331643431aa3c88ae0a"
@@ -307,6 +415,102 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isArelia"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isArelia"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:spellcasting"
+          }
+          args {
+            string_value: "Healing"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isArelia"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/crouch_idle_spell"
+          }
+        }
+      }
+    }
+  }
   comment: "TODO: Animate, sound, sfx"
 }
 nodes {
@@ -324,6 +528,41 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Heal the Prisoner"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -836,8 +1075,42 @@ nodes {
     }
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_Simple
-  comment: "TODO: Update goal or something"
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Question the Prisoner"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
