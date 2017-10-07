@@ -67,7 +67,7 @@ nodes {
               string_value: "GoalStatus"
             }
             args {
-              int_value: 1
+              int_value: 0
             }
           }
         }
@@ -78,7 +78,41 @@ nodes {
               string_value: "IsOrIsNot"
             }
             args {
-              int_value: 1
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-ClearedBadge"
             }
           }
         }
@@ -258,50 +292,6 @@ nodes {
   text: "Someone needed to take responsibility for the failure. Tir was clearly at fault, but they\342\200\231re political, so we can\342\200\231t blame them. None of the higher-ups who were pushing for this joint venture were willing to own it. Shit runs downhill, and since I\342\200\231m the paper-pusher who actually signed off on the exchange and worked out the details, I\342\200\231m being punished.\n\n{{GM}}He half-heartedly wipes the toilet bowl some more.{{/GM}}"
   branches {
     responseText: ""
-    actions {
-      ops {
-        functionName: "Play Animation From Manifest"
-        args {
-          call_value {
-            functionName: "Triggering Target Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (Animation)"
-            args {
-              string_value: "HongKong:General/standing_idle"
-            }
-          }
-        }
-      }
-      ops {
-        functionName: "Order Actor to Face Direction"
-        args {
-          call_value {
-            functionName: "Specific Actor"
-            args {
-              call_value {
-                functionName: "Triggering Target Actor"
-              }
-            }
-            args {
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "FacingDirection"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-      }
-    }
     nextNodeIndex: 2
     idRef {
       id: "59cd877b643431ca3e88b123:59cd8d2f643431ca3e88b1e8"
@@ -309,50 +299,6 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Order Actor to Face Direction"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Triggering Target Actor"
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 7
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Animation From Manifest"
-      args {
-        call_value {
-          functionName: "Triggering Target Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Animation)"
-          args {
-            string_value: "HongKong:General/crouch_hitreaction"
-          }
-        }
-      }
-    }
-  }
 }
 nodes {
   idRef {
@@ -559,7 +505,7 @@ nodes {
   }
   branches {
     responseText: "Never mind, I\342\200\231ll find someone else."
-    nextNodeIndex: 19
+    nextNodeIndex: 20
     idRef {
       id: "59cd877b643431ca3e88b123:59cd8fe8643431ca3e88b3a4"
     }
@@ -655,6 +601,46 @@ nodes {
     responseText: ""
     conditions {
       ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionCurrent"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Downstairs_SuspicionMax"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+    idRef {
+      id: "59cd877b643431ca3e88b123:59d84d6835656458220043c1"
+    }
+    comment: "Too much suspicion"
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
         functionName: "Evaluate If Actor Has Item"
         args {
           call_value {
@@ -689,14 +675,14 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "59cd877b643431ca3e88b123:59cd9018643431ca3e88b454"
     }
   }
   branches {
     responseText: ""
-    nextNodeIndex: 18
+    nextNodeIndex: 19
     idRef {
       id: "59cd877b643431ca3e88b123:59cd9018643431ca3e88b456"
     }
@@ -707,13 +693,45 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59cd9023643431ca3e88b459"
+    id: "59d84d8235656458220043c4"
   }
   index: 15
+  text: "{{GM}}His face turns grim.{{/GM}}\n\nNo matter how incompetent my superiors may think I am, at least I can recognize an infiltrator when I see one. You\'re going down, and whoever let you in here will take my position in the privy!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59cedbeb643431b8452fcdf0"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59cd9023643431ca3e88b459"
+  }
+  index: 16
   text: "He takes your badge, pulls out a handheld scanner, and runs it through. He taps the display, and a satisfying \342\200\234Beep!\342\200\235 results."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59cd877b643431ca3e88b123:59cd92b1643431ca3e88b5ba"
     }
@@ -804,11 +822,11 @@ nodes {
   idRef {
     id: "59cd92b6643431ca3e88b5bd"
   }
-  index: 16
+  index: 17
   text: "There was an active alert on the badge, but I\342\200\231ve cleared it. You should be good to go now, as long as you don\342\200\231t need to venture into the classified areas."
   branches {
     responseText: ""
-    nextNodeIndex: 17
+    nextNodeIndex: 18
     idRef {
       id: "59cd877b643431ca3e88b123:59cd902d643431ca3e88b48e"
     }
@@ -866,7 +884,7 @@ nodes {
   idRef {
     id: "59cd877b643431ca3e88b123:59cd904d643431ca3e88b490"
   }
-  index: 17
+  index: 18
   text: ""
   branches {
     responseText: "{{GM}}Nod.{{/GM}}"
@@ -896,11 +914,11 @@ nodes {
   idRef {
     id: "59cd92d1643431ca3e88b5ca"
   }
-  index: 18
+  index: 19
   text: "Here\342\200\231s a spare badge. It\342\200\231s keyed to the common personnel zones, which should let you head anywhere except the classified areas."
   branches {
     responseText: ""
-    nextNodeIndex: 17
+    nextNodeIndex: 18
     idRef {
       id: "59cd877b643431ca3e88b123:59cd92d3643431ca3e88b5cc"
     }
@@ -959,7 +977,7 @@ nodes {
   idRef {
     id: "59cd8ff1643431ca3e88b3a7"
   }
-  index: 19
+  index: 20
   text: "Good luck. But fair warning, we\342\200\231re short-staffed today. You might need to wait a while until someone frees up."
   branches {
     responseText: ""

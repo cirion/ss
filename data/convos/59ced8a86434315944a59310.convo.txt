@@ -55,6 +55,24 @@ nodes {
     comment: "PC0 is meta"
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -726,7 +744,7 @@ nodes {
     id: "59cedc1e643431b8452fce21"
   }
   index: 12
-  text: "{{GM}}She grunts in frustration.{{/GM}}\n\nOf COURSE nobody bothered to inform me. They haven\342\200\231t told me about anything else today, so why start now?"
+  text: "{{GM}}She grunts in frustration.{{/GM}}\n\nOf COURSE nobody bothered to inform me. They haven\342\200\231t told me about anything else since my duty started, so why start now?"
   branches {
     responseText: ""
     nextNodeIndex: 14
@@ -905,6 +923,50 @@ nodes {
   }
   branches {
     responseText: "Goodbye."
+    actions {
+      ops {
+        functionName: "Order Actor to Face Direction"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Target Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "FacingDirection"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Target Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_idle_talking"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "59ced8a86434315944a59310:59d2a6df6434310359b56dad"
@@ -1130,7 +1192,7 @@ nodes {
     id: "59ced8a86434315944a59310:59d27b916434318558b567c4"
   }
   index: 22
-  text: "I\342\200\231m screwed no matter what.\n\nIf I turn away Beaumont, he\342\200\231ll go direct to Saito and a ton of bricks will come crashing down on me. But none of what he\342\200\231s doing here is on the books! So if my own ops slip because I\342\200\231m busy coddling him, my own commander won\342\200\231t accept his presence as an excuse."
+  text: "I\342\200\231m screwed no matter what.\n\nIf I turn away Beaumont, he\342\200\231ll go direct to Saito and a ton of bricks will come crashing down on me. But none of what he\342\200\231s doing here is on the books! So if my own ops slip because I\342\200\231m busy coddling him, my commander won\342\200\231t accept his presence as an excuse."
   branches {
     responseText: ""
     nextNodeIndex: 23
@@ -1380,6 +1442,19 @@ nodes {
   }
   branches {
     responseText: "Mr. Beaumont called down a few minutes ago and asked someone to deliver him a pot of green tea."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event_Downstairs_SuspicionIncreases"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 34
     idRef {
       id: "59ced8a86434315944a59310:59d295986434310359b56c9b"
