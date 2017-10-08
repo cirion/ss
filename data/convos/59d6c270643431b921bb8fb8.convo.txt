@@ -4,26 +4,75 @@ idRef {
 ui_name: "ss_a7_space_s1-Command_LeaveTerminal"
 nodes {
   idRef {
-    id: "59d6c28e643431b921bb8fc4"
+    id: "59da948735656434060057cc"
   }
   index: 0
-  text: "As you turn from the terminal, the screen flashes in warning."
+  text: "Masato storms off. Someone else will need to remain behind to ensure the success of the mission."
   branches {
-    nextNodeIndex: 1
+    responseText: ""
+    nextNodeIndex: 5
     idRef {
-      id: "59d6c270643431b921bb8fb8:59d6c28f643431b921bb8fc6"
+      id: "59d6c270643431b921bb8fb8:59da948835656434060057ce"
     }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
-    id: "59d6c270643431b921bb8fb8:59d6c28f643431b921bb8fc8"
+    id: "59d6c28e643431b921bb8fc4"
   }
   index: 1
-  text: "> Override canceled. Resetting original target."
+  text: "As you turn from the terminal, the screen flashes in warning."
   branches {
     nextNodeIndex: 2
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59d6c28f643431b921bb8fc6"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "59daabc43565643406005e4c"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59d6c28f643431b921bb8fc8"
+  }
+  index: 2
+  text: "> Override canceled. Resetting original target."
+  branches {
+    nextNodeIndex: 3
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c292643431b921bb8fcc"
     }
@@ -34,10 +83,10 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c292643431b921bb8fce"
   }
-  index: 2
+  index: 3
   text: "You hold up Gavan\342\200\231s head. No change. You touch the keyboard."
   branches {
-    nextNodeIndex: 3
+    nextNodeIndex: 4
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c294643431b921bb8fd0"
     }
@@ -51,10 +100,10 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c294643431b921bb8fd2"
   }
-  index: 3
+  index: 4
   text: "> Override resumed. Launch trajectory will be reached in 9 minutes. Maintain proximity for manual target override."
   branches {
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c295643431b921bb8fd4"
     }
@@ -65,39 +114,227 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c295643431b921bb8fd6"
   }
-  index: 4
+  index: 5
   text: ""
   branches {
-    nextNodeIndex: 5
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
     onlyOnce: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c297643431b921bb8fd8"
     }
-    comment: "TODO: Companion present"
   }
   branches {
-    nextNodeIndex: 6
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
     onlyOnce: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2df643431b921bb8ff6"
     }
-    comment: "TODO: Companion present"
   }
   branches {
-    nextNodeIndex: 7
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
     onlyOnce: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2e1643431b921bb9002"
     }
-    comment: "TODO: Companion present"
   }
   branches {
-    nextNodeIndex: 8
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
     onlyOnce: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2e1643431b921bb900a"
     }
-    comment: "TODO: Companion present"
   }
   branches {
     responseText: "Also TODO: If there are any hired NPCs here, they explicitly \"Nope\" out here."
@@ -140,6 +377,7 @@ nodes {
       }
     }
     nextNodeIndex: -1
+    hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2e2643431b921bb9012"
@@ -148,60 +386,249 @@ nodes {
   }
   branches {
     responseText: "Arelia, please stay behind."
-    nextNodeIndex: 9
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
     hideIfUnavailable: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c3b8643431b921bb9097"
     }
-    comment: "TODO: Companion present."
   }
   branches {
     responseText: "Isas, we need you to finish this."
-    nextNodeIndex: 13
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
     hideIfUnavailable: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c3cd643431b921bb9099"
     }
-    comment: "TODO: Companion present."
   }
   branches {
     responseText: "Kora, here\342\200\231s your chance to be a hero."
-    nextNodeIndex: 16
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 17
     hideIfUnavailable: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c3d0643431b921bb909c"
     }
-    comment: "TODO: Companion present."
   }
   branches {
     responseText: "Masato, you have to step up."
-    nextNodeIndex: -1
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 20
     hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c3d1643431b921bb909e"
     }
-    comment: "TODO: Companion present."
   }
   branches {
     responseText: "\342\200\246 it has to be me."
-    nextNodeIndex: -1
+    nextNodeIndex: 22
     hideIfUnavailable: true
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c3d1643431b921bb90a0"
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "Reactive loop"
+  comment: "Reactive loop + pick who remains"
 }
 nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c297643431b921bb8fda"
   }
-  index: 5
+  index: 6
   text: "Shit. That thing is only going to work if someone baby-sits the terminal until Saito\342\200\231s in our sights."
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2d1643431b921bb8feb"
     }
@@ -214,11 +641,11 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c2df643431b921bb8ff8"
   }
-  index: 6
+  index: 7
   text: "One of us here must remain. We the task must finish."
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2df643431b921bb8ffa"
     }
@@ -231,11 +658,11 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c2e1643431b921bb9004"
   }
-  index: 7
+  index: 8
   text: "The station\342\200\231s about to blow, though. We\342\200\231ve got to get the rest of the team out of here quickly, or else none of us will survive."
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2e1643431b921bb9006"
     }
@@ -248,11 +675,11 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c2e1643431b921bb900c"
   }
-  index: 8
+  index: 9
   text: "So\342\200\246 one of us will stay behind here. And die.\n\nTo save the rest."
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c2e1643431b921bb900e"
     }
@@ -265,7 +692,7 @@ nodes {
   idRef {
     id: "59d6c3fa643431b921bb90c6"
   }
-  index: 9
+  index: 10
   text: "{{GM}}Without hesitation, she takes the head from you.{{/GM}}\n\nOf course, $(l.name).\n\nThis will be the greatest thing I\342\200\231ve ever done."
   branches {
     responseText: ""
@@ -299,24 +726,81 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 10
+    nextNodeIndex: 11
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c3fc643431b921bb90c8"
     }
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isArelia"
-  comment: "TODO: Run trigger to remove from team, tag the actor, set story var. Probably move back to the terminal, too."
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59da70d3356564340600559a"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a7_space_s1-GavanHead"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59d6c452643431b921bb9119"
   }
-  index: 10
+  index: 11
   text: "Time is rapidly expiring, but before you leave, Arelia kisses you, hard, as if trying to extract some piece of you to hold with her during these final moments."
   branches {
     responseText: ""
-    nextNodeIndex: 11
+    nextNodeIndex: 12
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c452643431b921bb911b"
     }
@@ -328,11 +812,11 @@ nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c452643431b921bb911d"
   }
-  index: 11
+  index: 12
   text: "Go on, $(l.firstname). Live for both of us.\n\nCarry our memories together, and let them fuel you during the time ahead."
   branches {
     responseText: "So long, Arelia."
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c4be643431b921bb91ac"
     }
@@ -340,7 +824,7 @@ nodes {
   }
   branches {
     responseText: "I\342\200\231ll always love you."
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c4be643431b921bb91ae"
     }
@@ -348,26 +832,28 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Leave.{{/GM}}"
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c4be643431b921bb91b0"
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
 }
 nodes {
   idRef {
     id: "59d6c4d8643431b921bb91b3"
   }
-  index: 12
+  index: 13
   text: "Go!"
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
 }
 nodes {
   idRef {
     id: "59d6c4b8643431b921bb91a4"
   }
-  index: 13
+  index: 14
   text: "{{GM}}He eagerly grabs the head from you, his face a wall of sheer determination.{{/GM}}\n\nI for this job the best will be. My sacrifice countless lives will save. I for this purpose was born."
   branches {
     responseText: ""
@@ -401,22 +887,81 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 14
+    nextNodeIndex: 15
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c4bb643431b921bb91a6"
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59da74ce35656434060055d7"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a7_space_s1-GavanHead"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c4ec643431b921bb91ea"
   }
-  index: 14
+  index: 15
   text: "{{GM}}Isas casts a worried eye at the flashing alarms, and then pulls you in close, kissing you hungrily, as if trying to breathe some part of himself into you, a part of him to hold onto.{{/GM}}\n\nFlee! You our project must complete. My love with you goes, and it for eternity shall last. "
   branches {
     responseText: "Goodbye, Isas."
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c4ec643431b921bb91ec"
     }
@@ -424,7 +969,7 @@ nodes {
   }
   branches {
     responseText: "I\342\200\231ll always love you."
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c52e643431b921bb9254"
     }
@@ -432,18 +977,19 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Leave.{{/GM}}"
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c52f643431b921bb9256"
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
 }
 nodes {
   idRef {
     id: "59d6c584643431b921bb92c1"
   }
-  index: 15
+  index: 16
   text: "Fare well!"
   nodeType: ConversationNodeType_Simple
 }
@@ -451,19 +997,1125 @@ nodes {
   idRef {
     id: "59d6c5a4643431b921bb9300"
   }
-  index: 16
-  text: ""
+  index: 17
+  text: "Of course.\n\n{{GM}}She takes the decapitated head from your hands, almost proudly.{{/GM}}\n\nWhat is the life of one dwarf against the salvation of an entire nation?"
   branches {
     responseText: ""
-    nextNodeIndex: -1
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-RafikAlive"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 18
     idRef {
       id: "59d6c270643431b921bb8fb8:59d6c5a6643431b921bb9302"
     }
   }
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da75b43565643406005656"
+    }
+  }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59da74ea35656434060055d8"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a7_space_s1-GavanHead"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da753c35656434060055da"
+  }
+  index: 18
+  text: "Please tell Rafik that I love him. That I\342\200\231m sorry I had to go without saying goodbye. That my final thoughts were of him."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da75b43565643406005658"
+  }
+  index: 19
+  text: "I wish\342\200\246 I wish that Rafik\342\200\246\n\nWell. It doesn\342\200\231t matter. \n\nWho knows, perhaps we can finally see each other once again."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59da92f9356564340600569c"
+  }
+  index: 20
+  text: "Well, it isn\342\200\231t going to be me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da930635656434060056db"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59da930735656434060056de"
+  }
+  index: 21
+  text: "I mean, don\342\200\231t get me wrong: you\342\200\231ve been good company and all. But I didn\342\200\231t sign up to die! I have a life planetside, people who need me. \n\nFigure out what you\342\200\231re going to do, because this guy\342\200\231s headed out."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59da9328356564340600575d"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59da954f3565643406005859"
+  }
+  index: 22
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 23
+    onlyOnce: true
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da9551356564340600585b"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 24
+    onlyOnce: true
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da958a35656434060058e3"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 25
+    onlyOnce: true
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da958c35656434060058ef"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 26
+    onlyOnce: true
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da958c35656434060058f7"
+    }
+  }
+  branches {
+    responseText: "Yes. It needs to be done."
+    nextNodeIndex: 20
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da96033565643406005953"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Of course. I can\342\200\231t ask any of you to do what I wouldn\342\200\231t do myself."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isCrew"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 20
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da96043565643406005955"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Absolutely. So many lives are at stake, and I\342\200\231ll gladly give up my own for theirs."
+    nextNodeIndex: 20
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da96043565643406005957"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Sure, why not? At least I\342\200\231ll go out with style!"
+    nextNodeIndex: 27
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da96043565643406005959"
+    }
+  }
+  branches {
+    responseText: "I was just joking. Masato, you\342\200\231re up."
+    nextNodeIndex: 20
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da9605356564340600595b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I changed my mind. Kora, you need to do this."
+    nextNodeIndex: 17
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da9605356564340600595d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Whoops, I mis-spoke. Arelia, finish this."
+    nextNodeIndex: 10
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da9605356564340600595f"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nah. Isas, it\342\200\231s your moment."
+    nextNodeIndex: 14
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da96063565643406005961"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Crew reactions, final words"
+}
+nodes {
+  idRef {
+    id: "59da957735656434060058d6"
+  }
+  index: 23
+  text: "Seriously?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da957935656434060058d8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da958a35656434060058e5"
+  }
+  index: 24
+  text: "This a very brave decision is, but you certain are?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da958a35656434060058e7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da958c35656434060058f1"
+  }
+  index: 25
+  text: "I\342\200\231ve never felt more proud of you, but\342\200\246 this is a big deal, $(l.firstname). You\342\200\231re sure?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da958c35656434060058f3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da958c35656434060058f9"
+  }
+  index: 26
+  text: "This would be an incredible sacrifice, $(l.firstname). The ultimate step. You are really prepared to make it?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da958c35656434060058fb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
+}
+nodes {
+  idRef {
+    id: "59da96a83565643406005a00"
+  }
+  index: 27
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isMasato"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 28
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98663565643406005a6c"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isIsas"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 29
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98813565643406005a7c"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 31
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98833565643406005a88"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isKora"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5934d87635656440210023d7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 33
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98833565643406005a90"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59da96b83565643406005a01"
+          }
+        }
+      }
+    }
+  }
+  comment: "Final crew reactions"
+}
+nodes {
+  idRef {
+    id: "59da98673565643406005a6f"
+  }
+  index: 28
+  text: "You are a far, far better $(l.man) than I.\n\nI really mean that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98693565643406005a71"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isMasato"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da98813565643406005a7e"
+  }
+  index: 29
+  text: "I your example always will admire. Your decision countless people will protect."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-IsasLoveTalks"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 30
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98813565643406005a80"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da99233565643406005b88"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da98b83565643406005a98"
+  }
+  index: 30
+  text: "{{GM}}He kisses you, hands on your shoulders, quickly but tenderly.{{/GM}}\n\nYou so many things to me have shown. I so much of my life to you owe."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98b83565643406005a9a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da98833565643406005a8a"
+  }
+  index: 31
+  text: "You have a big heart, $(l.firstname). People down there might not realize what you\342\200\231ve done, but we\342\200\231ll carry your message with us."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-AreliaLoveTalks"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 32
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98833565643406005a8c"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da994d3565643406005c71"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da99483565643406005c6b"
+  }
+  index: 32
+  text: "{{GM}}She embraces you tightly, then starts to cry.{{/GM}}\n\nOh, $(l.firstname)... You\342\200\231ve made my life so much better, by being in it\342\200\246"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da99483565643406005c6d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da98833565643406005a92"
+  }
+  index: 33
+  text: "{{GM}}She wipes away a tear.{{/GM}}\n\nYou\342\200\231re the bravest $(l.race) I\342\200\231ve met, $(l.firstname). I promise, as long as the People\342\200\231s University exists, we\342\200\231ll continue telling your story to everyone, the story of how you ended the Human Nation plot."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59d6c270643431b921bb8fb8:59da98833565643406005a94"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
 }
 roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Endgame_MasatoQuit"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "59d6c270643431b921bb8fb8:59da948435656434060057c9"
+  }
+}
+roots {
+  nextNodeIndex: 1
   idRef {
     id: "59d6c270643431b921bb8fb8:59d6c270643431b921bb8fbc"
   }
