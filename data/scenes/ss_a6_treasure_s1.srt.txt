@@ -2812,7 +2812,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "canUseDoor"
+            string_value: "canExit"
           }
         }
       }
@@ -8019,7 +8019,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Trigger)"
           args {
-            string_value: "59d6ade6643431b921bb8f66"
+            string_value: "59d96dd73565644c4700487d"
           }
         }
       }
@@ -8660,7 +8660,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Trigger)"
           args {
-            string_value: "59d6ade6643431b921bb8f66"
+            string_value: "59d96dd73565644c4700487d"
           }
         }
       }
@@ -14367,13 +14367,45 @@ triggers {
             string_value: "ActorSkills"
           }
           args {
-            int_value: 14
+            int_value: 18
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Base Skill"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "ActorSkills"
+          }
+          args {
+            int_value: 16
           }
         }
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "59d854a63565645822004a09"
   }
@@ -14562,17 +14594,24 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "Comparison (Actor)"
+      functionName: "Evaluate Tag for Actor"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
         }
       }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "IsOrIsNot"
+            string_value: "HasOrHasNot"
           }
           args {
             int_value: 1
@@ -14581,36 +14620,9 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
+          functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "59d93d153565644c4700420f"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Comparison (Actor)"
-      args {
-        call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "59d79c02643431df297d63a5"
+            string_value: "canExit"
           }
         }
       }
@@ -15448,7 +15460,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "canUseDoor"
+            string_value: "canExit"
           }
         }
       }
@@ -18801,7 +18813,7 @@ regions {
   name: "Outside_MoveDest_CerysExit"
   position {
     x: -46
-    y: -16
+    y: -21
     width: 1
     height: 1
   }
@@ -20023,7 +20035,7 @@ patrolRoutes {
   nodes {
     position {
       x: -64
-      z: -92
+      z: -91
     }
     index: 8
     rail_node_pause_time: 0
@@ -20335,7 +20347,7 @@ patrolRoutes {
   nodes {
     position {
       x: -64
-      z: -91
+      z: -90
     }
     index: 34
     rail_node_pause_time: 0
@@ -24986,6 +24998,7 @@ senseTags: "isMasato"
 senseTags: "isTaggedDrone"
 senseTags: "isShadowrunnerDrone"
 senseTags: "canUseDoor"
+senseTags: "canExit"
 goals {
   name: "Convince the MPA to Release the Singer"
   type: GoalType_Secondary
