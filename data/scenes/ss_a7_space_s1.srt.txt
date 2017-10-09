@@ -7569,6 +7569,33 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Clear Waypoint from Point"
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Triggering Region"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndGame_FinalConvo"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
   }
   isActive: true
   idRef {
@@ -7810,26 +7837,52 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Endgame_PC0NeverRomanced"
+  name: "Endgame_PC0AreliaPlanetside"
   events {
     ops {
-      functionName: "On Region Enter"
+      functionName: "Get Map Item (Event)"
       args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "59dac503356564340600684a"
-          }
-        }
+        string_value: "Event_EndGame_FinalConvo"
       }
     }
   }
   conditions {
     ops {
-      functionName: "Comparison (Actor)"
+      functionName: "Comparison (int)"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-AreliaLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        int_value: 4
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Planetside_AreliaPresent"
+          }
         }
       }
       args {
@@ -7840,6 +7893,98 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isIsas"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "EndGame_StartedFinalConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59db7bc23565646c72004b82"
           }
         }
       }
@@ -7851,50 +7996,45 @@ triggers {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
     }
+  }
+  isActive: true
+  idRef {
+    id: "59db7e523565646c72004e8b"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Endgame_PC0NeverRomanced"
+  events {
     ops {
-      functionName: "Evaluate Goal"
+      functionName: "Get Map Item (Event)"
       args {
-        call_value {
-          functionName: "Get Map Item (Goal)"
-          args {
-            string_value: "Observe"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "GoalStatus"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
+        string_value: "Event_EndGame_FinalConvo"
       }
     }
+  }
+  conditions {
     ops {
       functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Variable (bool)"
           args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
+            string_value: "EndGame_StartedFinalConvo"
           }
         }
       }
@@ -8104,7 +8244,7 @@ triggers {
         }
       }
       args {
-        float_value: 0.5
+        float_value: 0.6
       }
       args {
         call_value {
@@ -8142,7 +8282,7 @@ triggers {
         }
       }
       args {
-        float_value: 0.5
+        float_value: 0.8
       }
     }
   }
@@ -8192,7 +8332,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor Reference)"
           args {
-            string_value: "59da9b8d3565643406005de8"
+            string_value: "59da9b953565643406005dea"
           }
         }
       }
@@ -11148,6 +11288,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "EndGame_StartedFinalConvo"
+    typeName: "bool"
+  }
+}
 mapEvents: "Event_Flicker"
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
@@ -11157,6 +11305,7 @@ mapEvents: "Event_EndGame_PodDeparts"
 mapEvents: "Event_EndGame_TargetLocked"
 mapEvents: "Event_Explosion"
 mapEvents: "Event_EndGame_EPodDeparts"
+mapEvents: "Event_EndGame_FinalConvo"
 senseTags: "isCamera"
 senseTags: "isKora"
 senseTags: "isArelia"
