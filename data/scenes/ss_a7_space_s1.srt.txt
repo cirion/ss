@@ -4784,6 +4784,39 @@ triggers {
         call_value {
           functionName: "Get Map Item (Goal)"
           args {
+            string_value: "Seize the Bridge"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
             string_value: "Redirect Launch Target"
           }
         }
@@ -4829,6 +4862,36 @@ triggers {
           functionName: "Get Map Item (Prop)"
           args {
             string_value: "59daabc43565643406005e4c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59d56ef5643431810bc80ddc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -10634,6 +10697,136 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "BossFight_UpdateForcesLabel"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Seize the Bridge"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "BossFight_LabelLibrary"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "BossFight_LabelLibrary"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "BossFight_LibraryCurrent"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "BossFight_LibraryMax"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "BossFight_LabelPlanetside"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "BossFight_LabelPlanetside"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "BossFight_PlanetsideCurrent"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "BossFight_PlanetsideMax"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59dcd47435656488740015d8"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Command"
   position {
@@ -13502,6 +13695,71 @@ characters {
     cyberware_weapon: "Weapon 1 Desorn Fist"
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -57
+    y: 0
+    z: 55
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isCommandWave1"
+  displayName: "Command_Wave1_Pistol"
+  idRef {
+    id: "59dccf7f356564887400139e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Core/HumanMale"
+    character_sheet_id: "Errant_Lv1_Human_Pistol"
+    equipment_sheet_id: "Errant_Lv1_Pistol"
+    character_mod {
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "Camelot Guard"
+    GeneralTags: "isCommandWave1"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    hiring_set_randomizer: "errant_pistol"
+    scale_character_sheet: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -57
+    y: 0
+    z: 56
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isCommandWave1"
+  displayName: "Command_Wave1_Melee"
+  idRef {
+    id: "59dccfb7356564887400139f"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Triads/TrollFemaleTriad1"
+    character_sheet_id: "Thug_Lv1_Melee"
+    equipment_sheet_id: "Thug_Lv1_Melee_Gear"
+    team_id: "Civilians"
+    char_name: "Camelot Agent"
+    GeneralTags: "isCommandWave1"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    hiring_set_randomizer: "triad_melee"
+    scale_character_sheet: true
+  }
+}
 variables {
   float_value: 0.5
   variableref_value {
@@ -13575,7 +13833,7 @@ variables {
   }
 }
 variables {
-  int_value: 0
+  int_value: 3
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Command_AngerLimit"
@@ -13583,7 +13841,7 @@ variables {
   }
 }
 variables {
-  int_value: 0
+  int_value: 3
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Command_SuicideLimit"
@@ -13591,7 +13849,7 @@ variables {
   }
 }
 variables {
-  int_value: 0
+  int_value: 3
   variableref_value {
     scope: TsVariableScope_Scene
     name: "Command_SurrenderLimit"
@@ -13654,6 +13912,54 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  int_value: 20
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "BossFight_LibraryCurrent"
+    typeName: "int"
+  }
+}
+variables {
+  int_value: 40
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "BossFight_LibraryMax"
+    typeName: "int"
+  }
+}
+variables {
+  int_value: 38
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "BossFight_PlanetsideCurrent"
+    typeName: "int"
+  }
+}
+variables {
+  int_value: 40
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "BossFight_PlanetsideMax"
+    typeName: "int"
+  }
+}
+variables {
+  string_value: "Library Defenders"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "BossFight_LabelLibrary"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "Planetside Protectorate Attackers"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "BossFight_LabelPlanetside"
+    typeName: "string"
+  }
+}
 mapEvents: "Event_Flicker"
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
@@ -13701,6 +14007,11 @@ goals {
 }
 goals {
   name: "Observe"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Seize the Bridge"
   type: GoalType_Primary
   status: GoalStatus_Hidden
 }
@@ -13773,6 +14084,8 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 50
   heat_response_rating: 8
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
