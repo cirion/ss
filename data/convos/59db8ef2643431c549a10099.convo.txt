@@ -78,6 +78,24 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -161,14 +179,14 @@ nodes {
       id: "59db8ef2643431c549a10099:59db8f9b643431c549a100dc"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
     id: "59db8ef2643431c549a10099:59db8f9f643431c549a100e0"
   }
   index: 5
-  text: "Many continents are. People on each separately lived. For millennia, Africans in Africa stayed, Americans in Americas existed. Each alone, only own kind knew."
+  text: "Many continents are. People on each separately lived. For millennia, Africans in Africa stayed, Native Americans in Americas existed. Each alone, only own kind knew."
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -381,11 +399,58 @@ nodes {
   text: "And one of those refugees even to the very stars has traveled!\n\n{{GM}}He lifts your hand to his mouth, kissing it.{{/GM}}\n\nI by your side will stand. I these final moments with you will spend."
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59592f0b356564e833005f89"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 12
     idRef {
       id: "59db8ef2643431c549a10099:59dbecae643431c549a10221"
     }
-    comment: "TODO: If Isas is present downstairs."
   }
   branches {
     responseText: ""
