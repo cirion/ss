@@ -31,6 +31,68 @@ nodes {
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isDesorn"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59dc3b16356564640f000aed"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Order Actor to Face Point"
       args {
         call_value {
@@ -100,14 +162,14 @@ nodes {
       id: "59db8b30643431c549a0fd46:59db8b99643431c549a0fd7c"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Speaker_Voice
 }
 nodes {
   idRef {
     id: "59db8bb2643431c549a0fd8d"
   }
   index: 4
-  text: "{{GM}}He smiles softly at you, brilliant and distant.{{/GM}}\n\nYou have accomplished much, $(l.firstname). I am impressed.\n\nYou have traveled all around California, defending the weak, placing your body between the oppressors and the oppressed. You have accomplished more in the time since I died than most accomplish in their entire lives."
+  text: "{{GM}}He smiles gently at you, brilliant and distant.{{/GM}}\n\nYou have accomplished much, $(l.firstname). I am impressed.\n\nYou have traveled all around California, defending the weak, placing your body between the oppressors and the oppressed. You have accomplished more in the time since I died than most accomplish in their entire lives."
   branches {
     responseText: ""
     nextNodeIndex: 5
@@ -122,7 +184,7 @@ nodes {
     id: "59db8bb7643431c549a0fd92"
   }
   index: 5
-  text: "How do you feel, ($l.firstname)?"
+  text: "How do you feel, $(l.firstname)?"
   branches {
     responseText: "Fine."
     nextNodeIndex: 6
@@ -231,7 +293,7 @@ nodes {
     id: "59db8c64643431c549a0fe3f"
   }
   index: 8
-  text: "{{GM}}He sighs softly, looking at you with a mixture of concern and tenderness.{{/GM}}\n\nThe world is filled with suffering, and you have had more than your share. It is easy to assume that suffering is the world\342\200\231s natural state, but this is not true, for the world is also filled with joy."
+  text: "{{GM}}He sighs softly, looking at you with a mixture of concern and tenderness.{{/GM}}\n\nThe world is filled with suffering, and you have endured more than your share. It is easy to assume that suffering is the world\342\200\231s natural state, but this is not true, for the world is also filled with joy."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -270,6 +332,24 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
