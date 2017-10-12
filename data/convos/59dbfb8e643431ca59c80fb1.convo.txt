@@ -7,7 +7,7 @@ nodes {
     id: "59dbfbb0643431ca59c80fbd"
   }
   index: 0
-  text: "Hey, assholes! I know you can hear me, so suck on this:\n\nWe were expecting this all along. That\342\200\231s why we\342\200\231ve been planting transponders all throughout your territory.\n\nYou might be in our comms, but we\342\200\231re in yours, too! And we know how to use them!"
+  text: "Hey, assholes! I know you can hear me, so suck on this:\n\nWe were expecting an attack all along. That\342\200\231s why we\342\200\231ve been planting transponders throughout your territory.\n\nYou might be in our comms, but we\342\200\231re in yours, too! And we know how to use them!"
   branches {
     nextNodeIndex: 1
     idRef {
@@ -66,10 +66,10 @@ nodes {
         call_value {
           functionName: "Get Map Item (Sound)"
           args {
-            string_value: "HongKong:ambient_underground"
+            string_value: "HongKong:props"
           }
           args {
-            string_value: "Screech"
+            string_value: "MetalScrape1"
           }
         }
       }
@@ -89,16 +89,101 @@ nodes {
       }
     }
   }
-  comment: "TODO: Sound"
 }
 nodes {
   idRef {
     id: "59dbfb8e643431ca59c80fb1:59dbfbbb643431ca59c80fc7"
   }
   index: 2
-  text: "That\342\200\231s right! I\342\200\231m incapacitating you fuckers in your tracks. And sending all the reinforcements I can find to the Farallones. Good luck fighting, assholes!"
+  text: "That\342\200\231s right! I\342\200\231m incapacitating you fuckers in your tracks. And sending all your reinforcements I can find to the Farallones. Good luck fighting, assholes!"
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Update Protectorate force levels"
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "BossFight_PlanetsideCurrent"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Arithmetic (int)"
+          args {
+            int_value: 0
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Arithmetic Ops"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Story Variable (int)"
+              args {
+                string_value: "58a09a016666641898001ad5"
+              }
+              args {
+                string_value: "Global-TranspondersPlanted"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59dcdcc5643431016190e500"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0
