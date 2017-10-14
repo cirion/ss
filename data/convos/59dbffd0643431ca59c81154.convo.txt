@@ -7,14 +7,123 @@ nodes {
     id: "59dbfffc643431ca59c81160"
   }
   index: 0
-  text: "This battlefield-intelligence node is responsible for identifying enemy positions. You could hack it to mis-identify Protectorate forces, causing friendly fire. This will be a time-consuming operation."
+  text: "This battlefield-intelligence node is responsible for identifying enemy positions. You could hack it to mis-identify Protectorate forces, causing friendly fire."
   branches {
     responseText: "{{GM}}Cause the planetside Protectorate forces to attack one another.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "59808de63565644823000cae"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "BossFight_PlanetsideCurrent"
+            }
+          }
+        }
+        args {
+          int_value: -8
+        }
+      }
+      ops {
+        functionName: "Trigger: Run Alternate Trigger"
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59dcdcc5643431016190e500"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WaitOrNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Sound"
+        args {
+          call_value {
+            functionName: "Get Map Item (Sound)"
+            args {
+              string_value: "HongKong:decker"
+            }
+            args {
+              string_value: "Matrix_NodeHackSuccess"
+            }
+          }
+        }
+        args {
+          float_value: 1
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "59dbffd0643431ca59c81154:59dc000a643431ca59c81162"
     }
-    comment: "TODO: Trigger from this: disable avatar for N rounds. At the end, significant drop in Protectorate forces."
   }
   branches {
     responseText: "{{GM}}Exit.{{/GM}}"

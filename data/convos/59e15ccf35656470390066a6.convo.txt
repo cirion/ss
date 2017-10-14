@@ -1,0 +1,256 @@
+idRef {
+  id: "59e15ccf35656470390066a6"
+}
+ui_name: "ss_a7_space_s1-Matrix_Depressurize"
+nodes {
+  idRef {
+    id: "59e15ec335656470390066b2"
+  }
+  index: 0
+  text: "> PRESSURE LEVEL: LOW\n> IMPACTS: DECREASED FUNCTIONALITY OF ORGANIC LIFE"
+  branches {
+    responseText: "{{GM}}Repressurize the bridge.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "59e15ccf35656470390066a6:59e15f1c35656470390066b9"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the pressure level alone.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59e15ccf35656470390066a6:59e15f1d35656470390066bb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e15f2e35656470390066be"
+  }
+  index: 1
+  text: "> STANDARD PRESSURE RESTORED\n> ORGANIC LIFE FUNCTIONALITY RETURNED TO NORMAL"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Command_Depressurized"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "GasRelease"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59e15f8d35656470390066d3"
+  }
+  index: 2
+  text: "> PRESSURE LEVEL: STANDARD\n> IMPACTS: NONE"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59e15ccf35656470390066a6:59e15fee35656470390066d5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e15ff035656470390066d8"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{GM}}Evaluate pressure impacts.{{/GM}}"
+    nextNodeIndex: 4
+    idRef {
+      id: "59e15ccf35656470390066a6:59e15ff535656470390066da"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Lower bridge atmosphere pressure.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "59e15ccf35656470390066a6:59e15ff635656470390066dc"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the pressure level alone.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "59e15ccf35656470390066a6:59e1601835656470390066e0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Root"
+}
+nodes {
+  idRef {
+    id: "59e1601f35656470390066e4"
+  }
+  index: 4
+  text: "> CAUTION CAUTION CAUTION\n> LOWERING PRESSURE WILL IMPEDE THE ACTION OF ALL BREATHING CREATURES\n> EXPECT DIMINISHED FUNCTIONALITY IN ORGANIC LIFE\n> INORGANIC UNITS (DRONES) AND INDIVIDUALS EQUIPPED WITH FULL BREATHING APPARATUSES WILL BE UNAFFECTED"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59e15ccf35656470390066a6:59e1602135656470390066e6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e15ccf35656470390066a6:59e160a635656470390066f5"
+  }
+  index: 5
+  text: "> BRIDGE PRESSURE LOWERED\n> ORGANIC LIFE FUNCTIONALITY WILL BE IMPAIRED UNTIL PRESSURE IS RESTORED"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Command_Depressurized"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "GasRelease"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Command_Depressurized"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "59e15ccf35656470390066a6:59e15ccf35656470390066aa"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 2
+  idRef {
+    id: "59e15ccf35656470390066a6:59e15f8a35656470390066d0"
+  }
+}
+speaker_override_id: "55897a5a613464581a001ad9"
