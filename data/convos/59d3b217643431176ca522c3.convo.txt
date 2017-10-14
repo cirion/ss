@@ -255,7 +255,6 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "Crew reactions. TODO: Each should probably face you."
 }
 nodes {
   idRef {
@@ -273,6 +272,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isIsas"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isIsas"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -290,6 +328,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isMasato"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isMasato"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -307,6 +384,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -323,6 +439,7 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
   actions {
     ops {
       functionName: "Play Animation From Manifest"
@@ -531,7 +648,7 @@ nodes {
     id: "59d40562643431176ca52387"
   }
   index: 7
-  text: "You feel your heart constrict. An unpleasant sensation washes over you.\n\nIt feels like you are at the bottom of a swimming pool, unable to breathe. The astral plane, always so comfortably adjacent that you never noticed it, has abruptly vanished, leaving you alone and adrift. Dark and dangerous thoughts begin to crawl at the edge of your thoughts, like spiders entering an abandoned warehouse."
+  text: "You feel your heart constrict. An unpleasant sensation washes over you.\n\nIt feels like you are at the bottom of a swimming pool, unable to breathe. The astral plane, always so comfortably adjacent that you never noticed it, has abruptly vanished, leaving you alone and adrift.\n\nDark and dangerous thoughts begin to crawl at the edge of your thoughts, like spiders entering an abandoned warehouse."
   branches {
     responseText: ""
     conditions {
@@ -650,6 +767,45 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isArelia"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isArelia"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -695,34 +851,23 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 10
+    nextNodeIndex: 16
     idRef {
       id: "59d3b217643431176ca522c3:59d40566643431176ca5238f"
     }
     auxiliaryLink: true
-    comment: "No - done"
+    comment: "No - apply penalties"
   }
   branches {
     responseText: ""
     conditions {
       ops {
-        functionName: "Compare Team Specialization"
+        functionName: "Comparison (bool)"
         args {
           call_value {
-            functionName: "Get Preset Value (string)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "FactionList"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (SceneDimension)"
-            args {
-              string_value: "Default"
+              string_value: "Cargo_SomeShadowrunnerMagic"
             }
           }
         }
@@ -730,10 +875,10 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "BaseOrCurrent"
+              string_value: "IsOrIsNot"
             }
             args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
@@ -741,142 +886,12 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "ActorSpecializations"
-            }
-            args {
-              int_value: 7
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
+              string_value: "bool"
             }
             args {
               int_value: 0
             }
           }
-        }
-        args {
-          int_value: 0
-        }
-      }
-      ops {
-        functionName: "Compare Team Skill"
-        args {
-          call_value {
-            functionName: "Get Preset Value (string)"
-            args {
-              string_value: "FactionList"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (SceneDimension)"
-            args {
-              string_value: "Default"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          int_value: 0
-        }
-      }
-      ops {
-        functionName: "Compare Team Skill"
-        args {
-          call_value {
-            functionName: "Get Preset Value (string)"
-            args {
-              string_value: "FactionList"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (SceneDimension)"
-            args {
-              string_value: "Default"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 7
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          int_value: 0
         }
       }
     }
@@ -1150,6 +1165,44 @@ nodes {
   }
   branches {
     responseText: "XXX, you should wear this."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 14
     hideIfUnavailable: true
     idRef {
@@ -1244,9 +1297,7 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
-  sourceInSceneRef {
-    id: "5934d87635656440210023e5"
-  }
+  sourceWithTagInScene: "isArelia"
   actions {
     ops {
       functionName: "Add Tag to Actor"
@@ -1681,6 +1732,30 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59e220513565647039006c25"
+          }
+        }
+      }
+    }
+  }
   comment: "Reactions to not having the torc"
 }
 nodes {
@@ -1735,7 +1810,7 @@ nodes {
     id: "59d412ef643431216ea5251a"
   }
   index: 18
-  text: ""
+  text: "I\342\200\231m with you. Don\342\200\231t know how much use I\342\200\231ll be, but whatever modest gifts I may have apart from my magic are at your disposal."
   branches {
     responseText: ""
     nextNodeIndex: 16
