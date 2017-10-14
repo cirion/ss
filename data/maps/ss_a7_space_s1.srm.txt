@@ -1327,6 +1327,7 @@ props {
     z: 61
   }
   orientation: ORIENTATION_E
+  displayName: "Cargo_EntryDoor"
   idRef {
     id: "5935651c356564402100245e"
   }
@@ -1534,6 +1535,53 @@ props {
   idRef {
     id: "593565f4356564402100246f"
   }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "canUseDoor"
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: false
+      doorSound: ""
+      doorSoundBundle: ""
+    }
+    interaction_info_text: ""
+  }
   lod: 0
 }
 props {
@@ -1572,6 +1620,53 @@ props {
   orientation: ORIENTATION_E
   idRef {
     id: "593566063565644021002473"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "canUseDoor"
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: false
+      doorSound: ""
+      doorSoundBundle: ""
+    }
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -9824,8 +9919,43 @@ props {
   orientation: ORIENTATION_E
   GeneralTags: "isCargoFX"
   GeneralTags: "isInitiallyInvisible"
+  displayName: "Cargo_MonitorFeed"
   idRef {
     id: "5958239a356564907e00267d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59da641435656434060034a0"
+      turnToFace: false
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Planetside Feed"
   }
   lod: 0
 }
@@ -14884,6 +15014,17 @@ props {
     property_id: "fxScript"
     string_value: "HongKong:EnvironmentHelicopterWash"
   }
+  displayName: "Cargo_WashFX"
+  idRef {
+    id: "59e2568d3565644c460015a5"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    dummyInteraciton {
+    }
+    interaction_info_text: ""
+  }
   lod: 0
 }
 props {
@@ -15959,6 +16100,30 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Warp
     interaction_info_text: "Control Module"
   }
@@ -16031,9 +16196,9 @@ props {
 props {
   name: "system_invisible_nonsolidProp"
   gridPoint {
-    x: -41.5
+    x: -27.5
     y: 2.7755576e-017
-    z: 69.700005
+    z: 74.700005
   }
   orientation: ORIENTATION_S
   displayName: "Command_Elevator"
@@ -26314,8 +26479,6 @@ props {
     z: 62
   }
   orientation: ORIENTATION_S
-  GeneralTags: "isInitiallyInvisible"
-  GeneralTags: "isSeat"
   idRef {
     id: "59dd8ef83565644c710089ec"
   }
@@ -28132,6 +28295,32 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "59e23f01356564703900752b"
+  }
+  lod: 0
+}
+props {
+  name: "apartments_ground_3x3panel02"
+  gridPoint {
+    x: 70
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_E
+  idRef {
+    id: "59e2507835656470390075b7"
+  }
+  lod: 0
+}
+props {
+  name: "apartments_ground_3x3panel02"
+  gridPoint {
+    x: 67
+    y: 0
+    z: 49
+  }
+  orientation: ORIENTATION_E
+  idRef {
+    id: "59e2507f35656470390075b8"
   }
   lod: 0
 }
