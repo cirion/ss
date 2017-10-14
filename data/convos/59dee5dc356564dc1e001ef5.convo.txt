@@ -7,7 +7,7 @@ nodes {
     id: "59dee5eb356564dc1e001efd"
   }
   index: 0
-  text: "TODO: Dialogue from Dorbi here. Probably Lina responding, maybe reactive based on romance status."
+  text: "Hellooooo Berkeley! I noticed your distress signal, figured I\'d pop on over here and lend my neighbors a hand."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -52,12 +52,57 @@ nodes {
     id: "59dee67c356564dc1e001f0c"
   }
   index: 1
-  text: ""
+  text: "Or, more accurately, TWO hands. I trust you won\'t turn down a little assistance from our friendly and heavily-armed colleagues to the south?\n\nFrom dwarf sappers to Knight-Errant snipers, we\'ve got you covered!"
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "a6_Monterey_s1-SleptWithDorbi"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 2
     idRef {
       id: "59dee5dc356564dc1e001ef5:59dee67f356564dc1e001f0e"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "59dee5dc356564dc1e001ef5:59df81d56434311f8803afde"
     }
   }
   nodeType: ConversationNodeType_Simple
@@ -127,8 +172,18 @@ nodes {
     id: "59dee681356564dc1e001f11"
   }
   index: 2
-  text: ""
+  text: "Dorbi! Holy fuck, you sure know how to make an entrance. Now I know what $(l.name) sees in you."
   nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59bde0383565640441007fe1"
+}
+nodes {
+  idRef {
+    id: "59dee5dc356564dc1e001ef5:59df81d56434311f8803afe0"
+  }
+  index: 3
+  text: "Dorbi! Thank you, uh... your majesty?\n\nGotta admit, I didn\'t expect you to show up. I\'m hella glad to be proven wrong!"
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "59bde0383565640441007fe1"
 }
 roots {
   nextNodeIndex: 0
