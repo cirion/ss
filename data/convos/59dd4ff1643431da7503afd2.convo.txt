@@ -31,6 +31,38 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceWithTagInScene: "isKora"
+  actions {
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -97,7 +129,7 @@ nodes {
     id: "59dd4ff1643431da7503afd2:59dd501c643431da7503aff8"
   }
   index: 6
-  text: "{{GM}}She laughs indulgently.{{/GM}}\n\nValiri, we\342\200\231ve been OVER this already! Look, I know you\342\200\231re super-talented, and obviously VERY eager, but you\342\200\231ve only just joined us. We aren\342\200\231t in the habit of putting brand-new recruits in charge of elite strike teams."
+  text: "{{GM}}She laughs indulgently.{{/GM}}\n\nValiri, we\342\200\231ve been OVER this already!\n\nLook, I know you\342\200\231re super-talented, and obviously VERY eager, but you\342\200\231ve only just joined us. We aren\342\200\231t in the habit of putting brand-new recruits in charge of elite strike teams."
   branches {
     nextNodeIndex: 7
     idRef {
@@ -112,7 +144,7 @@ nodes {
     id: "59dd4ff1643431da7503afd2:59dd501c643431da7503affc"
   }
   index: 7
-  text: "I mean, like $(l.name) here\342\200\246 we\342\200\231ve known about you for a while before you officially joined up, right?"
+  text: "I mean, like $(l.name) here\342\200\246 we knew about you for a while before you officially joined up, right?"
   branches {
     responseText: "Yes, the Carquinez job was a few months ago."
     nextNodeIndex: 8
@@ -135,6 +167,7 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isKora"
 }
 nodes {
   idRef {
