@@ -56,11 +56,76 @@ nodes {
   text: "I\342\200\231ve been feeling horribly guilty. *I* am the one who asked them to travel to Alameda and discuss the alliance, who urged them to join the People\342\200\231s University, who dragged them into this whole mess.\n\nIf it wasn\342\200\231t for me and my meddling, they would both still be alive today."
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-DesornLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-ValiriLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
     idRef {
       id: "59e971083565649c71007f1c:59ea53576434310b06b6b4e3"
     }
-    comment: "TODO: PC0 was in a romance"
+    comment: "PC0 was in a romance"
   }
   branches {
     responseText: ""
@@ -175,7 +240,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b4ef"
   }
   index: 7
-  text: "Thank you for saying that, $(l.first_name)! That means a lot to me.\n\nI\342\200\231ve been very focused on my failure, but if people like you want me to continue in this role, then I owe it to you to do the best job that I can."
+  text: "Thank you for saying that, $(l.firstname)! That means a lot to me.\n\nI\342\200\231ve been very focused on my failure, but if people like you want me to continue in this role, then I owe it to you to do the best job that I can."
   branches {
     responseText: ""
     nextNodeIndex: 11
@@ -431,7 +496,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b4f9"
   }
   index: 16
-  text: "{{GM}}Kora waves you over.{{/GM}}\n\n$(l.first_name)! Have you met my partner Rafik yet?"
+  text: "{{GM}}Kora waves you over.{{/GM}}\n\n$(l.firstname)! Have you met my partner Rafik yet?"
   branches {
     responseText: "Not yet."
     nextNodeIndex: 17
@@ -462,7 +527,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b4fd"
   }
   index: 17
-  text: "{{GM}}He shakes your hand.{{/GM}}\n\nIt\342\200\231s good to meet you, $(l.first_name). Kora was just telling me about how you got the team out of the pinball museum after Carli Atherford got the jump on you. I owe you a debt of gratitude."
+  text: "{{GM}}He shakes your hand.{{/GM}}\n\nIt\342\200\231s good to meet you, $(l.firstname). Kora was just telling me about how you got the team out of the pinball museum after Carli Atherford jumped you. I owe you a debt of gratitude."
   branches {
     responseText: "Just doing my job, sir."
     nextNodeIndex: 18
@@ -524,6 +589,44 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isRafik"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -580,7 +683,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b507"
   }
   index: 21
-  text: "$(l.first_name) has been heading up our efforts to rescue Tassender. $+(l.he) has even managed to grow the team, bringing in a few new recruits. Between the two of you, we might actually get the PU back up to fighting strength again!"
+  text: "$(l.firstname) has been heading up our efforts to rescue Tassender. $+(l.he) has even managed to grow the team, bringing in a few new recruits. Between the two of you, we might actually get the PU back up to fighting strength again!"
   branches {
     responseText: ""
     nextNodeIndex: 22
@@ -650,7 +753,7 @@ nodes {
       id: "59e971083565649c71007f1c:59ea53576434310b06b6b510"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Speaker_Voice
   sourceWithTagInScene: "isRafik"
 }
 nodes {
@@ -660,6 +763,31 @@ nodes {
   index: 26
   text: "See ya around."
   nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isRafik"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59eac14e356564e04a00a9a1"
+          }
+        }
+      }
+    }
+  }
   comment: "TODO: Trigger to make him exit, restart this convo"
 }
 nodes {
@@ -667,7 +795,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b513"
   }
   index: 27
-  text: "{{GM}}As you approach Kora, you notice that she is silently crying, peering into an output port on her cyberdeck. She notices you and starts wiping her eyes, fighting to put a smile on her face.{{/GM}}\n\nHi, $(l.first_name)."
+  text: "{{GM}}As you approach Kora, you notice that she is silently crying, peering into an output port on her cyberdeck. She notices you and starts wiping her eyes, fighting to put a smile on her face.{{/GM}}\n\nHi, $(l.firstname)."
   branches {
     responseText: "I didn\342\200\231t mean to intrude."
     nextNodeIndex: 28
@@ -1280,6 +1408,82 @@ nodes {
   text: ""
   branches {
     responseText: "How well do you know Tassender?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-ConvoKora"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
     nextNodeIndex: 51
     hideIfUnavailable: true
     onlyOnce: true
@@ -1319,6 +1523,80 @@ nodes {
           int_value: 2
         }
       }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-ConvoKora"
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
     }
     nextNodeIndex: 71
     hideIfUnavailable: true
@@ -1351,12 +1629,114 @@ nodes {
               string_value: "Comparison Ops"
             }
             args {
-              int_value: 0
+              int_value: 3
             }
           }
         }
         args {
           int_value: 9
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-ConvoKora"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-ConvoKora"
+            }
+          }
+        }
+        args {
+          int_value: 5
         }
       }
     }
@@ -1372,7 +1752,134 @@ nodes {
     responseText: "How does it feel to have Tassender back here?"
     conditions {
       ops {
-        functionName: "No Condition"
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-NumMissionsPlayed"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 12
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-ConvoKora"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Kora_Talked"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-ConvoKora"
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
       }
     }
     nextNodeIndex: 108
@@ -1656,7 +2163,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b56f"
   }
   index: 62
-  text: "Maybe so. It seems like team leadership is more important now than decking support, but that doesn\342\200\231t necessarily mean that I need to become a team leader. I might just screw things up! I know that I\342\200\231m pretty good at coding and administration, so maybe I should keep my focus there, where I know I can make things better."
+  text: "Maybe so. It seems like team leadership is more important now than decking support, but that doesn\342\200\231t necessarily mean that I need to become a team leader. I might just screw things up!\n\nI know that I\342\200\231m pretty good at coding and administration, so maybe I should keep my focus there, where I know I can make things better."
   branches {
     responseText: ""
     nextNodeIndex: 63
@@ -1889,7 +2396,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b58b"
   }
   index: 73
-  text: "Yes, that sweet man has been really good to and for me. We made an unlikely pair - the homebound dwarf nerd and the shadowrunning ork muscle - but he\342\200\231s the most decent guy I\342\200\231ve met. After a particularly exciting run a few years ago, we both got more involved in the People\342\200\231s University and have never looked back.\n\nHe\342\200\231s working hard to integrate the October 25 Alliance into the PU, so he isn\342\200\231t around as often as I\342\200\231d like. It\342\200\231s all for a good cause, though. We have a lot of quality time to catch up on if this war ever ends!"
+  text: "Yes, that sweet man has been really good to and for me. We made an unlikely pair - the homebound dwarf nerd and the shadowrunning ork muscle - but he\342\200\231s the most decent guy I\342\200\231ve met. After a particularly exciting run a few years ago, we both got more involved in the People\342\200\231s University and have never looked back.\n\nHe\342\200\231s working hard to unite the October 25 Alliance with the PU, so he isn\342\200\231t around as often as I\342\200\231d like. It\342\200\231s for a good cause, though. We have lots of quality time to catch up on after this war ends!"
   branches {
     responseText: ""
     nextNodeIndex: 76
@@ -2241,7 +2748,7 @@ nodes {
   index: 84
   text: "It\342\200\231s a lot harder than leading in a more traditional organization. People won\342\200\231t obey you because you say \342\200\234Follow me!\342\200\235 You need to win trust and respect. But that means your team will be incredibly loyal, since they truly believe in you."
   branches {
-    responseText: "The best part is that people will still call you out if they think you\342\200\231re screwing up.\n\nThe Imperial Marines will cheerfully walk off the edge of a cliff if their sergeant tells them to. Around here, we take pride in thinking for ourselves and alerting our leaders if we notice something they miss."
+    responseText: ""
     nextNodeIndex: 85
     idRef {
       id: "59e971083565649c71007f1c:59ea53576434310b06b6b5a7"
@@ -2254,7 +2761,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b5a8"
   }
   index: 85
-  text: ""
+  text: "The best part is that people will still call you out if they think you\342\200\231re screwing up.\n\nThe Imperial Marines will cheerfully walk off the edge of a cliff if their sergeant tells them to. Around here, we take pride in thinking for ourselves and alerting our leaders if we notice something they miss."
   branches {
     responseText: ""
     nextNodeIndex: 82
@@ -2270,7 +2777,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b5ab"
   }
   index: 86
-  text: "Oh, of course not! First of all, that\342\200\231s one of the things keeping me sane. I need to be out in the world, seeing the action with my own eyes. Secondly, the sooner we get Tassender back, the better off we\342\200\231ll all be. Finally, I can squeeze in my other duties a"
+  text: "Oh, of course not! First of all, that\342\200\231s one of the things keeping me sane. I need to be out in the world, seeing the action with my own eyes. Secondly, the sooner we get Tassender back, the better off we\342\200\231ll all be. Finally, I can squeeze in my other duties around our runs.\n\nI\342\200\231ll keep the wheels spinning back here at headquarters, don\342\200\231t you worry!"
   branches {
     responseText: ""
     nextNodeIndex: 82
@@ -2335,7 +2842,7 @@ nodes {
   text: "You bet! Thanks for checking in, I always feel better about my situation after talking things over with you. "
   branches {
     responseText: ""
-    nextNodeIndex: 82
+    nextNodeIndex: 50
     idRef {
       id: "59e971083565649c71007f1c:59ea53576434310b06b6b5b6"
     }
@@ -2938,12 +3445,75 @@ nodes {
           int_value: 1
         }
       }
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-DesornLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-ValiriLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: 116
     idRef {
       id: "59e971083565649c71007f1c:59ea722f6434310b06b6d38b"
     }
-    comment: "TODO: Add check for having romanced Valiri/Desorn"
+    comment: "Romanced Valiri/Desorn but not Isas/Arelia"
   }
   branches {
     responseText: ""
@@ -3234,7 +3804,7 @@ nodes {
     id: "59ea72616434310b06b6d674"
   }
   index: 116
-  text: "Oh, $(l.first_name). I worry for you so much. After what happened to $(story.li_name)... it would crush any ordinary $(l.name). I\342\200\231m so proud and impressed that you\342\200\231ve continued to not only function, but to continue leading this team, to ensure that more people don\342\200\231t suffer the same fate."
+  text: "Oh, $(l.firstname). I worry for you so much. After what happened to $(story.li_name)... it would crush any ordinary $(l.name). I\342\200\231m so proud and impressed that you\342\200\231ve continued to not only function, but to continue leading this team, to ensure that more people don\342\200\231t suffer the same fate."
   branches {
     responseText: ""
     conditions {
@@ -3296,7 +3866,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea72646434310b06b6d678"
   }
   index: 117
-  text: "I can\342\200\231t claim to know what you\342\200\231re going through, but I know how it felt after Rafik died, and\342\200\246 well.\n\nMy heart aches for you, $(l.first_name). I hope you can endure."
+  text: "I can\342\200\231t claim to know what you\342\200\231re going through, but I know how it felt after Rafik died, and\342\200\246 well.\n\nMy heart aches for you, $(l.firstname). I hope you can endure."
   branches {
     responseText: ""
     nextNodeIndex: 119
@@ -3389,7 +3959,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea72c66434310b06b6d811"
   }
   index: 121
-  text: "{{GM}}She hugs you.{{/GM}}\n\nYou\342\200\231re a good person, $(l.first_name). That sadness means that you\342\200\231ve got a heart. It may be bruised, but it\342\200\231s still beautiful."
+  text: "{{GM}}She hugs you.{{/GM}}\n\nYou\342\200\231re a good person, $(l.firstname). That sadness means that you\342\200\231ve got a heart. It may be bruised, but it\342\200\231s still beautiful."
   branches {
     responseText: ""
     nextNodeIndex: 137
@@ -3756,11 +4326,76 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-DesornLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-ValiriLoveTalks"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 133
     idRef {
       id: "59e971083565649c71007f1c:59ea78026434310b06b6eb34"
     }
-    comment: "TODO: Previously romanced Valiri/Desorn"
+    comment: "Previously romanced Valiri/Desorn"
   }
   nodeType: ConversationNodeType_Simple
   comment: "Did you previously romance Valiri/Desorn? (Already in an Isas/Arelia romance.)"
@@ -4010,7 +4645,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea7c5e6434310b06b6f6f8"
   }
   index: 141
-  text: "Seriously?! Wow, that was a horrible decision, $(l.first_name)!\n\nI mean\342\200\246 I guess I can\342\200\231t blame you, she IS pretty hot and can be persuasive when she has her mind set on something.\n\nJust\342\200\246 do me a favor and make sure you get tested, okay?"
+  text: "Seriously?! Wow, that was a horrible decision, $(l.firstname)!\n\nI mean\342\200\246 I guess I can\342\200\231t blame you, she IS pretty hot and can be persuasive when she has her mind set on something.\n\nJust\342\200\246 do me a favor and make sure you get tested, okay?"
   branches {
     responseText: ""
     nextNodeIndex: 142
@@ -4325,7 +4960,7 @@ nodes {
     id: "59ea7e1f6434310b06b7039f"
   }
   index: 151
-  text: "It\342\200\231s getting close now, $(l.first_name). The rest of our lives. I hope you\342\200\231re able to build something that endures and nurtures you. After all, that\342\200\231s why we\342\200\231re doing all of this in the first place: to help make the kind of world that we want to live in. "
+  text: "It\342\200\231s getting close now, $(l.firstname). The rest of our lives. I hope you\342\200\231re able to build something that endures and nurtures you. After all, that\342\200\231s why we\342\200\231re doing all of this in the first place: to help make the kind of world that we want to live in. "
   branches {
     responseText: ""
     nextNodeIndex: 50
@@ -4368,15 +5003,74 @@ roots {
       }
     }
   }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Kora_Talked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
   onlyOnce: true
   idRef {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b4db"
   }
-  comment: "#4 grieving"
+  comment: "#4 grieving (not included in counter)"
 }
 roots {
   responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Kora_RafikContinuation"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 14
   onlyOnce: true
   idRef {
@@ -4407,12 +5101,114 @@ roots {
             string_value: "Comparison Ops"
           }
           args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Kora_Talked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-ConvoKora"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
             int_value: 0
           }
         }
       }
       args {
-        int_value: 4
+        int_value: 2
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Kora_Talked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-ConvoKora"
+          }
+        }
+      }
+      args {
+        int_value: 3
       }
     }
   }
@@ -4422,7 +5218,7 @@ roots {
   idRef {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b4f6"
   }
-  comment: "#3 interjection with Rafik TODO - make sure this can\'t fire on the same visit as #2. Maybe do 3+ along with the scene restriction."
+  comment: "#3 interjection with Rafik"
 }
 roots {
   nextNodeIndex: 49
@@ -4431,3 +5227,4 @@ roots {
   }
   comment: "Default greeting"
 }
+persistent_conversation: true
