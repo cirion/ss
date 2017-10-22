@@ -1,0 +1,486 @@
+idRef {
+  id: "59ecc1fe356564d837015d0f"
+}
+ui_name: "ss_hub-Isas"
+nodes {
+  idRef {
+    id: "59ecc209356564d837015d1b"
+  }
+  index: 0
+  text: "$(l.name)! I you greet!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc20a356564d837015d1d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ecc218356564d837015d20"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Arelia and I are looking for a carving knife."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Arelia: Borrow A Knife From Your Crew"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc21a356564d837015d22"
+    }
+    comment: "Arelia sidequest"
+  }
+  branches {
+    responseText: "About us\342\200\246"
+    conditions {
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isArelia"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-IsasLoveTalks"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc999356564d837015e03"
+    }
+    comment: "TODO: Be sure to block off all other Isas lovetalks while Arelia is present"
+  }
+  branches {
+    responseText: "So long."
+    nextNodeIndex: -1
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc21f356564d837015d24"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Empty root"
+}
+nodes {
+  idRef {
+    id: "59ecc240356564d837015d30"
+  }
+  index: 2
+  text: "Ah! You two together are?"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-IsasLoveTalks"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc241356564d837015d32"
+    }
+    comment: "Didn\'t date Isas"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc265356564d837015d3a"
+    }
+    comment: "Romancing Isas"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc242356564d837015d34"
+  }
+  index: 3
+  text: "{{GM}}She proudly slings an arm around you.{{/GM}}\n\nYup!"
+  branches {
+    responseText: "That\342\200\231s right."
+    nextNodeIndex: 4
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc242356564d837015d36"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Squeeze her.{{/GM}}"
+    nextNodeIndex: 4
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc2e6356564d837015d43"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I have no idea who this woman is."
+    nextNodeIndex: 4
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc2e7356564d837015d45"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59ecc2fa356564d837015d5a"
+  }
+  index: 4
+  text: "I for you happy am!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc2fc356564d837015d5c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc265356564d837015d3c"
+  }
+  index: 5
+  text: "{{GM}}She blushes.{{/GM}}\n\nYes. And, ah\342\200\246 I know that you\342\200\246\n\n{{GM}}Her voice trails off.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc265356564d837015d3e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc317356564d837015d65"
+  }
+  index: 6
+  text: "{{GM}}He smiles, raising a hand in a gesture of friendship.{{/GM}}\n\nLoves only multiply. When people affections share, they grow. Seeing you together, my happiness increases."
+  branches {
+    responseText: "This is awkward."
+    nextNodeIndex: 7
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc32a356564d837015d6b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That\342\200\231s a relief."
+    nextNodeIndex: 7
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc32a356564d837015d6d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I have no idea what either of you are talking about."
+    nextNodeIndex: 7
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc32b356564d837015d6f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ecc345356564d837015d72"
+  }
+  index: 7
+  text: "Arelia, perhaps this we can later discuss? I your happiness would like to explore."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc346356564d837015d74"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc347356564d837015d76"
+  }
+  index: 8
+  text: "Of course, Isas.\n\n{{GM}}She slings an arm around you.{{/GM}}\n\nAfter the two of us are done."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc347356564d837015d78"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc34b356564d837015d7c"
+  }
+  index: 9
+  text: "{{GM}}He hands you a smallish knife with a slightly curved blade.{{/GM}}\n\nThis knife you well will serve. Its edge sharp is, you caution must exercise. But in your hands, it much will reveal."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc34b356564d837015d7e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_hub-Knife"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Arelia: Borrow A Knife From Your Crew"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc37e356564d837015d8f"
+  }
+  index: 10
+  text: "Thank you, Isas. I\342\200\231ll bring it back to you once we\342\200\231re done."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc37e356564d837015d91"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isArelia"
+}
+nodes {
+  idRef {
+    id: "59ecc9ba356564d837015e06"
+  }
+  index: 11
+  text: "We about this later will speak?\n\n{{GM}}He nods respectfully towards Arelia.{{/GM}}\n\nI your time together do not wish to squander. Please later return."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59ecc9bc356564d837015e08"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59ecc1fe356564d837015d13"
+  }
+  comment: "Default greeting"
+}
