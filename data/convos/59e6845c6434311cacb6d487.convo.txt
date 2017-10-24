@@ -2292,6 +2292,16 @@ nodes {
       id: "59e6845c6434311cacb6d487:59e68fc4643431e1c1b6b312"
     }
   }
+  branches {
+    responseText: "We\342\200\231re looking for some clothes for a bunch of kids. Do you have any outfits for them?"
+    nextNodeIndex: 166
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbbca6434313958b6b554"
+    }
+    comment: "TODO: Pre-req, goal for orphan clothes started"
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Root node"
 }
@@ -5830,6 +5840,192 @@ nodes {
       args {
         call_value {
           functionName: "Triggering Target Actor"
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59efbbd76434313958b6b557"
+  }
+  index: 166
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 167
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbbd96434313958b6b559"
+    }
+    comment: "PC0 female"
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 168
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbbe56434313958b6b561"
+    }
+    comment: "Default: PC0 male"
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Gender check"
+}
+nodes {
+  idRef {
+    id: "59e6845c6434311cacb6d487:59efbbda6434313958b6b55b"
+  }
+  index: 167
+  text: "A bunch of kids, eh?\n\n{{GM}}She elbows you in the ribs, grinning wickedly.{{/GM}}\n\nYou and Isas are moving FAST, huh? Gonna start popping them out?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 169
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbbda6434313958b6b55d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6845c6434311cacb6d487:59efbbe56434313958b6b563"
+  }
+  index: 168
+  text: "A bunch of kids, eh?\n\n{{GM}}She elbows you in the ribs, grinning wickedly.{{/GM}}\n\nYou and Isas aren\342\200\231t kidding around, are you? Starting a family already?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 169
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbbe56434313958b6b565"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59efbc286434313958b6b9ff"
+  }
+  index: 169
+  text: "{{GM}}He shakes his head, serious, her joking tone completely lost on him.{{/GM}}\n\nNo. They children of me and $(l.firstname) are not. In fact, we have not yet\342\200\246"
+  branches {
+    responseText: "ISAS!"
+    nextNodeIndex: 170
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbc2a6434313958b6ba01"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Put your hand over his mouth.{{/GM}}"
+    nextNodeIndex: 170
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbd586434313958b6bc55"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What are you talking about? We never stop!"
+    nextNodeIndex: 170
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbd596434313958b6bc57"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsas"
+}
+nodes {
+  idRef {
+    id: "59e6845c6434311cacb6d487:59efbc2b6434313958b6ba03"
+  }
+  index: 170
+  text: "Ooo la la! Well, then, you have some fun times ahead!\n\n{{GM}}She winks at you. Isas stops, confused.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 171
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbc2b6434313958b6ba05"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6845c6434311cacb6d487:59efbd716434313958b6beaa"
+  }
+  index: 171
+  text: "Anyways, you\342\200\231re in luck. I\342\200\231ve been receiving plenty of dwarf outfits, but we haven\342\200\231t picked up all that many dwarf recruits, since most of them are drifting to Halferville. They\342\200\231ll be pretty baggy, but they should fit the children just fine.\n\nPlus, plenty of room for them to fill out! Chubby kids rule!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 45
+    idRef {
+      id: "59e6845c6434311cacb6d487:59efbd716434313958b6beac"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Orphans: Acquire Clothing"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
         }
       }
     }
