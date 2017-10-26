@@ -38,7 +38,7 @@ nodes {
     id: "59efc09c6434313958b6d241"
   }
   index: 1
-  text: "It a big responsibility is. Life creating, lives shaping. \n\n{{GM}}Isas takes your hand in his and the two of you walk a short distance, his tone turning thoughtful.{{/GM}}"
+  text: "It a big responsibility is. Life creating, lives shaping.\n\n{{GM}}Isas takes your hand in his and the two of you walk a short distance, his tone turning thoughtful.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -1328,7 +1328,7 @@ nodes {
   text: "{{GM}}He looks chagrined.{{/GM}}\n\nWhile I away was, I much regret felt. I about old ties was worrying, but I on my present should have focused. Your needs as great as mine are."
   branches {
     responseText: "I accept your apology."
-    nextNodeIndex: 32
+    nextNodeIndex: 33
     idRef {
       id: "59ecc1fe356564d837015d0f:59efb6996434314a52b6f7ea"
     }
@@ -1336,7 +1336,7 @@ nodes {
   }
   branches {
     responseText: "There\342\200\231s nothing to be sorry about."
-    nextNodeIndex: 32
+    nextNodeIndex: 33
     idRef {
       id: "59ecc1fe356564d837015d0f:59efb6996434314a52b6f7eb"
     }
@@ -1510,13 +1510,113 @@ nodes {
   }
   branches {
     responseText: "Okay, let\342\200\231s try to help them out."
+    conditions {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Orphans: Acquire Clothing"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Orphans: Contact Relatives"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Orphans: Find a Home"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 41
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "59ecc1fe356564d837015d0f:59efb89d6434314a52b704a7"
     }
-    comment: "TODO: Pre-req, all three goals started"
   }
   branches {
     responseText: "I don\342\200\231t have any time for this. Can you take care of it?"
@@ -1885,7 +1985,7 @@ nodes {
     idRef {
       id: "59ecc1fe356564d837015d0f:59efb6996434314a52b6f819"
     }
-    comment: "TODO: Be sure to block off all other Isas lovetalks while Arelia is present"
+    comment: "Replaces LI convos while Arelia is present"
   }
   branches {
     responseText: "You\342\200\231re a long way from home."
@@ -3479,6 +3579,25 @@ nodes {
         }
       }
     }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-IsasLoveTalks"
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
     nextNodeIndex: 226
     hideIfUnavailable: true
     onlyOnce: true
@@ -3490,57 +3609,6 @@ nodes {
   branches {
     responseText: "Are you feeling any better about what you saw in the Mojave?"
     conditions {
-      ops {
-        functionName: "Compare Actor Team"
-        args {
-          call_value {
-            functionName: "Nearest Tagged Actor to Actor"
-            args {
-              call_value {
-                functionName: "Get Map Item (SenseTagList)"
-                args {
-                  string_value: "isArelia"
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Triggering Actor"
-              }
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (string)"
-            args {
-              string_value: "FactionList"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (SceneDimension)"
-            args {
-              string_value: "Default"
-            }
-          }
-        }
-      }
       ops {
         functionName: "Comparison (bool)"
         args {
@@ -3631,6 +3699,103 @@ nodes {
         }
         args {
           int_value: 10
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "All Actors Which Overlap"
+                args {
+                  call_value {
+                    functionName: "All Actors on Team"
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (string)"
+                        args {
+                          string_value: "FactionList"
+                        }
+                        args {
+                          int_value: 0
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "AllOrAny"
+                        }
+                        args {
+                          int_value: 0
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Map Item (SceneDimension)"
+                        args {
+                          string_value: "Default"
+                        }
+                      }
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "All Actors With Tag"
+                    args {
+                      call_value {
+                        functionName: "Get Map Item (SenseTagList)"
+                        args {
+                          string_value: "isArelia"
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "AllOrAny"
+                        }
+                        args {
+                          int_value: 0
+                        }
+                      }
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "AllOrAny"
+                    }
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
         }
       }
     }
@@ -8382,7 +8547,7 @@ nodes {
       id: "59ecc1fe356564d837015d0f:59efb6996434314a52b6f9ea"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Speaker_Voice
 }
 nodes {
   idRef {
@@ -8762,7 +8927,7 @@ nodes {
   text: "But\342\200\246 I you do still like, this please know. \n\nPerhaps, we each other can simply hold? For now?"
   branches {
     responseText: "Sure."
-    nextNodeIndex: 236
+    nextNodeIndex: 232
     idRef {
       id: "59ecc1fe356564d837015d0f:59efb6996434314a52b6fa04"
     }
@@ -9368,7 +9533,7 @@ nodes {
         }
       }
       args {
-        int_value: 7
+        int_value: 6
       }
     }
     ops {
