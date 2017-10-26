@@ -350,6 +350,24 @@ nodes {
   text: "But you have something too, right?"
   branches {
     responseText: "{{CC}}Item: Finished Bridge Model{{/CC}} Here you go."
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_interact"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 10
     idRef {
       id: "59ed038d356564d83702389a:59ed0634356564d837023958"
@@ -357,6 +375,24 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Item: Finished Bridge Model{{/CC}} That was fun!"
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_interact"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 11
     idRef {
       id: "59ed038d356564d83702389a:59ed0670356564d83702398b"
@@ -364,6 +400,24 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Item: Finished Bridge Model{{/CC}} I did my best, but it isn\342\200\231t as pretty as you."
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_interact"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 12
     idRef {
       id: "59ed038d356564d83702389a:59ed0673356564d837023994"
@@ -371,6 +425,24 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Item: Finished Bridge Model{{/CC}} Next time, let\342\200\231s just use a kit."
+    actions {
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_interact"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 13
     idRef {
       id: "59ed038d356564d83702389a:59ed0673356564d83702399a"
@@ -1635,6 +1707,12 @@ nodes {
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
+      functionName: "Set Camera Post Process Effect"
+      args {
+        int_value: 0
+      }
+    }
+    ops {
       functionName: "Send Event"
       args {
         call_value {
@@ -1740,6 +1818,44 @@ nodes {
   text: "{{GM}}As the movie ends, she softly kisses you on the top of your head.{{/GM}}\n\nThank you, $(l.firstname). This has been nice. I feel more normal with you than I have with anyone else, ever before.\n\nI\342\200\231ll hold on to this. The next time something horrible happens, I\342\200\231ll be able to remember this moment, and know that there is good in the world, something bright for me to keep."
   nodeType: ConversationNodeType_Simple
   actions {
+    ops {
+      functionName: "Set Camera Post Process Effect"
+      args {
+        int_value: 0
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isAreliaRomance"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Stretch"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Enable/Disable Trigger"
       args {
