@@ -22,7 +22,7 @@ nodes {
     id: "59f260686434319e6fb6e7e5:59f265fa6434319e6fb70182"
   }
   index: 1
-  text: "$(story.dog_name) has returned to her customary bed, her new family in tow. The puppies seem to be more-or-less weaned, and are curiously exploring the edges of your room, following the scents from the kitchen but continually bumping into the divider."
+  text: "$(story.Global-DogName) has returned to her customary bed, her new family in tow. The puppies seem to be more-or-less weaned, and are curiously exploring the edges of your room, following the scents from the kitchen but continually bumping into the divider."
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -93,7 +93,55 @@ nodes {
   index: 3
   text: "Bark!\n\n{{GM}}She happily rejoins you. She seems to have recovered from her pregnancy, and eagerly bounds about your legs, excited to venture forth once more.{{/GM}}"
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Teamstate updated, probably just back to 1. Update a hub var or something for Lina chat."
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59f2991f356564bc2b00b420"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-ConvoLinaDogRejoined"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -102,14 +150,37 @@ nodes {
   index: 4
   text: "Arf!\n\n{{GM}}She turns around and lifts a wandering puppy by the scruff of its neck, carefully depositing it back near the soft dog bed. She watches you happily, but makes no further motion to join you.{{/GM}}"
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Update team state: alive and in bedroom, no longer interactable, appears in finale"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59f29c1a356564bc2b00b55f"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59f260d26434319e6fb6e814"
   }
   index: 5
-  text: "$(story.dog_name) seems listless. She watches you approach, but her tail only wags slowly."
+  text: "$(story.Global-DogName) seems listless. She watches you approach, but her tail only wags slowly."
   branches {
     responseText: "Hey, pupper."
     nextNodeIndex: 6
@@ -142,14 +213,37 @@ nodes {
   index: 6
   text: "She remains planted in place, watching you closely but making no move to join you."
   nodeType: ConversationNodeType_GM_Speaker_Voice
-  comment: "TODO: Disable, increment her team state. (Er, actually just disable, but I think her team state should be updated on load.)"
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "599b99f53565646c650033b6"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59f2607b6434319e6fb6e7f1"
   }
   index: 7
-  text: "$(story.dog_name) looks up at you, wagging her tail happily."
+  text: "$(story.Global-DogName) looks up at you, wagging her tail happily."
   branches {
     responseText: "Good morning."
     nextNodeIndex: 8
@@ -173,6 +267,68 @@ nodes {
       id: "59f260686434319e6fb6e7e5:59f2608b6434319e6fb6e7fb"
     }
   }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-TeamState_Dog"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "599b99f53565646c650033b6"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59f260686434319e6fb6e7e5:59f2ab2d35656420320075ca"
+    }
+    comment: "Early-exit for motherhood"
+  }
   nodeType: ConversationNodeType_GM_Speaker_Voice
 }
 nodes {
@@ -182,23 +338,105 @@ nodes {
   index: 8
   text: "She pads over to you, eagerly following your movement."
   nodeType: ConversationNodeType_GM_Speaker_Voice
-  comment: "TODO: Maybe enable her follow trigger here. Er... which might just be changing her team from Civilian to Dog."
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59f2991f356564bc2b00b420"
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-TeamState_Dog"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 5
+      }
+    }
+  }
   nextNodeIndex: 0
   idRef {
     id: "59f260686434319e6fb6e7e5:59f265eb6434319e6fb70167"
   }
-  comment: "TODO: After puppies, and maybe one more mission? Or not?"
+  comment: "Returned after giving birth"
 }
 roots {
   responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-NumMissionsPlayed"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 8
+      }
+    }
+  }
   nextNodeIndex: 5
   idRef {
     id: "59f260686434319e6fb6e7e5:59f260b46434319e6fb6e805"
   }
-  comment: "TODO: I think this is for the mission before Mojave?"
 }
 roots {
   nextNodeIndex: 7

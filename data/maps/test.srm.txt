@@ -1686,9 +1686,9 @@ props {
 props {
   name: "whitebox_cover_1x1x1"
   gridPoint {
-    x: -1
+    x: -3
     y: 0
-    z: 2
+    z: -1
   }
   orientation: ORIENTATION_S
   displayName: "Interact_PlantTransponder"
@@ -1869,11 +1869,11 @@ props {
 props {
   name: "apartments_wall_fancyDoor"
   gridPoint {
-    x: 4
+    x: 6
     y: 0
-    z: 13
+    z: 4
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_S
   displayName: "Bedroom_Door"
   idRef {
     id: "59f12d2435656454080087e9"
@@ -1888,6 +1888,116 @@ props {
       doorSoundBundle: ""
     }
     interaction_info_text: ""
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -2
+    y: 0
+    z: 1.6
+  }
+  orientation: ORIENTATION_S
+  displayName: "Restaurant_DogDen"
+  idRef {
+    id: "59f2a054356564bc2b00bdf4"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Investigate What Happened To $(story.Global-DogName)"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "59f263346434319e6fb6f7bc"
+      turnToFace: false
+      speaker_override_id: "59f264356434319e6fb6f8bd"
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Under Stairs"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 4
+    y: 0
+    z: 6
+  }
+  orientation: ORIENTATION_S
+  displayName: "Bedroom_MissingDog"
+  idRef {
+    id: "59f2a0d1356564bc2b00bdf7"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-TeamState_Dog"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "$(story.Global-DogName)\'s Bed"
   }
   lod: 0
 }
