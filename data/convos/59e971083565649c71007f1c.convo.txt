@@ -1891,20 +1891,83 @@ nodes {
     comment: "#6 romance"
   }
   branches {
-    responseText: "Take care."
-    nextNodeIndex: -1
-    idRef {
-      id: "59e971083565649c71007f1c:59ea7e436434310b06b708c1"
+    responseText: "I\342\200\231m trying to find someone who can help me and Lina broadcast $(story.commercial_genre_a) $(story.commercial_genre) commercial for the PU."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_hub-CommercialScript"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-QuestCommercialDistributionState"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
     }
-  }
-  branches {
-    responseText: "I\342\200\231m trying to find someone who can help me and Lina broadcast a $(story.commercial_genre) commercial for the PU."
     nextNodeIndex: 152
     hideIfUnavailable: true
     idRef {
       id: "59e971083565649c71007f1c:59f272206434319e6fb73a50"
     }
-    comment: "TODO: Must have script, broadcast goal active"
+  }
+  branches {
+    responseText: "Take care."
+    nextNodeIndex: -1
+    idRef {
+      id: "59e971083565649c71007f1c:59ea7e436434310b06b708c1"
+    }
   }
   nodeType: ConversationNodeType_Simple
   comment: "Empty root"
@@ -5149,11 +5212,37 @@ nodes {
   text: "But we don\342\200\231t have to TELL them it\342\200\231s anti-Saito stuff. We can ship them an innocuous It\342\200\231s It commercial, then swap in the real one at the last second.\n\nWe\342\200\231ll need to pay for the bandwidth, but it shouldn\342\200\231t be too expensive."
   branches {
     responseText: "{{CC}}\302\245150{{/CC}} Sounds good, let\342\200\231s make it happen."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 150
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 150
+        }
+      }
+    }
     nextNodeIndex: 156
     idRef {
       id: "59e971083565649c71007f1c:59f272726434319e6fb73ec2"
     }
-    comment: "TODO: Pre-req, deduct"
   }
   branches {
     responseText: "I\342\200\231ll try to find another way."
@@ -5194,7 +5283,52 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Give item and/or update scene var"
+  actions {
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59f4ad4b356564942f00de77"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {

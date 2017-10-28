@@ -4184,20 +4184,212 @@ nodes {
     comment: "Lovetalk #2"
   }
   branches {
-    responseText: "Goodbye."
-    nextNodeIndex: -1
-    idRef {
-      id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bfa5"
-    }
-  }
-  branches {
     responseText: "Can you write? I need a script for a commercial I\342\200\231m making with Lina."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-QuestCommercialScriptState"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Desorn_ScriptThisScene"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Comparison (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Global-TeamState_Desorn"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Invert Bool"
+            args {
+              call_value {
+                functionName: "Get Story Variable (bool)"
+                args {
+                  string_value: "58a09a016666641898001ad5"
+                }
+                args {
+                  string_value: "Hub-QuestCommercialScriptDesornWriting"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 378
     hideIfUnavailable: true
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bfa6"
     }
-    comment: "TODO: Have quest"
+    comment: "Must have quest, and can\'t (think that) Desorn is writing it"
+  }
+  branches {
+    responseText: "Have you finished that $(story.commercial_genre) commercial script?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Arelia_ScriptThisScene"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-QuestCommercialScriptAreliaWriting"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 388
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4ab27356564942f00b6fc"
+    }
+  }
+  branches {
+    responseText: "Goodbye."
+    nextNodeIndex: -1
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bfa5"
+    }
   }
   nodeType: ConversationNodeType_Simple
   comment: "Empty root"
@@ -11608,16 +11800,85 @@ nodes {
   text: "It\342\200\231s a kind of writing, but probably not the sort of thing you had in mind for your commercial, right?"
   branches {
     responseText: "{{CC}}Metatype: $+(s.race){{/CC}} People like us don\342\200\231t get many chances to break into the creative industry. I think you should take this! You can get your voice out there, and it may lead to more opportunities."
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Compare Actor Race"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Race"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Race"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Race"
+                }
+                args {
+                  int_value: 4
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 380
     hideIfUnavailable: true
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bfaa"
     }
     auxiliaryLink: true
-    comment: "TODO: PC0 ork or troll"
+    comment: "PC0 ork or troll"
   }
   branches {
-    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_Hard){{/CC}} All writing is creative, whether it\342\200\231s in your secret journal or broadcast to thousands. I believe in you, Arelia!"
+    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_High){{/CC}} All writing is creative, whether it\342\200\231s in your secret journal or broadcast to thousands. I believe in you, Arelia!"
     conditions {
       ops {
         functionName: "Compare Actor Attribute"
@@ -11673,6 +11934,7 @@ nodes {
       }
     }
     nextNodeIndex: 380
+    hideIfUnavailable: true
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bfab"
     }
@@ -11756,10 +12018,11 @@ nodes {
   text: "Wow\342\200\246 that\342\200\231s really nice of you, ($l.name)! I hadn\342\200\231t thought of it that way, but\342\200\246 with your encouragement, I think I can try to do this.\n\nNo: I think I CAN do this!"
   branches {
     responseText: ""
-    nextNodeIndex: -1
+    nextNodeIndex: 383
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bfae"
     }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -11771,15 +12034,41 @@ nodes {
   text: "{{GM}}She shifts, brow furrowed in thought.{{/GM}}\n\nMaybe\342\200\246 there are some writing tutors and programs on the Matrix, right? I don\342\200\231t feel confident doing it on my own, but maybe with a bit of help, we could come up with something good?"
   branches {
     responseText: "{{CC}}\302\245100{{/CC}} Of course. Here, this should cover anyone you need to hire."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 100
+        }
+      }
+    }
     nextNodeIndex: 382
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27476643431ef82b6d81f"
     }
-    comment: "TODO: Check, remove nuyen"
   }
   branches {
-    responseText: ""
-    nextNodeIndex: 385
+    responseText: "Maybe. I might try something else first."
+    nextNodeIndex: 387
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27496643431ef82b6dd0c"
     }
@@ -11815,30 +12104,213 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Arelia_ScriptThisScene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-QuestCommercialScriptAreliaWriting"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59ea7e636434310b06b70ae4:59f274af643431ef82b6e205"
   }
   index: 384
-  text: ""
+  text: "Oh, one more thing: what kind of tone did you have in mind for this commercial? Do you think it should focus on action, or use drama, or be humorous?"
   branches {
-    responseText: ""
-    nextNodeIndex: -1
+    responseText: "People pay attention to action. Let\342\200\231s do that."
+    actions {
+      ops {
+        functionName: "Set Variable (string)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "commercial_genre"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "action"
+            }
+            args {
+              string_value: "Const-CommercialAction"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (string)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "commercial_genre_a"
+            }
+          }
+        }
+        args {
+          string_value: "an"
+        }
+      }
+    }
+    nextNodeIndex: 385
     idRef {
       id: "59ea7e636434310b06b70ae4:59f274af643431ef82b6e207"
     }
+    auxiliaryLink: true
   }
   branches {
-    responseText: ""
-    nextNodeIndex: -1
+    responseText: "We have an important message to convey. A drama seems best."
+    actions {
+      ops {
+        functionName: "Set Variable (string)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "commercial_genre_a"
+            }
+          }
+        }
+        args {
+          string_value: "a"
+        }
+      }
+      ops {
+        functionName: "Set Variable (string)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "commercial_genre"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "dramatic"
+            }
+            args {
+              string_value: "Const-CommercialDrama"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 385
     idRef {
       id: "59ea7e636434310b06b70ae4:59f274b1643431ef82b6e209"
     }
+    auxiliaryLink: true
   }
   branches {
-    responseText: ""
-    nextNodeIndex: -1
+    responseText: "People always remember the funny ads. We should use comedy."
+    actions {
+      ops {
+        functionName: "Set Variable (string)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "commercial_genre_a"
+            }
+          }
+        }
+        args {
+          string_value: "a"
+        }
+      }
+      ops {
+        functionName: "Set Variable (string)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "commercial_genre"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (string)"
+            args {
+              string_value: "comedy"
+            }
+            args {
+              string_value: "Const-CommercialComedy"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 385
     idRef {
       id: "59ea7e636434310b06b70ae4:59f274b2643431ef82b6e20b"
     }
@@ -11847,16 +12319,156 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59ea7e636434310b06b70ae4:59f27496643431ef82b6dd0e"
+    id: "59f4aac1356564942f00a778"
   }
   index: 385
-  text: ""
+  text: "Okay, great! I think I should be able to handle that."
   branches {
     responseText: ""
-    nextNodeIndex: -1
+    nextNodeIndex: 386
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4aac3356564942f00a77a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59f4aad7356564942f00a780"
+  }
+  index: 386
+  text: "I\342\200\231ll start work on it tonight. Come see me after your next mission, it should be done by then."
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4aad7356564942f00a782"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59f27496643431ef82b6dd0e"
+  }
+  index: 387
+  text: "{{GM}}She nods, relieved.{{/GM}}\n\nOf course! I\342\200\231ll think about it too, just let me know if you change your mind."
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27496643431ef82b6dd10"
     }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59f4ab4d356564942f00b6ff"
+  }
+  index: 388
+  text: "Oh, yes!\n\nI\342\200\231m afraid it\342\200\246 isn\342\200\231t very good. But I did my best!"
+  branches {
+    responseText: "It doesn\342\200\231t matter."
+    nextNodeIndex: 389
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4ab4f356564942f00b701"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m sure it\342\200\231s fine!"
+    nextNodeIndex: 389
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4ab4f356564942f00b703"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Time to start our campaign for the Golden Raspberry!"
+    nextNodeIndex: 389
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4ab4f356564942f00b705"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59f4ab51356564942f00b708"
+  }
+  index: 389
+  text: "Here you go. I kept it simple, just two characters. You can shoot anyplace with a lot of space, but I think the rooftop might be nice."
+  branches {
+    responseText: ""
+    nextNodeIndex: 390
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4ab54356564942f00b70a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59f2ab1e35656420320075a3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59f4ab88356564942f00bc15"
+  }
+  index: 390
+  text: "Thanks for trusting me with this, $(l.name)! I\342\200\231m not happy with how it turned out, but it was a LOT of fun to make. It feels really good to work on creating something new instead of just killing people."
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59f4ab88356564942f00bc17"
+    }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
