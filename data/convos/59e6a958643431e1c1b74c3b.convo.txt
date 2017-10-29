@@ -1039,13 +1039,6 @@ nodes {
     comment: "Have 2 flirts, numMissions == 3"
   }
   branches {
-    responseText: "{{GM}}Examine the items for sale.{{/GM}}"
-    nextNodeIndex: 146
-    idRef {
-      id: "59e6a958643431e1c1b74c3b:59e7e75264343100dbb6c6f0"
-    }
-  }
-  branches {
     responseText: "Are you ready for our date?"
     conditions {
       ops {
@@ -1105,7 +1098,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 147
+    nextNodeIndex: 146
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1180,20 +1173,49 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-QuestCommercialScriptDesornWriting"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
     }
-    nextNodeIndex: 148
+    nextNodeIndex: 147
     hideIfUnavailable: true
     idRef {
       id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8e3"
     }
     comment: "Must have quest, and can\'t have hired Arelia"
-  }
-  branches {
-    responseText: "How\342\200\231s that $(story.commercial_genre) commercial script coming along?"
-    nextNodeIndex: 156
-    idRef {
-      id: "59e6a958643431e1c1b74c3b:59f4b1ee356564942f00f52d"
-    }
   }
   branches {
     responseText: "Are you willing to act in my commercial?"
@@ -1299,10 +1321,97 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 158
+    nextNodeIndex: 155
     hideIfUnavailable: true
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bc59356564bc42009f00"
+    }
+  }
+  branches {
+    responseText: "How\342\200\231s that $(story.commercial_genre) commercial script coming along?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Desorn_ScriptThisScene"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Hub-QuestCommercialScriptDesornWriting"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 162
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "59e6a958643431e1c1b74c3b:59f4b1ee356564942f00f52d"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Examine the items for sale.{{/GM}}"
+    nextNodeIndex: 164
+    idRef {
+      id: "59e6a958643431e1c1b74c3b:59e7e75264343100dbb6c6f0"
     }
   }
   branches {
@@ -4835,35 +4944,9 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59e7e75564343100dbb6c6f3"
-  }
-  index: 146
-  text: "Anything else?"
-  branches {
-    responseText: ""
-    nextNodeIndex: 28
-    idRef {
-      id: "59e6a958643431e1c1b74c3b:59e7e75764343100dbb6c6f5"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Open Store Screen From Actor"
-      args {
-        call_value {
-          functionName: "Triggering Target Actor"
-        }
-      }
-    }
-  }
-}
-nodes {
-  idRef {
     id: "59e8bf4c64343165e4b6d1fe"
   }
-  index: 147
+  index: 146
   text: "Yes, $(l.sir)!\n\nI reserved us a table at Commie\342\200\231s. Give me a moment to lock up the shop. I\342\200\231ll meet you down there shortly!"
   nodeType: ConversationNodeType_Simple
   actions {
@@ -4891,11 +4974,11 @@ nodes {
   idRef {
     id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8e5"
   }
-  index: 148
+  index: 147
   text: "Interesting. I did bring along my parchment and quills from Shasta. I correspond a fair amount with devotees of Hestaby from far-away lands, and write the occasional treatise on topics of interest to the great dragon."
   branches {
     responseText: ""
-    nextNodeIndex: 149
+    nextNodeIndex: 148
     idRef {
       id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8e7"
     }
@@ -4906,7 +4989,7 @@ nodes {
   idRef {
     id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8e9"
   }
-  index: 149
+  index: 148
   text: "However, I do not know if such activities would qualify me for crafting a commercial."
   branches {
     responseText: "{{CC}}Etiquette: Academic{{/CC}} The narrative structure transcends the medium. Dialectical arguments can be marshaled across a variety of forms to serve complementary ends."
@@ -4956,13 +5039,13 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 150
+    nextNodeIndex: 149
     idRef {
       id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8f3"
     }
   }
   branches {
-    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_High){{/CC}} Your letters sound great! I\342\200\231d love to read them. I bet your script will be just as good, too. The only way to know is to try!"
+    responseText: "{{CC}}Charisma: $(story.Global-Skillcheck_Hard){{/CC}} Your letters sound great! I\342\200\231d love to read them. I bet your script will be just as good, too. The only way to know is to try!"
     conditions {
       ops {
         functionName: "Compare Actor Attribute"
@@ -5017,7 +5100,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 151
+    nextNodeIndex: 150
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4ae22356564942f00e37e"
     }
@@ -5057,7 +5140,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 151
+    nextNodeIndex: 150
     hideIfUnavailable: true
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4ae29356564942f00e385"
@@ -5065,7 +5148,7 @@ nodes {
   }
   branches {
     responseText: "I don\342\200\231t think it\342\200\231s exactly the same."
-    nextNodeIndex: 155
+    nextNodeIndex: 154
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4ae2c356564942f00e38e"
     }
@@ -5076,11 +5159,11 @@ nodes {
   idRef {
     id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8f5"
   }
-  index: 150
+  index: 149
   text: "Ha! Well, I can certainly write more clearly than that."
   branches {
     responseText: ""
-    nextNodeIndex: 151
+    nextNodeIndex: 150
     idRef {
       id: "59ea7e636434310b06b70ae4:59f4aba0356564942f00c8f7"
     }
@@ -5092,11 +5175,11 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4ae29356564942f00e387"
   }
-  index: 151
+  index: 150
   text: "Very well. I shall attempt to write this script. May your commercial reach people and improve their minds, preparing them for the difficult times to come."
   branches {
     responseText: ""
-    nextNodeIndex: 152
+    nextNodeIndex: 151
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4ae29356564942f00e389"
     }
@@ -5107,7 +5190,7 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4aefd356564942f00e588"
   }
-  index: 152
+  index: 151
   text: "Oh, but I would appreciate some guidance from you.\n\nWhat type of commercial were you thinking of creating? Different modes would call for different scripts, of course. Do you envision something exciting with a great deal of action? A slower, more dramatic scene? Or perhaps a comedic piece that communicates through its humor?"
   branches {
     responseText: "People pay attention to action. Let\342\200\231s do that."
@@ -5155,7 +5238,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 153
+    nextNodeIndex: 152
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4aefd356564942f00e58a"
     }
@@ -5207,7 +5290,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 153
+    nextNodeIndex: 152
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4af00356564942f00e58e"
     }
@@ -5259,7 +5342,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 153
+    nextNodeIndex: 152
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4af01356564942f00e590"
     }
@@ -5270,11 +5353,11 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4af03356564942f00e592"
   }
-  index: 153
+  index: 152
   text: "Indeed. I will endeavor to create this, to the best of my ability."
   branches {
     responseText: ""
-    nextNodeIndex: 154
+    nextNodeIndex: 153
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4af03356564942f00e594"
     }
@@ -5334,7 +5417,7 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4afc6356564942f00eeab"
   }
-  index: 154
+  index: 153
   text: "I write well while I travel, and should have completed it by the time you return from your next mission."
   branches {
     responseText: ""
@@ -5350,7 +5433,7 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4ae2c356564942f00e390"
   }
-  index: 155
+  index: 154
   text: "Yes, I did not think so either.\n\nBut fear not, I am sure another person has more relevant experience than I at writing creatively. If you have not yet found them, perhaps you may yet meet in the future."
   branches {
     responseText: ""
@@ -5364,90 +5447,13 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59f4bc14356564bc4200979f"
-  }
-  index: 156
-  text: "It is finished! I hope this piece is to your satisfaction."
-  branches {
-    responseText: ""
-    nextNodeIndex: 157
-    idRef {
-      id: "59e6a958643431e1c1b74c3b:59f4bc16356564bc420097a1"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Trigger: Run Alternate Trigger"
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "59f2ab1e35656420320075a3"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WaitOrNot"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-}
-nodes {
-  idRef {
-    id: "59e6a958643431e1c1b74c3b:59f4bc17356564bc420097a3"
-  }
-  index: 157
-  text: "I am not experienced with writing in this medium, and I fear that it may be lacking. Nonetheless, I did greatly enjoy the process of writing this, and deeply appreciate your faith in giving me this opportunity."
-  branches {
-    responseText: ""
-    nextNodeIndex: 28
-    idRef {
-      id: "59e6a958643431e1c1b74c3b:59f4bc17356564bc420097a5"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
     id: "59f4bc5a356564bc42009f03"
   }
-  index: 158
+  index: 155
   text: "{{GM}}He steeples his fingers.{{/GM}}\n\nFascinating."
   branches {
     responseText: ""
-    nextNodeIndex: 159
+    nextNodeIndex: 156
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bc5c356564bc42009f05"
     }
@@ -5458,7 +5464,7 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4bc5d356564bc42009f07"
   }
-  index: 159
+  index: 156
   text: "I must admit that I feel perplexed as to why you would ask me. I certainly do not view myself as an actor, and am left wondering what behaviors of mine gave you the impression that I would be successful in such a role.\n\nI cannot help but think that another man would be better suited for such a task."
   branches {
     responseText: "{{CC}}Qi Casting: $(story.Global-Skillcheck_Easy){{/CC}} Acting is all about natural movement, going with the flow. Your attunement with qi makes you the most qualified out of all of us."
@@ -5516,7 +5522,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 160
+    nextNodeIndex: 157
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bc5d356564bc42009f09"
     }
@@ -5577,14 +5583,52 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 161
+    nextNodeIndex: 158
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bcdd356564bc4200a2e5"
     }
   }
   branches {
     responseText: "{{CC}}Flirt{{/CC}} I picture this character as a tall, stunningly handsome elf, filled with a serene peace and confidence. You\342\200\231re the only one who can play this role."
-    nextNodeIndex: 162
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-CanRomanceDesorn"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 159
     hideIfUnavailable: true
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bce0356564bc4200a2ee"
@@ -5593,7 +5637,45 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Flirt{{/CC}} The camera loves you, Desorn! Almost as much as a certain $(s.race) does."
-    nextNodeIndex: 162
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-CanRomanceDesorn"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 159
     hideIfUnavailable: true
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bce1356564bc4200a2f0"
@@ -5601,7 +5683,7 @@ nodes {
   }
   branches {
     responseText: "That\342\200\231s a shame."
-    nextNodeIndex: 164
+    nextNodeIndex: 161
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bce3356564bc4200a2f6"
     }
@@ -5612,11 +5694,11 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4bc6a356564bc42009f0d"
   }
-  index: 160
+  index: 157
   text: "A fascinating argument! I have not heard it made before.\n\nI suppose that I will need to put it to the test myself, and this may be the best opportunity to do so."
   branches {
     responseText: ""
-    nextNodeIndex: 163
+    nextNodeIndex: 160
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bc6a356564bc42009f0f"
     }
@@ -5628,11 +5710,11 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4bcdd356564bc4200a2e7"
   }
-  index: 161
-  text: "I suppose that we are not always able to judge ourselves accurately, so I will defer to your judgment.\n\nIt is your venture, and if you truly think I would be an asset, I will do what I can to assist."
+  index: 158
+  text: "I suppose that we are not always able to evaluate ourselves accurately, so I will defer to your judgment.\n\nIt is your venture, and if you truly think I would be an asset, I will do what I can to assist."
   branches {
     responseText: ""
-    nextNodeIndex: 163
+    nextNodeIndex: 160
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bcdd356564bc4200a2e9"
     }
@@ -5644,11 +5726,11 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4bce1356564bc4200a2f2"
   }
-  index: 162
+  index: 159
   text: "{{GM}}He stares at you quizzically for a few seconds, then ducks his head.{{/GM}}\n\nAh. I shall defer to the judgment of the creative artist, then. After all, $(l.he) is the best standard of beauty that I have seen in some time."
   branches {
     responseText: ""
-    nextNodeIndex: 163
+    nextNodeIndex: 160
     idRef {
       id: "59e6a958643431e1c1b74c3b:59f4bce1356564bc4200a2f4"
     }
@@ -5678,7 +5760,7 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4bd64356564bc4200a301"
   }
-  index: 163
+  index: 160
   text: "I will prepare to perform this script and fulfill the trust you have placed in me. Please give me adequate time to prepare. Once all other preparations have been made, I shall be ready to play my part."
   branches {
     responseText: ""
@@ -5754,7 +5836,7 @@ nodes {
   idRef {
     id: "59e6a958643431e1c1b74c3b:59f4bce3356564bc4200a2f8"
   }
-  index: 164
+  index: 161
   text: "No, it is an opportunity: for you to locate another man who will make this part his own."
   branches {
     responseText: ""
@@ -5765,6 +5847,109 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59f4bc14356564bc4200979f"
+  }
+  index: 162
+  text: "It is finished! I hope this piece is to your satisfaction."
+  branches {
+    responseText: ""
+    nextNodeIndex: 163
+    idRef {
+      id: "59e6a958643431e1c1b74c3b:59f4bc16356564bc420097a1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59f2ab1e35656420320075a3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59e6a958643431e1c1b74c3b:59f4bc17356564bc420097a3"
+  }
+  index: 163
+  text: "I am not experienced with writing in this medium, and I fear that it may be lacking. Nonetheless, I did greatly enjoy the process of writing this, and deeply appreciate your faith in giving me this opportunity."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "59e6a958643431e1c1b74c3b:59f4bc17356564bc420097a5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e7e75564343100dbb6c6f3"
+  }
+  index: 164
+  text: "Anything else?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "59e6a958643431e1c1b74c3b:59e7e75764343100dbb6c6f5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Open Store Screen From Actor"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+    }
+  }
 }
 roots {
   responseText: ""
@@ -5839,6 +6024,39 @@ roots {
       }
       args {
         int_value: 3
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Hub_Debugging"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
     }
   }
