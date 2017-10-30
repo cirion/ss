@@ -771,6 +771,14 @@ nodes {
     id: "59d0592a3565644c3d007038"
   }
 }
+nodes {
+  idRef {
+    id: "59f7309a356564c038007d79"
+  }
+  index: 12
+  text: "You find yourself back in the cavern. You cannot tell how much time has passed. Seconds? Minutes? Longer?"
+  nodeType: ConversationNodeType_GM_Voice
+}
 roots {
   nextNodeIndex: 0
   onlyOnce: true
@@ -780,8 +788,63 @@ roots {
 }
 roots {
   responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isCrew"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
   nextNodeIndex: 3
   idRef {
     id: "59d05ed33565644c3d00708e:59d05f593565644c3d0070b1"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 12
+  idRef {
+    id: "59d05ed33565644c3d00708e:59f73098356564c038007d76"
   }
 }
