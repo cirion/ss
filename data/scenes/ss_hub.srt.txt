@@ -67,7 +67,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "592b10ad356564b442007d2b"
   }
@@ -9468,7 +9468,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -9714,7 +9722,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -10150,7 +10166,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -10444,7 +10468,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -10568,7 +10600,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -10692,7 +10732,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -10938,7 +10986,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -11184,7 +11240,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -11514,7 +11578,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -11622,7 +11694,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   is_oneshot: false
@@ -12083,7 +12163,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -12329,7 +12417,15 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndTurn"
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -33598,6 +33694,68 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Hub_EndTurn"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_EndTurn"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59602c5b3565645846002b4a"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "End Current Team Round"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59f91387356564044100080e"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Club"
   position {
@@ -33775,9 +33933,9 @@ regions {
 regions {
   name: "Camera_Roof"
   position {
-    x: -36
-    y: -118
-    width: 28
+    x: -35
+    y: -117
+    width: 36
     height: 38
   }
   enabledAtStart: true
@@ -40100,7 +40258,6 @@ mapEvents: "Event_Foyer_Route_DoneReadingNotices"
 mapEvents: "Event_Library_Route_DoneWithBooks"
 mapEvents: "Event_Restaurant_Route_DoneEating"
 mapEvents: "Event_Club_Route_Done"
-mapEvents: "Event_Route_EndTurn"
 mapEvents: "Event_Route_TeleportedToRoof"
 mapEvents: "Event_Route_TeleportedToFoyer"
 mapEvents: "Event_Route_TeleportedToBasement"
@@ -40126,6 +40283,7 @@ mapEvents: "Event_StretchFinish"
 mapEvents: "Event_PC0Stretch"
 mapEvents: "Event_PC0StretchFinish"
 mapEvents: "Event_MasatoFalls"
+mapEvents: "Event_EndTurn"
 senseTags: "isValiri"
 senseTags: "isDesorn"
 senseTags: "isKora"
