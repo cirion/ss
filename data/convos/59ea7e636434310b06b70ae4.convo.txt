@@ -2867,7 +2867,7 @@ nodes {
     id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bca0"
   }
   index: 79
-  text: "Oh... hi, $(l.name)!"
+  text: ""
   branches {
     responseText: ""
     nextNodeIndex: 80
@@ -4446,6 +4446,30 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "GreetedArelia"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   comment: "Empty root"
 }
 nodes {
@@ -12526,6 +12550,102 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
 }
+nodes {
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59fa4038643431340862ed18"
+  }
+  index: 391
+  text: "$(l.firstname)!\n\n{{GM}}She steps closer, a goofy grin on her face.{{/GM}}\n\nI\342\200\231ve missed you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ecc1fe356564d837015d0f:59fa4038643431340862ed1a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417b643431340862ff52"
+  }
+  index: 392
+  text: "{{GM}}She looks slightly queasy, but a smile breaks through when you reach her.{{/GM}}\n\nOh\342\200\246 uh, hi, $(l.firstname)! I, um\342\200\246\n\n{{GM}}She grins awkwardly and fidgets with her fingers.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59fa417b643431340862ff54"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417e643431340862ff5e"
+  }
+  index: 393
+  text: "Hi, $(l.name)! It\342\200\231s good to see you again."
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59fa417e643431340862ff60"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417e643431340862ff66"
+  }
+  index: 394
+  text: "Hi, $(l.name)! It\342\200\231s good to see you again.\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59fa417e643431340862ff68"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417f643431340862ff6e"
+  }
+  index: 395
+  text: "Oh... hi, $(l.name)!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59fa417f643431340862ff70"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417f643431340862ff76"
+  }
+  index: 396
+  text: "{{GM}}She jumps slightly at your approach.{{/GM}}\n\nOh\342\200\246 $(l.name)! What do you need?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "59ea7e636434310b06b70ae4:59fa417f643431340862ff78"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
 roots {
   responseText: ""
   conditions {
@@ -12840,10 +12960,237 @@ roots {
   comment: "Respond to underwater, possible #1 lovetalk."
 }
 roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "GreetedArelia"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 79
   idRef {
     id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bc9f"
   }
-  comment: "Default greeting"
+  comment: "Subsequent visits"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-AreliaLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 4
+      }
+    }
+  }
+  nextNodeIndex: 391
+  idRef {
+    id: "59ecc1fe356564d837015d0f:59fa4038643431340862ed16"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-AreliaLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 392
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417b643431340862ff50"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-NumMissionsPlayed"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 11
+      }
+    }
+  }
+  nextNodeIndex: 393
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417e643431340862ff5c"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-NumMissionsPlayed"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 8
+      }
+    }
+  }
+  nextNodeIndex: 394
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417e643431340862ff64"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-NumMissionsPlayed"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 5
+      }
+    }
+  }
+  nextNodeIndex: 395
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417f643431340862ff6c"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 396
+  idRef {
+    id: "59ea7e636434310b06b70ae4:59fa417f643431340862ff74"
+  }
 }
 persistent_conversation: true

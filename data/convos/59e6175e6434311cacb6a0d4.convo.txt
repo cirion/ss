@@ -1318,8 +1318,16 @@ nodes {
     }
   }
   branches {
-    responseText: "Show me your supplies."
+    responseText: "I have some paydata to sell."
     nextNodeIndex: 118
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa520c6434313408632385"
+    }
+    comment: "TODO: Must have at least one item"
+  }
+  branches {
+    responseText: "Show me your supplies."
+    nextNodeIndex: 131
     idRef {
       id: "59e6175e6434311cacb6a0d4:59e81be2356564f02700978b"
     }
@@ -4588,9 +4596,1541 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59e81bee356564f02700978e"
+    id: "59fa52266434313408632388"
   }
   index: 118
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 119
+    onlyOnce: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5227643431340863238a"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 120
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa522e6434313408632391"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59fa5229643431340863238d"
+  }
+  index: 119
+  text: "Good work! I keep in touch with a variety of interested parties within California and beyond. As long as the data doesn\342\200\231t cause problems for the People\342\200\231s University or its allies, I\342\200\231ll be happy to broker it for you.\n\nI\342\200\231ve been doing this for a while and have a good sense of what a given piece of data will fetch on the market, so I can give you cash on the barrel today. None of this escrow nonsense necessary!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 121
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa522c643431340863238f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa522e6434313408632393"
+  }
+  index: 120
+  text: "Cool. What have you got for me?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 121
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa522e6434313408632395"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa5232643431340863239a"
+  }
+  index: 121
+  text: ""
+  branches {
+    responseText: "{{CC}}Item: Halferville Trade Records{{/CC}} Some import/export records from our neighboring dwarven stronghold."
+    nextNodeIndex: 122
+    hideIfUnavailable: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5232643431340863239c"
+    }
+    comment: "TODO: Has Halferville paydata"
+  }
+  branches {
+    responseText: "{{CC}}Item: Air Force Codes{{/CC}} Slightly-obsolete signals from the old regime\342\200\231s Air Force."
+    nextNodeIndex: 126
+    hideIfUnavailable: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa597d643431f709b6be38"
+    }
+    comment: "TODO: Has Sacto paydata"
+  }
+  branches {
+    responseText: "{{CC}}Item: Cyberdeck Blueprints{{/CC}} Old schematics for the Fuchi VirtuaX."
+    nextNodeIndex: 127
+    hideIfUnavailable: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5a98643431f709b6cb3d"
+    }
+    comment: "TODO: Has Fuchi paydata"
+  }
+  branches {
+    responseText: "{{CC}}Item: Fuchi Environmental Research{{/CC}} Pollution and industrial waste records for Monterey Bay."
+    nextNodeIndex: 128
+    hideIfUnavailable: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5b21643431f709b6d1d0"
+    }
+    comment: "TODO: Has Monterey paydata"
+  }
+  branches {
+    responseText: "{{CC}}Item: Protectorate Procurement Records{{/CC}} Details on the weapons manufacturers supplying Treasure Island."
+    nextNodeIndex: 129
+    hideIfUnavailable: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5baa643431f709b6d6e0"
+    }
+    comment: "TODO: Has Treasure Island paydata"
+  }
+  branches {
+    responseText: "Never mind."
+    nextNodeIndex: 130
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5cb1643431f709b6e11b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Offers"
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa524d643431340863251a"
+  }
+  index: 122
+  text: "Hm. It\342\200\231s pretty much what I expected so see. Fine dwarven crafts going out, trainloads of explosives coming in. But some local merchants might be interested in the supply levels to see if there are opportunities for arbitrage. I can probably swing \302\245200 for it."
+  branches {
+    responseText: "OK."
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 200
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_halferville_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 123
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa524d643431340863251c"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Corporate{{/CC}} Forget the local merchants. This would be interesting for anyone who wants to deal with isolated metatype enclaves. T\303\255r na n\303\223g, the Ork Underground, any similar community."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 275
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_halferville_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa52ef643431f709b6a465"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Metatype: Dwarf{{/CC}} Why not sell it right back to Halferville? They\342\200\231d prefer to keep their secrets to themselves."
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 275
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_halferville_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    hideIfUnavailable: true
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa52f3643431f709b6a467"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Spellcasting / Conjuration: $(story.Global-Skillcheck_Easy){{/CC}} Those might look like crafts, but they\342\200\231re commonly used in preparing arcane focuses. Despite appearances, Halferville IS exporting weaponry, just of a magical kind."
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 275
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_halferville_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa52f5643431f709b6a469"
+    }
+    comment: "TODO: Conjuring OR spellcasting."
+  }
+  branches {
+    responseText: "Maybe later."
+    nextNodeIndex: 125
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5936643431f709b6b882"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa52a7643431f709b6a060"
+  }
+  index: 123
+  text: "Great. Here\342\200\231s your cut, minus a modest brokerage fee."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa52a7643431f709b6a062"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa52f5643431f709b6a46b"
+  }
+  index: 124
+  text: "Excellent. With that info I can negotiate a higher price. Here\342\200\231s your upgraded share."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa52f5643431f709b6a46d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59fa5938643431f709b6b885"
+  }
+  index: 125
+  text: "Fair enough. The offer remains on the table."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa593b643431f709b6b887"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa597d643431f709b6be3a"
+  }
+  index: 126
+  text: "This would have been worth a lot more a month ago. Still, there are some history buffs who go nuts for this sort of thing, people who have deep pockets. I can offer you \302\245250."
+  branches {
+    responseText: "It\342\200\231s a deal."
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 250
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 123
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa597d643431f709b6be3c"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} The specific codes may be retired, but the underlying crypto data is still valuable. Corporate and political militaries would love to train their models on this."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 350
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa597d643431f709b6be44"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Drone Control: $(story.Global-Skillcheck_Easy){{/CC}} Even though the codes aren\342\200\231t being used, the aircraft are now part of Saito\342\200\231s forces. A corp like Ares could glean some useful intel from the orders they received in the past."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Easy"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 350
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a2_sacto_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa597d643431f709b6be4c"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Maybe later."
+    nextNodeIndex: 125
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa597d643431f709b6be54"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa5a98643431f709b6cb3f"
+  }
+  index: 127
+  text: "Heh, I\342\200\231ve seen more than a few of these decks in my day. They aren\342\200\231t nearly as popular any more, but will still be in service for a while.\n\nThe Schockwellenreiter is always interested in data like this, your profit would work out to around \302\245350."
+  branches {
+    responseText: "Let\342\200\231s do it."
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 350
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 123
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5a98643431f709b6cb41"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} Lots of runners customize their decks. Details like this will help them squeeze out some more performance and be cheaper than buying a new deck."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 500
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5a98643431f709b6cb45"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Decking: $(story.Global-Skillcheck_Medium){{/CC}} I recognize some of these circuits from the the Transys Highlander. This is pretty strong evidence of industrial espionage."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Medium"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 500
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a4_fuchi_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5a98643431f709b6cb47"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Maybe later."
+    nextNodeIndex: 125
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5a98643431f709b6cb4b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa5b21643431f709b6d1d2"
+  }
+  index: 128
+  text: "Nobody cares much about the environment, but the Bay is still an important fishery. This would show local trawlers where to focus and what spots to avoid. We can probably get you \302\245600 for this."
+  branches {
+    responseText: "I\342\200\231ll take it."
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 600
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_monterey_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 123
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5b21643431f709b6d1d4"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Socialite{{/CC}} Rich people care about pollution, especially ones with coastal properties in Big Sur. There must be a homeowners association that would want to act on this data\342\200\246 or bury it."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 16
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 850
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_monterey_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5b21643431f709b6d1d8"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Biotech: $(story.Global-Skillcheck_Medium){{/CC}} Did you check out the mutation experiments? That would be very interesting to genetech corps."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 11
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Medium"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 850
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_monterey_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5b21643431f709b6d1da"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Maybe later."
+    nextNodeIndex: 125
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5b21643431f709b6d1de"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e6175e6434311cacb6a0d4:59fa5baa643431f709b6d6e2"
+  }
+  index: 129
+  text: "This doesn\342\200\231t do the PU a lot of good right now, but it would make for satisfying blackmail material. Once we expose Saito\342\200\231s crimes, nobody on this list will want to be associated with him. I figure we\'re looking at about \302\245700 in hush money."
+  branches {
+    responseText: "I\342\200\231ll take it."
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 700
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 123
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5baa643431f709b6d6e4"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Corporate{{/CC}} Forget blackmail, just sell it out. Ares and Novatech will run this story into the ground."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 950
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5baa643431f709b6d6e8"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Ranged Combat: $(story.Global-Skillcheck_Hard){{/CC}} WHAT they sold is just as interesting. Competitors would want to know what firearms are most in demand in modern dictatorships."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 11
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-Skillcheck_Hard"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 950
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "ss_a6_treasure_s1-Paydata"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 124
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5baa643431f709b6d6ea"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Maybe later."
+    nextNodeIndex: 125
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5baa643431f709b6d6ee"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59fa5cb3643431f709b6e11e"
+  }
+  index: 130
+  text: "No problem. I\342\200\231ll still be here if you change your mind."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59e6175e6434311cacb6a0d4:59fa5cb5643431f709b6e120"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59e81bee356564f02700978e"
+  }
+  index: 131
   text: "Any time."
   branches {
     responseText: ""
