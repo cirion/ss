@@ -9226,6 +9226,33 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -36409,6 +36436,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa880c356564703b00c292"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -36683,6 +36721,20 @@ triggers {
         int_value: 1
       }
     }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Restaurant_BlockAllChairs"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
   }
   isActive: false
   idRef {
@@ -36852,28 +36904,6 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "59f9d74a356564a43800101d"
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Teleport Actor With Fade"
       args {
         call_value {
@@ -36930,83 +36960,6 @@ triggers {
   isActive: true
   idRef {
     id: "59f9d6b6356564a43800101b"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "Lobby_AreliaBouncerAnimation_OFF"
-  events {
-    ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "59602e3e3565645846002b4b"
-          }
-        }
-      }
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Evaluate Tag for Actor"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "HasOrHasNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SenseTagList)"
-          args {
-            string_value: "isArelia"
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Play Animation From Manifest"
-      args {
-        call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Animation)"
-          args {
-            string_value: "HongKong:General/standing_idle_bouncer"
-          }
-        }
-      }
-    }
-  }
-  isActive: false
-  idRef {
-    id: "59f9d74a356564a43800101d"
   }
   elseActions {
   }
@@ -37410,6 +37363,42 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59f654053565641011007283"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_IsasShot"
+          }
+        }
+      }
+      args {
+        float_value: 5
+      }
+    }
   }
   isActive: true
   idRef {
@@ -37425,7 +37414,7 @@ triggers {
     ops {
       functionName: "Get Map Item (Event)"
       args {
-        string_value: "Event_TargetShot"
+        string_value: "Event_IsasShot"
       }
     }
   }
@@ -37590,7 +37579,10 @@ triggers {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59f654053565641011007283"
+              }
             }
           }
           args {
@@ -37964,6 +37956,124 @@ triggers {
   elseActions {
   }
   is_oneshot: false
+}
+triggers {
+  name: "Restaurant_BlockAllBigTable"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_Restaurant_BlockAllChairs"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa880a356564703b00c290"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59f9d2e3356564a438000e20"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa880a356564703b00c291"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59f9d2fb356564a438000e23"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa880c356564703b00c292"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59f9d2f1356564a438000e22"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa8809356564703b00c28f"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59f9d2e8356564a438000e21"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59fa8867356564703b00c295"
+  }
+  elseActions {
+  }
+  is_oneshot: true
 }
 regions {
   name: "Camera_Club"
@@ -41543,7 +41653,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -36
+    x: -35
     y: 0
     z: -101
   }
@@ -43817,7 +43927,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -36
+    x: -35
     y: 0
     z: -81
   }
@@ -45582,6 +45692,7 @@ mapEvents: "Event_MasatoFalls"
 mapEvents: "Event_EndTurn"
 mapEvents: "Event_IsasShot"
 mapEvents: "Event_RestaurantPC0Sits"
+mapEvents: "Event_Restaurant_BlockAllChairs"
 senseTags: "isValiri"
 senseTags: "isDesorn"
 senseTags: "isKora"
