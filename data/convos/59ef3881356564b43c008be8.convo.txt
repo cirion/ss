@@ -123,6 +123,40 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 2
+      }
+      args {
+        float_value: 2
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MovePC0ToChair"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -222,6 +256,33 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -437,7 +498,7 @@ nodes {
     id: "59ef3881356564b43c008be8:59ef4063356564b43c008e77"
   }
   index: 15
-  text: "When I grew up, we to the shore would go. By the water meet, with the sound of waves would join."
+  text: "Where I grew up, we to the shore would go. By the water meet, with the sound of waves would join."
   branches {
     responseText: ""
     nextNodeIndex: 16
