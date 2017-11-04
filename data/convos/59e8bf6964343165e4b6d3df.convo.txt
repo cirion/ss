@@ -7,7 +7,7 @@ nodes {
     id: "59e8bf6964343165e4b6d3df:59e9059b64343165e4b6da9e"
   }
   index: 0
-  text: "{{GM}}He rises as you approach.{{/GM}}\n\n$(l.firstname)! You are looking well."
+  text: "{{GM}}He smiles broadly as you approach.{{/GM}}\n\n$(l.firstname)! You are looking well."
   branches {
     responseText: "So are you."
     nextNodeIndex: 1
@@ -114,6 +114,40 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 2
+      }
+      args {
+        float_value: 2
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_MovePC0ToChair"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -183,7 +217,7 @@ nodes {
     id: "59e8bf6964343165e4b6d3df:59e9059b64343165e4b6dab5"
   }
   index: 8
-  text: "I have heard rumors that Commies serves actual meat, to those willing to spend the credits. It seems odd, on multiple levels. Exploiting animals, in a venue devoted to fair treatment. Providing special access, within an organization ostensibly aiming at equality. It is a puzzle."
+  text: "I have heard rumors that Orks & Forks serves actual meat, to those willing to spend the credits. It seems odd, on multiple levels. Exploiting animals, in a venue devoted to fair treatment. Providing special access, within an organization ostensibly aiming at equality. It is a puzzle."
   branches {
     responseText: "I like meat. If I could afford it, I might try some."
     nextNodeIndex: 9
@@ -365,7 +399,7 @@ nodes {
     id: "59e8bf6964343165e4b6d3df:59e9059b64343165e4b6dacb"
   }
   index: 17
-  text: "What at first appeared to be a simple pile of leaves soon proves to be merely the top layer of an intricately constructed tableau. The greens are bright, undressed but with a slight intrinsic peppery flavor.\n\nBeneath them lie a variety of morsels: cremini mushrooms and sweet peas and slivered beets and kernels of corn. Each delivers a burst of flavor, distinct from yet complementary to the others.\n\nLying under it all is a pebbly black mass. It looks like dirt, but a tentative taste reveals it to be edible, a cleverly composed blend of root vegetables."
+  text: "What at first appeared to be a mere pile of leaves proves to be merely the top layer of an intricately constructed tableau. The greens are bright, undressed but with a slight intrinsic peppery flavor.\n\nBeneath them lie a variety of morsels: cremini mushrooms and sweet peas and slivered beets and kernels of corn. Each delivers a burst of flavor, distinct from yet complementary to the others.\n\nLying under it all is a pebbly black mass. It looks like dirt, but a tentative taste reveals it to be edible, a cleverly composed blend of root vegetables."
   branches {
     responseText: ""
     nextNodeIndex: 19
@@ -374,7 +408,7 @@ nodes {
     }
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
@@ -420,7 +454,7 @@ nodes {
     }
   }
   branches {
-    responseText: "We usually ate at least one meal together. It didn\342\200\231t mean much at the time, but looking back, I\342\200\231m grateful for that time."
+    responseText: "On most days we ate at least one meal together. It didn\342\200\231t mean much to me then, but looking back, I\342\200\231m grateful for that time."
     nextNodeIndex: 22
     idRef {
       id: "59e8bf6964343165e4b6d3df:59e9059b64343165e4b6dad7"
@@ -519,7 +553,6 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
-  comment: "TODO: Maybe fade out/in?"
 }
 nodes {
   idRef {
@@ -549,7 +582,30 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Set up trigger for next phase"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59fd45e13565645441008385"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -565,6 +621,33 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -580,13 +663,76 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_hub-DesornBook"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59e8bf6964343165e4b6d3df:59e9059b64343165e4b6daeb"
   }
   index: 29
-  text: "A scholar\342\200\231s treatment of your extended family\342\200\231s personal history in this area, dating back to when it was still called \342\200\234California\342\200\235. I do not know your personal geneology well enough to know how you fit into the picture it draws, but you might find it interesting. Like so many others drawn to this land, your relatives were ambitious and optimistic, seeking a better life out here and staking their claim."
+  text: "A scholar\342\200\231s treatment of your extended family\342\200\231s personal history in this area, long before it was named \342\200\234CalFree\342\200\235. I do not know your personal geneology well enough to know how you fit into the picture it draws, but you might find it interesting. Like so many others drawn to this land, your relatives were ambitious and optimistic, seeking a better life out here and staking their claim."
   branches {
     responseText: "Interesting."
     nextNodeIndex: 30
@@ -641,7 +787,91 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Lights out and back on. Maybe do via trigger & move the following to another root"
+  actions {
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isLibraryLight"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0.2
+      }
+    }
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0.5
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0.8
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:spellcasting"
+          }
+          args {
+            string_value: "LightningBoltHit"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -650,7 +880,30 @@ nodes {
   index: 32
   text: "{{GM}}His hand finds yours in the dark.{{/GM}}\n\nIf you would follow me, let us go outside, where I can appreciate your beauty under the moonlight."
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Another trigger, he walks to the fountain"
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59fd45e13565645441008387"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -786,33 +1039,6 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
-  actions {
-    ops {
-      functionName: "Order Actor to Face Point"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Triggering Target Actor"
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Current Location of Actor"
-          args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-        }
-      }
-    }
-  }
 }
 nodes {
   idRef {
@@ -842,6 +1068,55 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59fd45e1356564544100838b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -857,6 +1132,33 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Teleport Camera To Point"
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59fa96eb356564703b00c800"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 2
+      }
+      args {
+        float_value: 1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -864,6 +1166,24 @@ nodes {
   }
   index: 40
   text: "When the satellite crosses back into the sky once more, you are no longer there to be found."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Fade Camera Out"
+        args {
+          float_value: 0
+        }
+        args {
+          float_value: 0
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59e8bf6964343165e4b6d3df:59fd4d533565645441009497"
+    }
+  }
   nodeType: ConversationNodeType_GM_Voice
 }
 roots {

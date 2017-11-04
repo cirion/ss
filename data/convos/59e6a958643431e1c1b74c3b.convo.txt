@@ -533,6 +533,24 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_talking"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -563,6 +581,24 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -4947,7 +4983,7 @@ nodes {
     id: "59e8bf4c64343165e4b6d1fe"
   }
   index: 146
-  text: "Yes, $(l.sir)!\n\nI reserved us a table at Commie\342\200\231s. Give me a moment to lock up the shop. I\342\200\231ll meet you down there shortly!"
+  text: "Yes, $(l.sir)!\n\nI reserved us a table at Orks & Forks. Give me a moment to lock up the shop. I\342\200\231ll meet you down there shortly!"
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -4964,11 +5000,32 @@ nodes {
         }
       }
       args {
-        int_value: 1
+        int_value: 2
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59fd45e13565645441008382"
+          }
+        }
       }
     }
   }
-  comment: "TODO: Hook into other trigger to walk away, swap model"
 }
 nodes {
   idRef {
@@ -5989,11 +6046,9 @@ roots {
     }
   }
   nextNodeIndex: 0
-  onlyOnce: true
   idRef {
     id: "59e6a958643431e1c1b74c3b:59e906e864343165e4b6e057"
   }
-  comment: "TODO: Only after finishing romance scene, update var"
 }
 roots {
   responseText: ""
