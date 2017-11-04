@@ -750,10 +750,56 @@ nodes {
     responseText: ""
     conditions {
       ops {
-        functionName: "Evaluate If Actor is Inside Region"
+        functionName: "Comparison (int)"
         args {
           call_value {
-            functionName: "All Actors With Tag"
+            functionName: "Get Count of Alive Actors"
+            args {
+              call_value {
+                functionName: "All Actors With Tag"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isDog"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "AllOrAny"
+                    }
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+      ops {
+        functionName: "Compare Actor Team"
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
             args {
               call_value {
                 functionName: "Get Map Item (SenseTagList)"
@@ -764,13 +810,7 @@ nodes {
             }
             args {
               call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "AllOrAny"
-                }
-                args {
-                  int_value: 1
-                }
+                functionName: "Triggering Actor"
               }
             }
           }
@@ -779,7 +819,7 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "AreOrAreNot"
+              string_value: "IsOrIsNot"
             }
             args {
               int_value: 1
@@ -788,9 +828,20 @@ nodes {
         }
         args {
           call_value {
-            functionName: "Get Map Item (Region)"
+            functionName: "Get Preset Value (string)"
             args {
-              string_value: "596247c7356564cc3a00599f"
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
             }
           }
         }
@@ -800,7 +851,6 @@ nodes {
     idRef {
       id: "59ecc1fe356564d837015d0f:59efb6996434314a52b6f7ba"
     }
-    comment: "TODO: Dog present, update camera for hub"
   }
   branches {
     responseText: ""
