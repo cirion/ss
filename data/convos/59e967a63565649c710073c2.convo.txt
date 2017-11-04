@@ -112,67 +112,17 @@ nodes {
       }
     }
     ops {
-      functionName: "Teleport Actor"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "59f9d2bf356564a438000e1d"
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "TeleportMethod"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Send Event"
+      functionName: "Send Event After Delay"
       args {
         call_value {
           functionName: "Get Map Item (Event)"
           args {
-            string_value: "Event_RestaurantPC0Sits"
+            string_value: "Event_MovePC0ToChair"
           }
         }
+      }
+      args {
+        float_value: 1
       }
     }
   }
@@ -298,7 +248,7 @@ nodes {
     id: "59e969533565649c710074d5"
   }
   index: 11
-  text: "{{GM}}She takes another bite and closes her eyes, savoring the taste.{{/GM}}\n\nThis takes me back. I grew up on a ranch outside of Modesto, and my family was one of the last to raise real free-range cows in California. Every single cow would sell for enough to keep the ranch going another two months.\n\nEvery once in a while, though, my dad would get to handle the butchering and would hold back some of the carcass after a sale. We felt like kings, dining on the same food that would grace a CEO\342\200\231s plate."
+  text: "{{GM}}She closes her eyes, savoring the taste.{{/GM}}\n\nThis takes me back. I grew up on a ranch outside of Modesto, and my family was one of the last to raise real free-range cattle in CalFree. Every single cow would sell for enough to keep the ranch going another two months.\n\nEvery once in a while, though, my dad would get to handle the butchering and would hold back some of the carcass after a sale. We felt like kings, dining on the same food that would grace a CEO\342\200\231s plate."
   branches {
     responseText: ""
     nextNodeIndex: 12
@@ -382,7 +332,7 @@ nodes {
     }
   }
   branches {
-    responseText: "We rarely ate real food, but in November we would get dungeness crabs. Some years they were so big that the two of us could split one. We would make it a game, cracking as fast as we could, trying to get to the meat before the other."
+    responseText: "We rarely ate real food, but in November we would get dungeness crabs. Some years they were so big that the two of us could split one. We would make it a game, cracking as fast as we could, racing to the meat."
     nextNodeIndex: 18
     idRef {
       id: "59e967a63565649c710073c2:59e96a223565649c710075c5"
@@ -515,6 +465,56 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59fd0cf635656408280022af"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 6
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -554,7 +554,7 @@ nodes {
     id: "59e96b373565649c71007783"
   }
   index: 22
-  text: "FINALLY. I was just talking to Moonflower about how badly we need to get some live music in here. It\342\200\231s great that everyone is so dedicated to the cause, but some times you need to just MOVE, you know?"
+  text: "FINALLY. I was just talking to Moonflower about how badly we need to get some more music in here. It\342\200\231s great that everyone is so dedicated to the cause, but some times you need to just MOVE, you know?"
   branches {
     responseText: ""
     nextNodeIndex: 23
@@ -612,14 +612,14 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Dance next to Valiri.{{/GM}}"
-    nextNodeIndex: 27
+    nextNodeIndex: 28
     idRef {
       id: "59e967a63565649c710073c2:59e96b7b3565649c710077d8"
     }
   }
   branches {
     responseText: "{{GM}}Don\342\200\231t dance.{{/GM}}"
-    nextNodeIndex: 29
+    nextNodeIndex: 30
     idRef {
       id: "59e967a63565649c710073c2:59e96b7b3565649c710077da"
     }
@@ -634,7 +634,46 @@ nodes {
   text: "She backs up against your chest, guiding your arms around her. The two of you sway to the music, falling into an easy rhythm. She leans further back, placing more pressure on you, secure that you will continue to hold."
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 25
+    idRef {
+      id: "59e967a63565649c710073c2:59fd0db93565640828002518"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: 26
     idRef {
       id: "59e967a63565649c710073c2:59e96b9b3565649c710077df"
     }
@@ -648,65 +687,6 @@ nodes {
       }
       args {
         float_value: 0
-      }
-    }
-    ops {
-      functionName: "Fade Camera In"
-      args {
-        float_value: 2
-      }
-      args {
-        float_value: 1
-      }
-    }
-    ops {
-      functionName: "Teleport Actor"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "59fbb8e4356564bc2b001d2e"
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "TeleportMethod"
-          }
-          args {
-            int_value: 0
-          }
-        }
       }
     }
     ops {
@@ -739,22 +719,6 @@ nodes {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Animation)"
-          args {
-            string_value: "HongKong:General/standing_idle_shuffledance"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Animation From Manifest"
-      args {
-        call_value {
           functionName: "Triggering Target Actor"
         }
       }
@@ -767,17 +731,47 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_PC0StartsDancing"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+    }
   }
+}
+nodes {
+  idRef {
+    id: "59fd0dbb356564082800251b"
+  }
+  index: 25
+  text: "Despite her greater height, you feel fully at ease with her, your rhythms synchronized like a large and small metronome. Small droplets of sweat glisten on her skin, but all you can smell is her faint scent of jasmine and vanilla.\n\nShe steps backwards, coming close to stomping on you, then laughs merrily as you shift position."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "59e967a63565649c710073c2:59fd0dbe356564082800251d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
 }
 nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96b9c3565649c710077e1"
   }
-  index: 25
+  index: 26
   text: "Bending down, you inhale through her hair, breathing in faint scents of jasmine and vanilla. She tosses her head, nearly clipping your nose, then laughs as you shift position."
   branches {
     responseText: ""
-    nextNodeIndex: 26
+    nextNodeIndex: 27
     idRef {
       id: "59e967a63565649c710073c2:59e96b9c3565649c710077e3"
     }
@@ -788,11 +782,11 @@ nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96b9f3565649c710077e7"
   }
-  index: 26
+  index: 27
   text: "You\342\200\231re not too bad at this! You didn\342\200\231t even notice how many people are staring at us.\n\nWell, SOMEONE needs to kick things off, and it might as well be us!"
   branches {
     responseText: ""
-    nextNodeIndex: 31
+    nextNodeIndex: 32
     idRef {
       id: "59e967a63565649c710073c2:59e96b9f3565649c710077e9"
     }
@@ -804,11 +798,11 @@ nodes {
   idRef {
     id: "59e96bf83565649c71007894"
   }
-  index: 27
+  index: 28
   text: "Facing each other, you move in time to the music, improvising steps and responding to each other\342\200\231s movement. She smiles in delight and throws her arms up, twisting to the beat, daring you to follow her."
   branches {
     responseText: ""
-    nextNodeIndex: 28
+    nextNodeIndex: 29
     idRef {
       id: "59e967a63565649c710073c2:59e96bfa3565649c71007896"
     }
@@ -837,11 +831,11 @@ nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96bfd3565649c71007898"
   }
-  index: 28
+  index: 29
   text: "As one song leads to the next, the tempos gradually increase and your mutual movement accelerates, until a bright sheen covers her face. She\342\200\231s never looked happier. Moving in closer, she grabs your hands and spins around, laughing in delight."
   branches {
     responseText: ""
-    nextNodeIndex: 26
+    nextNodeIndex: 27
     idRef {
       id: "59e967a63565649c710073c2:59e96bfd3565649c7100789a"
     }
@@ -853,11 +847,11 @@ nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96c273565649c710078a3"
   }
-  index: 29
+  index: 30
   text: "Grinning, she holds steady eye contact with you as she dances, one song mixing into the next. As the tempo changes she appears alternately haughty, or coy, or mischievous, or rapt."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 31
     idRef {
       id: "59e967a63565649c710073c2:59e96c273565649c710078a5"
     }
@@ -868,11 +862,11 @@ nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96c273565649c710078a7"
   }
-  index: 30
+  index: 31
   text: "You soon realize that you aren\342\200\231t her only audience. Everyone within earshot is keeping at least one eye on Valiri, and more than a few shout words of encouragement as she presses on, a sole spinning top on the library floor."
   branches {
     responseText: ""
-    nextNodeIndex: 31
+    nextNodeIndex: 32
     idRef {
       id: "59e967a63565649c710073c2:59e96c273565649c710078a9"
     }
@@ -883,11 +877,11 @@ nodes {
   idRef {
     id: "59e96c533565649c710078b3"
   }
-  index: 31
+  index: 32
   text: "The music abruptly cuts out, and the chamber collectively groans its disapproval."
   branches {
     responseText: ""
-    nextNodeIndex: 32
+    nextNodeIndex: 33
     idRef {
       id: "59e967a63565649c710073c2:59e96c553565649c710078b5"
     }
@@ -937,17 +931,64 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isClubLight"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:spellcasting"
+          }
+          args {
+            string_value: "LightningBoltHit"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
 }
 nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96c633565649c7100791b"
   }
-  index: 32
+  index: 33
   text: "Sorry, everyone! Blew a circuit. Turns out that this community building is NOT equipped as a non-stop dancehall, at least not yet\342\200\246"
   branches {
     responseText: ""
-    nextNodeIndex: 33
+    nextNodeIndex: 34
     idRef {
       id: "59e967a63565649c710073c2:59e96c633565649c7100791d"
     }
@@ -959,7 +1000,7 @@ nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e96ca03565649c71007987"
   }
-  index: 33
+  index: 34
   text: "Well, I\342\200\231m not done!\n\n{{GM}}She peers into your face, searching for your eyes in the darkness.{{/GM}}\n\nThe night isn\342\200\231t over yet. Meet you outside?"
   branches {
     responseText: "Sure."
@@ -1037,11 +1078,11 @@ nodes {
   idRef {
     id: "59e96fbd3565649c71007ac8"
   }
-  index: 34
-  text: "Look at that.\n\n{{GM}}She points upwards. A crescent moon shines down on you. You see a bright light rapidly traverse the sky. Valiri\342\200\231s arm tracks its movement, then lowers as it approaches the horizon.{{/GM}}\n\nSpace station. I love watching those things. I never think to look for them, and it feels like a gift whenever I spot one."
+  index: 35
+  text: "Look at that!\n\n{{GM}}She points upwards. A crescent moon shines down on you. You see a bright light rapidly traverse the sky. Valiri\342\200\231s arm tracks its movement, then lowers as it approaches the horizon.{{/GM}}\n\nSpace station. I love watching those things. I never think to look for them, and it feels like a gift whenever I spot one."
   branches {
     responseText: "Oh?"
-    nextNodeIndex: 35
+    nextNodeIndex: 36
     idRef {
       id: "59e967a63565649c710073c2:59e96fe33565649c71007b36"
     }
@@ -1049,7 +1090,7 @@ nodes {
   }
   branches {
     responseText: "What do you mean?"
-    nextNodeIndex: 35
+    nextNodeIndex: 36
     idRef {
       id: "59e967a63565649c710073c2:59e96fe33565649c71007b38"
     }
@@ -1057,7 +1098,7 @@ nodes {
   }
   branches {
     responseText: "Sorry, honey, I did not buy you a space station."
-    nextNodeIndex: 35
+    nextNodeIndex: 36
     idRef {
       id: "59e967a63565649c710073c2:59e96fe33565649c71007b3a"
     }
@@ -1112,11 +1153,11 @@ nodes {
   idRef {
     id: "59e970263565649c71007ba8"
   }
-  index: 35
+  index: 36
   text: "I\342\200\231d love to be up there one day.\n\n{{GM}}She continues looking at the sky, but her hand reaches out and grabs your own, fingers curling in with determination.{{/GM}}\n\nCan you imagine running that fast? Eight thousand meters a second, going all the way around the world in ninety minutes.\n\nIf I could run that fast, I could leave all my troubles far behind."
   branches {
     responseText: "What troubles do you mean?"
-    nextNodeIndex: 36
+    nextNodeIndex: 37
     idRef {
       id: "59e967a63565649c710073c2:59e970373565649c71007baf"
     }
@@ -1124,7 +1165,7 @@ nodes {
   }
   branches {
     responseText: "I hope you\342\200\231re not referring to me."
-    nextNodeIndex: 36
+    nextNodeIndex: 37
     idRef {
       id: "59e967a63565649c710073c2:59e970373565649c71007bb1"
     }
@@ -1132,7 +1173,7 @@ nodes {
   }
   branches {
     responseText: "That\342\200\231s the thing about orbits, they always come back to where they started."
-    nextNodeIndex: 36
+    nextNodeIndex: 37
     idRef {
       id: "59e967a63565649c710073c2:59e970373565649c71007bb3"
     }
@@ -1143,11 +1184,11 @@ nodes {
   idRef {
     id: "59e9704e3565649c71007c27"
   }
-  index: 36
+  index: 37
   text: "{{GM}}She\342\200\231s quiet. The moment passes, stretching into increasingly awkward seconds. A few times she opens her mouth, but no sound escapes. At last she shakes her head with irritation.{{/GM}}\n\nSorry. I can\342\200\231t talk about it. At least not right now."
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 38
     idRef {
       id: "59e967a63565649c710073c2:59e9704f3565649c71007c29"
     }
@@ -1158,7 +1199,7 @@ nodes {
   idRef {
     id: "59e967a63565649c710073c2:59e970503565649c71007c2b"
   }
-  index: 37
+  index: 38
   text: "{{GM}}She leans up against you, color coming back into her cheeks.{{/GM}}\n\nLet\342\200\231s just enjoy this. This has been such a nice night. We can let the PU fend for themselves for an hour. Just you, me, and the sky above."
   branches {
     responseText: "Sure."
@@ -1236,9 +1277,54 @@ nodes {
   idRef {
     id: "59e970bc3565649c71007cbc"
   }
-  index: 38
+  index: 39
   text: "Sure enough, the courtyard is quiet. The surrounding neighborhood seems peaceful. And, by the time the space station completes its orbit, you and Valiri are nowhere to be found."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Fade Camera Out"
+        args {
+          float_value: 0
+        }
+        args {
+          float_value: 0
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "59e967a63565649c710073c2:59fd11a53565640828002b1c"
+    }
+  }
   nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Teleport Camera To Point"
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59fa96eb356564703b00c800"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 2
+      }
+      args {
+        float_value: 1
+      }
+    }
+  }
 }
 roots {
   nextNodeIndex: 0
@@ -1251,6 +1337,7 @@ roots {
 roots {
   responseText: ""
   nextNodeIndex: 22
+  onlyOnce: true
   idRef {
     id: "59e967a63565649c710073c2:59e96b353565649c71007780"
   }
@@ -1258,7 +1345,7 @@ roots {
 }
 roots {
   responseText: ""
-  nextNodeIndex: 34
+  nextNodeIndex: 35
   onlyOnce: true
   idRef {
     id: "59e967a63565649c710073c2:59e96fba3565649c71007ac5"
@@ -1267,7 +1354,7 @@ roots {
 }
 roots {
   responseText: ""
-  nextNodeIndex: 38
+  nextNodeIndex: 39
   onlyOnce: true
   idRef {
     id: "59e967a63565649c710073c2:59e970bb3565649c71007cb9"
