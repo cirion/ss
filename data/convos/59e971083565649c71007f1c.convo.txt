@@ -2049,12 +2049,41 @@ nodes {
   }
   branches {
     responseText: "Have any more donations arrived for the People\'s University?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-PendingPayout"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
     nextNodeIndex: 164
     hideIfUnavailable: true
     idRef {
       id: "59e971083565649c71007f1c:59f8caef643431d905b6dc88"
     }
-    comment: "TODO: Positive paydata"
   }
   branches {
     responseText: "Take care."
@@ -2999,7 +3028,7 @@ nodes {
     id: "59e971083565649c71007f1c:59ea53576434310b06b6b5ae"
   }
   index: 88
-  text: "Yup! When Dunkelzahn handed over the host, I was the only one with root access, and configured all the underlying admin access.\n\nOver time, though, we\342\200\231ve built up a fantastic team of sysadmins. About half of them are other PU members, others are valued moderators from across the Matrix."
+  text: "Yup! When Dunkelzahn handed over the host, I was the only one with root access, and configured all the underlying admin system.\n\nOver time, though, we\342\200\231ve built up a fantastic team of sysadmins. About half of them are other PU members, others are valued moderators from across the Matrix."
   branches {
     responseText: ""
     nextNodeIndex: 89
@@ -5527,10 +5556,12 @@ nodes {
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
-      functionName: "No Effect"
+      functionName: "Add Nuyen"
+      args {
+        int_value: 250
+      }
     }
   }
-  comment: "TODO: Add a little nuyen, maybe like 250"
 }
 nodes {
   idRef {
@@ -5578,7 +5609,39 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Deduct, update"
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-PendingPayout"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-PendingPayout"
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
 }
 nodes {
   idRef {
