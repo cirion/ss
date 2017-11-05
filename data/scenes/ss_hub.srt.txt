@@ -26735,25 +26735,9 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Teleport Camera To Point"
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "59fa96eb356564703b00c800"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Fade Camera Out"
       args {
-        float_value: 0
+        float_value: 2
       }
       args {
         float_value: 0
@@ -26770,7 +26754,7 @@ triggers {
         }
       }
       args {
-        float_value: 1
+        float_value: 2.5
       }
     }
     ops {
@@ -30103,7 +30087,7 @@ triggers {
   name: "Setup_DogGaveBirth"
   events {
     ops {
-      functionName: "On Map Start"
+      functionName: "On Map Setup"
     }
   }
   conditions {
@@ -30288,7 +30272,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Triggering Prop (Interactable)"
         }
       }
     }
@@ -34358,7 +34342,7 @@ triggers {
   name: "Start_RemoveValiri"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -34456,7 +34440,7 @@ triggers {
   name: "Start_RemoveDesorn"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -37586,6 +37570,28 @@ triggers {
           functionName: "Get Map Item (Trigger)"
           args {
             string_value: "59fde335356564784f002389"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59f654053565641011007283"
           }
         }
       }
@@ -50693,7 +50699,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Animation)"
           args {
-            string_value: "HongKong:General/standing_idle_repairing"
+            string_value: "HongKong:General/rigging_idle"
           }
         }
       }
@@ -52851,7 +52857,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Hub-hasRemovedClubGraffiti"
+            string_value: "Hub-hasRemovedFlagGraffiti"
           }
         }
       }
@@ -54038,7 +54044,7 @@ triggers {
   name: "Start_RemoveArelia"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -54145,7 +54151,7 @@ triggers {
   name: "Start_RemoveIsas"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -57700,6 +57706,39 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Debug_AddNuyen"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59ff83e2356564a054001463"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 2000
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59ff84b0356564a054001465"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Club"
@@ -65563,7 +65602,6 @@ characters {
   character_instance {
     prefab_name: "HongKong:Story/HumanMaleRhombus"
     character_sheet_id: "Crew_Masato_Lv1"
-    equipment_sheet_id: "Crew_Masato_Lv1"
     character_mod {
       stats {
         body: 0
@@ -65628,6 +65666,9 @@ characters {
     }
     equipment {
       prefab_name: "AR 1 AK98"
+    }
+    equipment {
+      prefab_name: "Masato_Armor_Lv1"
     }
     team_id: "Civilians"
     char_name: "Masato"
