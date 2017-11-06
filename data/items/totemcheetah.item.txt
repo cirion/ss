@@ -3,7 +3,7 @@ type: ItemType_ShamanTotem
 uirep {
   icon: "icon_totem_leopard"
   name: "Cheetah Totem"
-  description: "Cheetah grants +1 AP to Valiri, but penalizes nearby allies with 5 to hit."
+  description: "Cheetah moves in for the kill. Grants allies within 3 tiles +5 to hit and hastes Valiri. Lasts 3 RNDs."
 }
 anim_type: AnimType_Spell
 coreAttribute: Attribute_Charisma
@@ -36,22 +36,14 @@ fxrep {
 activationStatusEffects {
   uirep {
     icon: "icon_totem_leopard"
-    name: "Cheetah: Accuracy -5"
+    name: "Cheetah: Accuracy +5"
   }
-  stackingCategory: "Aim"
-  statMods {
-    attribute: Attribute_Accuracy_Reduction_Mod
-    intModValue: 5
-  }
-  statMods {
-    attribute: Attribute_Move_Speed
-    intModValue: -2
-  }
+  stackingCategory: "Cheetah"
   statMods {
     attribute: Attribute_Accuracy
-    intModValue: -5
+    intModValue: 5
   }
-  fxScript: "HongKong:GenericSpeedStatus"
+  fxScript: "GenericSpellBuffHitReaction"
   is_buff: true
 }
 successCasterStatusEffects {
@@ -65,10 +57,6 @@ successCasterStatusEffects {
     intModValue: 1
   }
   is_buff: true
-  statMods {
-    attribute: Attribute_Accuracy
-    intModValue: 5
-  }
 }
 success_caster_effect_duration: 3
 sorting_group: "Totems"
