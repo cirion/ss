@@ -1,0 +1,36 @@
+id: "Overclock (Masato)"
+uirep {
+  icon: "icon_ability_overclock_1"
+  name: "Turbo Button"
+  description: "Masato unlocks the latent processing power of a drone, boosting its AP by +1."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Masato_Machine_2 EXISTS"
+attackRatingMod: 0
+effectDuration: 1
+cooldown: 0
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:TaserFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "autoHitDroneActorInRange"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_nitro"
+    name: "Turbo: AP +1"
+  }
+  stackingCategory: "Adrenaline"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  fxScript: "HongKong:DroneOverclockStatus"
+  is_buff: true
+}

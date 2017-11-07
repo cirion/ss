@@ -1,0 +1,79 @@
+id: "TotemCheetahTeam"
+type: ItemType_ShamanTotem
+uirep {
+  icon: "icon_totem_leopard"
+  name: "Cheetah Totem: Team Player"
+  description: "Cheetah has formed a coalition. Grants allies within 3 tiles +10 to hit and hastes Valiri. Occasionally hastes all allies in range. Lasts 3 RNDs."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_Conjuring
+forceRating: 1
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 5
+noiseRounds: 1
+modelessAbilities: "Totem Buff"
+affectsFriendly: true
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+isMagic: true
+cooldown: 3
+effectDuration: 3
+effectRadius: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "CoyoteTotemCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_totem_leopard"
+    name: "Cheetah: Accuracy +10"
+  }
+  stackingCategory: "Cheetah"
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: 10
+  }
+  fxScript: "GenericSpellBuffHitReaction"
+  is_buff: true
+  activation_status_effect_weight: 0.5
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_totem_leopard"
+    name: "Cheetah: AP +1"
+  }
+  stackingCategory: "Haste"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  fxScript: "HongKong:GenericSpeedStatus"
+  is_buff: true
+  activation_status_effect_weight: 0.5
+}
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_manaball2"
+    name: "Cheetah: AP +1"
+  }
+  stackingCategory: "Haste"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  fxScript: "HongKong:GenericSpeedStatus"
+  is_buff: true
+}
+success_caster_effect_duration: 3
+sorting_group: "Totems"
+damageType: VulnerabilityType_Buff

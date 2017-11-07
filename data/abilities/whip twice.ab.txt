@@ -1,18 +1,18 @@
-id: "Subdue (Desorn)"
+id: "Whip Twice"
 uirep {
-  icon: "icon_ability_duncan_subdue"
-  name: "Subdue"
-  description: "Desorn can subdue and bind a stunned enemy, taking them out of the fight."
+  icon: "icon_ability_melee_whip_basic"
+  name: "Whip It Good"
+  description: "Two whip attacks in a single action."
 }
 anim_action: AnimAction_Attack
-apCostMod: 1
+apCostMod: 0
 hpDamageMod: 0
-apDamageMod: 1
+apDamageMod: 0
 accuracyMod: 0
-prereqStrings: "TAG.Desorn_Fist_1 NOT_EXISTS"
+prereqStrings: "TAG.Masato_Man_4 EXISTS"
 damageBucket {
   successEntries {
-    weight: 0.25
+    weight: 0.1
     value: 2
   }
   successEntries {
@@ -20,7 +20,7 @@ damageBucket {
     value: 1.5
   }
   successEntries {
-    weight: 0.5
+    weight: 0.65
     value: 1
   }
   failureEntries {
@@ -33,14 +33,16 @@ damageBucket {
   }
 }
 attackRatingMod: 0
+cooldown: 2
 offensiveAbility: true
-cooldown: 3
+flushCover: true
+repetition: 2
 fxrep {
   preActionFxName: ""
-  actionFxName: "HongKong:SubdueAction"
+  actionFxName: "HongKong:CyberWhipStrikeAction"
   postActionFxName: ""
-  hitReactionFxName: "UnarmedHitReaction"
+  hitReactionFxName: "Berlin:HandRazorHitReaction"
   missReactionFxName: "UnarmedMissReaction"
 }
-toHitFunction: "autoHitStunnedActorInRange"
-damageFunction: "ExecuteSubdueTarget"
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
