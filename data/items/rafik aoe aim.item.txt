@@ -1,15 +1,15 @@
-id: "Spell Exhort"
-type: ItemType_Shaman
+id: "Rafik AOE Aim"
+type: ItemType_Spell
 uirep {
-  icon: "icon_aim1"
-  name: "Exhort"
-  description: "Increases an ally\'s chance to hit by 10% and improves Desorn\'s by the same amount. Stacks with other Aim abilities. Lasts 3 RNDs."
+  icon: "icon_spell_dual_aim_3"
+  name: "Aim Allies"
+  description: "Increases all nearby allies' chance to hit by 10-15%. Does not stack, nor affect AOE abilities. Lasts 3 RNDS."
 }
 anim_type: AnimType_Spell
 coreAttribute: Attribute_Willpower
-coreSkill: Skill_ChiCasting
-forceRating: 7
-apCost: 1
+coreSkill: Skill_Spellcasting
+forceRating: 4
+apCost: 2
 baseHPDamage: 0
 baseAPDamage: 0
 rangeModTable: 10
@@ -34,17 +34,18 @@ rangeModTable: -7
 rangeModTable: -8
 noiseLevel: 0
 noiseRounds: 0
-modelessAbilities: "Buff Spells (Non Spirit)"
+modelessAbilities: "Totem Buff"
 affectsFriendly: true
 affectsEnemy: false
-canTargetSelf: false
-canTargetActor: true
+canTargetSelf: true
+canTargetActor: false
 canTargetOccupiedGridPoint: false
 canTargetUnoccupiedGridPoint: false
 isBuff: true
-cooldown: 3
+cooldown: 4
 isMagic: true
 effectDuration: 3
+effectRadius: 3
 fxrep {
   preActionFxName: "GenericSpellPrepare"
   actionFxName: "GenericSpellCastAction"
@@ -54,29 +55,43 @@ fxrep {
 }
 activationStatusEffects {
   uirep {
-    icon: "icon_manaball2"
-    name: "Exhort: Accuracy +10%"
+    icon: "icon_aim"
+    name: "Aim: Accuracy +15%"
   }
-  stackingCategory: "Exhort"
+  stackingCategory: "Aim"
   statMods {
     attribute: Attribute_Accuracy
-    intModValue: 10
+    intModValue: 15
   }
   is_buff: true
+  activation_status_effect_weight: 0.3
 }
-store_cost: 10
-sorting_group: "Unique"
-damageType: VulnerabilityType_Buff
-successCasterStatusEffects {
+activationStatusEffects {
   uirep {
-    icon: "icon_manaball2"
-    name: "Exhort: Accuracy +10%"
+    icon: "icon_aim"
+    name: "Aim: Accuracy +12%"
   }
-  stackingCategory: "Exhort"
+  stackingCategory: "Aim"
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: 12
+  }
+  is_buff: true
+  activation_status_effect_weight: 0.4
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_aim"
+    name: "Aim: Accuracy +10%"
+  }
+  stackingCategory: "Aim"
   statMods {
     attribute: Attribute_Accuracy
     intModValue: 10
   }
   is_buff: true
+  activation_status_effect_weight: 0.3
 }
-success_caster_effect_duration: 3
+sorting_group: "ssCrewItem"
+damageType: VulnerabilityType_Buff
+store_cost: 10
