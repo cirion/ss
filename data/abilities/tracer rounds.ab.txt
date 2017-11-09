@@ -1,0 +1,63 @@
+id: "Tracer Rounds"
+uirep {
+  icon: "icon_flushtarget"
+  name: "Tracer Rounds"
+  description: "Lights up the target, making them 6% easier to hit on subsequent attacks."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Kora_Analog_2 EXISTS"
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 5"
+prereqStrings: "Item.CORE_SPECIALIZATION > 1"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+offensiveAbility: true
+ammoCost: 6
+repetition: 2
+cooldown: 2
+effectDuration: 2
+flushCover: true
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunBurstFireActionEmpty"
+  postActionFxName: ""
+  hitReactionFxName: "GunBurstHitReaction"
+  missReactionFxName: "GunBurstMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_disintegrate1"
+    name: "Unbalanced"
+  }
+  stackingCategory: "Flashbang"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -6
+  }
+  is_debuff: true
+}

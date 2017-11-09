@@ -1,0 +1,50 @@
+id: "Railgun (SMG Burst)"
+uirep {
+  icon: "icon_flushtarget"
+  name: "Railgun"
+  description: "Fires a stream of kinetic projectiles at a single target. 4 hits with higher accuracy and critical chance. Uses 12 bullets."
+}
+anim_action: AnimAction_Attack
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Kora_Analog_5 EXISTS"
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 11"
+prereqStrings: "Item.CORE_SPECIALIZATION > 4"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.5
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.25
+    value: 1
+  }
+  failureEntries {
+    weight: 0.7
+    value: 1
+  }
+  failureEntries {
+    weight: 0.3
+    value: 0.5
+  }
+}
+offensiveAbility: true
+ammoCost: 12
+repetition: 4
+cooldown: 3
+flushCover: true
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunBurstFireActionEmpty"
+  postActionFxName: ""
+  hitReactionFxName: "GunBurstHitReaction"
+  missReactionFxName: "GunBurstMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
