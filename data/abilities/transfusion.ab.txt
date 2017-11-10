@@ -1,0 +1,72 @@
+id: "Transfusion"
+uirep {
+  icon: "icon_chomp"
+  name: "Transfusion"
+  description: "Heals an ally by 5HP per RND while damaging Arelia by the same amount."
+}
+prereqStrings: "TAG.Arelia_Revitalize_1 EXISTS"
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.1
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 3
+toHitFunction: "autoHitActorNotSelfInRange"
+damageFunction: "buffTarget"
+fxrep {
+  preActionFxName: "Berlin:BloodMageSpellPrepare"
+  actionFxName: "Berlin:BloodMagePowerBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:BloodSpellHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_manaball2"
+    name: "Transfusion: -5 HP."
+  }
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -5
+  }
+  fxScript: "GenericSpellStatus"
+  is_ignore_armor: true
+  is_buff: true
+}
+success_caster_effect_duration: 3
+activationStatusEffects {
+  uirep {
+    icon: "icon_confusion"
+    name: "Transfusion: +5 HP."
+  }
+  statMods {
+    attribute: Attribute_HP
+    intModValue: 5
+  }
+  is_ignore_armor: true
+  is_buff: true
+}
+effectDuration: 3

@@ -1,0 +1,58 @@
+id: "Veil"
+uirep {
+  icon: "icon_chomp"
+  name: "Veil"
+  description: "The selected ally gains extra resistance against magical attacks, and Arelia gains resistance against physical attacks."
+}
+prereqStrings: "TAG.Arelia_Revitalize_2 EXISTS"
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.1
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 3
+toHitFunction: "autoHitActorNotSelfInRange"
+damageFunction: "buffTarget"
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_manaball2"
+    name: "Defense: Light Cover."
+  }
+  stackingCategory: "Cover"
+  statusConditions: Condition_CoverLight
+  fxScript: "AdeptDefenseBuffStatus"
+}
+success_caster_effect_duration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Resistance: Medium Cover from Spells"
+  }
+  stackingCategory: "Cover"
+  statusConditions: Condition_MagicCoverMedium
+  fxScript: "AdeptDefenseBuffStatus"
+}
+effectDuration: 2
