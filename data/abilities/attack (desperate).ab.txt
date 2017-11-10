@@ -1,0 +1,47 @@
+id: "Attack (Desperate)"
+uirep {
+  icon: "icon_stab"
+  name: "Desperate Blow"
+  description: "Does an extra 7HP and 1AP damage."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 7
+apDamageMod: 1
+accuracyMod: 99
+prereqStrings: "Player.ATTRIBUTE.Attribute_HP <= 20"
+prereqStrings: "TAG.Arelia_Cleanse_5 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 5
+fxrep {
+  preActionFxName: ""
+  actionFxName: "SwordSwingAction"
+  postActionFxName: ""
+  hitReactionFxName: "SwordHitReaction"
+  missReactionFxName: "SwordMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

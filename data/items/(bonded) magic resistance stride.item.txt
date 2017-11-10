@@ -1,0 +1,65 @@
+id: "(Bonded) Magic Resistance Stride"
+type: ItemType_Adept
+uirep {
+  icon: "icon_spell_adept_killinghand_stride"
+  name: "Bonded Spell: Magic Resistance & Stride"
+  description: "Passive: The adept\'s movement is increased by 2 and gains a Medium Cover bonus to magic spells. Active: Movement increased by a further 2 for 3 RNDS."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_ChiCasting
+forceRating: 2
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 12
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Buff Spells"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 6
+cooldown_category: "killinghands"
+isMagic: true
+effectDuration: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "AdeptSpellBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "AdeptOffenseBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_killerhands"
+    name: "Stride: Movement +4"
+  }
+  stackingCategory: "Stride"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 2
+  }
+  statusConditions: Condition_KillingHands
+  fxScript: "KillingHandsStatus"
+}
+passiveStatusEffects {
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Resistance: Medium Cover from Spells"
+  }
+  stackingCategory: "Cover"
+  statusConditions: Condition_MagicCoverMedium
+  fxScript: "AdeptDefenseBuffStatus"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 2
+  }
+}
+store_cost: 10
+sorting_group: "Chi Casting (Adept)"
+damageType: VulnerabilityType_Buff

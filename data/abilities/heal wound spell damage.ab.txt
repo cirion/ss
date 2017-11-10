@@ -1,13 +1,14 @@
-id: "Command Spells (Bound Spirit)"
+id: "Heal Wound Spell Damage"
 uirep {
   icon: "icon_fireball"
-  name: "Buff"
-  description: "Use Buff"
+  name: "Heal Wound"
+  description: "Heal last damage taken."
 }
 apCostMod: 0
 hpDamageMod: 0
 apDamageMod: 0
 accuracyMod: 0
+prereqStrings: "TAG.Arelia_Cleanse_2 EXISTS"
 damageBucket {
   successEntries {
     weight: 0.25
@@ -50,5 +51,21 @@ drainBucket {
     value: -1
   }
 }
-toHitFunction: "autoMagicBoundSpiritActorInRange"
-damageFunction: "buffTarget"
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_manaball2"
+    name: "Determined: +2 Strength"
+  }
+  stackingCategory: "Determined"
+  statMods {
+    attribute: Attribute_Strength
+    intModValue: 2
+  }
+  fxScript: "GenericSpellStatus"
+  is_ignore_armor: true
+  is_buff: true
+}
+success_caster_effect_duration: 2
+toHitFunction: "autoHitMagicHealActorInRange"
+damageFunction: "magicHealTarget"
+cannotTargetMessage: "No Wound to Heal"

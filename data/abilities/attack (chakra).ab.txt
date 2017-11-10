@@ -1,0 +1,59 @@
+id: "Attack (Chakra)"
+uirep {
+  icon: "icon_stab"
+  name: "Chakra Strike"
+  description: "Does 0AP damage but lowers the target\'s Spellcasting."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: -10
+accuracyMod: 0
+cooldown: 3
+prereqStrings: "TAG.Arelia_Cleanse_1 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+fxrep {
+  preActionFxName: ""
+  actionFxName: "SwordSwingAction"
+  postActionFxName: ""
+  hitReactionFxName: "SwordHitReaction"
+  missReactionFxName: "SwordMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Chakra Strike: Spellcasting -2"
+  }
+  stackingCategory: "Chakra"
+  statMods {
+    skill: Skill_Spellcasting
+    intModValue: -2
+  }
+  is_debuff: true
+}
