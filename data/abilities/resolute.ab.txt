@@ -1,0 +1,71 @@
+id: "Resolute"
+uirep {
+  icon: "icon_chomp"
+  name: "Resolute"
+  description: "Boosts an ally\'s Quickness and Ranged Combat, and Arelia\'s Strength and Melee Combat."
+}
+prereqStrings: "TAG.Arelia_Cleanse_2 EXISTS"
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.1
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 3
+toHitFunction: "autoHitActorNotSelfInRange"
+damageFunction: "buffTarget"
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_manaball2"
+    name: "Resolute: +1 STR, +1 Close Combat."
+  }
+  statMods {
+    attribute: Attribute_Strength
+    intModValue: 1
+  }
+  statMods {
+    skill: Skill_CloseCombat
+    intModValue: 1
+  }
+  fxScript: "GenericSpellStatus"
+  is_buff: true
+}
+success_caster_effect_duration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_confusion"
+    name: "Resolute: +1 Quickness, +1 Ranged Combat"
+  }
+  statMods {
+    attribute: Attribute_Quickness
+    intModValue: 1
+  }
+  statMods {
+    skill: Skill_RangedCombat
+    intModValue: 1
+  }
+  is_buff: true
+}
+effectDuration: 2
