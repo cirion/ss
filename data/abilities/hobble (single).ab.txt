@@ -1,0 +1,61 @@
+id: "Hobble (Single)"
+uirep {
+  icon: "icon_kneecap"
+  name: "Hobble"
+  description: "Reduces move speed of the target by 3 tiles. Reduced accuracy."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: -5
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.Isas_Attac_2 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+cooldown: 2
+effectDuration: 4
+fxrep {
+  preActionFxName: ""
+  actionFxName: "ShotgunFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "ShotgunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Hobbled: Movement -3"
+  }
+  stackingCategory: "Move"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: -3
+  }
+  is_debuff: true
+}
