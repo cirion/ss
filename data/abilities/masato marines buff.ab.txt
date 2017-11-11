@@ -2,7 +2,7 @@ id: "Masato Marines Buff"
 uirep {
   icon: "icon_fireball"
   name: "Team"
-  description: "Boosts outgoing damage of all selected allies."
+  description: "Boosts outgoing damage of two nearby allies and Masato."
 }
 prereqStrings: "STORY.Influence-Masato_Marines_Claimed == 1"
 apCostMod: 1
@@ -48,4 +48,20 @@ activationStatusEffects {
   is_buff: true
 }
 effectDuration: 2
-additionalTargets: 2
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Inspiring: +3% Accuracy, +1 Dodge"
+  }
+  statMods {
+    skill: Skill_Dodge
+    intModValue: 1
+  }
+  stackingCategory: "Inspired"
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: 3
+  }
+  is_buff: true
+}
+success_caster_effect_duration: 2

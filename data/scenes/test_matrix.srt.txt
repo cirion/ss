@@ -62,7 +62,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Grant Grenade"
+  name: "Global_MatrixGrantGrenade"
   events {
     ops {
       functionName: "On Actor Alive"
@@ -249,7 +249,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Used Grenade"
+  name: "Global_MatrixUsedGrenade"
   events {
     ops {
       functionName: "On Item Used"
@@ -416,6 +416,156 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Global_KoraHasKiller"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Influence-Kora_Support_Claimed"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isKora"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "PR Killer 4"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKora"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0678683565649469002ec2"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Meatspace"
