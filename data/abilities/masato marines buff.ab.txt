@@ -1,0 +1,51 @@
+id: "Masato Marines Buff"
+uirep {
+  icon: "icon_fireball"
+  name: "Team"
+  description: "Boosts outgoing damage of all selected allies."
+}
+prereqStrings: "STORY.Influence-Masato_Marines_Claimed == 1"
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+cooldown: 3
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+toHitFunction: "autoHitActorInRange"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Team: +3% Accuracy, +1 Dodge"
+  }
+  statMods {
+    attribute: Attribute_Damage_Reduction_Mod
+    intModValue: -2
+  }
+  stackingCategory: "Team"
+  is_buff: true
+}
+effectDuration: 2
+additionalTargets: 2
