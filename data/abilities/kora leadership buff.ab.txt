@@ -5,7 +5,8 @@ uirep {
   description: "Boosts Aim and Dodge of all allies in range."
 }
 prereqStrings: "STORY.Influence-Kora_Leadership_Claimed == 1"
-apCostMod: 1
+offensiveAbility: false
+apCostMod: 0
 hpDamageMod: 0
 apDamageMod: 0
 accuracyMod: 0
@@ -33,7 +34,7 @@ damageBucket {
   }
 }
 attackRatingMod: 0
-toHitFunction: "autoHitActorInRange"
+toHitFunction: "autoMagicActorInRange"
 damageFunction: "buffTarget"
 activationStatusEffects {
   uirep {
@@ -52,4 +53,20 @@ activationStatusEffects {
   is_buff: true
 }
 effectDuration: 2
-additionalTargets: 2
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Inspiring: +3% Accuracy, +1 Dodge"
+  }
+  statMods {
+    skill: Skill_Dodge
+    intModValue: 1
+  }
+  stackingCategory: "Inspired"
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: 3
+  }
+  is_buff: true
+}
+success_caster_effect_duration: 2
