@@ -1,0 +1,52 @@
+id: "Arelia Selfish"
+uirep {
+  icon: "icon_fireball"
+  name: "Focused"
+  description: "Arelia gains +1 AP but loses access to her Heal spells for the remainder of the battle."
+}
+prereqStrings: "STORY.Global_Influence_AreliaSelfish == 1"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense1 != 1"
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+cooldown: 3
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+toHitFunction: "autoHitActorSelf"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  stackingCategory: "Stance"
+  statusConditions: Condition_StanceDefense1
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Focused: +1 AP"
+  }
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  is_buff: true
+}
+effectDuration: 99

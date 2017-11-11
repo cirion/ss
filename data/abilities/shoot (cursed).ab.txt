@@ -1,0 +1,62 @@
+id: "Shoot (Cursed)"
+uirep {
+  icon: "icon_single"
+  name: "Curse of Yomi"
+  description: "Deals limited damage initially, but inflicts constant damage over time until the target dies."
+}
+prereqStrings: "STORY.Global_Influence_IsasRevenge == 1"
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: -5
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunSingleFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Cursed: HP -4 per RND"
+  }
+  stackingCategory: "Cursed"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -4
+  }
+  fxScript: "Berlin:ToxinPoisonStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+effectDuration: 99
