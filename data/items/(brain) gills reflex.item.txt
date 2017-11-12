@@ -1,0 +1,60 @@
+id: "(Brain) Gills Reflex"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_cyber_suprathyroid"
+  name: "Gills: Quickness Upgrade"
+  description: "Active: Auto-dodge the next attack made against you."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_None
+coreSkill: Skill_None
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Reflex Trigger"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 4
+effectDuration: 2
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:CyberwareBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_cyber_wiredreflexes"
+    name: "Reflex Trigger: Dodge Next Attack"
+  }
+  stackingCategory: "CyberwareMove"
+  statusConditions: Condition_AutoDodge
+  fxScript: "AdeptOffenseBuffStatus"
+  is_buff: true
+  is_from_cyberware: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_Quickness
+    floatModValue: 1
+  }
+  statMods {
+    skill: Skill_Dodge
+    floatModValue: 1
+  }
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: 0
+  }
+  is_from_cyberware: true
+}
+cyberware_type: CyberwareType_Brain
+sorting_group: "CyberwareBrain"

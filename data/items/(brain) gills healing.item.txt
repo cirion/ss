@@ -1,0 +1,59 @@
+id: "(Brain) Gills Healing"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_bio_plateletfactor"
+  name: "Gills: Healing Upgrade"
+  description: "Passive: +6 HP. Active: Reduces incoming damage by 3HP for 3 RNDs."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_None
+coreSkill: Skill_None
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Trauma Damper (Bioware)"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 6
+effectDuration: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "AdeptSpellBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "AdeptOffenseBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_selfdestruct"
+    name: "Toxin Removal: Incoming DMG -3"
+  }
+  stackingCategory: "CyberwareDamper"
+  statMods {
+    attribute: Attribute_Damage_Reduction_Mod
+    intModValue: 3
+  }
+  fxScript: "AdeptOffenseBuffStatus"
+  is_from_cyberware: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_HP
+    floatModValue: 6
+  }
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: 0
+  }
+  is_from_cyberware: true
+}
+cyberware_type: CyberwareType_Brain
+store_cost: 5000
+sorting_group: "CyberwareBrain"
