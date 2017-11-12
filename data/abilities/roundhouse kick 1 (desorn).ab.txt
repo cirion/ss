@@ -1,23 +1,23 @@
-id: "Desorn Punch (Wound)"
+id: "Roundhouse Kick 1 (Desorn)"
 uirep {
-  icon: "icon_wind"
-  name: "Punch"
-  description: "An unarmed melee attack that can stun a foe."
+  icon: "icon_roundhousekick"
+  name: "Roundhouse Kick"
+  description: "An unarmed melee attack that can hit adjacent targets."
 }
 anim_action: AnimAction_Attack
 apCostMod: 0
 hpDamageMod: -30
 apDamageMod: 0
 accuracyMod: 0
-prereqStrings: "Player.CONDITION.Condition_StanceDefense1 != 1"
-prereqStrings: "Player.CONDITION.Condition_StanceDefense2 != 1"
+prereqStrings: "Item.CORE_SPECIALIZATION >= 4"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense1 == 1"
 damageBucket {
   successEntries {
-    weight: 0.20
+    weight: 0.2
     value: 2
   }
   successEntries {
-    weight: 0.20
+    weight: 0.2
     value: 1.5
   }
   successEntries {
@@ -35,16 +35,19 @@ damageBucket {
 }
 attackRatingMod: 0
 offensiveAbility: true
+spreadAngle: 55
+effectModTable: 1
+effectModTable: 0.5
 fxrep {
   preActionFxName: ""
-  actionFxName: "UnarmedPunchAction"
+  actionFxName: "UnarmedRoundhouseAction"
   postActionFxName: ""
   hitReactionFxName: "UnarmedHitReaction"
   missReactionFxName: "UnarmedMissReaction"
 }
 successCasterStatusEffects {
   stackingCategory: "Stance"
-  statusConditions: Condition_StanceDefense1
+  statusConditions: Condition_StanceNormal1
   is_buff: true
 }
 toHitFunction: "actorWeaponAttackToHit"

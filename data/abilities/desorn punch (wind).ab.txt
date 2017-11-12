@@ -1,26 +1,26 @@
 id: "Desorn Punch (Wind)"
 uirep {
-  icon: "icon_ability_duncan_wind"
-  name: "Body Blow"
-  description: "An unarmed close combat attack that does extra AP damage."
+  icon: "icon_spirit_stonefist"
+  name: "Superior Punch"
+  description: "An unarmed close combat more likely to do AP damage."
 }
 anim_action: AnimAction_Attack
 apCostMod: 0
 hpDamageMod: -30
-apDamageMod: 1
+apDamageMod: 0
 accuracyMod: 0
-prereqStrings: "TAG.isDuncan EXISTS"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense1 == 1"
 damageBucket {
   successEntries {
-    weight: 0.25
+    weight: 0.3
     value: 1.5
   }
   successEntries {
-    weight: 0.25
+    weight: 0.3
     value: 1.5
   }
   successEntries {
-    weight: 0.5
+    weight: 0.4
     value: 1
   }
   failureEntries {
@@ -37,10 +37,15 @@ offensiveAbility: true
 cooldown: 1
 fxrep {
   preActionFxName: ""
-  actionFxName: "UnarmedPunchAction"
+  actionFxName: "MagicUnarmedPunchAction"
   postActionFxName: ""
   hitReactionFxName: "UnarmedHitReaction"
   missReactionFxName: "UnarmedMissReaction"
+}
+successCasterStatusEffects {
+  stackingCategory: "Stance"
+  statusConditions: Condition_StanceDefense2
+  is_buff: true
 }
 toHitFunction: "actorWeaponAttackToHit"
 damageFunction: "weaponDamage"
