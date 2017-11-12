@@ -418,12 +418,34 @@ triggers {
   name: "DebugHall"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
   }
   actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59965b0b356564588e001463"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Set Variable (int)"
       args {
@@ -7168,6 +7190,44 @@ triggers {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "5992fa7e356564c466000f71"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Actor Orders"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -28704,8 +28764,8 @@ regions {
 regions {
   name: "Hall_MoveDestPistol"
   position {
-    x: -69
-    y: 29
+    x: -64
+    y: 26
     width: 1
     height: 1
   }
