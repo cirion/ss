@@ -251,17 +251,17 @@ nodes {
   index: 7
   text: "{{GM}}$+(story.li_he) grabs your arm.{{/GM}}\n\nStay alive! Promise me that you\342\200\231ll keep on going, no matter what!"
   branches {
-    responseText: "I\342\200\231m way ahead of you."
-    nextNodeIndex: -1
-    idRef {
-      id: "59ac4898356564101c0082f4:59ac4ca8356564101c0083de"
-    }
-  }
-  branches {
     responseText: "I\342\200\231ll honor your memory."
     nextNodeIndex: -1
     idRef {
       id: "59ac4898356564101c0082f4:59ac4ca8356564101c0083e0"
+    }
+  }
+  branches {
+    responseText: "I\342\200\231m way ahead of you."
+    nextNodeIndex: -1
+    idRef {
+      id: "59ac4898356564101c0082f4:59ac4ca8356564101c0083de"
     }
   }
   branches {
@@ -618,6 +618,36 @@ nodes {
           args {
             call_value {
               functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play FX on Actor"
+      args {
+        string_value: "GenericSpellConfusionHitReaction"
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLi"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
               args {
                 int_value: 0
               }
