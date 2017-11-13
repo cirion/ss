@@ -1,0 +1,57 @@
+id: "Nerve Strike"
+type: ItemType_Adept
+uirep {
+  icon: "icon_spell_adept_nervestrike"
+  name: "Nerve Strike"
+  description: "An attack that does low damage, but slows the target and reduces their aim."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_ChiCasting
+forceRating: 3
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_ChiCasting >= 3"
+prereqStrings: "TAG.isDesorn NOT_EXISTS"
+baseHPDamage: 8
+baseAPDamage: 0
+rangeModTable: 12
+noiseLevel: 6
+noiseRounds: 1
+modelessAbilities: "Activate Nerve Strike"
+rpPenetrate: 0
+affectsFriendly: false
+affectsEnemy: true
+canTargetActor: true
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isDebuff: true
+cooldown: 3
+cooldown_category: "nervestrike"
+isMagic: true
+effectDuration: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HongKong:AdeptNervestrikeAction"
+  postActionFxName: ""
+  hitReactionFxName: "UnarmedHitReaction"
+  missReactionFxName: "UnarmedMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Nerves Disrupted: -3 Movement, -7% ACC"
+  }
+  stackingCategory: "nerve_strike"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: -3
+  }
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -7
+  }
+  is_debuff: true
+}
+store_cost: 600
+sorting_group: "Chi Casting (Adept)"
+damageType: VulnerabilityType_Magic
