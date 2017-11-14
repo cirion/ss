@@ -22,7 +22,7 @@ nodes {
     id: "59f7a0f26434318d03b6b1ca:59f7a1ef6434318d03b6b1e4"
   }
   index: 1
-  text: "In the short time since $(l.name) launched the weapon from Camelot that obliterated the command center for the processing facilities, recruitment for the PU has skyrocketed. Both in the Matrix and at our physical locations, folks are pouring in, humans and metahumans alike, to further the cause of metahuman freedom."
+  text: "Less than a day has passed since $(l.name) launched the weapon from Camelot that obliterated the command center for the processing facilities. Already, word has spread throughout California, and recruitment for the PU has skyrocketed.\n\nBoth in the Matrix and at our physical locations, folks are pouring in, humans and metahumans alike, to further the cause of metahuman freedom."
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -40,11 +40,49 @@ nodes {
   text: "$(l.name) has inspired people throughout California to stand up to Saito. We\342\200\231ve seen many fighters come, but even more importantly, we\342\200\231ve recruited record numbers of deckers, faces, social workers, donors\342\200\246\n\nIt will take an army to depose Saito, but more importantly, it will take a civilization to replace him with something good. The example of $(l.name) shows us the way forward, a positive vision of the world we wish to create."
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Kora_Leadership"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Kora_Support"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
     idRef {
       id: "59f7a0f26434318d03b6b1ca:59f7a1f16434318d03b6b1ec"
     }
-    comment: "TODO: Leadership"
+    comment: "Leadership"
   }
   branches {
     responseText: ""
@@ -125,11 +163,59 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isRafik"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5983fb7b356564b014004cd5"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 8
     idRef {
       id: "59f7a0f26434318d03b6b1ca:59f7a1ff6434318d03b6b209"
     }
-    comment: "TODO: Alive"
+    comment: "Rafik Alive"
   }
   branches {
     responseText: ""
@@ -137,7 +223,7 @@ nodes {
     idRef {
       id: "59f7a0f26434318d03b6b1ca:59f7a2276434318d03b6b238"
     }
-    comment: "Default: dead"
+    comment: "Default: Rafik dead"
   }
   nodeType: ConversationNodeType_Simple
   comment: "Rafik status"
@@ -149,7 +235,37 @@ nodes {
   index: 8
   text: "{{GM}}She grabs hold of Rafik\342\200\231s hand.{{/GM}}\n\nAnd\342\200\246 well, let\342\200\231s just say there will be other new adventures. New beginnings.\n\nWho knows, there may be a little $(l.firstname) coming into the world soon."
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Maybe turn to face?"
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59f7fbf235656464420012e4"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  comment: "Turn to face?"
 }
 nodes {
   idRef {

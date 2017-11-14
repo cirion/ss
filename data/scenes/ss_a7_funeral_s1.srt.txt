@@ -1,10 +1,35 @@
 triggers {
   name: "MapSetup"
   events {
+    ops {
+      functionName: "On Map Setup"
+    }
   }
   conditions {
   }
   actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5999c67c356564f89f00136a"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -2595,7 +2620,7 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 7
+            int_value: 3
           }
         }
       }
@@ -2793,7 +2818,7 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 6
+            int_value: 4
           }
         }
       }
@@ -3027,7 +3052,7 @@ triggers {
   }
   elseActions {
     ops {
-      functionName: "Send Event"
+      functionName: "Send Event After Delay"
       args {
         call_value {
           functionName: "Get Map Item (Event)"
@@ -3035,6 +3060,9 @@ triggers {
             string_value: "Event_CheckDog"
           }
         }
+      }
+      args {
+        float_value: 1
       }
     }
   }
@@ -3206,7 +3234,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "59f7fed235656464420012fa"
+            string_value: "5a09dbab643431b136391515"
           }
         }
       }
@@ -3921,7 +3949,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "59f7fbf235656464420012eb"
+            string_value: "59f7fbf235656464420012e7"
           }
         }
       }
@@ -4173,7 +4201,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "CheckRomancedArelia_TODO_ROMANCE_CHECK"
+  name: "CheckRomancedArelia"
   events {
     ops {
       functionName: "Get Map Item (Event)"
@@ -4183,6 +4211,80 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isArelia"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5983fb7b356564b014004cd5"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-AreliaLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
   }
   actions {
     ops {
@@ -4368,6 +4470,25 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59f7fbf235656464420012ec"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_headCradle"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Send Event After Delay"
       args {
         call_value {
@@ -4391,7 +4512,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "CheckRomancedIsas_TODO_ROMANCE_CHECK"
+  name: "CheckRomancedIsas"
   events {
     ops {
       functionName: "Get Map Item (Event)"
@@ -4401,6 +4522,80 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isIsas"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5983fb7b356564b014004cd5"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-IsasLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
   }
   actions {
     ops {
@@ -4588,7 +4783,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "CheckHestaby_TODO_REQUIREMENTS"
+  name: "CheckHestaby"
   events {
     ops {
       functionName: "Get Map Item (Event)"
@@ -4598,6 +4793,39 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Grave_HestabySpeaks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -4625,10 +4853,10 @@ triggers {
     ops {
       functionName: "Apply Camera Shake"
       args {
-        float_value: 1
+        float_value: 0.25
       }
       args {
-        float_value: 1
+        float_value: 5
       }
     }
     ops {
@@ -4956,6 +5184,31 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
   }
   isActive: true
   idRef {
@@ -5022,6 +5275,31 @@ triggers {
             int_value: 5
           }
         }
+      }
+    }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
       }
     }
   }
@@ -5092,10 +5370,110 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
   }
   isActive: true
   idRef {
     id: "5a0a2862643431ad3dffffa0"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "EpilogueCreditsUI"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_EndGame"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Teleport Camera To Point"
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5a0a4cf63565642c6d00061f"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Play Music"
+      args {
+        call_value {
+          functionName: "Get Map Item (Music)"
+          args {
+            string_value: "HongKong_CombatKowloon"
+          }
+          args {
+            string_value: "HongKong-Combat-Kowloon-WrapUp"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a4d193565642c6d000620"
   }
   elseActions {
   }
@@ -5115,20 +5493,51 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Play Music"
+      functionName: "End Story With Epilogue"
+      args {
+        string_value: "epilogue_test"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a294a643431cf3d83fa7c"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Setup_DidNotAllyWithDorbi"
+  events {
+    ops {
+      functionName: "On Map Setup"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Get Map Item (Music)"
+          functionName: "Get Story Variable (bool)"
           args {
-            string_value: "HongKong_HubClub88"
+            string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "HongKong-Hub-Club88-MainRoom"
+            string_value: "a6_Monterey_s1-AlliedWithDorbi"
           }
         }
       }
       args {
-        float_value: 1
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
       args {
         call_value {
@@ -5142,15 +5551,512 @@ triggers {
         }
       }
     }
+  }
+  actions {
     ops {
-      functionName: "End Story With Epilogue"
+      functionName: "Set Variable (bool)"
       args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Grave_HestabySpeaks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
   }
   isActive: true
   idRef {
-    id: "5a0a294a643431cf3d83fa7c"
+    id: "5a0a45693565642074002d0c"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Setup_Unromanced"
+  events {
+    ops {
+      functionName: "On Map Setup"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-AreliaLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-IsasLoveTalks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Grave_HestabySpeaks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a458c3565642074002d0d"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Start_KillRafik"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Hub-RafikAlive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59f7fbf235656464420012e4"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a4a853565642c6d0005bb"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DogStartsWandering"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_CheckMoonflower"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Wander Range"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59f7fbf235656464420012e5"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 6
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a4bb73565642c6d00061e"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Start_KillDorbi"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "a6_Monterey_s1-AlliedWithDorbi"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59f8862b356564f042003754"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a51633565642c6d000621"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Start_KillDog"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-TeamState_Dog"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-TeamState_Dog"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 6
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59f7fbf235656464420012e5"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a0a51863565642c6d000622"
   }
   elseActions {
   }
@@ -5199,7 +6105,7 @@ regions {
   }
   ambience_template: "courtyard"
   combat_music: ""
-  default_music: ""
+  default_music: "HongKong-Sewer"
   loop_combat_music: true
   loop_default_music: false
   no_fow_in_region: false
@@ -5682,7 +6588,7 @@ regions {
   name: "MoveDest_Isas_Start"
   position {
     x: -40
-    y: 0
+    y: -2
     width: 1
     height: 1
   }
@@ -5740,7 +6646,7 @@ regions {
   name: "MoveDest_Isas_End"
   position {
     x: -42
-    y: 0
+    y: -2
     width: 1
     height: 1
   }
@@ -6200,6 +7106,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Camera_Nowhere"
+  position {
+    x: -58
+    y: -63
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5a0a4cf63565642c6d00061f"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
@@ -6310,7 +7274,7 @@ characters {
     team_id: "Civilians"
     char_name: "Rafik"
     GeneralTags: "isRafik"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -6319,6 +7283,7 @@ characters {
     portrait_code_override: "s1h11c8b0c0t0"
     karma: 17
     hiring_cost_override: 3000
+    is_prop_character: false
   }
 }
 characters {
@@ -6897,7 +7862,7 @@ characters {
     GeneralTags: "isIsas"
     GeneralTags: "isCrew"
     GeneralTags: "isWave3"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_Hireable
     portrait {
@@ -7425,6 +8390,14 @@ characters {
     hiring_cost_override: 0
     hiring_tag: "Crew: Decker"
     id: "crew_lv1_kora"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Grave_HestabySpeaks"
+    typeName: "bool"
   }
 }
 mapEvents: "Event_CheckMasato"
