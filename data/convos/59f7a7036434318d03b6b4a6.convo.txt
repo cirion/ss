@@ -7,7 +7,7 @@ nodes {
     id: "59f7a9506434318d03b6b4b2"
   }
   index: 0
-  text: "$(l.name)! Glad to see you made it in one piece. Here I was worried that you\342\200\231d end up like $(story.sacrifice_name)."
+  text: "$(l.name)! Glad to see you made it in one piece. Here I was worried that you\342\200\231d end up like $(story.a7_Space_s1-SacrificeName)."
   branches {
     responseText: "I\342\200\231m a survivor."
     nextNodeIndex: 1
@@ -17,7 +17,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "I wish that $(story.sacrifice_he) was here."
+    responseText: "I wish that $(story.a7_Space_s1-SacrificeHe) was here."
     nextNodeIndex: 1
     idRef {
       id: "59f7a7036434318d03b6b4a6:59f7a9606434318d03b6b4ba"
@@ -32,6 +32,46 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa82"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -87,11 +127,49 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Masato_Marines"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Masato_Self"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 4
     idRef {
       id: "59f7a7036434318d03b6b4a6:59f7a9846434318d03b6b4da"
     }
-    comment: "TODO: Mostly Marines"
+    comment: "Mostly Marines"
   }
   branches {
     responseText: ""

@@ -7,9 +7,9 @@ nodes {
     id: "59f7b7ed6434318d03b6b9c4"
   }
   index: 0
-  text: "$(l.firstname)! You made it back!\n\n{{GM}}She gives you a big hug, sighing in relief.{{/GM}}\n\nAfter we lost $(story.sacrifice_name)...\n\nMaybe\342\200\246 I could have helped $(story.sacrifice_him), brought $(story.sacrifice_him) back\342\200\246"
+  text: "$(l.firstname)! You made it back!\n\n{{GM}}She gives you a big hug, sighing in relief.{{/GM}}\n\nAfter we lost $(story.a7_Space_s1-SacrificeName)...\n\nMaybe\342\200\246 I could have helped $(story.a7_Space_s1-SacrificeHim), brought $(story.a7_Space_s1-SacrificeHim) back\342\200\246"
   branches {
-    responseText: "It was what $(story.sacrifice_he) wanted."
+    responseText: "It was what $(story.a7_Space_s1-SacrificeHe) wanted."
     nextNodeIndex: 1
     idRef {
       id: "59f7b7de6434318d03b6b9b8:59f7b7f66434318d03b6b9c6"
@@ -32,13 +32,53 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa7d"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59f7b8026434318d03b6b9d5"
   }
   index: 1
-  text: "{{GM}}She sighs.{{/GM}}\n\nYou\342\200\231re right. And\342\200\246 I should try and focus on the good that came of $(story.sacrifice_name)\342\200\231s sacrifice. All those centers freed, all those lives saved."
+  text: "{{GM}}She sighs.{{/GM}}\n\nYou\342\200\231re right. And\342\200\246 I should try and focus on the good that came of $(story.a7_Space_s1-SacrificeName)\342\200\231s sacrifice. All those centers freed, all those lives saved."
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -89,11 +129,49 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Arelia_Universal"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Arelia_Selfish"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 4
     idRef {
       id: "59f7b7de6434318d03b6b9b8:59f7b80e6434318d03b6b9e5"
     }
-    comment: "TODO: Mostly universal"
+    comment: "Mostly universal"
   }
   branches {
     responseText: ""
@@ -171,7 +249,7 @@ nodes {
     id: "59f7b7de6434318d03b6b9b8:59f7e5ce6434318d03b6baaa"
   }
   index: 8
-  text: "I\342\200\231ll be there for them, to ensure that no more of our friends die like $(story.sacrifice_name). To keep the organization strong throughout the struggle to come."
+  text: "I\342\200\231ll be there for them, to ensure that no more of our friends die like $(story.a7_Space_s1-SacrificeName). To keep the organization strong throughout the struggle to come."
   branches {
     responseText: ""
     nextNodeIndex: 2

@@ -32,6 +32,46 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa83"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -119,11 +159,49 @@ nodes {
   text: "You know what that means? The craziest fuckers in the state will now be equipped with the latest cutting-edge weaponry, hot off of Ares\342\200\231 experimental carnage division.\n\n{{GM}}He cackles.{{/GM}}\n\nSaito is FUCKED!"
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "a6_Monterey_s1-AlliedWithDorbi"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 6
     idRef {
       id: "59f7aa706434318d03b6b5e1:59f7aadd6434318d03b6b658"
     }
-    comment: "TODO: Allied with Dorbi"
+    comment: "Allied with Dorbi"
   }
   branches {
     responseText: ""

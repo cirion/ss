@@ -7,9 +7,9 @@ nodes {
     id: "59f7a5d26434318d03b6b3bc"
   }
   index: 0
-  text: "$(l.name)! Glad to see you made it back!\n\n{{GM}}He looks around, brows briefly creased in confusion.{{/GM}}\n\nWhere\342\200\231s $(story.sacrifice_name)?"
+  text: "$(l.name)! I\'m relieved to see your safe return!\n\n{{GM}}He looks around, brows briefly creased in confusion.{{/GM}}\n\nWhere\342\200\231s $(story.a7_Space_s1-SacrificeName)?"
   branches {
-    responseText: "$+(story.sacrifice_he) didn\342\200\231t make it."
+    responseText: "$+(story.a7_Space_s1-SacrificeHe) didn\342\200\231t make it."
     nextNodeIndex: 1
     idRef {
       id: "59f7a5aa6434318d03b6b3b0:59f7a5d46434318d03b6b3be"
@@ -17,7 +17,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "$+(story.sacrifice_he) sacrificed $(story.sacrifice_his) life to complete the mission."
+    responseText: "$+(story.a7_Space_s1-SacrificeHe) sacrificed $(story.a7_Space_s1-SacrificeHis) life to complete the mission."
     nextNodeIndex: 1
     idRef {
       id: "59f7a5aa6434318d03b6b3b0:59f7a5dd6434318d03b6b3c4"
@@ -31,13 +31,37 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa80"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59f7a5aa6434318d03b6b3b0:59f7a5e56434318d03b6b3ca"
   }
   index: 1
-  text: "{{GM}}His face blanches.{{/GM}}\n\nI\342\200\231m sorry to hear that. I had hoped\342\200\246 ah, never mind. $+(story.sacrifice_he) died a hero, and we\342\200\231ll honor $(story.sacrifice_him)."
+  text: "{{GM}}His face blanches.{{/GM}}\n\nI\342\200\231m sorry to hear that. I had hoped\342\200\246 ah, never mind. $+(story.a7_Space_s1-SacrificeHe) died a hero, and we\342\200\231ll honor $(story.a7_Space_s1-SacrificeHim)."
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -138,7 +162,7 @@ nodes {
     id: "59f7a5aa6434318d03b6b3b0:59f7a6856434318d03b6b42c"
   }
   index: 6
-  text: "The mission was still a success, though. The entire hierarchy in charge of the processing centers has been evaporated, the project doomed.\n\nYou\342\200\231ve also demonstrated to the entire world that Saito can be hurt, that his sovereignty here is not inevitable."
+  text: "The mission was still a success, though. The entire hierarchy in charge of the processing centers has been evaporated, the project permanently halted.\n\nYou\342\200\231ve also demonstrated to the entire world that Saito can be hurt, that his sovereignty here is not inevitable."
   branches {
     responseText: ""
     nextNodeIndex: 4
@@ -200,7 +224,7 @@ nodes {
     id: "59f7a5aa6434318d03b6b3b0:59f7a6926434318d03b6b457"
   }
   index: 10
-  text: "Your destiny is yours to choose, (l.name). You\342\200\231ve earned whichever path you prefer."
+  text: "Your destiny is yours to choose, $(l.name). You\342\200\231ve earned whichever path you prefer."
   branches {
     responseText: ""
     nextNodeIndex: 4

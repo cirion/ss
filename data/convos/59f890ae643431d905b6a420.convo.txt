@@ -32,6 +32,46 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa84"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -148,7 +188,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "I feel sad about losing $(story.sacrifice_name)."
+    responseText: "I feel sad about losing $(story.a7_Space_s1-SacrificeName)."
     nextNodeIndex: 6
     idRef {
       id: "59f890ae643431d905b6a420:59f89146643431d905b6a493"
@@ -180,11 +220,58 @@ nodes {
   text: "I hear you. Crazy times\342\200\246"
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isDog"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5a0b84843565643069002c3c"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 7
     idRef {
       id: "59f890ae643431d905b6a420:59f8914d643431d905b6a49c"
     }
-    comment: "TODO: Dog present (probably auto-following if available)"
   }
   branches {
     responseText: ""
@@ -200,7 +287,7 @@ nodes {
     id: "59f890ae643431d905b6a420:59f89178643431d905b6a4c5"
   }
   index: 7
-  text: "She leans down, patting $(story.dog_name)."
+  text: "She leans down, patting $(story.Global-DogName)."
   branches {
     responseText: ""
     nextNodeIndex: 8
@@ -224,7 +311,9 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Dog"
+  sourceInSceneRef {
+    id: "5a0a3040643431cf3d83fa7f"
+  }
 }
 nodes {
   idRef {
@@ -285,7 +374,129 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Dog. Stops following, goes to Lina."
+  sourceInSceneRef {
+    id: "5a0a3040643431cf3d83fa7f"
+  }
+  actions {
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isDog"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5a0a3040643431cf3d83fa7f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5a0a3040643431cf3d83fa7f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Actor Orders"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5a0a3040643431cf3d83fa7f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Actor)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5a0a3040643431cf3d83fa7f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa84"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -318,6 +529,9 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5a0a3040643431cf3d83fa7f"
+  }
 }
 nodes {
   idRef {

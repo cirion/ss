@@ -32,13 +32,53 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a0a3040643431cf3d83fa81"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59f88ea6643431d905b6a15d"
   }
   index: 1
-  text: "Ah, but poor $(story.sacrifice_name)!\n\n{{GM}}Her face falls.{{/GM}}\n\n$+(story.sacrifice_he) may have been the best of all of us. Willingly giving up $(story.sacrifice_his) life, so that the rest of us could live\342\200\246"
+  text: "Ah, but poor $(story.a7_Space_s1-SacrificeName)!\n\n{{GM}}Her face falls.{{/GM}}\n\n$+(story.a7_Space_s1-SacrificeHe) may have been the best of all of us. Willingly giving up $(story.a7_Space_s1-SacrificeHis) life, so that the rest of us could live\342\200\246"
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -53,9 +93,9 @@ nodes {
     id: "59f88e86643431d905b6a148:59f88eb1643431d905b6a168"
   }
   index: 2
-  text: "I\342\200\231ll never forget it. I\342\200\231ll never forget $(story.sacrifice_him)."
+  text: "I\342\200\231ll never forget it. I\342\200\231ll never forget $(story.a7_Space_s1-SacrificeHim)."
   branches {
-    responseText: "$+(story.sacrifice_he) knew what the mission demanded and took care of it."
+    responseText: "$+(story.a7_Space_s1-SacrificeHe) knew what the mission demanded and took care of it."
     nextNodeIndex: 3
     idRef {
       id: "59f88e86643431d905b6a148:59f88ea8643431d905b6a163"
@@ -63,7 +103,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "I miss $(story.sacrifice_him)."
+    responseText: "I miss $(story.a7_Space_s1-SacrificeHim)."
     nextNodeIndex: 3
     idRef {
       id: "59f88e86643431d905b6a148:59f88ef4643431d905b6a17b"
@@ -71,7 +111,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "Funny, $(story.sacrifice_he) never seemed that popular around here before\342\200\246"
+    responseText: "Funny, $(story.a7_Space_s1-SacrificeHe) never seemed that popular around here before\342\200\246"
     nextNodeIndex: 3
     idRef {
       id: "59f88e86643431d905b6a148:59f88ef5643431d905b6a17d"
@@ -84,7 +124,7 @@ nodes {
     id: "59f88e86643431d905b6a148:59f88ea8643431d905b6a161"
   }
   index: 3
-  text: "In old times, we\342\200\231d erect a bronze statue or a stone arch or something to commemorate $(story.sacrifice_his) sacrifice. But, well, without any territory or anything, that isn\342\200\231t exactly an option."
+  text: "In old times, we\342\200\231d erect a bronze statue or a stone arch or something to commemorate $(story.a7_Space_s1-SacrificeHis) sacrifice. But, well, without any territory or anything, that isn\342\200\231t exactly an option."
   branches {
     responseText: ""
     nextNodeIndex: 4
@@ -99,7 +139,7 @@ nodes {
     id: "59f88e86643431d905b6a148:59f88eff643431d905b6a182"
   }
   index: 4
-  text: "I\342\200\231ve decided to rename the People\342\200\231s University Matrix node after $(story.sacrifice_him): $-(story.sacrifice_name).local. It isn\342\200\231t enough, but it\342\200\231s one thing I can do."
+  text: "I\342\200\231ve decided to rename the People\342\200\231s University Matrix node after $(story.a7_Space_s1-SacrificeHim): $-(story.a7_Space_s1-SacrificeName).local. It isn\342\200\231t enough, but it\342\200\231s one thing I can do."
   branches {
     responseText: ""
     nextNodeIndex: 5
@@ -155,7 +195,7 @@ nodes {
     id: "59f88e86643431d905b6a148:59f88f03643431d905b6a18a"
   }
   index: 6
-  text: "Surprisingly well! News of $(story.sacrifice_name)\342\200\231s generous decision has spread throughout California, and we\342\200\231ve been fielding tons of requests from new recruits. Not just fighters, but also hella deckers, faces, social workers, donors\342\200\246 "
+  text: "Surprisingly well! News of $(story.a7_Space_s1-SacrificeName)\342\200\231s generous decision has spread throughout California, and we\342\200\231ve been fielding tons of requests from new recruits. Not just fighters, but also hella deckers, faces, social workers, donors\342\200\246 "
   branches {
     responseText: ""
     nextNodeIndex: 7
@@ -189,11 +229,49 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Kora_Leadership"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Influence-Kora_Support"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 9
     idRef {
       id: "59f88e86643431d905b6a148:59f88f3e643431d905b6a1d9"
     }
-    comment: "TODO: Leadership"
+    comment: "Leadership"
   }
   branches {
     responseText: ""
@@ -274,11 +352,59 @@ nodes {
   text: ""
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isRafik"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "5a0b84843565643069002c3c"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 14
     idRef {
       id: "59f88e86643431d905b6a148:59f88f4a643431d905b6a1e2"
     }
-    comment: "TODO: Rafik alive, present"
+    comment: "Rafik alive, present"
   }
   branches {
     responseText: ""
@@ -294,7 +420,7 @@ nodes {
     id: "59f88e86643431d905b6a148:59f88fd8643431d905b6a2e0"
   }
   index: 14
-  text: "{{GM}}She grabs hold of Rafik\342\200\231s hand.{{/GM}}\n\nAnd\342\200\246 well, let\342\200\231s just say there will be other new adventures. New beginnings. Who knows, there may be a little $(story.sacrifice_name) coming into the world soon."
+  text: "{{GM}}She grabs hold of Rafik\342\200\231s hand.{{/GM}}\n\nAnd\342\200\246 well, let\342\200\231s just say there will be other new adventures. New beginnings. Who knows, there may be a little $(story.a7_Space_s1-SacrificeName) coming into the world soon."
   branches {
     responseText: ""
     nextNodeIndex: 15
@@ -303,6 +429,64 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5a0a3040643431cf3d83fa87"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5a0a3040643431cf3d83fa87"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -318,7 +502,9 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Rafik speaker"
+  sourceInSceneRef {
+    id: "5a0a3040643431cf3d83fa87"
+  }
 }
 nodes {
   idRef {
@@ -350,14 +536,43 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
-  comment: "TODO: Rafik speaker"
+  sourceInSceneRef {
+    id: "5a0a3040643431cf3d83fa87"
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59f88fe5643431d905b6a2f5"
   }
   index: 18
-  text: "I can\342\200\231t see past the end of the war. But one day\342\200\246 there might be other new adventures, new beginnings. I have a long life ahead of me, and I want to make sure it means as much as the one $(story.sacrifice_name) lived."
+  text: "I can\342\200\231t see past the end of the war. But one day\342\200\246 there might be other new adventures, new beginnings. I have a long life ahead of me, and I want to make sure it means as much as the one $(story.a7_Space_s1-SacrificeName) lived."
   branches {
     responseText: ""
     nextNodeIndex: 5
