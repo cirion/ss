@@ -60574,6 +60574,80 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Influence_UnlockPopup_OFF"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Display Text In Popup"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "Influence_PopupBody"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PopupType"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: " "
+          }
+          args {
+            string_value: "Const-InfluenceUnlockedTitle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5a0ba62d356564d4630043ee"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5a0ba62d356564d4630043ee"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Club"
   position {
@@ -70825,6 +70899,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  string_value: ""
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Influence_PopupBody"
+    typeName: "string"
+  }
+}
 mapEvents: "Event_CycleLights"
 mapEvents: "Event_PlatformDescended"
 mapEvents: "Event_TargetShot"
@@ -71136,6 +71218,8 @@ team_affiliations {
 }
 scene_dimensions {
   dimension_name: "Default"
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
