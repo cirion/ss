@@ -3640,7 +3640,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -3924,7 +3924,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -4208,7 +4208,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -4492,7 +4492,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -4776,7 +4776,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -5060,7 +5060,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -5628,7 +5628,7 @@ triggers {
             string_value: "58a09a016666641898001ad5"
           }
           args {
-            string_value: "Const-InfluenceGainMissionAct2"
+            string_value: "Const-InfluenceGainMissionAct4"
           }
         }
       }
@@ -32034,6 +32034,88 @@ triggers {
   elseActions {
   }
   is_oneshot: false
+}
+triggers {
+  name: "Start_AreliaPresent"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
+          args {
+            call_value {
+              functionName: "All Actors With Tag"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isArelia"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-AreliaRunCount"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a09c2146434316236a02ecf"
+  }
+  elseActions {
+  }
+  is_oneshot: true
 }
 regions {
   name: "Camera_Outside"
