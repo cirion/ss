@@ -851,7 +851,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d40566643431176ca5238f"
     }
@@ -1164,18 +1164,31 @@ nodes {
     }
   }
   branches {
-    responseText: "XXX, you should wear this."
+    responseText: "Brent Shirkey, you should wear this."
     conditions {
       ops {
-        functionName: "Comparison (bool)"
+        functionName: "Evaluate If Actor is Inside Region"
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "All Actors With Tag"
             args {
-              string_value: "bool"
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isBrentShirkey"
+                }
+              }
             }
             args {
-              int_value: 0
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
@@ -1183,7 +1196,7 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "IsOrIsNot"
+              string_value: "AreOrAreNot"
             }
             args {
               int_value: 1
@@ -1192,12 +1205,9 @@ nodes {
         }
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Get Map Item (Region)"
             args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
+              string_value: "59592f0b356564e833005f89"
             }
           }
         }
@@ -1206,13 +1216,68 @@ nodes {
     nextNodeIndex: 14
     hideIfUnavailable: true
     idRef {
+      id: "59d3b217643431176ca522c3:5a109f9a356564a83a001952"
+    }
+  }
+  branches {
+    responseText: "Opti, you should wear this."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor is Inside Region"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isOpti"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "AreOrAreNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
+            args {
+              string_value: "59592f0b356564e833005f89"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    idRef {
       id: "59d3b217643431176ca522c3:59d41175643431216ea52364"
     }
-    comment: "TODO: Each magical hireable runner"
   }
   branches {
     responseText: "{{GM}}Discard the torc.{{/GM}}"
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "59d3b217643431176ca522c3:59d411c2643431216ea52397"
     }
@@ -1230,7 +1295,7 @@ nodes {
   text: "The instant the redwood encircles your neck, a wave of mana engulfs you. You stagger momentarily, adjusting to the sudden return of that which used to always be present.\n\nIt feels different from what you experienced on Earth: more potent but somehow thinner. Nonetheless, you feel confident that you will adapt to this new source and regain your powers."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d411fa643431216ea52410"
     }
@@ -1290,7 +1355,7 @@ nodes {
   text: "{{GM}}She gratefully accepts the torc. Too small for her neck, she slides it up her arm like a bracelet. A look of relief abruptly crosses her face. She closes her eyes and murmurs softly.{{/GM}}\n\nOh. That is good. Thank you. Thank you. I am myself again. "
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d411f7643431216ea5240a"
     }
@@ -1367,30 +1432,121 @@ nodes {
 }
 nodes {
   idRef {
-    id: "59d3b217643431176ca522c3:59d41175643431216ea52366"
+    id: "59d3b217643431176ca522c3:5a109f9a356564a83a001954"
   }
   index: 14
-  text: "{{GM}}$+(s.he) smiles at you and secures the torc, then flashes you a thumbs-up sign.{{/GM}}\n\nGood to go! I\342\200\231ll be much more useful to you now."
+  text: "{{GM}}$+(s.he) secures the torc, then takes a deep breath.{{/GM}}\n\nMuch better. You are wise to protect your investment."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
+    idRef {
+      id: "59d3b217643431176ca522c3:5a109f9a356564a83a001956"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBrentShirkey"
+  actions {
+    ops {
+      functionName: "Add Tag to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isWearingTorc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isBrentShirkey"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59d3b217643431176ca522c3:59d41175643431216ea52366"
+  }
+  index: 15
+  text: "{{GM}}He smiles at you and secures the torc, then flashes you a thumbs-up sign.{{/GM}}\n\nGood to go! I\342\200\231ll be much more useful to you now."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d411f4643431216ea52407"
     }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Add the tag, update the speaker."
+  sourceWithTagInScene: "isOpti"
+  actions {
+    ops {
+      functionName: "Add Tag to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isWearingTorc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isOpti"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "59d411c5643431216ea5239a"
   }
-  index: 15
+  index: 16
   text: "It seems a waste after all the effort to bring it up here, but you return the torc back to its box and toss it back into the shuttle."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d411d5643431216ea523cb"
     }
@@ -1437,7 +1593,7 @@ nodes {
   idRef {
     id: "59d411d8643431216ea523ce"
   }
-  index: 16
+  index: 17
   text: ""
   branches {
     responseText: ""
@@ -1535,7 +1691,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 17
+    nextNodeIndex: 18
     onlyOnce: true
     idRef {
       id: "59d3b217643431176ca522c3:59d412a6643431216ea524ca"
@@ -1725,7 +1881,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 19
+    nextNodeIndex: 20
     onlyOnce: true
     idRef {
       id: "59d3b217643431176ca522c3:59d411f0643431216ea52401"
@@ -1762,11 +1918,11 @@ nodes {
   idRef {
     id: "59d3b217643431176ca522c3:59d412a6643431216ea524cc"
   }
-  index: 17
+  index: 18
   text: "Her smile falters. Taking a deep breath, she shudders and clutches her head between her hands. After a long pause, she looks back up at you."
   branches {
     responseText: ""
-    nextNodeIndex: 18
+    nextNodeIndex: 19
     idRef {
       id: "59d3b217643431176ca522c3:59d412eb643431216ea52517"
     }
@@ -1809,11 +1965,11 @@ nodes {
   idRef {
     id: "59d412ef643431216ea5251a"
   }
-  index: 18
+  index: 19
   text: "I\342\200\231m with you. Don\342\200\231t know how much use I\342\200\231ll be, but whatever modest gifts I may have apart from my magic are at your disposal."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d412a6643431216ea524ce"
     }
@@ -1857,11 +2013,11 @@ nodes {
   idRef {
     id: "59d41291643431216ea524bd"
   }
-  index: 19
+  index: 20
   text: "The crawling sensation grows worse. Gritting your jaw, you will it to pass.\n\nLong moments pass. The discomfort remains, but you are now accustomed to it. But you know that, until you return to Earth, your magic abilities will be useless."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "59d3b217643431176ca522c3:59d41294643431216ea524bf"
     }
