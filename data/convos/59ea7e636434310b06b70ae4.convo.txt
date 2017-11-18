@@ -2825,7 +2825,6 @@ nodes {
   index: 77
   text: "I am a mess. In every possible way. But thank you for chatting with me, $(l.firstname). It means a lot that you would talk to me, and\342\200\246 I think this will help."
   nodeType: ConversationNodeType_Simple
-  comment: "TODO: Make sure she\'s disabled!"
 }
 nodes {
   idRef {
@@ -6930,6 +6929,22 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Convo_QuestionCount"
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -6962,6 +6977,20 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Convo_QuestionCount"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
     }
     nextNodeIndex: 164
     onlyOnce: true
@@ -6971,6 +7000,22 @@ nodes {
   }
   branches {
     responseText: "What\342\200\231s happening in Redding now?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Convo_QuestionCount"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
     nextNodeIndex: 166
     onlyOnce: true
     idRef {
@@ -7014,6 +7059,22 @@ nodes {
         }
       }
     }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Convo_QuestionCount"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
     nextNodeIndex: 174
     hideIfUnavailable: true
     onlyOnce: true
@@ -7023,6 +7084,22 @@ nodes {
   }
   branches {
     responseText: "Is Tir Tairngire acting aggressively?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Convo_QuestionCount"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
     nextNodeIndex: 181
     onlyOnce: true
     idRef {
@@ -7031,11 +7108,38 @@ nodes {
   }
   branches {
     responseText: "Now that the alliance with Halferville is dead, what do you hope to accomplish?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Convo_QuestionCount"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
     nextNodeIndex: 184
+    hideIfUnavailable: true
     idRef {
       id: "59ea7e636434310b06b70ae4:59f27402643431ef82b6bd9d"
     }
-    comment: "TODO: Maybe require a certain number of responses here"
   }
   nodeType: ConversationNodeType_Simple
   comment: "#1 interrogation"
@@ -12161,7 +12265,6 @@ nodes {
       }
     }
   }
-  comment: "TODO: Enable trigger for her exit and local scene vars"
 }
 nodes {
   idRef {
