@@ -9065,7 +9065,7 @@ triggers {
     ops {
       functionName: "Display Text In Popup"
       args {
-        string_value: "You managed to influence some of your followers during the last conversation. Throughout your adventure, companions will pay attention to your words and actions, and over time your influence will change their behavior.\n\nEach character has their own unique concerns that you can influence. For example, Valiri is debating whether to react quickly to threats or to be more cautious. Meanwhile, Kora is trying to balance her existing responsibilities as a decker with her new leadership role within the People\'s University.\n\nYou will see red or blue text over a character\'s head when an action has increased your influence. Neither type of influence is better or worse than the other, but they may affect the final fate of the companion."
+        string_value: "You influenced some of your followers in this conversation. Throughout your adventure, companions will pay attention to your words and actions, and over time your influence will change their behavior.\n\nEach character has their own unique concerns. For example, Valiri is debating whether to react quickly to threats or to be more cautious. Meanwhile, Kora is trying to balance her existing responsibilities as a decker with her new leadership role within the People\'s University.\n\nYou will see red or blue text over a character\'s head when an action has increased your influence. Neither type of influence is better or worse than the other, but they may affect the final fate of the companion."
       }
       args {
         call_value {
@@ -28156,6 +28156,110 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Global_Autosave"
+  events {
+    ops {
+      functionName: "On Actor Start Turn"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_Autosave"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Global_Autosave"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Autosave Game"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a10cf65356564781e0015c9"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Outside"
   position {
@@ -34323,6 +34427,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Global_Autosave"
+    typeName: "bool"
+  }
+}
 mapEvents: "Event_JackIn"
 mapEvents: "Event_JackInKora"
 mapEvents: "Event_CycleLights"
@@ -34412,7 +34524,7 @@ mapName: "ss_a1_alameda_s1"
 parentStory: ""
 scene_title: "SUMMIT"
 scene_subtitle: ""
-scene_synopsis: "The California Free State is falling. General Saito\342\200\231s troops have marched out of San Francisco, blazing a trail of destruction on their path to Sacramento. Partisans from across the state have rallied to fight the invaders, but hold little hope of victory against his powerful forces.\n\nWith outright war sweeping the nation, standard shadowrunning jobs are growing scarce. However, you have found occasional work with a small collective of deckers and activists who call themselves the People\342\200\231s University. As California slides further into chaos, they have increasingly relied on the street-smarts that a local runner like you can provide.\n\nTonight\342\200\231s job came with short notice and scant instructions: just an address in Alameda and a timecode. You arrive as directed and find a pair of metahumans anxiously awaiting you."
+scene_synopsis: "Panic is rising throughout the California Free State. General Saito\342\200\231s troops have marched out of San Francisco, blazing a trail of destruction on their path to Sacramento. Partisans from across the state have rallied to fight the invaders, but hold little hope of victory against his powerful forces.\n\nWith outright war sweeping the nation, standard shadowrunning jobs are growing scarce. However, you have found occasional work with a small collective of deckers and activists who call themselves the People\342\200\231s University. As California slides further into chaos, they have increasingly relied on the street-smarts that a local runner like you can provide.\n\nTonight\342\200\231s job came with short notice and scant instructions: just an address in Alameda and a timecode. You arrive as directed and find a pair of metahumans anxiously awaiting you."
 scene_image: "ss_a1_alameda_s1"
 scene_continue_button_skip: false
 scene_restore_runner_health: false
@@ -34470,8 +34582,6 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 75
   heat_response_rating: 2
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
