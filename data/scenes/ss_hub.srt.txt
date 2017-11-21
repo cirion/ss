@@ -25121,6 +25121,41 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Select Item on Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Fist"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isIsas"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -46444,42 +46479,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "59fa6601356564703b00856b"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Send Event After Delay"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "Event_RestartShooting"
-          }
-        }
-      }
-      args {
-        float_value: 3
-      }
-    }
   }
   isActive: true
   idRef {
@@ -62206,6 +62205,39 @@ triggers {
   isActive: true
   idRef {
     id: "5a1397be3565645c4d003071"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Hub_RestartShooting"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_RestartShooting"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5a13b986356564084f0013b7"
   }
   elseActions {
   }
