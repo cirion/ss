@@ -63,7 +63,7 @@ triggers {
         }
       }
       args {
-        string_value: "Kora frantically signals Masato, who repositions his submarine and retrieves the two of you. Even he is stunned into silence once he hears the details of Valiri and Desorn\342\200\231s deaths. Carli\342\200\231s unexpected demise has bought you time, and there\342\200\231s no sign of pursuit from the prison as the remnant of your team flees back to Berkeley.\n\nYour mission is over, doomed by betrayal even before it began.\n\nBut the world will not stop for you or for the People\342\200\231s University. Ashen-faced activists react with shock when you return to the library and share the dire news. You gather your remaining allies around you as you ponder how to respond to this tragedy."
+        string_value: "Kora frantically signals Masato, who repositions his submarine and retrieves the two of you. Even he is stunned into silence once he hears the details of Valiri and Desorn\'s deaths. Carli\'s unexpected demise has bought you time, and there\'s no sign of pursuit from the prison as the remnant of your team flees back to Berkeley.\n\nYour mission is over, doomed by betrayal even before it began.\n\nBut the world will not stop for you or for the People\'s University. Ashen-faced activists react with shock when you return to the library and share the dire news. You gather your remaining allies around you as you ponder how to respond to this tragedy."
       }
     }
     ops {
@@ -9349,6 +9349,34 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Play Music"
+      args {
+        call_value {
+          functionName: "Get Map Item (Music)"
+          args {
+            string_value: "HongKong_loudmusic"
+          }
+          args {
+            string_value: "HongKong-loudmusic"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Teleport Actor"
       args {
         call_value {
@@ -9487,6 +9515,104 @@ triggers {
                 string_value: "59ac219c3565648812008471"
               }
             }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Unkillable"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFlashbackActor"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isFlashbackActor"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -10518,7 +10644,29 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
     }
   }
   isActive: false
@@ -19940,7 +20088,10 @@ triggers {
       }
       args {
         call_value {
-          functionName: "No Effect"
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59800b26356564e01e004f36"
+          }
         }
       }
     }
@@ -19959,7 +20110,10 @@ triggers {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
             }
           }
           args {
@@ -20007,6 +20161,61 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "598656193565644032005f8f"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ae25153565649854000f65"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -29281,6 +29490,7 @@ characters {
     z: -39
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isFlashbackActor"
   displayName: "FlashbackSewer_Camera"
   idRef {
     id: "59ac445c356564101c00816f"
@@ -29310,6 +29520,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Camera"
+    GeneralTags: "isFlashbackActor"
     pc_spawn_number: -1
     ai_ignores: true
     uninjurable: true
@@ -29329,6 +29540,7 @@ characters {
     z: -39
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isFlashbackActor"
   displayName: "FlashbackSewer_Carli"
   idRef {
     id: "59ac447e356564101c008170"
@@ -29401,6 +29613,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Carli Atherford"
+    GeneralTags: "isFlashbackActor"
     pc_spawn_number: -1
     portrait {
       filename: "pc_humanfemale_joshferguson"
@@ -29417,6 +29630,7 @@ characters {
     z: -37
   }
   orientation: ORIENTATION_W
+  GeneralTags: "isFlashbackActor"
   displayName: "FlashbackSewer_Desorn"
   idRef {
     id: "59ac44a2356564101c008171"
@@ -29490,6 +29704,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Desorn"
+    GeneralTags: "isFlashbackActor"
     pc_spawn_number: -1
     hiring_type: HiringType_Hireable
     portrait {
@@ -29514,6 +29729,7 @@ characters {
     z: -17
   }
   orientation: ORIENTATION_W
+  GeneralTags: "isFlashbackActor"
   displayName: "FlashbackValiri_Valiri"
   idRef {
     id: "59acc25d356564101c008bd1"
@@ -29587,6 +29803,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Valiri"
+    GeneralTags: "isFlashbackActor"
     pc_spawn_number: -1
     hiring_type: HiringType_Hireable
     portrait {
@@ -29608,6 +29825,7 @@ characters {
     z: -19
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isFlashbackActor"
   displayName: "FlashbackValiri_Carli"
   idRef {
     id: "59acc264356564101c008bd2"
@@ -29680,6 +29898,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Carli Atherford"
+    GeneralTags: "isFlashbackActor"
     pc_spawn_number: -1
     portrait {
       filename: "pc_humanfemale_joshferguson"
@@ -29696,6 +29915,7 @@ characters {
     z: -20
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isFlashbackActor"
   displayName: "FlashbackValiri_Camera"
   idRef {
     id: "59acc278356564101c008bd3"
@@ -29725,6 +29945,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Camera"
+    GeneralTags: "isFlashbackActor"
     pc_spawn_number: -1
     ai_ignores: true
     uninjurable: true
@@ -32154,7 +32375,7 @@ scene_dimensions {
   initial_alarm_state: 0
   turns_per_round: 3
   is_matrix: true
-  max_alarm_value: 255
+  max_alarm_value: 175
   heat_response_rating: 5
 }
 character_roster {
