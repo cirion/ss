@@ -10276,6 +10276,52 @@ triggers {
       }
     }
     ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLi"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Waypoint on Actor"
       args {
         call_value {
@@ -10431,6 +10477,36 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Actor AI Script"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLi"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        string_value: "gumbo_grunt"
+      }
+    }
   }
   isActive: false
   idRef {
@@ -10551,6 +10627,45 @@ triggers {
           functionName: "Get Map Item (Event)"
           args {
             string_value: "Event_Cutscene"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "DoorSlide"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "592c621b3565648c41005e30"
           }
         }
       }
@@ -11128,7 +11243,7 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
@@ -14815,6 +14930,108 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59addae1356564742a001a27"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait for Rounds"
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ade0a1356564742a001a6f"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59ac32d3356564101c007ee3"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Trigger: Run Alternate Trigger"
       args {
         call_value {
@@ -14954,23 +15171,6 @@ triggers {
             int_value: 0
           }
         }
-      }
-    }
-    ops {
-      functionName: "Set Variable (string)"
-      args {
-        call_value {
-          functionName: "Get Story Variable (string)"
-          args {
-            string_value: "58a09a016666641898001ad5"
-          }
-          args {
-            string_value: "a1_Alameda_s1-DesornFirstWords"
-          }
-        }
-      }
-      args {
-        string_value: "HEY, SEWER MONSTER! OPEN UP!"
       }
     }
     ops {
@@ -24736,8 +24936,8 @@ regions {
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Legwork-Whistleblower"
+  combat_wrapup_music: "HongKong-Legwork-Whistleblower"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
@@ -24794,8 +24994,8 @@ regions {
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Legwork-Whistleblower"
+  combat_wrapup_music: "HongKong-Legwork-Whistleblower"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
@@ -24852,8 +25052,8 @@ regions {
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Legwork-Whistleblower"
+  combat_wrapup_music: "HongKong-Legwork-Whistleblower"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
@@ -24963,13 +25163,13 @@ regions {
     a: 1
   }
   ambience_template: "roomtone"
-  combat_music: ""
-  default_music: ""
+  combat_music: "HongKong-Legwork-Whistleblower"
+  default_music: "HongKong-Legwork-News"
   loop_combat_music: true
-  loop_default_music: false
+  loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Legwork-Whistleblower"
+  combat_wrapup_music: "HongKong-Legwork-Whistleblower"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
@@ -25021,13 +25221,13 @@ regions {
     a: 1
   }
   ambience_template: "roomtone"
-  combat_music: ""
-  default_music: ""
+  combat_music: "HongKong-Legwork-Whistleblower"
+  default_music: "HongKong-Legwork-News"
   loop_combat_music: true
   loop_default_music: false
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Legwork-Whistleblower"
+  combat_wrapup_music: "HongKong-Legwork-Whistleblower"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
@@ -25530,8 +25730,8 @@ regions {
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Combat-Matrix2"
+  combat_wrapup_music: "HongKong-Combat-Matrix2"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
