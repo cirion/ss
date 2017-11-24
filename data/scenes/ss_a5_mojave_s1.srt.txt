@@ -63,7 +63,7 @@ triggers {
         }
       }
       args {
-        string_value: "The battle between MPA guerillas and Protectorate prison guards continues to rage around the center, allowing your team to slip through the fence undetected. Once outside you meet a platoon of Dorbi\342\200\231s soldiers from Halferville, who motion you onward as they join the fight to liberate the center. Before long you join a group of California Rangers in ATVs and are roaring north, leaving the heat and horror of the Mojave in the dust behind you.\n\nTassender is still weakened by his ordeal, but alert and curious. The two of you talk for hours as you fill him in on events during his absence. After you have safely returned to the library, you jointly request a meeting, a long-delayed summit that will determine how to respond to the newly-discovered scope of Saito\342\200\231s threat."
+        string_value: "The battle between MPA guerillas and Protectorate prison guards continues to rage around the center, allowing your team to slip through the fence undetected. Once outside you meet a platoon of Dorbi\'s soldiers from Halferville, who motion you onward as they join the fight to liberate the center. Before long you join a group of California Rangers in ATVs roaring northward, leaving the heat and horror of the Mojave in the dust behind you.\n\nTassender is still weakened by his ordeal, but alert and curious. The two of you talk for hours as you fill him in on events during his absence. After you have safely returned to the library, you jointly request a meeting, a long-delayed summit that will determine how to respond to the newly-discovered scope of Saito\'s threat."
       }
     }
     ops {
@@ -7094,6 +7094,28 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59c480ab356564c449003b47"
           }
         }
       }
@@ -17858,6 +17880,202 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Debug_ConferenceNoNPCs"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isAbattoirEnemy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721903565642422005a5e"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "594fe019356564b444005eaa"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "594fe019356564b444005eaa"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5a17b55f356564342000797b"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Mojave"
   position {
@@ -23472,7 +23690,7 @@ characters {
         magic: 0
         hp: 20
         ap: 1
-        armor: -3
+        armor: -1
         force: 0
         morale: 0
         discipline: 0
