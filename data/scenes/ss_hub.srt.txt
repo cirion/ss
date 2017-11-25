@@ -21811,22 +21811,6 @@ triggers {
       functionName: "Play Animation From Manifest"
       args {
         call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Animation)"
-          args {
-            string_value: "HongKong:General/sitting_idle_edge"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Animation From Manifest"
-      args {
-        call_value {
           functionName: "Nearest Tagged Actor to Actor"
           args {
             call_value {
@@ -62562,7 +62546,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Restaurant_DogTrap"
+  name: "Restaurant_DogTrapEast"
   events {
     ops {
       functionName: "On Region Enter"
@@ -62607,28 +62591,144 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Clear Actor Orders"
+      functionName: "Delete Prop"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Map Item (Prop)"
           args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-          args {
+            string_value: "59fa880a356564703b00c290"
           }
         }
       }
     }
     ops {
-      functionName: "Order Actor to Move To (Region)"
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5a18e48e356564044500265a"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a18e0e73565640445002657"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Restaurant_DogTrapCenter"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5a18e0bc3565640445002656"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59f654053565641011007285"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa8808356564703b00c28e"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa880e356564703b00c294"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "59fa880d356564703b00c293"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a18e45d3565640445002658"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Start_DebugAreliaCarving"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor"
       args {
         call_value {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
             }
           }
           args {
@@ -62637,9 +62737,14 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Region)"
+          functionName: "Center of Region"
           args {
-            string_value: "592b159a356564b442007d3a"
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59f65c073565643c11000a3b"
+              }
+            }
           }
         }
       }
@@ -62650,44 +62755,74 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 7
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
           }
         }
       }
     }
     ops {
-      functionName: "Isolated Team Turn"
+      functionName: "Teleport Camera To Actor"
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "Get Map Item (Player)"
           args {
-            string_value: "FactionList"
+            int_value: 0
           }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
           args {
-            int_value: 4
+            string_value: "Arelia: Go To The Basement Stairs"
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Map Item (SceneDimension)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Default"
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
           }
         }
       }
       args {
-        int_value: 1
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
-    id: "5a18e0e73565640445002657"
+    id: "5a18e6a83565640445002c24"
   }
   elseActions {
   }
-  is_oneshot: false
+  is_oneshot: true
 }
 regions {
   name: "Camera_Club"
@@ -67330,12 +67465,12 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "Restaurant_DogTrap"
+  name: "Restaurant_DogTrapEast"
   position {
     x: -96
     y: -79
-    width: 1
-    height: 1
+    width: 2
+    height: 2
   }
   enabledAtStart: true
   is_camera_region: false
@@ -67343,6 +67478,64 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "5a18e0bc3565640445002656"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "Restaurant_DogTrapCenter"
+  position {
+    x: -96
+    y: -84
+    width: 2
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5a18e4c2356564044500265b"
   }
   highlight_color {
     r: 0
