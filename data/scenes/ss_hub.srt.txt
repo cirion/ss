@@ -49273,7 +49273,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "59fd08d03565640828001ddb"
   }
@@ -61028,7 +61028,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59fdec2c35656424220025ab"
   }
@@ -63042,6 +63042,111 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Debug_Courtyard"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "59614f303565645846002ba7"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59613c843565645846002b94"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5a1af1a0356564ec2c006c2a"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Club"
   position {
@@ -63375,7 +63480,7 @@ regions {
   }
   ambience_template: "courtyard"
   combat_music: ""
-  default_music: "HongKong-Combat-Stinger-End"
+  default_music: "HongKong-Legwork-ExitStageLeft"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
@@ -63433,7 +63538,7 @@ regions {
   }
   ambience_template: "roomtone"
   combat_music: ""
-  default_music: "HongKong-Combat-Grendel-WrapUp"
+  default_music: "HongKong-Legwork-ExitStageLeft"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
