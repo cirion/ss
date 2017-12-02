@@ -4729,7 +4729,7 @@ triggers {
         }
       }
       args {
-        int_value: 0
+        int_value: 1
       }
       args {
         call_value {
@@ -4759,12 +4759,12 @@ triggers {
             string_value: "BuffDebuffType"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
       args {
-        int_value: 0
+        int_value: 1
       }
     }
   }
@@ -4801,7 +4801,7 @@ triggers {
         }
       }
       args {
-        int_value: 0
+        int_value: 1
       }
       args {
         call_value {
@@ -4832,12 +4832,12 @@ triggers {
             string_value: "BuffDebuffType"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
       args {
-        int_value: 0
+        int_value: 1
       }
     }
   }
@@ -32547,6 +32547,82 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Interact_DesornPeace"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a1cc62a35656460150026d0"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Desorn_Peace"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a1cc65335656460150026d3"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Interact_DesornViolence"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5a1cc62835656460150026cf"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_Influence_Desorn_Violence"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a1cc67735656460150026d4"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Outside_Tripwire_BanterA"
   position {
@@ -33872,7 +33948,7 @@ characters {
     char_name: "Desorn"
     GeneralTags: "isCrew"
     GeneralTags: "isDesorn"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_Hireable
     portrait {
