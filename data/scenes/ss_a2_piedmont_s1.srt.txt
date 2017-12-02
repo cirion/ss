@@ -10603,7 +10603,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Set Prop Visible by Tag"
+      functionName: "Delete Props by Tag"
       args {
         call_value {
           functionName: "Get Map Item (SenseTagList)"
@@ -10613,33 +10613,11 @@ triggers {
         }
       }
       args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
         float_value: -1
       }
       args {
         call_value {
           functionName: "Everywhere"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DoesOrDoesNot"
-          }
-          args {
-            int_value: 1
-          }
         }
       }
     }
@@ -25216,6 +25194,20 @@ triggers {
         float_value: 0
       }
     }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Crypt_Hint3TimeElapsed"
+          }
+        }
+      }
+      args {
+        float_value: 60
+      }
+    }
   }
   isActive: true
   idRef {
@@ -32346,6 +32338,219 @@ triggers {
   elseActions {
   }
   is_oneshot: false
+}
+triggers {
+  name: "Crypt_GetHint3"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Crypt_Hint3TimeElapsed"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5a22f8a2356564c0320052cf"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a22f872356564c0320052cd"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Debug_CryptNoCombat"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599eddd3356564b8c7006c34"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "5999aab5356564248b003208"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599997ce356564248b003156"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5999a3f8356564248b003206"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5a22f966356564c0320052d0"
+  }
+  elseActions {
+  }
+  is_oneshot: true
 }
 regions {
   name: "Camera_Avenue"
@@ -40608,6 +40813,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "Crypt_Hint3Ready"
+    typeName: "bool"
+  }
+}
 mapEvents: "Event_Influence_Kora_Leadership"
 mapEvents: "Event_Influence_Kora_Support"
 mapEvents: "Event_Influence_Desorn_Peace"
@@ -40624,6 +40837,7 @@ mapEvents: "Event_Graveyard_ResetPuzzle"
 mapEvents: "Event_Church_WilcoShot"
 mapEvents: "Crypt_Hint1TimeElapsed"
 mapEvents: "Crypt_Hint2TimeElapsed"
+mapEvents: "Crypt_Hint3TimeElapsed"
 senseTags: "Crypt_CandleLit"
 senseTags: "isKora"
 senseTags: "isValiri"
