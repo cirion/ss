@@ -5194,6 +5194,17 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Clear Waypoint from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "59c48d17356564ac1d00401e"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Start Conversation"
       args {
         call_value {
@@ -7222,6 +7233,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721c13565642422005a5f"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Activate Actor Spawner"
       args {
         call_value {
@@ -8679,31 +8712,6 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "Abattoir_AccumulatedGas"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 5
-          }
-        }
-      }
-      args {
-        int_value: 0
-      }
-    }
-    ops {
       functionName: "Evaluate Goal"
       args {
         call_value {
@@ -8765,6 +8773,84 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "Comparison (int)"
+          args {
+            call_value {
+              functionName: "Get Variable (int)"
+              args {
+                string_value: "Abattoir_AccumulatedGas"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 5
+              }
+            }
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Comparison (int)"
+          args {
+            call_value {
+              functionName: "Get Count of Alive Actors"
+              args {
+                call_value {
+                  functionName: "All Actors With Tag"
+                  args {
+                    call_value {
+                      functionName: "Get Map Item (SenseTagList)"
+                      args {
+                        string_value: "isAbattoirEnemy"
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "AllOrAny"
+                      }
+                      args {
+                        int_value: 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -9065,6 +9151,154 @@ triggers {
           functionName: "Get Variable (bool)"
           args {
             string_value: "isDebugging"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721903565642422005a5e"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c6e7e8356564ec42005799"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721c13565642422005a5f"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isKillingFieldEnemy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Abattoir_IsWestDoorUnlocked"
           }
         }
       }
@@ -15217,6 +15451,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721903565642422005a5e"
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -18684,6 +18940,253 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Entry_RemoveDoorTag"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59c7354d356564242200626d"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59c6d142356564ec420056df"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isEntryGuard"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "canUseDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a28b2c2356564f420006158"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Conference_BossFightBonusAP"
+  events {
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Defeat the Guards"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Apply Attribute Status Effect to Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCrew"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "ActorAttributes"
+          }
+          args {
+            int_value: 9
+          }
+        }
+      }
+      args {
+        string_value: "Motivated"
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "BuffDebuffType"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a28bf28356564f4200061aa"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Camera_Mojave"
   position {
@@ -20428,9 +20931,9 @@ regions {
   name: "Abattor_RemoveDoorTagNorth"
   position {
     x: -52
-    y: 111
+    y: 110
     width: 1
-    height: 4
+    height: 7
   }
   enabledAtStart: true
   is_camera_region: false
@@ -22225,8 +22728,8 @@ regions {
 regions {
   name: "Entry_MoveDest_Novascorpion_3"
   position {
-    x: -9
-    y: 18
+    x: -24
+    y: 24
     width: 2
     height: 2
   }
@@ -25798,7 +26301,7 @@ characters {
     y: 0
     z: 121
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_W
   GeneralTags: "canUseDoor"
   GeneralTags: "isConference"
   GeneralTags: "isConferenceWave2"
@@ -25855,7 +26358,7 @@ characters {
     y: 0
     z: 121
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_W
   GeneralTags: "canUseDoor"
   GeneralTags: "isConference"
   GeneralTags: "isConferenceWave2"
@@ -25971,7 +26474,7 @@ characters {
     y: 0
     z: 93
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_E
   GeneralTags: "canUseDoor"
   GeneralTags: "isConference"
   GeneralTags: "isConferenceWave3"
@@ -26028,7 +26531,7 @@ characters {
     y: 0
     z: 93
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_E
   GeneralTags: "canUseDoor"
   GeneralTags: "isConference"
   GeneralTags: "isConferenceWave3"
@@ -26129,7 +26632,7 @@ characters {
     y: 0
     z: 94
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_E
   GeneralTags: "canUseDoor"
   GeneralTags: "isConference"
   GeneralTags: "isConferenceWave3"
@@ -26186,7 +26689,7 @@ characters {
     y: 0
     z: 94
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_E
   GeneralTags: "canUseDoor"
   GeneralTags: "isConference"
   GeneralTags: "isConferenceWave3"
@@ -29239,14 +29742,26 @@ characters {
     equipment_sheet_id: "Environment_Barrel_Toxic"
     character_mod {
       stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
         move_speed: 0
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
       }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "Non-Combatant"
+      vulnerabilities {
+      }
     }
-    team_id: "LoneStar"
+    team_id: "Barrel"
     char_name: "Toxic Barrel"
     pc_spawn_number: -1
     ai_ignores: true
