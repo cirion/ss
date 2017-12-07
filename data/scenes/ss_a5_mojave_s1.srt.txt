@@ -7233,6 +7233,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59c721c13565642422005a5f"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Activate Actor Spawner"
       args {
         call_value {
@@ -8690,31 +8712,6 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "Abattoir_AccumulatedGas"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 5
-          }
-        }
-      }
-      args {
-        int_value: 0
-      }
-    }
-    ops {
       functionName: "Evaluate Goal"
       args {
         call_value {
@@ -8776,6 +8773,84 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "Comparison (int)"
+          args {
+            call_value {
+              functionName: "Get Variable (int)"
+              args {
+                string_value: "Abattoir_AccumulatedGas"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 5
+              }
+            }
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Comparison (int)"
+          args {
+            call_value {
+              functionName: "Get Count of Alive Actors"
+              args {
+                call_value {
+                  functionName: "All Actors With Tag"
+                  args {
+                    call_value {
+                      functionName: "Get Map Item (SenseTagList)"
+                      args {
+                        string_value: "isAbattoirEnemy"
+                      }
+                    }
+                  }
+                  args {
+                    call_value {
+                      functionName: "Get Preset Value (int)"
+                      args {
+                        string_value: "AllOrAny"
+                      }
+                      args {
+                        int_value: 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -19086,6 +19161,7 @@ triggers {
         }
       }
       args {
+        string_value: "Motivated"
       }
       args {
         call_value {
@@ -19094,12 +19170,12 @@ triggers {
             string_value: "BuffDebuffType"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
       args {
-        int_value: 0
+        int_value: 1
       }
     }
   }
@@ -19109,7 +19185,7 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 regions {
   name: "Camera_Mojave"
@@ -20855,9 +20931,9 @@ regions {
   name: "Abattor_RemoveDoorTagNorth"
   position {
     x: -52
-    y: 111
+    y: 110
     width: 1
-    height: 4
+    height: 7
   }
   enabledAtStart: true
   is_camera_region: false
@@ -29685,7 +29761,7 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
+    team_id: "Barrel"
     char_name: "Toxic Barrel"
     pc_spawn_number: -1
     ai_ignores: true
