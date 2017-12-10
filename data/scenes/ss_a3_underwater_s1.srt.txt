@@ -25221,6 +25221,85 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Goal_YouDied"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "You died."
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59892f85356564845b005d48"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Entry"
   position {
@@ -32838,6 +32917,11 @@ goals {
 goals {
   name: "Free the Prisoners"
   type: GoalType_Secondary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "You died."
+  type: GoalType_Primary
   status: GoalStatus_Hidden
 }
 worldMapLocation {
