@@ -134,9 +134,83 @@ nodes {
   }
   nodeType: ConversationNodeType_GM_Voice
 }
+nodes {
+  idRef {
+    id: "5a2de667356564d00b006660"
+  }
+  index: 1
+  text: "This battlefield-intelligence node is responsible for identifying enemy positions. Because the siege of the Public Library has ended, it currently has no use."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "59808de63565644823000cae"
+          }
+        }
+      }
+    }
+  }
+}
 roots {
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Monitor the Library Defense"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
   idRef {
     id: "59dbffd0643431ca59c81154:59dbffd0643431ca59c81158"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 1
+  idRef {
+    id: "59dbffd0643431ca59c81154:5a2de666356564d00b00665d"
   }
 }
