@@ -10569,6 +10569,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_EndKeyObjectives"
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -39126,6 +39137,182 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Upstairs_EndHideBrianObjective"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_EndKeyObjectives"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Give Brian Jenkins\' Key to Sira"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Give Brian Jenkins\' Key to Sira"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a2e978a3565643429003cea"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Upstairs_EndHideSiraObjective"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_EndKeyObjectives"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Give Sira Ikeda\'s Key to Brian"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Give Sira Ikeda\'s Key to Brian"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a2e97f03565643429003ceb"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_FuchiUpstairs"
   position {
@@ -48757,6 +48944,7 @@ mapEvents: "Event_CheckForDronesInVent"
 mapEvents: "Event_ExteriorPowerDisabled"
 mapEvents: "Event_InteriorPowerDisabled"
 mapEvents: "Event_CheckPowerStatus"
+mapEvents: "Event_EndKeyObjectives"
 senseTags: "isCamera"
 senseTags: "isKora"
 senseTags: "isFuchiResponseIC"
