@@ -4,13 +4,74 @@ idRef {
 ui_name: "ss_a7_space_s1-Command_EndPC0AreliaPlanetside"
 nodes {
   idRef {
-    id: "59db7bd53565646c72004b8e"
+    id: "5a2f35da356564b855007e6b"
   }
   index: 0
+  text: "You hear a muffled rustling sound as the radio exchanges hands."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59db7bc23565646c72004b82:5a2f35dc356564b855007e6d"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Play Music"
+      args {
+        call_value {
+          functionName: "Get Map Item (Music)"
+          args {
+            string_value: "HongKong_Stingers"
+          }
+          args {
+            string_value: "HongKong-Combat-stinger-End"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5a2f37f2356564b855007fda"
+  }
+  index: 1
+  text: "I\342\200\231m here, $(l.firstname). I see your light in the sky. I\342\200\231ll be here with you.\n\nFalling in space, hovering over this broken planet."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "59db7bc23565646c72004b82:5a2f37f4356564b855007fdc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59db7bd53565646c72004b8e"
+  }
+  index: 2
   text: "The commlink at your side buzzes urgently."
   branches {
     responseText: "Speak."
-    nextNodeIndex: 1
+    nextNodeIndex: 3
     idRef {
       id: "59db7bc23565646c72004b82:59db7bd63565646c72004b90"
     }
@@ -18,7 +79,7 @@ nodes {
   }
   branches {
     responseText: "Hello?"
-    nextNodeIndex: 1
+    nextNodeIndex: 3
     idRef {
       id: "59db7bc23565646c72004b82:59db7bd73565646c72004b92"
     }
@@ -26,7 +87,7 @@ nodes {
   }
   branches {
     responseText: "Welcome to Speedy Space Subs, footlongs in under ten minutes or double your money back."
-    nextNodeIndex: 1
+    nextNodeIndex: 3
     idRef {
       id: "59db7bc23565646c72004b82:59db7bd73565646c72004b94"
     }
@@ -95,8 +156,45 @@ nodes {
   idRef {
     id: "59db7c063565646c72004b9f"
   }
-  index: 1
+  index: 3
   text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-TeamState_Arelia"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: -3
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "59db7bc23565646c72004b82:5a2f319a356564b8550079a1"
+    }
+  }
   branches {
     responseText: ""
     conditions {
@@ -137,14 +235,14 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 2
+    nextNodeIndex: 5
     idRef {
       id: "59db7bc23565646c72004b82:59db7c0d3565646c72004ba6"
     }
   }
   branches {
     responseText: ""
-    nextNodeIndex: 3
+    nextNodeIndex: 6
     idRef {
       id: "59db7bc23565646c72004b82:59db7c1c3565646c72004bae"
     }
@@ -153,13 +251,29 @@ nodes {
 }
 nodes {
   idRef {
+    id: "5a2f319e356564b8550079a4"
+  }
+  index: 4
+  text: "$(l.firstname)?\n\nThere\'s a radio in the pod. I wanted to... I\'d hoped that..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "59db7bc23565646c72004b82:5a2f319f356564b8550079a6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
     id: "59db7bc23565646c72004b82:59db7c183565646c72004ba8"
   }
-  index: 2
+  index: 5
   text: "$(l.firstname)?\n\nI\342\200\246 the shuttle called, they said that you\342\200\246\n\nI had Rick boost the signal so I could\342\200\246 reach you\342\200\246 "
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 7
     idRef {
       id: "59db7bc23565646c72004b82:59db7c183565646c72004baa"
     }
@@ -171,11 +285,11 @@ nodes {
   idRef {
     id: "59db7bc23565646c72004b82:59db7c1c3565646c72004bb0"
   }
-  index: 3
+  index: 6
   text: "$(l.firstname)?\n\nI\342\200\246 the shuttle called, they said that you\342\200\246\n\nI had Tassender boost the signal so I could\342\200\246 reach you\342\200\246 "
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 7
     idRef {
       id: "59db7bc23565646c72004b82:59db7c1c3565646c72004bb2"
     }
@@ -186,11 +300,11 @@ nodes {
   idRef {
     id: "59db7c213565646c72004bb8"
   }
-  index: 4
-  text: "{{GM}}You hear her sobbing.{{/GM}}\n\nOh, $(l.firstname)! I should BE there!"
+  index: 7
+  text: "{{GM}}You hear Arelia sobbing.{{/GM}}\n\nOh, $(l.firstname)! I should BE there!"
   branches {
-    responseText: "Space is no place for a mage."
-    nextNodeIndex: 5
+    responseText: "This is no place for a mage."
+    nextNodeIndex: 8
     idRef {
       id: "59db7bc23565646c72004b82:59db7c5e3565646c72004bd0"
     }
@@ -198,7 +312,7 @@ nodes {
   }
   branches {
     responseText: "I\342\200\231m happy that you\342\200\231re safe."
-    nextNodeIndex: 5
+    nextNodeIndex: 8
     idRef {
       id: "59db7bc23565646c72004b82:59db7c5f3565646c72004bd2"
     }
@@ -206,7 +320,7 @@ nodes {
   }
   branches {
     responseText: "I wish you were here, too."
-    nextNodeIndex: 5
+    nextNodeIndex: 8
     idRef {
       id: "59db7bc23565646c72004b82:59db7c5f3565646c72004bd4"
     }
@@ -214,7 +328,7 @@ nodes {
   }
   branches {
     responseText: "If you catch an express bus, maybe you can still get here in time."
-    nextNodeIndex: 5
+    nextNodeIndex: 8
     idRef {
       id: "59db7bc23565646c72004b82:59db7c673565646c72004bec"
     }
@@ -225,11 +339,11 @@ nodes {
   idRef {
     id: "59db7c7f3565646c72004bef"
   }
-  index: 5
+  index: 8
   text: "I can\342\200\231t bear the thought of you dying alone! After all we\342\200\231ve been through together, all that we\342\200\231ve shared. I\342\200\246 I should be there, I should be holding you\342\200\246"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 9
     idRef {
       id: "59db7bc23565646c72004b82:59db7c8b3565646c72004c13"
     }
@@ -240,11 +354,11 @@ nodes {
   idRef {
     id: "59db7bc23565646c72004b82:59db7c8c3565646c72004c15"
   }
-  index: 6
+  index: 9
   text: "How can I keep going now that you\342\200\231re gone? I\342\200\231ll never be able to forget your face, the feeling of you beside me, your voice in my ear\342\200\246"
   branches {
     responseText: "Stay strong, Arelia. You\342\200\231ll get through this."
-    nextNodeIndex: 7
+    nextNodeIndex: 10
     idRef {
       id: "59db7bc23565646c72004b82:59db7c8c3565646c72004c17"
     }
@@ -252,7 +366,7 @@ nodes {
   }
   branches {
     responseText: "You need to let go, Arelia. You\342\200\231ll find someone else, and it will be wonderful."
-    nextNodeIndex: 7
+    nextNodeIndex: 10
     idRef {
       id: "59db7bc23565646c72004b82:59db7ca63565646c72004c39"
     }
@@ -260,14 +374,14 @@ nodes {
   }
   branches {
     responseText: "Carry my memory with you. Know that I love you, and that will always be true."
-    nextNodeIndex: 7
+    nextNodeIndex: 10
     idRef {
       id: "59db7bc23565646c72004b82:59db7ca63565646c72004c3b"
     }
     auxiliaryLink: true
   }
   branches {
-    responseText: "Go with Isao. He loves you deeply."
+    responseText: "Stay with Isao. He loves you deeply."
     conditions {
       ops {
         functionName: "Comparison (int)"
@@ -326,7 +440,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 7
+    nextNodeIndex: 10
     hideIfUnavailable: true
     idRef {
       id: "59db7bc23565646c72004b82:59db7cad3565646c72004c3d"
@@ -335,7 +449,7 @@ nodes {
   }
   branches {
     responseText: "You\342\200\231re surrounded by people who love you. Use them for support."
-    nextNodeIndex: 7
+    nextNodeIndex: 10
     idRef {
       id: "59db7bc23565646c72004b82:59db7cad3565646c72004c3f"
     }
@@ -343,7 +457,7 @@ nodes {
   }
   branches {
     responseText: "C\342\200\231mon, I\342\200\231m not THAT great."
-    nextNodeIndex: 7
+    nextNodeIndex: 10
     idRef {
       id: "59db7bc23565646c72004b82:59db7cad3565646c72004c41"
     }
@@ -354,11 +468,11 @@ nodes {
   idRef {
     id: "59db7d1d3565646c72004c44"
   }
-  index: 7
+  index: 10
   text: "{{GM}}She stops speaking, but you can still hear her breath, heavy and labored. Moments pass. Then, with a newfound sense of determination, she resumes.{{/GM}}\n\nLook down, $(l.firstname). Find me."
   branches {
     responseText: ""
-    nextNodeIndex: 8
+    nextNodeIndex: 11
     idRef {
       id: "59db7bc23565646c72004b82:59db7d1f3565646c72004c46"
     }
@@ -369,11 +483,11 @@ nodes {
   idRef {
     id: "59db7bc23565646c72004b82:59db7d203565646c72004c48"
   }
-  index: 8
-  text: "Obediently, you cast your eyes through the windows, down to the Earth far, far below. It seems surreal, unbelievable, to be up here, when your entire existence before now has been locked into the landmass you\342\200\231re now looking at."
+  index: 11
+  text: "Obediently, you cast your eyes through the windows, to the descending pod, and continue gazing down to the Earth far, far below. It seems surreal, unbelievable, to be up here, when your entire existence before now has been locked into the landmass you\342\200\231re now looking at."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 12
     idRef {
       id: "59db7bc23565646c72004b82:59db7d203565646c72004c4a"
     }
@@ -402,100 +516,376 @@ nodes {
   idRef {
     id: "59db7bc23565646c72004b82:59db7d283565646c72004c4e"
   }
-  index: 9
+  index: 12
   text: "Wisps of white clouds curl around the Pacific as the globe slowly rotates, the western coast of California creeping into view."
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
     idRef {
-      id: "59db7bc23565646c72004b82:59db7d283565646c72004c50"
+      id: "59db7bc23565646c72004b82:5a2f3632356564b855007eb7"
     }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
-    id: "59db7bc23565646c72004b82:59db7d2a3565646c72004c52"
-  }
-  index: 10
-  text: "I\342\200\231m here, $(l.firstname). I see your light in the sky. I\342\200\231ll be here with you when you pass over."
-  branches {
-    responseText: ""
-    nextNodeIndex: 11
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d2a3565646c72004c54"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "59db7bc23565646c72004b82:59db7d2b3565646c72004c56"
-  }
-  index: 11
-  text: "And I\342\200\231m not alone. There are over six billion souls on this planet. Each with its own story, its own fears and desires, its own loves. And, because of the sacrifice you\342\200\231ve made, millions will continue to live who would have otherwise died. So many stories that would have ended, will instead continue."
-  branches {
-    responseText: ""
-    nextNodeIndex: 12
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d2b3565646c72004c58"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "59db7bc23565646c72004b82:59db7d2d3565646c72004c5a"
-  }
-  index: 12
-  text: "THESE are our children, $(l.firstname). All of those people live, because of the choices you made. Your actions have birthed their future."
-  branches {
-    responseText: "I just did what needed to be done."
-    nextNodeIndex: 13
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d2d3565646c72004c5c"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "I did this for you. To protect you, and ensure you would be okay."
-    nextNodeIndex: 13
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d793565646c72004ce2"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "I\342\200\231ve learned so much about compassion from you. We both did this."
-    nextNodeIndex: 13
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d793565646c72004ce4"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "The needs of metahumanity are so much more important than one life."
-    nextNodeIndex: 13
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d7a3565646c72004ce6"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "I\342\200\231m sorry, I spaced out there for a second. Get it? \342\200\234Spaced out\342\200\235?"
-    nextNodeIndex: 13
-    idRef {
-      id: "59db7bc23565646c72004b82:59db7d7a3565646c72004ce8"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "59db7da13565646c72004ceb"
+    id: "5a2f3636356564b855007eba"
   }
   index: 13
+  text: "Look at it. That fragile blue marble. It could have been a paradise, but they fucked it up."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "59db7bc23565646c72004b82:5a2f368f356564b855007f17"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ec9"
+  }
+  index: 14
+  text: "Poisoning the air. Fouling the water. Fighting one another because of the color of their skin, the horns on their heads, the calling of their hearts. Chasing one more scrap of power, just a few more nuyen, and damning the planet to get their own way."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ecb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ecd"
+  }
+  index: 15
+  text: "How did things get to be so bad? Why did we end up this way?"
+  branches {
+    responseText: "It\342\200\231s the natural order of things. Mankind is an animal, devouring all it can."
+    nextNodeIndex: 16
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ecf"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "There\342\200\231s something wrong with us. Our species took a bad turn along the line."
+    nextNodeIndex: 16
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ed3"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "There is good and evil among us. Sometimes evil gets the upper hand."
+    nextNodeIndex: 16
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ed7"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "It would be boring if everyone got along."
+    nextNodeIndex: 16
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007edb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007edd"
+  }
+  index: 16
+  text: "This wasn\342\200\231t fated to be. We inherited the world created by our parents and grandparents. The decisions they made, the actions that they did or did not take, shaped the planet we were born into. They fucked up, and we were doomed to lives of suffering and misery."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007edf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ee1"
+  }
+  index: 17
+  text: "{{GM}}Despite her somber words, her voice grows more confident. She sounds triumphant, elated.{{/GM}}\n\nBut WE have a choice. The same as our ancestors did, but we can choose a different path. To make the world better rather than worse. Spread kindness and not cruelty. Teach love and not hate, hope and not fear, generosity and not greed. Ensure that the next generation will receive a better legacy than us, will find a better Earth."
+  branches {
+    responseText: ""
+    nextNodeIndex: 18
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ee3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ee5"
+  }
+  index: 18
+  text: "And you made that choice! Your sacrifice throws a spanner into the works of Saito\342\200\231s machine of death. Your example gives hope to all who will hear of it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ee7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ee9"
+  }
+  index: 19
+  text: "Look at this planet, $(l.firstname)!\n\nTHOSE are our children. The countless metahumans and Awakened who will continue to live, thanks to your gift."
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007eeb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_interact"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007eed"
+  }
+  index: 20
+  text: "Millions of lives that would have been snipped out will instead extend, weaving a tapestry of glory. Every breath they take will be because of you. Each first love, every kiss, enabled by your sacrifice. Countless songs, works of art, adventures, stories, all trace back to this moment, the birth of a new future."
+  branches {
+    responseText: ""
+    nextNodeIndex: 21
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007eef"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ef1"
+  }
+  index: 21
+  text: "You\342\200\231ve done it, $(l.firstname). \n\nCreated a better world."
+  branches {
+    responseText: "If you say so."
+    nextNodeIndex: 22
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ef3"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Anyone would have done the same. I just happened to be the one here."
+    nextNodeIndex: 22
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007ef7"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "This is for us, Arelia. Our legacy will be the people down below."
+    nextNodeIndex: 22
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007efb"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That\342\200\231s beautiful. It makes the ending easier."
+    nextNodeIndex: 22
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007eff"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Sorry, I wasn\342\200\231t paying attention. Were you saying something?"
+    nextNodeIndex: 22
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f03"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f05"
+  }
+  index: 22
   text: "$(l.firstname)... I\342\200\231ll hold on to your memory. I\342\200\231ll tell the world about the gift you\342\200\231ve given them, the future you have granted. And I\342\200\231ll hold you in my heart."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "58a09a016666641898001ad5"
+            }
+            args {
+              string_value: "Global-TeamState_Isao"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: -3
+        }
+      }
+    }
+    nextNodeIndex: 23
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f07"
+    }
+  }
   branches {
     responseText: ""
     actions {
@@ -516,7 +906,7 @@ nodes {
               string_value: "WithOrWithout"
             }
             args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
@@ -544,31 +934,159 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 14
+    nextNodeIndex: 24
     idRef {
-      id: "59db7bc23565646c72004b82:59db7da43565646c72004ced"
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f0f"
     }
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "59db7da63565646c72004cf0"
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f09"
   }
-  index: 14
+  index: 23
+  text: "And I in mine."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Trigger: Run Alternate Trigger"
+        args {
+          call_value {
+            functionName: "Get Map Item (Trigger)"
+            args {
+              string_value: "59dac9333565643406006b2c"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WaitOrNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 24
+    idRef {
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f0b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isIsao"
+}
+nodes {
+  idRef {
+    id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f11"
+  }
+  index: 24
   text: "Forever."
   branches {
     responseText: ""
-    nextNodeIndex: 14
+    nextNodeIndex: 24
     idRef {
-      id: "59db7bc23565646c72004b82:59db7dc33565646c72004d3e"
+      id: "59dbeed5643431985125b4bc:5a2f368c356564b855007f13"
     }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
 roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-TeamState_Arelia"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: -3
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "58a09a016666641898001ad5"
+          }
+          args {
+            string_value: "Global-TeamState_Isao"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: -3
+      }
+    }
+  }
   nextNodeIndex: 0
+  idRef {
+    id: "59db7bc23565646c72004b82:5a2f32d3356564b855007ad6"
+  }
+}
+roots {
+  nextNodeIndex: 2
   idRef {
     id: "59db7bc23565646c72004b82:59db7bc23565646c72004b86"
   }
