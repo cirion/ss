@@ -22856,7 +22856,7 @@ triggers {
       }
     }
   }
-  isActive: false
+  isActive: true
   idRef {
     id: "59ac17c33565648812008417"
   }
@@ -30341,7 +30341,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Ground_MoveRigger_TODO_IF_TAG_KILL_OUTSIDE"
+  name: "Ground_MoveRiggerKillOutdoors"
   events {
     ops {
       functionName: "On Actor Damage"
@@ -30412,17 +30412,24 @@ triggers {
       }
     }
     ops {
-      functionName: "Compare Actor Team"
+      functionName: "Evaluate Tag for Actor"
       args {
         call_value {
-          functionName: "Triggering Target Actor"
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
         }
       }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "IsOrIsNot"
+            string_value: "HasOrHasNot"
           }
           args {
             int_value: 1
@@ -30431,26 +30438,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 2
+            string_value: "isGroundSoldier"
           }
         }
       }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "No Condition"
     }
   }
   actions {
