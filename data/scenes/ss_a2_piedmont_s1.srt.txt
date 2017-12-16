@@ -5855,34 +5855,26 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Curtains_Animate"
+  name: "Curtains_AnimateCarli"
   events {
     ops {
       functionName: "On Curtains Up"
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59e2df8e356564905f0022d4"
+          }
+        }
+      }
     }
   }
   conditions {
   }
   actions {
-    ops {
-      functionName: "Play Animation From Manifest"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "5998f981356564248b002e46"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Animation)"
-          args {
-            string_value: "HongKong:General/standing_idle_spell"
-          }
-        }
-      }
-    }
     ops {
       functionName: "Play Animation From Manifest"
       args {
@@ -19357,6 +19349,17 @@ triggers {
     ops {
       functionName: "On Curtains Up"
     }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59e2df8e356564905f0022d4"
+          }
+        }
+      }
+    }
   }
   conditions {
     ops {
@@ -19470,6 +19473,32 @@ triggers {
           functionName: "Get Map Item (Animation)"
           args {
             string_value: "HongKong:General/prisoner_idle_kneeling"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Select Item on Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Pi 1 Fichetti Security 500"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "599cf0213565646c65003a54"
+              }
+            }
+          }
+          args {
           }
         }
       }
@@ -21101,6 +21130,43 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "599cf0b23565646c65003a58"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Enable/Disable Interactable Object"
       args {
         call_value {
@@ -21175,7 +21241,7 @@ triggers {
             string_value: "IsOrIsNot"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -21218,10 +21284,58 @@ triggers {
       }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Isolated Team Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
     }
     ops {
-      functionName: "End Current Team Round"
+      functionName: "Set Actor In Passive Mode"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "599cf0b23565646c65003a58"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
   isActive: false
@@ -32667,6 +32781,55 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Curtains_AnimateShav"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59999672356564248b00314d"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5998f981356564248b002e46"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_spell"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a347d68356564943e00582b"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Avenue"
