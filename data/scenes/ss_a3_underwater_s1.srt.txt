@@ -316,6 +316,28 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59addae1356564742a001a27"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Add Item to Actor"
       args {
         call_value {
@@ -5974,6 +5996,43 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "ss_a2_piedmont_s1-FakeIds"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
     ops {
       functionName: "Enable/Disable Team\'s Turn"
       args {
@@ -17773,6 +17832,32 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Order Actor to Patrol"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59aeadaf356564d4590019b5"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (PatrolRoute)"
+          args {
+            string_value: "-1"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Change Actor Team"
       args {
         call_value {
@@ -17814,6 +17899,82 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Clear ThreatList"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 2
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Actor Orders"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 2
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -25409,6 +25570,121 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Entry_MoveMage"
+  events {
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isEntryNorth"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "59aead39356564d4590019b3"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5a36ca0a356564e41d003ad3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a36ca05356564e41d003ad2"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Entry"
   position {
@@ -29343,6 +29619,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "Entry_MoveDest_Mage"
+  position {
+    x: 6
+    y: -33
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5a36ca0a356564e41d003ad3"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 patrolRoutes {
   name: "Mid_Patrol_Route"
   pathType: 0
@@ -31074,6 +31408,8 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isPrisonGuard"
+  GeneralTags: "isEntryGuard"
+  GeneralTags: "isEntryNorth"
   displayName: "Entry_Pistol1"
   idRef {
     id: "59addb89356564742a001a29"
@@ -31106,6 +31442,8 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Guard"
     GeneralTags: "isPrisonGuard"
+    GeneralTags: "isEntryGuard"
+    GeneralTags: "isEntryNorth"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -31124,6 +31462,8 @@ characters {
   orientation: ORIENTATION_N
   GeneralTags: "isPrisonGuard"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isEntryGuard"
+  GeneralTags: "isEntryNorth"
   displayName: "Entry_Pistol2_TerminalGuard"
   idRef {
     id: "59addde7356564742a001a62"
@@ -31275,6 +31615,8 @@ characters {
     char_name: "Watson"
     GeneralTags: "isPrisonGuard"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isEntryGuard"
+    GeneralTags: "isEntryNorth"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -32029,6 +32371,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isPrisonGuard"
+  GeneralTags: "isEntryGuard"
   displayName: "Entry_Mage"
   idRef {
     id: "59aead39356564d4590019b3"
@@ -32061,6 +32404,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Mage"
     GeneralTags: "isPrisonGuard"
+    GeneralTags: "isEntryGuard"
     pc_spawn_number: -1
     portrait {
       filename: ""
