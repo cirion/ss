@@ -56,6 +56,14 @@ nodes {
     }
   }
   branches {
+    responseText: "{{GM}}Examine automated defense system.{{/GM}}"
+    nextNodeIndex: 59
+    onlyOnce: true
+    idRef {
+      id: "59d413726434319a6fa523b7:5a3936136434311b05b8a4de"
+    }
+  }
+  branches {
     responseText: "{{GM}}Log off.{{/GM}}"
     nextNodeIndex: -1
     idRef {
@@ -159,12 +167,31 @@ nodes {
   sourceWithTagInScene: "isHumanNationRep"
   actions {
     ops {
-      functionName: "Set Retain Other Trigger"
+      functionName: "Trigger: Run Alternate Trigger"
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59dce0b7643431a762c81204"
+          }
+        }
+      }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "bool"
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WaitOrNot"
           }
           args {
             int_value: 0
@@ -173,9 +200,12 @@ nodes {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Trigger)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "59dce0b7643431a762c81204"
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -2524,6 +2554,37 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5a3936256434311b05b8a4e1"
+  }
+  index: 59
+  text: "> 3 AUTONOMOUS DEFENSE DRONES ACTIVE\n> HELD IN RESERVE\n> ACTIVATE ONLY IN THE EVENT OF EXTREME DANGER"
+  branches {
+    responseText: ""
+    nextNodeIndex: 60
+    idRef {
+      id: "59d413726434319a6fa523b7:5a3936766434311b05b8a4e3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5a3936786434311b05b8a4e6"
+  }
+  index: 60
+  text: "> AUTONOMOUS DRONE BARRIERS ACCESSIBLE VIA MATRIX INTERFACE IN COMMAND TERMINAL\n> ADVISE LOWERING BARRIERS PRIOR TO PHYSICAL MAINTENANCE ON SYSTEMS"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "59d413726434319a6fa523b7:5a3936fe6434311b05b8a5aa"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   nextNodeIndex: 0
