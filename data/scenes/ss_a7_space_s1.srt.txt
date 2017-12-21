@@ -30387,6 +30387,95 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "BossFight_MajorDeathRattle"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5a3882853565648c23000c28"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "(Stay strong! The drones are coming!)"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 4
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a3acc76643431c416727ea6"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Command"
   position {
@@ -36026,7 +36115,7 @@ characters {
   GeneralTags: "isBossFight"
   GeneralTags: "isBossFightWave2"
   GeneralTags: "canUseDoor"
-  displayName: "Command_Wave2_South_Captain_KILLED_AT_START"
+  displayName: "Command_Wave2_South_Captain"
   idRef {
     id: "59de9468643431868203af91"
   }
@@ -36062,7 +36151,7 @@ characters {
     GeneralTags: "isBossFight"
     GeneralTags: "isBossFightWave2"
     GeneralTags: "canUseDoor"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
