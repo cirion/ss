@@ -30399,6 +30399,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5a53d969643431112cfb1ac2"
+          }
+        }
+      }
+    }
   }
   isActive: false
   idRef {
@@ -63838,17 +63860,24 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "Comparison (Actor)"
+      functionName: "Evaluate Tag for Actor"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
         }
       }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "IsOrIsNot"
+            string_value: "HasOrHasNot"
           }
           args {
             int_value: 1
@@ -63857,15 +63886,37 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
+          functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "59f654053565641011007285"
+            string_value: "isDog"
           }
         }
       }
     }
   }
   actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "5a53d969643431112cfb1ac2"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Start Conversation"
       args {
@@ -63902,28 +63953,6 @@ triggers {
             string_value: "EnableOrDisable"
           }
           args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "5a53d969643431112cfb1ac2"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
             int_value: 0
           }
         }
@@ -63947,8 +63976,11 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Global_DogTalkComplete_TODO_ON_CONVERSATION_END"
+  name: "Global_DogTalkComplete"
   events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
   }
   conditions {
   }
