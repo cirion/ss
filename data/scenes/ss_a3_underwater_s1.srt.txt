@@ -25751,6 +25751,107 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Entry"
   position {
@@ -31086,6 +31187,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isRoom2Fighter"
+  GeneralTags: "isNotEasy"
   displayName: "Interrogation2_Mage"
   idRef {
     id: "59adc896356564742a0019b6"
@@ -31118,6 +31220,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Mage"
     GeneralTags: "isRoom2Fighter"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -31333,6 +31436,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isRoom3Fighter"
+  GeneralTags: "isNotEasy"
   displayName: "Interrogation3_Pistol"
   idRef {
     id: "59add25f356564742a0019e9"
@@ -31365,6 +31469,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Guard"
     GeneralTags: "isRoom3Fighter"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -31953,6 +32058,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isResponseIC"
+  GeneralTags: "isNotEasy"
   displayName: "Decker"
   idRef {
     id: "59ae1abf3565649854000f45"
@@ -32027,6 +32133,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Decker"
     GeneralTags: "isResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -32046,6 +32153,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isResponseIC"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "59ae1abf3565649854000f46"
   }
@@ -32075,6 +32183,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Black Ranged IC"
     GeneralTags: "isResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -32438,6 +32547,7 @@ characters {
   orientation: ORIENTATION_W
   GeneralTags: "isPrisonGuard"
   GeneralTags: "isEntryGuard"
+  GeneralTags: "isNotEasy"
   displayName: "Entry_Mage"
   idRef {
     id: "59aead39356564d4590019b3"
@@ -32471,6 +32581,7 @@ characters {
     char_name: "Prison Mage"
     GeneralTags: "isPrisonGuard"
     GeneralTags: "isEntryGuard"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -32488,6 +32599,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isPrisonGuard"
+  GeneralTags: "isNotEasy"
   displayName: "Mid_Mage"
   idRef {
     id: "59aead66356564d4590019b4"
@@ -32520,6 +32632,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Mage"
     GeneralTags: "isPrisonGuard"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -32635,6 +32748,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isPrisonGuard"
+  GeneralTags: "isNotEasy"
   displayName: "Mid_EastCaptain"
   idRef {
     id: "59aeaf4e356564d4590019ba"
@@ -32667,6 +32781,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Guard Captain"
     GeneralTags: "isPrisonGuard"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -33055,6 +33170,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isPrisonGuard"
+  GeneralTags: "isNotEasy"
   displayName: "Top_Rec_Captain"
   idRef {
     id: "59af6b003565646068000f31"
@@ -33087,6 +33203,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Guard Captain"
     GeneralTags: "isPrisonGuard"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -33202,6 +33319,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isPrisonGuard"
+  GeneralTags: "isNotEasy"
   displayName: "Top_Shotgun_1"
   idRef {
     id: "59af6b683565646068000f34"
@@ -33234,6 +33352,7 @@ characters {
     team_id: "Civilians"
     char_name: "Prison Guard"
     GeneralTags: "isPrisonGuard"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""

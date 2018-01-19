@@ -16648,6 +16648,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "599a4c2b3565646c65003179"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -16929,7 +16951,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "599a4c2b3565646c65003179"
   }
@@ -33018,6 +33040,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Avenue"
   position {
@@ -38647,6 +38770,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
+  GeneralTags: "isNotEasy"
   displayName: "Crypt_Mummy3"
   idRef {
     id: "5999a1e2356564248b0031f8"
@@ -38681,6 +38805,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Mummified Corpse"
     GeneralTags: "isMummy"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38800,6 +38925,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMummy"
+  GeneralTags: "isNotEasy"
   displayName: "Crypt_Mummy6"
   idRef {
     id: "5999a1fc356564248b0031fb"
@@ -38834,6 +38960,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Mummified Corpse"
     GeneralTags: "isMummy"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39354,6 +39481,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isPassive"
   GeneralTags: "isCemeteryFuchi"
+  GeneralTags: "isNotEasy"
   displayName: "Cemetery_Fuchi_Shotgun"
   idRef {
     id: "5999fceb3565646c65002f08"
@@ -39387,6 +39515,7 @@ characters {
     char_name: "Fuchi Corpsec"
     GeneralTags: "isPassive"
     GeneralTags: "isCemeteryFuchi"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39599,6 +39728,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
   GeneralTags: "isCemeteryNorthGhoul"
+  GeneralTags: "isNotEasy"
   displayName: "Cemetery_Ghoul2"
   idRef {
     id: "599a05513565646c65002f87"
@@ -39632,6 +39762,7 @@ characters {
     char_name: "Feral Ghoul"
     GeneralTags: "isCemeteryGhoul"
     GeneralTags: "isCemeteryNorthGhoul"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39703,6 +39834,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isCemeteryGhoul"
   GeneralTags: "isCemeterySouthGhoul"
+  GeneralTags: "isNotEasy"
   displayName: "Cemetery_Ghoul4"
   idRef {
     id: "599a055c3565646c65002f89"
@@ -39736,6 +39868,7 @@ characters {
     char_name: "Feral Ghoul"
     GeneralTags: "isCemeteryGhoul"
     GeneralTags: "isCemeterySouthGhoul"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39858,6 +39991,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
   GeneralTags: "isInitialAlley"
+  GeneralTags: "isNotEasy"
   displayName: "Alley_Protectorate_Initial_Pistol1"
   idRef {
     id: "599a28253565646c650030d7"
@@ -39891,6 +40025,7 @@ characters {
     char_name: "Protectorate Soldier"
     GeneralTags: "isAlleyPatrol"
     GeneralTags: "isInitialAlley"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40011,6 +40146,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isAlleyPatrol"
   GeneralTags: "isInitialAlley"
+  GeneralTags: "isNotEasy"
   displayName: "Alley_Fuchi_Initial_Melee"
   idRef {
     id: "599a28493565646c650030da"
@@ -40041,6 +40177,7 @@ characters {
     char_name: "Fuchi Striker"
     GeneralTags: "isAlleyPatrol"
     GeneralTags: "isInitialAlley"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40113,6 +40250,7 @@ characters {
   GeneralTags: "isAlleyPatrol"
   GeneralTags: "isAlleyReinforceWave1"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Alley_Fuchi_Reinforce_Pistol"
   idRef {
     id: "599a286c3565646c650030dc"
@@ -40147,6 +40285,7 @@ characters {
     GeneralTags: "isAlleyPatrol"
     GeneralTags: "isAlleyReinforceWave1"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40166,6 +40305,7 @@ characters {
   GeneralTags: "isAlleyPatrol"
   GeneralTags: "isAlleyReinforceWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Alley_Protectorate_Reinforce_Grenadier"
   idRef {
     id: "599a28753565646c650030dd"
@@ -40200,6 +40340,7 @@ characters {
     GeneralTags: "isAlleyPatrol"
     GeneralTags: "isAlleyReinforceWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40374,6 +40515,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isMpa"
+  GeneralTags: "isNotEasy"
   displayName: "Church_Mage"
   idRef {
     id: "599cf0403565646c65003a55"
@@ -40406,6 +40548,7 @@ characters {
     team_id: "Civilians"
     char_name: "MPA Mage"
     GeneralTags: "isMpa"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40878,7 +41021,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isPlazaSoldier"
-  GeneralTags: ""
+  GeneralTags: "isNotEasy"
   displayName: "Plaza_Protectorate_Pistol2"
   idRef {
     id: "599e57ba356564b8c70065a9"
@@ -40911,7 +41054,7 @@ characters {
     team_id: "Civilians"
     char_name: "Protectorate Soldier"
     GeneralTags: "isPlazaSoldier"
-    GeneralTags: ""
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""

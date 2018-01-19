@@ -30572,6 +30572,107 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Command"
   position {
@@ -34377,6 +34478,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isResponseIC"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "5986b0623565644003002155"
   }
@@ -34392,6 +34494,7 @@ characters {
     team_id: "LoneStar"
     char_name: "White Melee IC"
     GeneralTags: "isResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -36211,6 +36314,7 @@ characters {
   GeneralTags: "isBossFight"
   GeneralTags: "isBossFightWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Command_Wave2_South_Captain"
   idRef {
     id: "59de9468643431868203af91"
@@ -36247,6 +36351,7 @@ characters {
     GeneralTags: "isBossFight"
     GeneralTags: "isBossFightWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -36427,6 +36532,7 @@ characters {
   GeneralTags: "isBossFightWave3"
   GeneralTags: "canUseDoor"
   GeneralTags: "isBossFight"
+  GeneralTags: "isNotEasy"
   displayName: "Command_Wave3_East_Grenadier"
   idRef {
     id: "59de95a8643431868203af98"
@@ -36463,6 +36569,7 @@ characters {
     GeneralTags: "isBossFightWave3"
     GeneralTags: "canUseDoor"
     GeneralTags: "isBossFight"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -37203,6 +37310,7 @@ characters {
   GeneralTags: "isLight"
   GeneralTags: "isCargo"
   GeneralTags: "isCargoWave1"
+  GeneralTags: "isNotEasy"
   displayName: "Cargo_Wave1_Pistol"
   idRef {
     id: "59df82d66434311f8803b00f"
@@ -37238,6 +37346,7 @@ characters {
     GeneralTags: "isLight"
     GeneralTags: "isCargo"
     GeneralTags: "isCargoWave1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -37467,6 +37576,7 @@ characters {
   GeneralTags: "isCargo"
   GeneralTags: "isCargoWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Cargo_Wave2_Sniper"
   idRef {
     id: "59df82fa6434311f8803b013"
@@ -37503,6 +37613,7 @@ characters {
     GeneralTags: "isCargo"
     GeneralTags: "isCargoWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -39082,6 +39193,7 @@ characters {
   GeneralTags: "isHeavy"
   GeneralTags: "canUseDoor"
   GeneralTags: "isBossDrone"
+  GeneralTags: "isNotEasy"
   displayName: "Command_Drone_2"
   idRef {
     id: "5a3888e9356564f840003e14"
@@ -39120,6 +39232,7 @@ characters {
     GeneralTags: "isHeavy"
     GeneralTags: "canUseDoor"
     GeneralTags: "isBossDrone"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     cyberware_left_arm: "(Arm) JoltAlert"

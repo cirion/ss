@@ -39735,6 +39735,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_FuchiUpstairs"
   position {
@@ -45259,6 +45360,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isFuchiResponseIC"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "598668e13565644003001fee"
   }
@@ -45292,6 +45394,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Black Ranged IC"
     GeneralTags: "isFuchiResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -47210,6 +47313,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isRenraku"
+  GeneralTags: "isNotEasy"
   displayName: "Renraku_Captain"
   idRef {
     id: "59b53e8f3565647422002f15"
@@ -47242,6 +47346,7 @@ characters {
     team_id: "Renraku"
     char_name: "Renraku Captain"
     GeneralTags: "isRenraku"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -47455,6 +47560,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isRenraku"
+  GeneralTags: "isNotEasy"
   displayName: "Renraku_Rigger"
   idRef {
     id: "59b53ead3565647422002f1a"
@@ -47528,6 +47634,7 @@ characters {
     team_id: "Renraku"
     char_name: "Renraku Rigger"
     GeneralTags: "isRenraku"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -47682,6 +47789,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isFuchi"
+  GeneralTags: "isNotEasy"
   displayName: "Fuchi_Mage"
   idRef {
     id: "59b53f2c3565647422002f1d"
@@ -47714,6 +47822,7 @@ characters {
     team_id: "Fuchi"
     char_name: "Fuchi Mage"
     GeneralTags: "isFuchi"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -48116,6 +48225,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isNovatech"
+  GeneralTags: "isNotEasy"
   displayName: "Novatech_Rigger"
   idRef {
     id: "59b543443565647422002f26"
@@ -48189,6 +48299,7 @@ characters {
     team_id: "Novatech"
     char_name: "Novatech Rigger"
     GeneralTags: "isNovatech"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -48358,6 +48469,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isNovatech"
+  GeneralTags: "isNotEasy"
   displayName: "Novatech_Shotgun"
   idRef {
     id: "59b543563565647422002f2a"
@@ -48390,6 +48502,7 @@ characters {
     team_id: "Novatech"
     char_name: "Novatech Enforcer"
     GeneralTags: "isNovatech"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""

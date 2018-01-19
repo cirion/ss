@@ -29429,6 +29429,107 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Outside"
   position {
@@ -34309,6 +34410,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isOutsideValiriEnemy"
+  GeneralTags: "isNotEasy"
   displayName: "Outside_Valiri_Mage"
   idRef {
     id: "598931a9356564744f00587b"
@@ -34341,6 +34443,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Ganger Mage"
     GeneralTags: "isOutsideValiriEnemy"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -34407,6 +34510,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isOutsideDesornEnemy"
+  GeneralTags: "isNotEasy"
   displayName: "Outside_Desorn_Melee_1"
   idRef {
     id: "598a6d643565648461007357"
@@ -34436,6 +34540,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Humanis Thug"
     GeneralTags: "isOutsideDesornEnemy"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -35137,6 +35242,7 @@ characters {
   GeneralTags: "isPassive"
   GeneralTags: "isCarliAmbusher"
   GeneralTags: "isDorbiChaser"
+  GeneralTags: "isNotEasy"
   displayName: "Inside_AmbushWaveDorbiChaserMage"
   idRef {
     id: "598f1ff33565649836003eb1"
@@ -35171,6 +35277,7 @@ characters {
     GeneralTags: "isPassive"
     GeneralTags: "isCarliAmbusher"
     GeneralTags: "isDorbiChaser"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -35349,6 +35456,7 @@ characters {
   GeneralTags: "isPassive"
   GeneralTags: "isCarliAmbusher"
   GeneralTags: "isTassenderChaser"
+  GeneralTags: "isNotEasy"
   displayName: "Inside_AmbushWaveTassenderChaserGrenadier"
   idRef {
     id: "598f251b3565649836003eb5"
@@ -35383,6 +35491,7 @@ characters {
     GeneralTags: "isPassive"
     GeneralTags: "isCarliAmbusher"
     GeneralTags: "isTassenderChaser"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -35453,6 +35562,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isAmbushReinforcer"
+  GeneralTags: "isNotEasy"
   displayName: "Inside_AmbushReinforceSniper"
   idRef {
     id: "598f256e3565649836003eb7"
@@ -35485,6 +35595,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Fuchi Sniper"
     GeneralTags: "isAmbushReinforcer"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -35875,6 +35986,8 @@ scene_dimensions {
   is_matrix: true
   max_alarm_value: 75
   heat_response_rating: 2
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {

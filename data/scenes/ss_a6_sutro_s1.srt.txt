@@ -36294,6 +36294,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "New Region"
   position {
@@ -40632,6 +40733,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isOutside1"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "59d45135356564d849001632"
   }
@@ -40663,6 +40765,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Tir Sniper"
     GeneralTags: "isOutside1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -40925,6 +41028,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isOutside2"
   GeneralTags: "isOutside2Wave1"
+  GeneralTags: "isNotEasy"
   displayName: "Outside2_Grenadier"
   idRef {
     id: "59d451f5356564d849001637"
@@ -40958,6 +41062,7 @@ characters {
     char_name: "Tir Grenadier"
     GeneralTags: "isOutside2"
     GeneralTags: "isOutside2Wave1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40976,6 +41081,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isOutside2"
   GeneralTags: "isOutside2Wave2"
+  GeneralTags: "isNotEasy"
   displayName: "Outside2_Sniper"
   idRef {
     id: "59d451fb356564d849001638"
@@ -41009,6 +41115,7 @@ characters {
     char_name: "Tir Sniper"
     GeneralTags: "isOutside2"
     GeneralTags: "isOutside2Wave2"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -41179,6 +41286,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isInsideTir"
+  GeneralTags: "isNotEasy"
   displayName: "Inside_Adept"
   idRef {
     id: "59d45ce9356564d8490016cd"
@@ -41253,6 +41361,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Tir Ghost"
     GeneralTags: "isInsideTir"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""

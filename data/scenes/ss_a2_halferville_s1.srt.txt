@@ -15079,6 +15079,28 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "59966840356564588e001613"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -15962,7 +15984,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "59966840356564588e001613"
   }
@@ -26859,6 +26881,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Curtains Up"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "ThroneRoom_TriggerSouthLights"
   position {
@@ -32784,6 +32907,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isResponseIC"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "5982712c3565648007005ee4"
   }
@@ -32799,6 +32923,7 @@ characters {
     team_id: "LoneStar"
     char_name: "White Melee IC"
     GeneralTags: "isResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -33036,6 +33161,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isThroneFighter"
+  GeneralTags: "isNotEasy"
   displayName: "Throne_Mage"
   idRef {
     id: "598f7fb135656498360045f0"
@@ -33068,6 +33194,7 @@ characters {
     team_id: "Halferville"
     char_name: "Halferville Mage"
     GeneralTags: "isThroneFighter"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -33357,6 +33484,7 @@ characters {
   orientation: ORIENTATION_W
   GeneralTags: "isThroneReinforcer"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Throne_ReinforcerCaptain"
   idRef {
     id: "598f85993565649836004603"
@@ -33390,6 +33518,7 @@ characters {
     char_name: "Halferville Captain"
     GeneralTags: "isThroneReinforcer"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -33698,6 +33827,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isEscapeWave1"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Escape_Wave1_Grenadier"
   idRef {
     id: "598fd3c93565643046006f09"
@@ -33731,6 +33861,7 @@ characters {
     char_name: "Protectorate Grenadier"
     GeneralTags: "isEscapeWave1"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -33893,6 +34024,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isEscapeWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Escape_Wave2_Sniper"
   idRef {
     id: "598fd60b3565643046006f10"
@@ -33968,6 +34100,7 @@ characters {
     char_name: "Protectorate Sniper"
     GeneralTags: "isEscapeWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -34080,6 +34213,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isWave2Hellhound"
+  GeneralTags: "isNotEasy"
   displayName: "Escape_Hellhound2"
   idRef {
     id: "598fd6793565643046006f2f"
@@ -34154,6 +34288,7 @@ characters {
     team_id: "Monsters"
     char_name: "Hellhound"
     GeneralTags: "isWave2Hellhound"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -34458,6 +34593,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isWrapUpHellhound"
+  GeneralTags: "isNotEasy"
   displayName: "WrapUp_Hellhound3"
   idRef {
     id: "5990edc3356564d44e007ec4"
@@ -34532,6 +34668,7 @@ characters {
     team_id: "Monsters"
     char_name: "Hellhound"
     GeneralTags: "isWrapUpHellhound"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -35312,6 +35449,7 @@ characters {
     z: -42
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isNotEasy"
   idRef {
     id: "5992479e356564b877000df7"
   }
@@ -35341,6 +35479,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Ranged IC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     hiring_type: HiringType_None
@@ -36669,7 +36808,7 @@ characters {
       }
     }
     team_id: "Halferville"
-    char_name: "Halferville Guard"
+    char_name: "Halferville Conjurer"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -36686,6 +36825,7 @@ characters {
     z: -94
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isNotEasy"
   displayName: "Matrix_Zone1_ICStartRanged"
   idRef {
     id: "59959dd835656424870061b0"
@@ -36716,6 +36856,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Ranged IC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     hiring_type: HiringType_None
@@ -37030,6 +37171,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isHumanis"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Entry_HumanisWave1_Melee"
   idRef {
     id: "59965828356564588e00136e"
@@ -37060,6 +37202,7 @@ characters {
     char_name: "Humanis Thug"
     GeneralTags: "isHumanis"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -37827,6 +37970,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMatrixZone5SpawnIC"
+  GeneralTags: "isNotEasy"
   displayName: "Matrix_Zone5_ICWave1Ranged"
   idRef {
     id: "5997a4143565640c24007f3f"
@@ -37858,6 +38002,7 @@ characters {
     team_id: "LoneStar"
     char_name: "White Ranged IC"
     GeneralTags: "isMatrixZone5SpawnIC"
+    GeneralTags: "isNotEasy"
     enabled_at_start: false
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
@@ -37968,6 +38113,7 @@ characters {
   orientation: ORIENTATION_E
   GeneralTags: "isEntryProtectorate"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Entry_Protectorate_Wave2Captain"
   idRef {
     id: "5997af693565640c24007ff0"
@@ -38001,6 +38147,7 @@ characters {
     char_name: "Protectorate Captain"
     GeneralTags: "isEntryProtectorate"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38073,6 +38220,7 @@ characters {
   GeneralTags: "isEntryProtectorate"
   GeneralTags: "canUseDoor"
   GeneralTags: "isEntryProtectorateWave1"
+  GeneralTags: "isNotEasy"
   displayName: "Entry_Protectorate_Wave1Grenadier"
   idRef {
     id: "5997af8e3565640c24007ff2"
@@ -38107,6 +38255,7 @@ characters {
     GeneralTags: "isEntryProtectorate"
     GeneralTags: "canUseDoor"
     GeneralTags: "isEntryProtectorateWave1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""

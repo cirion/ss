@@ -32827,6 +32827,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Camera_Downstairs"
   position {
@@ -36834,6 +36935,7 @@ characters {
     z: -40
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isNotEasy"
   displayName: "Matrix_Electricity_MeleeIC1"
   idRef {
     id: "59811ef93565644422003a86"
@@ -36864,6 +36966,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Melee IC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -36933,6 +37036,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isResponseIC"
+  GeneralTags: "isNotEasy"
   displayName: "Chaser_BlackRanged"
   idRef {
     id: "59811ef93565644422003b9c"
@@ -36963,6 +37067,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Black Ranged IC"
     GeneralTags: "isResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -38858,6 +38963,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isDownstairsRenraku"
+  GeneralTags: "isNotEasy"
   displayName: "Downstairs_Renraku_Captain"
   idRef {
     id: "59cbae9c356564f009007284"
@@ -38890,6 +38996,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Renraku Captain"
     GeneralTags: "isDownstairsRenraku"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38958,6 +39065,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isDownstairsRenraku"
+  GeneralTags: "isNotEasy"
   displayName: "Downstairs_Renraku_Sniper"
   idRef {
     id: "59cbae9c356564f009007287"
@@ -38990,6 +39098,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Renraku Sniper"
     GeneralTags: "isDownstairsRenraku"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -39486,6 +39595,7 @@ characters {
   orientation: ORIENTATION_E
   GeneralTags: "isUpstairsWave1"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Upstairs_Wave1_Captain"
   idRef {
     id: "59cc1eab6434311d227b9dd5"
@@ -39519,6 +39629,7 @@ characters {
     char_name: "Renraku Captain"
     GeneralTags: "isUpstairsWave1"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39787,6 +39898,7 @@ characters {
   orientation: ORIENTATION_E
   GeneralTags: "isUpstairsWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Upstairs_Wave2_Captain"
   idRef {
     id: "59cc1f226434311d227b9ddb"
@@ -39820,6 +39932,7 @@ characters {
     char_name: "Renraku Captain"
     GeneralTags: "isUpstairsWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40326,6 +40439,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isRimeWave2"
+  GeneralTags: "isNotEasy"
   displayName: "Upstairs_RimeWave2_DemonRat_1"
   idRef {
     id: "59cc27056434311d227b9de9"
@@ -40401,6 +40515,7 @@ characters {
     team_id: "Gangers"
     char_name: "Demon Rat"
     GeneralTags: "isRimeWave2"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -40513,6 +40628,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isOutsideRat"
+  GeneralTags: "isNotEasy"
   displayName: "Outside_DevilRat_3"
   idRef {
     id: "59cc27386434311d227b9dec"
@@ -40587,6 +40703,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Devil Rat"
     GeneralTags: "isOutsideRat"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -41265,6 +41382,7 @@ characters {
     z: -24
   }
   orientation: ORIENTATION_N
+  GeneralTags: "isNotEasy"
   displayName: "Matrix_Data_Ranged_1"
   idRef {
     id: "59cc62963565649c3d005544"
@@ -41295,6 +41413,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "White Ranged IC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     hiring_type: HiringType_None
@@ -41730,6 +41849,7 @@ characters {
   orientation: ORIENTATION_W
   GeneralTags: "isUpstairsWave3"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Upstairs_Wave3_Grenadier"
   idRef {
     id: "59cd0abf6434310328734321"
@@ -41763,6 +41883,7 @@ characters {
     char_name: "Renraku Grenadier"
     GeneralTags: "isUpstairsWave3"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -42680,6 +42801,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isOutsideRat"
+  GeneralTags: "isNotEasy"
   displayName: "Outside_DevilRat_9"
   idRef {
     id: "5a38743e3565648c23000c24"
@@ -42754,6 +42876,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Devil Rat"
     GeneralTags: "isOutsideRat"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {

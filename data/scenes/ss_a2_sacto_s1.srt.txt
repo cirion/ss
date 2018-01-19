@@ -30981,6 +30981,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "water_vfx"
   position {
@@ -36296,6 +36397,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isFuchiDeliveryIC"
+  GeneralTags: "isNotEasy"
   displayName: "FuchiDeliveries_Ranged_1_Black"
   idRef {
     id: "59800815356564e01e004308"
@@ -36330,6 +36432,7 @@ characters {
     team_id: "IC"
     char_name: "Black Ranged IC"
     GeneralTags: "isFuchiDeliveryIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -36546,6 +36649,7 @@ characters {
     z: 92
   }
   orientation: ORIENTATION_W
+  GeneralTags: "isNotEasy"
   displayName: "McClellan2_Ranged3"
   idRef {
     id: "59800816356564e01e004611"
@@ -36576,6 +36680,7 @@ characters {
     }
     team_id: "IC"
     char_name: "White Ranged IC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -37318,6 +37423,7 @@ characters {
     z: 78
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isNotEasy"
   displayName: "Cameras_BlackMelee"
   idRef {
     id: "5980081b356564e01e004dec"
@@ -37352,6 +37458,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Black Melee IC"
+    GeneralTags: "isNotEasy"
     enabled_at_start: false
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
@@ -37372,6 +37479,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isMcClellanResponseIC"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "59828c773565648007005f5b"
   }
@@ -37405,6 +37513,7 @@ characters {
     team_id: "IC"
     char_name: "Black Ranged IC"
     GeneralTags: "isMcClellanResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -38424,6 +38533,7 @@ characters {
   GeneralTags: "isProtectorate"
   GeneralTags: "isNorthInitial"
   GeneralTags: "isNorthSoldier"
+  GeneralTags: "isNotEasy"
   displayName: "North_Initial_Heavy"
   idRef {
     id: "59a2e54b3565641cd3004cf4"
@@ -38458,6 +38568,7 @@ characters {
     GeneralTags: "isProtectorate"
     GeneralTags: "isNorthInitial"
     GeneralTags: "isNorthSoldier"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38477,6 +38588,7 @@ characters {
   GeneralTags: "isProtectorate"
   GeneralTags: "isNorthReinforcer"
   GeneralTags: "isNorthSoldier"
+  GeneralTags: "isNotEasy"
   displayName: "North_Reinforce_Captain"
   idRef {
     id: "59a2f2113565641cd3004f8b"
@@ -38511,6 +38623,7 @@ characters {
     GeneralTags: "isProtectorate"
     GeneralTags: "isNorthReinforcer"
     GeneralTags: "isNorthSoldier"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39016,6 +39129,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isBasilisk"
+  GeneralTags: "isNotEasy"
   displayName: "McClellan_Basilisk_1"
   idRef {
     id: "59a30be23565641cd300555e"
@@ -39090,6 +39204,7 @@ characters {
     team_id: "Gangers"
     char_name: "Basilisk"
     GeneralTags: "isBasilisk"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39199,6 +39314,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isBasilisk"
+  GeneralTags: "isNotEasy"
   displayName: "McClellan_Basilisk_3"
   idRef {
     id: "59a30c463565641cd3005560"
@@ -39273,6 +39389,7 @@ characters {
     team_id: "Gangers"
     char_name: "Basilisk"
     GeneralTags: "isBasilisk"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39948,6 +40065,7 @@ characters {
   GeneralTags: "isGroundInitialSoldier"
   GeneralTags: "isGroundSoldier"
   GeneralTags: "isPatrolWalker"
+  GeneralTags: "isNotEasy"
   displayName: "Ground_Initial_Rigger_1"
   idRef {
     id: "59a6c6a03565647809004018"
@@ -40023,6 +40141,7 @@ characters {
     GeneralTags: "isGroundInitialSoldier"
     GeneralTags: "isGroundSoldier"
     GeneralTags: "isPatrolWalker"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -40475,6 +40594,7 @@ characters {
   GeneralTags: "isGroundWave2"
   GeneralTags: "isGroundSoldier"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Ground_Reinforce1_Heavy"
   idRef {
     id: "59a6c6cd356564780900401d"
@@ -40509,6 +40629,7 @@ characters {
     GeneralTags: "isGroundWave2"
     GeneralTags: "isGroundSoldier"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -40636,6 +40757,7 @@ characters {
   GeneralTags: "isGroundWave3"
   GeneralTags: "isGroundSoldier"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Ground_Reinforce2_Captain"
   idRef {
     id: "59a6c6d93565647809004020"
@@ -40670,6 +40792,7 @@ characters {
     GeneralTags: "isGroundWave3"
     GeneralTags: "isGroundSoldier"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""

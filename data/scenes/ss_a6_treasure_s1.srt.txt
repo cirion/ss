@@ -30666,6 +30666,107 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Global_EasyMode"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Global Difficulty"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNotEasy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5a5f902e643431a7035b4296"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "Water"
   position {
@@ -35137,6 +35238,7 @@ characters {
     }
     team_id: "IC"
     char_name: "White Ranged IC"
+    enabled_at_start: false
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     hiring_type: HiringType_None
@@ -35407,6 +35509,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isResponseIC"
+  GeneralTags: "isNotEasy"
   idRef {
     id: "5986ac95356564400300212b"
   }
@@ -35437,6 +35540,7 @@ characters {
     team_id: "IC"
     char_name: "White Melee IC"
     GeneralTags: "isResponseIC"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     spawn_type: SpawnType_Matrix
     portrait {
@@ -36997,6 +37101,7 @@ characters {
     z: -154
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isNotEasy"
   displayName: "Protectorate_Captain"
   idRef {
     id: "59d6a84c6434311a2125b45a"
@@ -37028,6 +37133,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Protectorate Captain"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -37378,6 +37484,7 @@ characters {
   orientation: ORIENTATION_W
   GeneralTags: "isUpstairs"
   GeneralTags: "isUpstairsWave1"
+  GeneralTags: "isNotEasy"
   displayName: "Upstairs_Wave1_Rigger"
   idRef {
     id: "59d6aa4a6434311a2125b465"
@@ -37452,6 +37559,7 @@ characters {
     char_name: "Protectorate Rigger"
     GeneralTags: "isUpstairs"
     GeneralTags: "isUpstairsWave1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -37682,6 +37790,7 @@ characters {
   GeneralTags: "isUpstairs"
   GeneralTags: "isUpstairsWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Upstairs_Wave2_Grenadier"
   idRef {
     id: "59d6ab256434311a2125b46b"
@@ -37716,6 +37825,7 @@ characters {
     GeneralTags: "isUpstairs"
     GeneralTags: "isUpstairsWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38100,6 +38210,7 @@ characters {
   orientation: ORIENTATION_N
   GeneralTags: "isDownstairs"
   GeneralTags: "isWave1"
+  GeneralTags: "isNotEasy"
   displayName: "Downstairs_Wave1_Pistol"
   idRef {
     id: "59d6b88c643431b921bb8f79"
@@ -38133,6 +38244,7 @@ characters {
     char_name: "Protectorate Soldier"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38204,6 +38316,7 @@ characters {
   orientation: ORIENTATION_W
   GeneralTags: "isDownstairs"
   GeneralTags: "isWave2"
+  GeneralTags: "isNotEasy"
   displayName: "Downstairs_Wave2_Rigger"
   idRef {
     id: "59d6b9a2643431b921bb8f7b"
@@ -38278,6 +38391,7 @@ characters {
     char_name: "Protectorate Rigger"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave2"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -38401,6 +38515,7 @@ characters {
   orientation: ORIENTATION_S
   GeneralTags: "isDownstairs"
   GeneralTags: "isWave3"
+  GeneralTags: "isNotEasy"
   displayName: "Downstairs_Wave3_Captain"
   idRef {
     id: "59d6b9f2643431b921bb8f7f"
@@ -38434,6 +38549,7 @@ characters {
     char_name: "Protectorate Captain"
     GeneralTags: "isDownstairs"
     GeneralTags: "isWave3"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -38706,6 +38822,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isOutsideWave1"
+  GeneralTags: "isNotEasy"
   displayName: "Outside_Wave1_Melee"
   idRef {
     id: "59d79bc8643431df297d63a3"
@@ -38735,6 +38852,7 @@ characters {
     team_id: "Gangers"
     char_name: "MPA Brawler"
     GeneralTags: "isOutsideWave1"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -39026,6 +39144,7 @@ characters {
   orientation: ORIENTATION_W
   GeneralTags: "isOutsideWave2"
   GeneralTags: "canUseDoor"
+  GeneralTags: "isNotEasy"
   displayName: "Outside_Wave2_Captain"
   idRef {
     id: "59d79fb2643431b02e25b458"
@@ -39059,6 +39178,7 @@ characters {
     char_name: "MPA Vanguard"
     GeneralTags: "isOutsideWave2"
     GeneralTags: "canUseDoor"
+    GeneralTags: "isNotEasy"
     pc_spawn_number: -1
     portrait {
       filename: ""
