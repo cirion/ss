@@ -11788,7 +11788,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Upstairs_RemoveTagDroneOnExit"
+  name: "Lab_RemoveTagDroneOnExit"
   events {
     ops {
       functionName: "On Region Enter"
@@ -11797,17 +11797,6 @@ triggers {
           functionName: "Get Map Item (Region)"
           args {
             string_value: "59cbb118356564f009007350"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "59cbb161356564f009007352"
           }
         }
       }
@@ -32927,6 +32916,101 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Office_RemoveTagDroneOnExit_TODO_CHECK_DOOR"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "59cbb161356564f009007352"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isTaggedDrone"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isTaggedDrone"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_CheckForDroneInVent"
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "5a6a427d643431aa1930281c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Camera_Downstairs"
